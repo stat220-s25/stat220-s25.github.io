@@ -544,7 +544,7 @@ Prof Amanda Luby
 <p><a href="https://minecr.shinyapps.io/manager-survey/">https://minecr.shinyapps.io/manager-survey</a></p>
 </div>
 <div class="cell">
-<iframe src="https://minecr.shinyapps.io/manager-survey/?showcase=0" width="960" height="550px" data-external="1">
+<iframe src="https://minecr.shinyapps.io/manager-survey/?showcase=0" width="672" height="550px" data-external="1">
 </iframe>
 </div>
 </section><section id="your-turn" class="slide level2 scrollable"><h2>Your turn</h2>
@@ -778,41 +778,6 @@ Prof Amanda Luby
           RevealZoom
         ]
       });
-    </script><script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

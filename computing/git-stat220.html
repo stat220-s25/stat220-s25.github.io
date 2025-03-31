@@ -273,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Complete the steps in <a href="https://happygitwithr.com/https-pat">Happy Git with R Ch 9.3</a> to get a personal access token. I recommend using the “classic” token, but either should work. You will need <code>workflow</code>, <code>user</code>, and <code>repo</code> scopes (permissions) for this class, and I recommend setting it for 90 days so you won’t need a new one through the end of the term. Make sure to save this somewhere safe!</li>
 </ul>
 </li>
-<li><p>It will be annoying to type your PAT in anytime you want to push to github. Instead, tell R to store your git credentials. First, save your name and email:</p></li>
+<li><p>It will be annoying to type your PAT in anytime you want to push to github. If you’re working on your own computer you can tell R to store your git credentials. First, save your name and email:</p></li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_git_config.html">use_git_config</a></span><span class="op">(</span>user.name <span class="op">=</span> <span class="st">"Jane Doe"</span>, user.email <span class="op">=</span> <span class="st">"jane@example.org"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, run the following command:</p>
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 • GitHub user: "aluby"
 • Token scopes: "admin:org", "repo", "user", and "workflow"
 • Email(s): "aluby@carleton.edu"</code></pre>
-<p>if instead of <code>&lt;discovered&gt;</code> you see <code>&lt;unset&gt;</code>, you may need to enter your PAT again. (I have no idea why it sometimes needs it twice)</p>
+<p>if instead of <code>&lt;discovered&gt;</code> you see <code>&lt;unset&gt;</code>, you may need to enter your PAT again.</p>
 <hr></section><section id="individual-assignments" class="level2"><h2 class="anchored" data-anchor-id="individual-assignments">Individual assignments</h2>
 <p>If you followed the suggestions in the <a href="../computing/rstudio-stat220.html">Using Rstudio in Stat 220</a> page, then you should already have an assignments folder on your computer or maize account.</p>
 <p>Each new assignment/project will be posted as a repository on GitHub and added directly to your account (within the Stat220 organization). This repository will contain assignment details (README, .Rmd).</p>

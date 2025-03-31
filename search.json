@@ -116,7 +116,7 @@
     "href": "carleton-only-syllabus.html",
     "title": "Stat 220: Introduction to Data Science",
     "section": "",
-    "text": "Meetings\nMWF 3a\n9:50-11 MW | 9:40-10:40 F\nCMC 102\n\n\nProfessor\nAmanda Luby\nCMC 223\n\n\n\naluby@carleton.edu\n\n\n\nOffice Hours\nM 4:15-5:15, T 10:30-11:30, W 2:15-3:15, F 11-12\nBy appt through my Google Calendar\nCMC 307\n\n\nOrganization\ngithub.com/stat220-s25\n\n\n\nWebsite\nstat220-s25.github.io\n\n\n\nTexts\nR for Data Science (2nd Ed)\nhttps://r4ds.hadley.nz/\nWickham, Çetinkaya-Rundel, Grolemund\n\n\n\n\nModern Data Science with R (3rd Ed)\nhttps://mdsr-book.github.io/mdsr3e/\nBaumer, Kaplan, Horton\n\n\n\n\nFundamentals of Data Visualization\nhttps://clauswilke.com/dataviz/\nWilke\n\n\n\nSoftware\nMaize RStudio Server maize.mathcs.carleton.edu\n\n\n\n\nR (optional) free from r-project.org\n\n\n\n\nRStudio (optional) free from rstudio.com/downloads"
+    "text": "Meetings\nMWF 2a\n9:50-11 MW | 9:40-10:40 F\nCMC 102\n\n\nProfessor\nAmanda Luby\nCMC 223\n\n\n\naluby@carleton.edu\n\n\n\nOffice Hours\nM 4:15-5:15, T 10:30-11:30, W 2:15-3:15, F 11-12\nBy appt through my Google Calendar\nCMC 307\n\n\nOrganization\ngithub.com/stat220-s25\n\n\n\nWebsite\nstat220-s25.github.io\n\n\n\nTexts\nR for Data Science (2nd Ed)\nhttps://r4ds.hadley.nz/\nWickham, Çetinkaya-Rundel, Grolemund\n\n\n\n\nModern Data Science with R (3rd Ed)\nhttps://mdsr-book.github.io/mdsr3e/\nBaumer, Kaplan, Horton\n\n\n\n\nFundamentals of Data Visualization\nhttps://clauswilke.com/dataviz/\nWilke\n\n\n\nSoftware\nMaize RStudio Server maize.mathcs.carleton.edu\n\n\n\n\nR (optional) free from r-project.org\n\n\n\n\nRStudio (optional) free from rstudio.com/downloads"
   },
   {
     "objectID": "carleton-only-syllabus.html#meetings",
@@ -250,7 +250,7 @@
     "href": "computing/rstudio-stat220.html#file-organization-using-maize",
     "title": "Using RStudio in Stat 220",
     "section": "File organization: Using maize",
-    "text": "File organization: Using maize\nThe server (online) version of RStudio is run from a Unix server. You can navigate this file system using Unix commands, but I assume that most or all of you will just use RStudio to access your files on this server.\n1. In RStudio, click the Files tab in the lower right-hand window. Note: this is not the same as the File menu option.\n\n\n\n\n\n\n\n\n2. Verify that you are in your HOME folder (should simply say Home right under the New Folder button). To navigate to your Home folder (if somehow you are not in it), click the … button (far right side of the Files tab) and enter a ~ (tilde) symbol\n\n\n\n\n\n\n\n\n3. Click the New Folder button and name the folder stat220.\n\n\n\n\n\n\n\n\n4. Click on this newly created (empty) stat220 folder. Within the folder create another New Folder and name it assignments.\n\n\n\n\n\n\n\n\n5. Within the stat220 folder, create an RStudio project called content with the following steps:\n\n\na. Click the Project button in the upper right corner of your RStudio window and select New Project….\n\n\n\n\n\n\n\n\n\n\n\nb. Select New Directory and then New Project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nc. Enter content as the Directory name and use the Browse button to find your stat220 folder. Then click Create Project.\n\n\n\n\n\n\n\n\n\n\n\nd. You should now have a new folder called content in your stat220 folder and this folder will contain an RStudio project .Rproj. Feel free to add subfolders to this content folder (e.g. slides, examples, etc).\n\n\n\n\n\n\n\n\n\nWarning: Do not create an RStudio project in the main stat220 folder because it is not good practice to have RStudio projects in subfolders of another project (e.g. a project within a project is not recommended).",
+    "text": "File organization: Using maize\nThe server (online) version of RStudio is run from a Unix server. You can navigate this file system using Unix commands, but I assume that most or all of you will just use RStudio to access your files on this server.\n1. In RStudio, click the Files tab in the lower right-hand window. Note: this is not the same as the File menu option.\n\n\n\n\n\n\n\n\n2. Verify that you are in your HOME folder (should simply say Home right under the New Folder button). To navigate to your Home folder (if somehow you are not in it), click the … button (far right side of the Files tab) and enter a ~ (tilde) symbol\n\n\n\n\n\n\n\n\n3. Click the New Folder button and name the folder stat220.\n\n\n\n\n\n\n\n\n4. Click on this newly created (empty) stat220 folder. Within the folder create another New Folder and name it assignments.\n\n\n\n\n\n\n\n\n5. Within the stat220 folder, create an RStudio project called activities with the following steps:\n\n\na. Click the Project button in the upper right corner of your RStudio window and select New Project….\n\n\n\n\n\n\n\n\n\n\n\nb. Select New Directory and then New Project\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nc. Enter activities as the Directory name and use the Browse button to find your stat220 folder. Then click Create Project.\n\n\n\n\n\n\n\n\n\n\n\nd. You should now have a new folder called activities in your stat220 folder and this folder will contain an RStudio project .Rproj. Feel free to add subfolders to this activities folder (e.g. slides, examples, etc).\n\n\n\n\n\n\n\n\n\nWarning: Do not create an RStudio project in the main stat220 folder because it is not good practice to have RStudio projects in subfolders of another project (e.g. a project within a project is not recommended).",
     "crumbs": [
       "Computing",
       "Rstudio in Stat 220"
@@ -261,7 +261,7 @@
     "href": "computing/rstudio-stat220.html#file-organization-using-your-own-rstudio",
     "title": "Using RStudio in Stat 220",
     "section": "File organization: Using your own RStudio",
-    "text": "File organization: Using your own RStudio\nCreate a folder called stat220 somewhere on your computer. Within this folder create an assignments subfolder. Then complete step 5 from above to create a content RStudio project folder.",
+    "text": "File organization: Using your own RStudio\nCreate a folder called stat220 somewhere on your computer. Within this folder create an assignments subfolder. Then complete step 5 from above to create a activities RStudio project folder.",
     "crumbs": [
       "Computing",
       "Rstudio in Stat 220"
@@ -272,7 +272,7 @@
     "href": "computing/rstudio-stat220.html#rstudio-projects",
     "title": "Using RStudio in Stat 220",
     "section": "RStudio projects",
-    "text": "RStudio projects\nOnce you’ve created a project, your R session should be running within that project folder. You can check which project you are in by checking the project name in the upper right part of your RStudio window. Here we see the content project is open:\n\n\n\n\n\n\n\n\nRunning R from an RStudio project sets your working directory to the project folder:\n\n\n\n\n\n\n\n\nThis allows for easy file path access to all files related to this project.\nTo start a project, click on the .Rproj file or use the Open Project… option shown in step 5 above.",
+    "text": "RStudio projects\nOnce you’ve created a project, your R session should be running within that project folder. You can check which project you are in by checking the project name in the upper right part of your RStudio window. Here we see the activities project is open:\n\n\n\n\n\n\n\n\nRunning R from an RStudio project sets your working directory to the project folder:\n\n\n\n\n\n\n\n\nThis allows for easy file path access to all files related to this project.\nTo start a project, click on the .Rproj file or use the Open Project… option shown in step 5 above.",
     "crumbs": [
       "Computing",
       "Rstudio in Stat 220"
@@ -466,14 +466,14 @@
     "href": "activities/04-customizing-plots.html",
     "title": "Customizing plots",
     "section": "",
-    "text": "Note: This code reads the same dataset in that we used last time and then creates two new columns based on an old one. Make sure to run this chunk before trying to make your graph!\n\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\") |&gt;\n  separate(timeslot, into = c(\"day_of_week\", \"time\"))\n\nRows: 47 Columns: 30\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (13): version, version_season, season_name, location, country, tribe_se...\ndbl  (13): season, n_cast, n_tribes, n_finalists, n_jury, viewers_reunion, v...\ndate  (4): premiered, ended, filming_started, filming_ended\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nWarning: Expected 2 pieces. Additional pieces discarded in 42 rows [1, 2, 3, 4, 5, 6, 7,\n8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]."
+    "text": "Note: This code reads the same dataset in that we used last time and then creates two new columns based on an old one. Make sure to run this chunk before trying to make your graph!\n\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\") |&gt;\n  separate(timeslot, into = c(\"day_of_week\", \"time\"))"
   },
   {
     "objectID": "activities/04-customizing-plots.html#load-data",
     "href": "activities/04-customizing-plots.html#load-data",
     "title": "Customizing plots",
     "section": "",
-    "text": "Note: This code reads the same dataset in that we used last time and then creates two new columns based on an old one. Make sure to run this chunk before trying to make your graph!\n\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\") |&gt;\n  separate(timeslot, into = c(\"day_of_week\", \"time\"))\n\nRows: 47 Columns: 30\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (13): version, version_season, season_name, location, country, tribe_se...\ndbl  (13): season, n_cast, n_tribes, n_finalists, n_jury, viewers_reunion, v...\ndate  (4): premiered, ended, filming_started, filming_ended\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nWarning: Expected 2 pieces. Additional pieces discarded in 42 rows [1, 2, 3, 4, 5, 6, 7,\n8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...]."
+    "text": "Note: This code reads the same dataset in that we used last time and then creates two new columns based on an old one. Make sure to run this chunk before trying to make your graph!\n\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\") |&gt;\n  separate(timeslot, into = c(\"day_of_week\", \"time\"))"
   },
   {
     "objectID": "activities/04-customizing-plots.html#make-histogram",
@@ -599,7 +599,7 @@
     "href": "activities/07-dplyr1-sols.html#part-6",
     "title": "\ndplyr 1: Verbs",
     "section": "Part 6",
-    "text": "Part 6\nChain the last two parts together, so that the resulting dataset contains both avg_speed and delay_category. Pipe this new dataset into ggplot() to answer the question “is there a relationship between average speed and how late a flight is delayed?”\nIf you have time, create a new graph which only contains flights to MSP.\n\nflights %&gt;%\n  mutate(\n    delay_category = case_when(\n      dep_delay &lt;= 0 ~ \"none\",\n      dep_delay &lt;= 15 ~ \"minimal\",\n      dep_delay &lt;= 30 ~ \"delayed\",\n      dep_delay &lt;= 60 ~ \"major\",\n      dep_delay &gt; 60 ~ \"extreme\"\n    ),\n    avg_speed = distance/air_time\n  ) %&gt;%\n  ggplot(aes(y = delay_category, x = avg_speed, fill = delay_category)) + \n  geom_boxplot() + \n  theme(legend.position = \"none\")\n\nWarning: Removed 12534 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\n\nflights %&gt;%\n  filter(dest == \"MSP\") %&gt;%\n  mutate(\n    delay_category = case_when(\n      dep_delay &lt;= 0 ~ \"none\",\n      dep_delay &lt;= 15 ~ \"minimal\",\n      dep_delay &lt;= 30 ~ \"delayed\",\n      dep_delay &lt;= 60 ~ \"major\",\n      dep_delay &gt; 60 ~ \"extreme\"\n    ),\n    avg_speed = distance/air_time\n  ) %&gt;%\n  ggplot(aes(y = delay_category, x = avg_speed, fill = delay_category)) + \n  geom_boxplot() + \n  theme(legend.position = \"none\")\n\nWarning: Removed 133 rows containing non-finite outside the scale range\n(`stat_boxplot()`)."
+    "text": "Part 6\nChain the last two parts together, so that the resulting dataset contains both avg_speed and delay_category. Pipe this new dataset into ggplot() to answer the question “is there a relationship between average speed and how late a flight is delayed?”\nIf you have time, create a new graph which only contains flights to MSP.\n\nflights %&gt;%\n  mutate(\n    delay_category = case_when(\n      dep_delay &lt;= 0 ~ \"none\",\n      dep_delay &lt;= 15 ~ \"minimal\",\n      dep_delay &lt;= 30 ~ \"delayed\",\n      dep_delay &lt;= 60 ~ \"major\",\n      dep_delay &gt; 60 ~ \"extreme\"\n    ),\n    avg_speed = distance/air_time\n  ) %&gt;%\n  ggplot(aes(y = delay_category, x = avg_speed, fill = delay_category)) + \n  geom_boxplot() + \n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\nflights %&gt;%\n  filter(dest == \"MSP\") %&gt;%\n  mutate(\n    delay_category = case_when(\n      dep_delay &lt;= 0 ~ \"none\",\n      dep_delay &lt;= 15 ~ \"minimal\",\n      dep_delay &lt;= 30 ~ \"delayed\",\n      dep_delay &lt;= 60 ~ \"major\",\n      dep_delay &gt; 60 ~ \"extreme\"\n    ),\n    avg_speed = distance/air_time\n  ) %&gt;%\n  ggplot(aes(y = delay_category, x = avg_speed, fill = delay_category)) + \n  geom_boxplot() + \n  theme(legend.position = \"none\")"
   },
   {
     "objectID": "activities/01-un-votes.html",
@@ -893,14 +893,14 @@
     "href": "notes/01-r-basics.html",
     "title": "R Basics",
     "section": "",
-    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
+    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
   },
   {
     "objectID": "notes/01-r-basics.html#loading-r-packages",
     "href": "notes/01-r-basics.html#loading-r-packages",
     "title": "R Basics",
     "section": "",
-    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
+    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
   },
   {
     "objectID": "notes/01-r-basics.html#creating-and-naming-objects",
@@ -1709,270 +1709,46 @@
     "text": "Final details\n\nShiny apps need to be “connected” to RStudio or a remote RStudio server\n\nYou can deploy shiny apps online\n\nusing Posit’s cloud server (free/fee) - https://www.shinyapps.io/\ncreating a shiny server"
   },
   {
-    "objectID": "slides/06/slides06.html#today",
-    "href": "slides/06/slides06.html#today",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Today",
-    "text": "Today\n\n{patchwork}\nColorblind-friendly color palettes\nWriting alt-text"
+    "objectID": "slides/test.html#quarto",
+    "href": "slides/test.html#quarto",
+    "title": "Untitled",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/06/slides06.html#small-multiples",
-    "href": "slides/06/slides06.html#small-multiples",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Small Multiples",
-    "text": "Small Multiples\nEach plot shares aesthetics but shows different subsets of data"
+    "objectID": "slides/test.html#bullets",
+    "href": "slides/test.html#bullets",
+    "title": "Untitled",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
   },
   {
-    "objectID": "slides/06/slides06.html#compound-plots",
-    "href": "slides/06/slides06.html#compound-plots",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Compound Plots",
-    "text": "Compound Plots\nThe plots might share data, but don’t share aesthetics"
+    "objectID": "slides/test.html#code",
+    "href": "slides/test.html#code",
+    "title": "Untitled",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "slides/06/slides06.html#compound-plot-example",
-    "href": "slides/06/slides06.html#compound-plot-example",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Compound Plot Example",
-    "text": "Compound Plot Example\n\nlibrary(palmerpenguins)\nggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = body_mass_g))\n\n\n\n\n\n\n\nggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = flipper_length_mm))\n\n\n\n\n\n\n\nggplot(penguins) + \n  geom_point(aes(x = body_mass_g, y = flipper_length_mm))"
+    "objectID": "slides/01/test.html#quarto",
+    "href": "slides/01/test.html#quarto",
+    "title": "Untitled",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "slides/06/slides06.html#patchwork",
-    "href": "slides/06/slides06.html#patchwork",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Patchwork",
-    "text": "Patchwork\n\nlibrary(patchwork)\np1 = ggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = body_mass_g))\n\np2 = ggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = flipper_length_mm))\n\np3 = ggplot(penguins) + \n  geom_point(aes(x = body_mass_g, y = flipper_length_mm))\n\n(p1 + p2)/p3"
+    "objectID": "slides/01/test.html#bullets",
+    "href": "slides/01/test.html#bullets",
+    "title": "Untitled",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
   },
   {
-    "objectID": "slides/06/slides06.html#patchwork-layout-2",
-    "href": "slides/06/slides06.html#patchwork-layout-2",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Patchwork (layout 2)",
-    "text": "Patchwork (layout 2)\n\np3 + (p1/p2)\n\n\n\n\n\n\n\n\n\n\nFor more complex layouts, see the “Controlling Layouts” vignette"
-  },
-  {
-    "objectID": "slides/06/slides06.html#patchwork-with-a-shared-legend",
-    "href": "slides/06/slides06.html#patchwork-with-a-shared-legend",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Patchwork (with a shared legend)",
-    "text": "Patchwork (with a shared legend)\n\np1 = ggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = body_mass_g, fill = species))\n\np2 = ggplot(penguins) + \n  geom_histogram(bins = 20,  col = \"white\", aes(x = flipper_length_mm, fill = species))\n\np3 = ggplot(penguins) + \n  geom_point(pch = 21, alpha = .9, col = \"white\", aes(x = body_mass_g, y = flipper_length_mm, fill = species)) +\n  theme(legend.position = \"none\")\n\np3 + (p1/p2) + \n  plot_layout(guides = 'collect')"
-  },
-  {
-    "objectID": "slides/06/slides06.html#patchwork-with-annotation",
-    "href": "slides/06/slides06.html#patchwork-with-annotation",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Patchwork (with annotation)",
-    "text": "Patchwork (with annotation)\n\np3 + (p1/p2) + \n  plot_layout(guides = 'collect') + \n  plot_annotation(\n    title = \"Penguin Plot\",\n    tag_levels = \"A\"\n  )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#patchwork-with-a-common-theme",
-    "href": "slides/06/slides06.html#patchwork-with-a-common-theme",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Patchwork (with a common theme)",
-    "text": "Patchwork (with a common theme)\n\np3 + (p1/p2) + \n  plot_layout(guides = 'collect') & \n  theme_minimal() &\n  scale_fill_viridis_d()"
-  },
-  {
-    "objectID": "slides/06/slides06.html#but-what-does-this-have-to-do-with-accessibility",
-    "href": "slides/06/slides06.html#but-what-does-this-have-to-do-with-accessibility",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "But what does this have to do with accessibility?",
-    "text": "But what does this have to do with accessibility?\n\nOutput (knitted files, slides, websites, etc.) should be designed to make it as easy as possible for the user to understand your content\nThere’s a cognitive load involved with scrolling or turning a physical page and trying to remember a visual from the previous page\nWhen plots belong together, we should put them together"
-  },
-  {
-    "objectID": "slides/06/slides06.html#color-scales",
-    "href": "slides/06/slides06.html#color-scales",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Color scales",
-    "text": "Color scales\nUse colorblind friendly color scales (e.g., Okabe Ito, viridis)"
-  },
-  {
-    "objectID": "slides/06/slides06.html#section-1",
-    "href": "slides/06/slides06.html#section-1",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "",
-    "text": "colorBlindness::displayAllColors(scales::hue_pal()(10))"
-  },
-  {
-    "objectID": "slides/06/slides06.html#section-2",
-    "href": "slides/06/slides06.html#section-2",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "",
-    "text": "colorBlindness::displayAllColors(rainbow(10))"
-  },
-  {
-    "objectID": "slides/06/slides06.html#section-3",
-    "href": "slides/06/slides06.html#section-3",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "",
-    "text": "colorBlindness::displayAllColors(colorblindr::palette_OkabeIto)"
-  },
-  {
-    "objectID": "slides/06/slides06.html#section-4",
-    "href": "slides/06/slides06.html#section-4",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "",
-    "text": "colorBlindness::displayAllColors(viridisLite::viridis(10))"
-  },
-  {
-    "objectID": "slides/06/slides06.html#double-encoding",
-    "href": "slides/06/slides06.html#double-encoding",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Double encoding",
-    "text": "Double encoding\nUse shape and color where possible\n\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with deuteranopia\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
-  },
-  {
-    "objectID": "slides/06/slides06.html#use-direct-labeling",
-    "href": "slides/06/slides06.html#use-direct-labeling",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Use direct labeling",
-    "text": "Use direct labeling\n\nPrefer direct labeling where color is used to display information over a legend\nQuicker to read\nEnsures graph can be understood without reliance on color"
-  },
-  {
-    "objectID": "slides/06/slides06.html#without-direct-labeling",
-    "href": "slides/06/slides06.html#without-direct-labeling",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Without direct labeling",
-    "text": "Without direct labeling\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with deuteranopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
-  },
-  {
-    "objectID": "slides/06/slides06.html#with-direct-labeling",
-    "href": "slides/06/slides06.html#with-direct-labeling",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "With direct labeling",
-    "text": "With direct labeling\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with deuteranopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
-  },
-  {
-    "objectID": "slides/06/slides06.html#use-whitespace-or-pattern-to-separate-elements",
-    "href": "slides/06/slides06.html#use-whitespace-or-pattern-to-separate-elements",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Use whitespace or pattern to separate elements",
-    "text": "Use whitespace or pattern to separate elements\n\nSeparate elements with whitespace or pattern\nAllows for distinguishing between data without entirely relying on contrast between colors"
-  },
-  {
-    "objectID": "slides/06/slides06.html#without-whitespace",
-    "href": "slides/06/slides06.html#without-whitespace",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Without whitespace",
-    "text": "Without whitespace\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with tritanopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
-  },
-  {
-    "objectID": "slides/06/slides06.html#with-whitespace",
-    "href": "slides/06/slides06.html#with-whitespace",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "With whitespace",
-    "text": "With whitespace\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with tritanopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
-  },
-  {
-    "objectID": "slides/06/slides06.html#alternative-text",
-    "href": "slides/06/slides06.html#alternative-text",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Alternative text",
-    "text": "Alternative text\n\nIt is read by screen readers in place of images allowing the content and function of the image to be accessible to those with visual or certain cognitive disabilities.\nIt is displayed in place of the image in browsers if the image file is not loaded or when the user has chosen not to view images.\nIt provides a semantic meaning and description to images which can be read by search engines or be used to later determine the content of the image from page context alone.\n\n\n\nSource: WebAIM"
-  },
-  {
-    "objectID": "slides/06/slides06.html#alt-and-surrounding-text",
-    "href": "slides/06/slides06.html#alt-and-surrounding-text",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Alt and surrounding text",
-    "text": "Alt and surrounding text\nCHART TYPE of TYPE OF DATA where REASON FOR INCLUDING CHART\n(plus link to data source somewhere in the text)\n\nCHART TYPE: It’s helpful for people with partial sight to know what chart type it is and gives context for understanding the rest of the visual.\nTYPE OF DATA: What data is included in the chart? The x and y axis labels may help you figure this out.\nREASON FOR INCLUDING CHART: Think about why you’re including this visual. What does it show that’s meaningful. There should be a point to every visual and you should tell people what to look for.\nLink to data source: Don’t include this in your alt text, but it should be included somewhere in the surrounding text.\n\n\n\nSource: Writing Alt Text for Data Visualization"
-  },
-  {
-    "objectID": "slides/06/slides06.html#alt-text-practice",
-    "href": "slides/06/slides06.html#alt-text-practice",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Alt Text Practice",
-    "text": "Alt Text Practice\nCHART TYPE of TYPE OF DATA where REASON FOR INCLUDING CHART\n\n\n\n\n\n\n\n\n\n\n\n\n\nA scatterplot\nof median hourly wage of RN’s by year in California, Minnesota, and New York. The x-axis starts at the year 1996 and ends at the year 2020.\nThe three states follow the same linear increasing trend until about 2007, when New York and Minnesota begin to flatten.\n\n\n\n\n\n−+\n01:30"
-  },
-  {
-    "objectID": "slides/06/slides06.html#section-5",
-    "href": "slides/06/slides06.html#section-5",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "",
-    "text": "Accessible Visualization via Natural Language Descriptions: A Four-Level Model of Semantic Content\nAlan Lundgard, MIT CSAIL\nArvind Satyanarayan, MIT CSAIL\nIEEE Transactions on Visualization & Computer Graphics (Proceedings of IEEE VIS), 2021\n\nTo demonstrate how our model can be applied to evaluate the effectiveness of visualization descriptions, we conduct a mixed-methods evaluation with 30 blind and 90 sighted readers, and find that these reader groups differ significantly on which semantic content they rank as most useful. Together, our model and findings suggest that access to meaningful information is strongly reader-specific, and that research in automatic visualization captioning should orient toward descriptions that more richly communicate overall trends and statistics, sensitive to reader preferences."
-  },
-  {
-    "objectID": "slides/06/slides06.html#lets-try-it",
-    "href": "slides/06/slides06.html#lets-try-it",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Let’s try it!",
-    "text": "Let’s try it!\nCHART TYPE of TYPE OF DATA where REASON FOR INCLUDING CHART\n\n\nTake one graph and two blank cards\nWrite an alt text description of your graph on one of your blank cards.\n\nPlease label with your plot number!\n\nIn two’s or three’s, trade alt text descriptions only\nOn your second blank card, try to draw the graph based on the alt text provided.\nNow, look at the original graph. How’d you do?\nTape the original graphs, alt text, and hand drawn graphs up on the board and have a look around\n\n\n\n\n\n−+\n04:00"
-  },
-  {
-    "objectID": "slides/06/slides06.html#recap",
-    "href": "slides/06/slides06.html#recap",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Recap",
-    "text": "Recap\n\nWhat was hard about writing alt text?\nLooking at the graphs, do you notice things that make it harder/easier to write alt text?\nWhat was hard about recreating from the alt text?"
-  },
-  {
-    "objectID": "slides/06/slides06.html#adding-alt-text-to-plots",
-    "href": "slides/06/slides06.html#adding-alt-text-to-plots",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Adding alt text to plots",
-    "text": "Adding alt text to plots\nShort:\n\n```{r}\n#| fig-alt: Alt text goes here.\n\n# code for plot goes here\n```\n\n\nLonger:\n\n```{r}\n#| fig-alt: |\n#|   Longer alt text goes here. Make sure to add line breaks ~roughly\n#|   80 characters.\n\n# code for plot goes here\n```"
-  },
-  {
-    "objectID": "slides/06/slides06.html#using-okabe-ito-palette",
-    "href": "slides/06/slides06.html#using-okabe-ito-palette",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Using Okabe Ito palette",
-    "text": "Using Okabe Ito palette\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = hourly_wage_median, color = state)) +\n  geom_point(size = 2) +\n  ggthemes::scale_color_colorblind() +\n  scale_y_continuous(labels = scales::label_dollar()) +\n  labs(\n    x = \"Year\", y = \"Median hourly wage\", color = \"State\",\n    title = \"Median hourly wage of Registered Nurses\"\n  ) +\n  theme(\n    legend.position = c(0.15, 0.75),\n    legend.background = element_rect(fill = \"white\", color = \"white\")\n  )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#double-encoding-1",
-    "href": "slides/06/slides06.html#double-encoding-1",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Double Encoding",
-    "text": "Double Encoding\nUse both color and shape aesthetics\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = hourly_wage_median, color = state, shape = state)) +\n  geom_point(size = 2) +\n  scale_y_continuous(labels = scales::label_dollar()) +\n  labs(\n    x = \"Year\", y = \"Median hourly wage\", color = \"State\", shape = \"State\",\n    title = \"Median hourly wage of Registered Nurses\"\n  ) +\n  theme(\n    legend.position = c(0.15, 0.75),\n    legend.background = element_rect(fill = \"white\", color = \"white\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#direct-labeling",
-    "href": "slides/06/slides06.html#direct-labeling",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Direct Labeling",
-    "text": "Direct Labeling\nCould do “by hand” with annotate(). Alternatively, use geom_text()\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), hjust = 0, nudge_x = 1,\n    show.legend = FALSE, size = 6\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#direct-labeling-1",
-    "href": "slides/06/slides06.html#direct-labeling-1",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Direct Labeling",
-    "text": "Direct Labeling\nFirst, filter the data to include the endpoints only. Use the label aesthetic to map to the label in your data (in this case, state). geom_label by default will use the x and y aesthetics defined in ggplot()\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state)\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#direct-labeling-2",
-    "href": "slides/06/slides06.html#direct-labeling-2",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Direct Labeling",
-    "text": "Direct Labeling\n(Here’s what it looks like if we don’t filter to the endpoints)\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    aes(label = state)\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#direct-labeling-3",
-    "href": "slides/06/slides06.html#direct-labeling-3",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Direct Labeling",
-    "text": "Direct Labeling\nhjust=0 means “left justified”, or make the label start at the x-y coordinate you gave it. size = 6 makes the label bigger\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), \n    hjust = 0, \n    size = 6\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#direct-labeling-4",
-    "href": "slides/06/slides06.html#direct-labeling-4",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Direct Labeling",
-    "text": "Direct Labeling\nnudge_x = 1 “nudges” each label one unit in the x-direction (so each label is a small distance away from what it’s labeling). show.legend=FALSE tells ggplot not to include the aesthetics for geom_text in the legend\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), \n    hjust = 0, \n    size = 6,\n    nudge_x = 1,\n    show.legend = FALSE,\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#direct-labeling-5",
-    "href": "slides/06/slides06.html#direct-labeling-5",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Direct Labeling",
-    "text": "Direct Labeling\nFinally, we have to tell ggplot not to trim the plot, and leave room in the right margin for the labels themselves\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), \n    hjust = 0, \n    size = 6,\n    nudge_x = 1,\n    show.legend = FALSE,\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
-  },
-  {
-    "objectID": "slides/06/slides06.html#add-whitespace",
-    "href": "slides/06/slides06.html#add-whitespace",
-    "title": "(Closer to) Accessible Data Viz",
-    "section": "Add whitespace",
-    "text": "Add whitespace\nSet the color aesthetic to white\n\n\nnurses_subset |&gt;\n  filter(year %in% c(2000, 2010, 2020)) |&gt;\n  ggplot(aes(x = factor(year), y = total_employed_rn, fill = state)) +\n  geom_col(position = \"fill\", color = \"white\", linewidth = 1) +\n  labs(\n    x = \"Year\", y = \"Proportion of Registered Nurses\", fill = \"State\",\n    title = \"Total employed Registered Nurses\"\n  )"
+    "objectID": "slides/01/test.html#code",
+    "href": "slides/01/test.html#code",
+    "title": "Untitled",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "slides/08/slides08.html#the-college-scorecard",
@@ -2882,7 +2658,7 @@
     "href": "slides/17/slides17.html#preallocate-storage-to-increase-speed",
     "title": "Iteration",
     "section": "Preallocate storage to increase speed",
-    "text": "Preallocate storage to increase speed\n\n\n\nadd_to_vector &lt;- function(n) {\n  output &lt;- NULL \n  for (i in 1:n) {\n    output &lt;- c(output, i)\n  }\n  output\n}\n\nadd_to_vector(10000)\n\n\n\n0.113 sec elapsed\n\n\n\n\nadd_to_vector2 &lt;- function(n) {\n  output &lt;- vector(\"integer\", n)  \n  for (i in 1:n) {\n   output[i] &lt;- i\n  }\n  output\n}\n\nadd_to_vector2(10000)\n\n\n\n0.05 sec elapsed"
+    "text": "Preallocate storage to increase speed\n\n\n\nadd_to_vector &lt;- function(n) {\n  output &lt;- NULL \n  for (i in 1:n) {\n    output &lt;- c(output, i)\n  }\n  output\n}\n\nadd_to_vector(10000)\n\n\n\n0.131 sec elapsed\n\n\n\n\nadd_to_vector2 &lt;- function(n) {\n  output &lt;- vector(\"integer\", n)  \n  for (i in 1:n) {\n   output[i] &lt;- i\n  }\n  output\n}\n\nadd_to_vector2(10000)\n\n\n\n0.047 sec elapsed"
   },
   {
     "objectID": "slides/17/slides17.html#the-difference-is-noticable-for-larger-n",
@@ -3267,14 +3043,14 @@
     "href": "slides/11/slides11.html#measuring-time",
     "title": "Data Import & Dates/Times",
     "section": "Measuring time",
-    "text": "Measuring time\nHow long ago was the last race?\n\nrace &lt;- ymd(\"2022-01-31\")\ntoday() - race\n\nTime difference of 1095 days\n\n\n\nDifferences in date/time objects are difftime objects\ndifftimes use inconsistent units (sometimes weeks, days, hours, minutes, or seconds)"
+    "text": "Measuring time\nHow long ago was the last race?\n\nrace &lt;- ymd(\"2022-01-31\")\ntoday() - race\n\nTime difference of 1155 days\n\n\n\nDifferences in date/time objects are difftime objects\ndifftimes use inconsistent units (sometimes weeks, days, hours, minutes, or seconds)"
   },
   {
     "objectID": "slides/11/slides11.html#measuring-time-durations",
     "href": "slides/11/slides11.html#measuring-time-durations",
     "title": "Data Import & Dates/Times",
     "section": "Measuring time: durations",
-    "text": "Measuring time: durations\nA time span that is always measured in seconds\n\nas.duration(today() - race)\n\n[1] \"94608000s (~3 years)\"\n\n\nPlus, a better display"
+    "text": "Measuring time: durations\nA time span that is always measured in seconds\n\nas.duration(today() - race)\n\n[1] \"99792000s (~3.16 years)\"\n\n\nPlus, a better display"
   },
   {
     "objectID": "slides/11/slides11.html#measuring-time-periods",
@@ -3435,28 +3211,28 @@
     "href": "slides/20/slides20.html#parse-a-table-into-a-data-frame",
     "title": "Intro to Web Scraping",
     "section": "Parse a table into a data frame",
-    "text": "Parse a table into a data frame\n\ntop2024 &lt;- html_table(tables[[1]])\nglimpse(top2024)\n\nRows: 200\nColumns: 11\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$432,943,285\", \"$404,0…\n$ Theaters       &lt;chr&gt; \"4,440\", \"4,330\", \"3,888\", \"4,200\", \"4,449\", \"4,575\", \"…\n$ `Total Gross`  &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$471,274,200\", \"$458,7…\n$ `Release Date` &lt;chr&gt; \"Jun 14\", \"Jul 26\", \"Nov 22\", \"Nov 27\", \"Jul 3\", \"Sep 6…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
+    "text": "Parse a table into a data frame\n\ntop2024 &lt;- html_table(tables[[1]])\nglimpse(top2024)\n\nRows: 200\nColumns: 11\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$432,943,285\", \"$404,0…\n$ Theaters       &lt;chr&gt; \"4,440\", \"4,330\", \"3,888\", \"4,200\", \"4,449\", \"4,575\", \"…\n$ `Total Gross`  &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$473,231,120\", \"$460,3…\n$ `Release Date` &lt;chr&gt; \"Jun 14\", \"Jul 26\", \"Nov 22\", \"Nov 27\", \"Jul 3\", \"Sep 6…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
   },
   {
     "objectID": "slides/20/slides20.html#parse-tables-into-data-frames",
     "href": "slides/20/slides20.html#parse-tables-into-data-frames",
     "title": "Intro to Web Scraping",
     "section": "Parse tables into data frames",
-    "text": "Parse tables into data frames\nIf there had been multiple tables on the webpage, then we could parse them all at once using html_table()\nIt returns a list of data frames\n\ntable_list &lt;- html_table(tables)\nstr(table_list)\n\nList of 1\n $ : tibble [200 × 11] (S3: tbl_df/tbl/data.frame)\n  ..$ Rank        : int [1:200] 1 2 3 4 5 6 7 8 9 10 ...\n  ..$ Release     : chr [1:200] \"Inside Out 2\" \"Deadpool & Wolverine\" \"Wicked\" \"Moana 2\" ...\n  ..$ Genre       : chr [1:200] \"-\" \"-\" \"-\" \"-\" ...\n  ..$ Budget      : chr [1:200] \"-\" \"-\" \"-\" \"-\" ...\n  ..$ Running Time: chr [1:200] \"-\" \"-\" \"-\" \"-\" ...\n  ..$ Gross       : chr [1:200] \"$652,980,194\" \"$636,745,858\" \"$432,943,285\" \"$404,017,489\" ...\n  ..$ Theaters    : chr [1:200] \"4,440\" \"4,330\" \"3,888\" \"4,200\" ...\n  ..$ Total Gross : chr [1:200] \"$652,980,194\" \"$636,745,858\" \"$471,274,200\" \"$458,766,891\" ...\n  ..$ Release Date: chr [1:200] \"Jun 14\" \"Jul 26\" \"Nov 22\" \"Nov 27\" ...\n  ..$ Distributor : chr [1:200] \"Walt Disney Studios Motion Pictures\" \"Walt Disney Studios Motion Pictures\" \"Universal Pictures\" \"Walt Disney Studios Motion Pictures\" ...\n  ..$ Estimated   : chr [1:200] \"false\" \"false\" \"false\" \"false\" ..."
+    "text": "Parse tables into data frames\nIf there had been multiple tables on the webpage, then we could parse them all at once using html_table()\nIt returns a list of data frames\n\ntable_list &lt;- html_table(tables)\nstr(table_list)\n\nList of 1\n $ : tibble [200 × 11] (S3: tbl_df/tbl/data.frame)\n  ..$ Rank        : int [1:200] 1 2 3 4 5 6 7 8 9 10 ...\n  ..$ Release     : chr [1:200] \"Inside Out 2\" \"Deadpool & Wolverine\" \"Wicked\" \"Moana 2\" ...\n  ..$ Genre       : chr [1:200] \"-\" \"-\" \"-\" \"-\" ...\n  ..$ Budget      : chr [1:200] \"-\" \"-\" \"-\" \"-\" ...\n  ..$ Running Time: chr [1:200] \"-\" \"-\" \"-\" \"-\" ...\n  ..$ Gross       : chr [1:200] \"$652,980,194\" \"$636,745,858\" \"$432,943,285\" \"$404,017,489\" ...\n  ..$ Theaters    : chr [1:200] \"4,440\" \"4,330\" \"3,888\" \"4,200\" ...\n  ..$ Total Gross : chr [1:200] \"$652,980,194\" \"$636,745,858\" \"$473,231,120\" \"$460,389,317\" ...\n  ..$ Release Date: chr [1:200] \"Jun 14\" \"Jul 26\" \"Nov 22\" \"Nov 27\" ...\n  ..$ Distributor : chr [1:200] \"Walt Disney Studios Motion Pictures\" \"Walt Disney Studios Motion Pictures\" \"Universal Pictures\" \"Walt Disney Studios Motion Pictures\" ...\n  ..$ Estimated   : chr [1:200] \"false\" \"false\" \"false\" \"false\" ..."
   },
   {
     "objectID": "slides/20/slides20.html#scrape-then-wrangle",
     "href": "slides/20/slides20.html#scrape-then-wrangle",
     "title": "Intro to Web Scraping",
     "section": "Scrape then wrangle",
-    "text": "Scrape then wrangle\nData aren’t ready for analysis, too many character columns!\n\n\nRows: 200\nColumns: 11\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$432,943,285\", \"$404,0…\n$ Theaters       &lt;chr&gt; \"4,440\", \"4,330\", \"3,888\", \"4,200\", \"4,449\", \"4,575\", \"…\n$ `Total Gross`  &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$471,274,200\", \"$458,7…\n$ `Release Date` &lt;chr&gt; \"Jun 14\", \"Jul 26\", \"Nov 22\", \"Nov 27\", \"Jul 3\", \"Sep 6…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
+    "text": "Scrape then wrangle\nData aren’t ready for analysis, too many character columns!\n\n\nRows: 200\nColumns: 11\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$432,943,285\", \"$404,0…\n$ Theaters       &lt;chr&gt; \"4,440\", \"4,330\", \"3,888\", \"4,200\", \"4,449\", \"4,575\", \"…\n$ `Total Gross`  &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$473,231,120\", \"$460,3…\n$ `Release Date` &lt;chr&gt; \"Jun 14\", \"Jul 26\", \"Nov 22\", \"Nov 27\", \"Jul 3\", \"Sep 6…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
   },
   {
     "objectID": "slides/20/slides20.html#scrape-then-wrangle-1",
     "href": "slides/20/slides20.html#scrape-then-wrangle-1",
     "title": "Intro to Web Scraping",
     "section": "Scrape then wrangle",
-    "text": "Scrape then wrangle\n\ntop2024 &lt;- top2024 %&gt;%\n  mutate(\n    Gross = parse_number(Gross),\n    Theaters = parse_number(Theaters),\n    `Total Gross` = parse_number(`Total Gross`)\n  ) %&gt;%\n  separate(`Release Date`, into = c(\"Month\", \"Day\"))\n\nglimpse(top2024)\n\nRows: 200\nColumns: 12\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;dbl&gt; 652980194, 636745858, 432943285, 404017489, 361004205, …\n$ Theaters       &lt;dbl&gt; 4440, 4330, 3888, 4200, 4449, 4575, 4074, 4170, 3948, 4…\n$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 471274200, 458766891, 361004205, …\n$ Month          &lt;chr&gt; \"Jun\", \"Jul\", \"Nov\", \"Nov\", \"Jul\", \"Sep\", \"Mar\", \"Jul\",…\n$ Day            &lt;chr&gt; \"14\", \"26\", \"22\", \"27\", \"3\", \"6\", \"1\", \"19\", \"29\", \"8\",…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
+    "text": "Scrape then wrangle\n\ntop2024 &lt;- top2024 %&gt;%\n  mutate(\n    Gross = parse_number(Gross),\n    Theaters = parse_number(Theaters),\n    `Total Gross` = parse_number(`Total Gross`)\n  ) %&gt;%\n  separate(`Release Date`, into = c(\"Month\", \"Day\"))\n\nglimpse(top2024)\n\nRows: 200\nColumns: 12\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;dbl&gt; 652980194, 636745858, 432943285, 404017489, 361004205, …\n$ Theaters       &lt;dbl&gt; 4440, 4330, 3888, 4200, 4449, 4575, 4074, 4170, 3948, 4…\n$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 473231120, 460389317, 361004205, …\n$ Month          &lt;chr&gt; \"Jun\", \"Jul\", \"Nov\", \"Nov\", \"Jul\", \"Sep\", \"Mar\", \"Jul\",…\n$ Day            &lt;chr&gt; \"14\", \"26\", \"22\", \"27\", \"3\", \"6\", \"1\", \"19\", \"29\", \"8\",…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
   },
   {
     "objectID": "slides/20/slides20.html#scraped-data-will-almost-always-need-wranglingcleaning",
@@ -3789,7 +3565,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\n\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 4 \n\nGroups and summarizing Code style\n\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 5.1-5.4 \n\nTidy data\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\n\nHW 4  [Portfolio 1]\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\n\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\n\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\n\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\n\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\n\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\n\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\n\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\n\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\n\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\n\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\n\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\n\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\n\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\n\n\n\n\n9\nW\nWed, May 28\n📚MDSR 15.1-15.4\n\nSQL\n\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n\nSQL\n\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\n\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\n\nHW9",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\ntbd\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\ntbd\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\ntbd\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\ntbd\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\ntbd\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\ntbd\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 4 \n\nGroups and summarizing Code style\ntbd\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 5.1-5.4 \n\nTidy data\ntbd\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\ntbd\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\ntbd\n\nHW 4  [Portfolio 1]\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -5116,14 +4892,14 @@
     "href": "slides/21/slides21.html#parse-a-table-into-a-data-frametibble",
     "title": "Web Scraping II",
     "section": "Parse a table into a data frame/tibble",
-    "text": "Parse a table into a data frame/tibble\n\ntop2024 &lt;- html_table(tables[[1]])\nglimpse(top2024)\n\nRows: 200\nColumns: 11\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$432,943,285\", \"$404,0…\n$ Theaters       &lt;chr&gt; \"4,440\", \"4,330\", \"3,888\", \"4,200\", \"4,449\", \"4,575\", \"…\n$ `Total Gross`  &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$471,274,200\", \"$454,5…\n$ `Release Date` &lt;chr&gt; \"Jun 14\", \"Jul 26\", \"Nov 22\", \"Nov 27\", \"Jul 3\", \"Sep 6…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
+    "text": "Parse a table into a data frame/tibble\n\ntop2024 &lt;- html_table(tables[[1]])\nglimpse(top2024)\n\nRows: 200\nColumns: 11\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$432,943,285\", \"$404,0…\n$ Theaters       &lt;chr&gt; \"4,440\", \"4,330\", \"3,888\", \"4,200\", \"4,449\", \"4,575\", \"…\n$ `Total Gross`  &lt;chr&gt; \"$652,980,194\", \"$636,745,858\", \"$473,231,120\", \"$460,3…\n$ `Release Date` &lt;chr&gt; \"Jun 14\", \"Jul 26\", \"Nov 22\", \"Nov 27\", \"Jul 3\", \"Sep 6…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
   },
   {
     "objectID": "slides/21/slides21.html#scrape-then-wrangle",
     "href": "slides/21/slides21.html#scrape-then-wrangle",
     "title": "Web Scraping II",
     "section": "Scrape then wrangle",
-    "text": "Scrape then wrangle\n\ntop2024 &lt;- top2024 %&gt;%\n  mutate(\n    Gross = parse_number(Gross),\n    Theaters = parse_number(Theaters),\n    `Total Gross` = parse_number(`Total Gross`)\n  ) %&gt;%\n  separate(`Release Date`, into = c(\"Month\", \"Day\"))\n\nglimpse(top2024)\n\nRows: 200\nColumns: 12\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;dbl&gt; 652980194, 636745858, 432943285, 404017489, 361004205, …\n$ Theaters       &lt;dbl&gt; 4440, 4330, 3888, 4200, 4449, 4575, 4074, 4170, 3948, 4…\n$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 471274200, 454574310, 361004205, …\n$ Month          &lt;chr&gt; \"Jun\", \"Jul\", \"Nov\", \"Nov\", \"Jul\", \"Sep\", \"Mar\", \"Jul\",…\n$ Day            &lt;chr&gt; \"14\", \"26\", \"22\", \"27\", \"3\", \"6\", \"1\", \"19\", \"29\", \"8\",…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
+    "text": "Scrape then wrangle\n\ntop2024 &lt;- top2024 %&gt;%\n  mutate(\n    Gross = parse_number(Gross),\n    Theaters = parse_number(Theaters),\n    `Total Gross` = parse_number(`Total Gross`)\n  ) %&gt;%\n  separate(`Release Date`, into = c(\"Month\", \"Day\"))\n\nglimpse(top2024)\n\nRows: 200\nColumns: 12\n$ Rank           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ Release        &lt;chr&gt; \"Inside Out 2\", \"Deadpool & Wolverine\", \"Wicked\", \"Moan…\n$ Genre          &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Budget         &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ `Running Time` &lt;chr&gt; \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", \"-\", …\n$ Gross          &lt;dbl&gt; 652980194, 636745858, 432943285, 404017489, 361004205, …\n$ Theaters       &lt;dbl&gt; 4440, 4330, 3888, 4200, 4449, 4575, 4074, 4170, 3948, 4…\n$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 473231120, 460389317, 361004205, …\n$ Month          &lt;chr&gt; \"Jun\", \"Jul\", \"Nov\", \"Nov\", \"Jul\", \"Sep\", \"Mar\", \"Jul\",…\n$ Day            &lt;chr&gt; \"14\", \"26\", \"22\", \"27\", \"3\", \"6\", \"1\", \"19\", \"29\", \"8\",…\n$ Distributor    &lt;chr&gt; \"Walt Disney Studios Motion Pictures\", \"Walt Disney Stu…\n$ Estimated      &lt;chr&gt; \"false\", \"false\", \"false\", \"false\", \"false\", \"false\", \"…"
   },
   {
     "objectID": "slides/21/slides21.html#data-arent-always-stored-as-tables",
@@ -5497,18 +5273,25 @@
     "text": "Why R?\n\nAnd the second reason, which is both a huge strength of R and a bit of a weakness, is that R is not just a programming language. It was designed from day 1 to be an environment that can do data analysis. So, compared to the other options like Python, you can get up and running in R doing data science, learning much, much less about programming to get started. And that generally makes it like easier to get up and running if you don’t have formal training in computer science or software engineering.\n\n\n-Hadley Wickham, Advice to Young (and Old) Programmers: A Conversation with Hadley Wickham"
   },
   {
-    "objectID": "slides/01/slides01.html#advice",
-    "href": "slides/01/slides01.html#advice",
+    "objectID": "slides/01/slides01.html#section-2",
+    "href": "slides/01/slides01.html#section-2",
     "title": "Welcome to Stat 220",
-    "section": "Advice",
-    "text": "Advice\n\n\n\n\n\n\n\n\nIt’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.\n\n\n\nHadley Wickham, Advice to Young (and Old) Programmers: A Conversation with Hadley Wickham; Artwork by Allison Horst"
+    "section": "",
+    "text": "It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.\n\n\n\nHadley Wickham, Advice to Young (and Old) Programmers: A Conversation with Hadley Wickham; Artwork by Allison Horst"
+  },
+  {
+    "objectID": "slides/01/slides01.html#maize-server",
+    "href": "slides/01/slides01.html#maize-server",
+    "title": "Welcome to Stat 220",
+    "section": "Maize Server",
+    "text": "Maize Server\n\nhttps://maize.mathcs.carleton.edu\n\n\nBrowser based RStudio instance(s) provided by Carleton\nRequires internet connection to access\nProvides consistency in hardware and software environments\nLocal R installations are also fine! But it may be harder for me to provide support"
   },
   {
     "objectID": "slides/01/slides01.html#on-your-own",
     "href": "slides/01/slides01.html#on-your-own",
     "title": "Welcome to Stat 220",
     "section": "On your own:",
-    "text": "On your own:\n\n\nLog into the maize server: maize.mathcs.carleton.edu\nFollow the directions at stat220-w25.github.io/computing/rstudio-stat220 to create a “content” folder\nLoad the .Rmd file with: download.file(     \"https://math.carleton.edu/aluby/stat220/01-example-unvotes.rmd\",      destfile = \"01-example-unvotes.rmd\")\nSkim the file without running any code:\n\nWhere is the code?\nWhere is the narrative?\n\nRun each code chunk in order. What does this analysis do?\n\n\n\n\n\n−+\n10:00"
+    "text": "On your own:\n\n\nLog into the maize server: maize.mathcs.carleton.edu\nFollow the directions at https://stat220-w25.github.io/computing/rstudio-stat220 to create an “activities” folder\nOpen 01-example-unvotes from https://stat220-s25.github.io, copy and paste the .Rmd into a new file in RStudio\nSkim the file without running any code:\n\nWhere is the code?\nWhere is the narrative?\n\nRun each code chunk in order. What does this analysis do?\n\n\n\n\n\n−+\n10:00"
   },
   {
     "objectID": "slides/01/slides01.html#what-steps-went-into-this-analysis",
@@ -5525,67 +5308,67 @@
     "text": "Your turn:\n\nWith your neighbor(s):\nChoose two countries to compare to the U.S. voting record in the U.N. over the years.\nWhat did you learn?\n\n\n\n\n−+\n04:00"
   },
   {
-    "objectID": "slides/01/slides01.html#course-github",
-    "href": "slides/01/slides01.html#course-github",
+    "objectID": "slides/01/slides01.html#course-website",
+    "href": "slides/01/slides01.html#course-website",
     "title": "Welcome to Stat 220",
-    "section": "Course github",
-    "text": "Course github\n\nhttps://github.com/stat220-w25/\n\n\naka “the one link to rule them all”\n\n\naccess slides\nsee schedule\naccess repositories for homework and projects"
+    "section": "Course website",
+    "text": "Course website\n\nhttps://stat220-s25.github.io\n\n\naka “the one link to rule them all”\n\n\naccess slides\nsee schedule\n\n\nhttps://github.com/stat220-s25\n\n\naccess repositories for homework and projects"
   },
   {
     "objectID": "slides/01/slides01.html#office-hours-tentative",
     "href": "slides/01/slides01.html#office-hours-tentative",
     "title": "Welcome to Stat 220",
     "section": "Office hours (tentative)",
-    "text": "Office hours (tentative)\n\n\n\nDay\nTime\nType\nLocation\n\n\n\n\nMonday\n11-12\nDrop-in\nCMC 307\n\n\nTuesday\n2-3\nDrop-in\nCMC 307\n\n\nWednesday\n4-5\nDrop-in\nCMC 307\n\n\nFriday\n11-12\nBy appt\nCMC 223"
+    "text": "Office hours (tentative)\n\n\n\nDay\nTime\nType\nLocation\n\n\n\n\nMonday\n4:15-5:15\nDrop-in\nCMC 307\n\n\nTuesday\n10:30-11:30\nDrop-in\nCMC 307\n\n\nWednesday\n2:15-3:15\nDrop-in\nCMC 307\n\n\nFriday\n11-12\nDrop-in\nCMC 307"
   },
   {
-    "objectID": "slides/01/slides01.html#where-is-amanda-in-january",
-    "href": "slides/01/slides01.html#where-is-amanda-in-january",
+    "objectID": "slides/01/slides01.html#where-is-amanda-this-term",
+    "href": "slides/01/slides01.html#where-is-amanda-this-term",
     "title": "Welcome to Stat 220",
-    "section": "Where is Amanda in January?",
-    "text": "Where is Amanda in January?"
+    "section": "Where is Amanda this term?",
+    "text": "Where is Amanda this term?"
   },
   {
     "objectID": "slides/01/slides01.html#what-will-you-do-in-this-course",
     "href": "slides/01/slides01.html#what-will-you-do-in-this-course",
     "title": "Welcome to Stat 220",
     "section": "What will you do in this course?",
-    "text": "What will you do in this course?\n\n\nGraded work:\n\nHomework\nLab Quizzes\nPortfolio Projects\nFinal Project\n\n\nUngraded work:\n\nDaily prep for class: read/watch/review/try\nIn-class exercises and group work\nEngagement in small and large group discussions"
+    "text": "What will you do in this course?\n\n\nGraded work:\n\nHomework\nLab Quizzes\nPortfolio Projects\nFinal Project\nIn-class exercises\n\n\nUngraded work:\n\nDaily prep for class: read/watch/review/try\nEngagement in small and large group discussions"
   },
   {
     "objectID": "slides/01/slides01.html#what-will-a-typical-dayweek-look-like",
     "href": "slides/01/slides01.html#what-will-a-typical-dayweek-look-like",
     "title": "Welcome to Stat 220",
     "section": "What will a typical day/week look like?",
-    "text": "What will a typical day/week look like?\n\n\nBefore class:\n\nWatch a video or read a chapter\nCome with questions\nBe prepared to try what was covered\n\n\nIn class:\n\nMini lecture\n\nSometimes review\nSometimes new\n\nHands-on coding in R\n\n\nAfter class:\n\nFinish any in-class exercises\nWork on homework and portfolio projects"
+    "text": "What will a typical day/week look like?\n\n\nBefore class:\n\nWatch a video or read a chapter\nCome with questions\nBe prepared to try what was covered\n\n\nIn class:\n\nMini lecture\n\nSometimes review\nSometimes new\n\nHands-on coding in R\n\n\nAfter class:\n\nFinish in-class exercises\nWork on homework and portfolio projects"
   },
   {
     "objectID": "slides/01/slides01.html#grading-system",
     "href": "slides/01/slides01.html#grading-system",
     "title": "Welcome to Stat 220",
     "section": "Grading system",
-    "text": "Grading system\nHomework and lab quiz problems will be graded as successful or not successful. Projects will be graded as excellent, successful, or retry. You will have the opportunity to resubmit the lab quizzes outside of class.\nTo earn a course grade, you must meet all of the requirements in a given row:\n\n\n\n\n\n\n\n\n\n\n\nHomework Problems\nLab Quiz Problems\nPortfolio Projects (4 total)\nFinal Project\n\n\n\n\nA\n85%\n90%\n2 Excellent\nExcellent\n\n\nB\n75%\n80%\n4 Successful\nSuccessful\n\n\nC\n65%\n70%\n3 Successful\nSuccessful\n\n\nD\n55%\n50%\n2 Successful\nSuccessful\n\n\n\n“+” and “-” grades are determined by partially meeting the requirements in a given row."
+    "text": "Grading system\nHomework and lab quiz problems will be graded as successful, half credit, or not successful. Projects will be graded as excellent, successful, or not successful. You will have the opportunity to resubmit the lab quizzes outside of class.\nTo earn a course grade, you must meet all of the requirements in a given row:\n\n\n\n\n\n\n\n\n\n\n\n\nHomework Problems\nIn class activities\nLab Quiz Problems\nPortfolio Projects (4 total)\nFinal Project\n\n\n\n\nA\n85%\n90%\n90%\n2 Excellent + 2 Successful\nExcellent\n\n\nB\n75%\n80%\n80%\n4 Successful\nSuccessful\n\n\nC\n65%\n70%\n70%\n3 Successful\nSuccessful\n\n\nD\n55%\n50%\n50%\n2 Successful\nSuccessful\n\n\n\n“+” and “-” grades are determined by partially meeting the requirements in a given row."
   },
   {
     "objectID": "slides/01/slides01.html#benefits",
     "href": "slides/01/slides01.html#benefits",
     "title": "Welcome to Stat 220",
     "section": "Benefits",
-    "text": "Benefits\n\nYou decide what grade you’re aiming for, and what you have to do to earn it\nClear guidelines for “successful” and “excellent” marks\nOpportunity to revise and resubmit"
+    "text": "Benefits\n\nYou decide what grade you’re aiming for, and what you have to do to earn it\nClear guidelines for “successful” and “excellent” grades on projects\nOpportunity to revise and resubmit"
   },
   {
     "objectID": "slides/01/slides01.html#possible-drawbacks",
     "href": "slides/01/slides01.html#possible-drawbacks",
     "title": "Welcome to Stat 220",
     "section": "Possible drawbacks",
-    "text": "Possible drawbacks\n\nNo partial credit!\nRevisions take time\nCategories don’t “average out”"
+    "text": "Possible drawbacks\n\nNo traditional partial credit!\nHalf-credit is for completed and mostly correct\nRevisions take time\nCategories don’t “average out”"
   },
   {
     "objectID": "slides/01/slides01.html#tokens",
     "href": "slides/01/slides01.html#tokens",
     "title": "Welcome to Stat 220",
     "section": "Tokens",
-    "text": "Tokens\nYou can use a token to:\n\nRevise a portfolio project that did not earn a “successful”\n72-hour extension on a homework assignment (the request must be submitted before the deadline)\n72-hour extension on lab quiz resubmissions (the request must be submitted before the deadline)\nBy passing the syllabus quiz, you’ll activate your 5 tokens for the term. I will track token balances in the moodle gradebook (updated weekly)"
+    "text": "Tokens\nYou can use a token to:\n\nRevise a portfolio project that did not earn a “successful” or “excellent”\n72-hour extension on a homework assignment or portfolio project submission (the request must be submitted before the deadline)\n72-hour extension on lab quiz resubmissions (the request must be submitted before the deadline)\nBy passing the syllabus quiz, you’ll activate your 5 tokens for the term. I will track token balances in the moodle gradebook (updated weekly, typically Thursdays)"
   },
   {
     "objectID": "slides/01/slides01.html#collaboration-policy",
@@ -5599,14 +5382,7 @@
     "href": "slides/01/slides01.html#use-of-generative-artificial-intelligence-ai",
     "title": "Welcome to Stat 220",
     "section": "Use of generative artificial intelligence (AI)",
-    "text": "Use of generative artificial intelligence (AI)\n\nTreat generative AI, such as ChatGPT or Gemini, the same as other online resources.\nGuiding principles:\n\n(1) Cognitive dimension: Working with AI should not reduce your ability to think clearly. AI should facilitate—rather than hinder—learning.\n(2) Ethical dimension: Students using AI should be transparent about their use and make sure it aligns with academic integrity.\n\n❌ AI tools for writing code: You may not use generative AI to take a “first pass” at a coding task. Do not type coursework prompts directly into AI tools.\n✅ AI tools for debugging code: You may make use of the technology to get help with error messages or trying to fix issues\n❌ AI tools for narrative: Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you.\n\n\n\nAdapted from Mine Çetinkaya-Rundel"
-  },
-  {
-    "objectID": "slides/01/slides01.html#tools",
-    "href": "slides/01/slides01.html#tools",
-    "title": "Welcome to Stat 220",
-    "section": "Tools",
-    "text": "Tools\n\nhttps://maize.mathcs.carleton.edu\n\n\nBrowser based RStudio instance(s) provided by Carleton\nRequires internet connection to access\nProvides consistency in hardware and software environments\nLocal R installations are also fine! But it may be harder for me to provide support"
+    "text": "Use of generative artificial intelligence (AI)\n\nTreat generative AI, such as ChatGPT or Gemini, the same as other online resources.\nGuiding principles:\n\n(1) Cognitive dimension: Working with AI should not reduce your ability to think clearly. AI should facilitate—rather than hinder—learning.\n(2) Ethical dimension: Students using AI should be transparent about their use and make sure it aligns with academic integrity.\n\n❌ AI tools for writing code: You may not use generative AI to take a “first pass” at a coding task. Do not type coursework prompts directly into AI tools.\n✅ AI tools for debugging code: You may make use of the technology to get help with error messages or trying to fix issues. Rule of thumb: never type code into or out of an AI interface\n❌ AI tools for narrative: Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you.\n\n\n\nAdapted from Mine Çetinkaya-Rundel"
   },
   {
     "objectID": "slides/01/slides01.html#github",
@@ -5627,7 +5403,273 @@
     "href": "slides/01/slides01.html#your-tasks-before-next-class",
     "title": "Welcome to Stat 220",
     "section": "Your tasks before next class",
-    "text": "Your tasks before next class\n\nCreate a GitHub account if you don’t have one\nComplete the welcome survey if you haven’t already\nRead the syllabus and pass syllabus quiz\nMake sure you can login in to the maize server or update your local R/RStudio versions\nComplete the readings for next class"
+    "text": "Your tasks before next class\n\nCreate a GitHub account if you don’t have one\nComplete the welcome survey if you haven’t already\nJoin the slack workspace and post an #intro message\nRead the syllabus and pass syllabus quiz\nMake sure you can log in to the maize server or update your local R/RStudio versions\nComplete the readings for next class"
+  },
+  {
+    "objectID": "slides/06/slides06.html#today",
+    "href": "slides/06/slides06.html#today",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Today",
+    "text": "Today\n\n{patchwork}\nColorblind-friendly color palettes\nWriting alt-text"
+  },
+  {
+    "objectID": "slides/06/slides06.html#small-multiples",
+    "href": "slides/06/slides06.html#small-multiples",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Small Multiples",
+    "text": "Small Multiples\nEach plot shares aesthetics but shows different subsets of data"
+  },
+  {
+    "objectID": "slides/06/slides06.html#compound-plots",
+    "href": "slides/06/slides06.html#compound-plots",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Compound Plots",
+    "text": "Compound Plots\nThe plots might share data, but don’t share aesthetics"
+  },
+  {
+    "objectID": "slides/06/slides06.html#compound-plot-example",
+    "href": "slides/06/slides06.html#compound-plot-example",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Compound Plot Example",
+    "text": "Compound Plot Example\n\nlibrary(palmerpenguins)\nggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = body_mass_g))\n\n\n\n\n\n\n\nggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = flipper_length_mm))\n\n\n\n\n\n\n\nggplot(penguins) + \n  geom_point(aes(x = body_mass_g, y = flipper_length_mm))"
+  },
+  {
+    "objectID": "slides/06/slides06.html#patchwork",
+    "href": "slides/06/slides06.html#patchwork",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Patchwork",
+    "text": "Patchwork\n\nlibrary(patchwork)\np1 = ggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = body_mass_g))\n\np2 = ggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = flipper_length_mm))\n\np3 = ggplot(penguins) + \n  geom_point(aes(x = body_mass_g, y = flipper_length_mm))\n\n(p1 + p2)/p3"
+  },
+  {
+    "objectID": "slides/06/slides06.html#patchwork-layout-2",
+    "href": "slides/06/slides06.html#patchwork-layout-2",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Patchwork (layout 2)",
+    "text": "Patchwork (layout 2)\n\np3 + (p1/p2)\n\n\n\n\n\n\n\n\n\n\nFor more complex layouts, see the “Controlling Layouts” vignette"
+  },
+  {
+    "objectID": "slides/06/slides06.html#patchwork-with-a-shared-legend",
+    "href": "slides/06/slides06.html#patchwork-with-a-shared-legend",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Patchwork (with a shared legend)",
+    "text": "Patchwork (with a shared legend)\n\np1 = ggplot(penguins) + \n  geom_histogram(bins = 20, col = \"white\", aes(x = body_mass_g, fill = species))\n\np2 = ggplot(penguins) + \n  geom_histogram(bins = 20,  col = \"white\", aes(x = flipper_length_mm, fill = species))\n\np3 = ggplot(penguins) + \n  geom_point(pch = 21, alpha = .9, col = \"white\", aes(x = body_mass_g, y = flipper_length_mm, fill = species)) +\n  theme(legend.position = \"none\")\n\np3 + (p1/p2) + \n  plot_layout(guides = 'collect')"
+  },
+  {
+    "objectID": "slides/06/slides06.html#patchwork-with-annotation",
+    "href": "slides/06/slides06.html#patchwork-with-annotation",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Patchwork (with annotation)",
+    "text": "Patchwork (with annotation)\n\np3 + (p1/p2) + \n  plot_layout(guides = 'collect') + \n  plot_annotation(\n    title = \"Penguin Plot\",\n    tag_levels = \"A\"\n  )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#patchwork-with-a-common-theme",
+    "href": "slides/06/slides06.html#patchwork-with-a-common-theme",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Patchwork (with a common theme)",
+    "text": "Patchwork (with a common theme)\n\np3 + (p1/p2) + \n  plot_layout(guides = 'collect') & \n  theme_minimal() &\n  scale_fill_viridis_d()"
+  },
+  {
+    "objectID": "slides/06/slides06.html#but-what-does-this-have-to-do-with-accessibility",
+    "href": "slides/06/slides06.html#but-what-does-this-have-to-do-with-accessibility",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "But what does this have to do with accessibility?",
+    "text": "But what does this have to do with accessibility?\n\nOutput (knitted files, slides, websites, etc.) should be designed to make it as easy as possible for the user to understand your content\nThere’s a cognitive load involved with scrolling or turning a physical page and trying to remember a visual from the previous page\nWhen plots belong together, we should put them together"
+  },
+  {
+    "objectID": "slides/06/slides06.html#color-scales",
+    "href": "slides/06/slides06.html#color-scales",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Color scales",
+    "text": "Color scales\nUse colorblind friendly color scales (e.g., Okabe Ito, viridis)"
+  },
+  {
+    "objectID": "slides/06/slides06.html#section-1",
+    "href": "slides/06/slides06.html#section-1",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "",
+    "text": "colorBlindness::displayAllColors(scales::hue_pal()(10))"
+  },
+  {
+    "objectID": "slides/06/slides06.html#section-2",
+    "href": "slides/06/slides06.html#section-2",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "",
+    "text": "colorBlindness::displayAllColors(rainbow(10))"
+  },
+  {
+    "objectID": "slides/06/slides06.html#section-3",
+    "href": "slides/06/slides06.html#section-3",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "",
+    "text": "colorBlindness::displayAllColors(colorblindr::palette_OkabeIto)"
+  },
+  {
+    "objectID": "slides/06/slides06.html#section-4",
+    "href": "slides/06/slides06.html#section-4",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "",
+    "text": "colorBlindness::displayAllColors(viridisLite::viridis(10))"
+  },
+  {
+    "objectID": "slides/06/slides06.html#double-encoding",
+    "href": "slides/06/slides06.html#double-encoding",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Double encoding",
+    "text": "Double encoding\nUse shape and color where possible\n\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with deuteranopia\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
+  },
+  {
+    "objectID": "slides/06/slides06.html#use-direct-labeling",
+    "href": "slides/06/slides06.html#use-direct-labeling",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Use direct labeling",
+    "text": "Use direct labeling\n\nPrefer direct labeling where color is used to display information over a legend\nQuicker to read\nEnsures graph can be understood without reliance on color"
+  },
+  {
+    "objectID": "slides/06/slides06.html#without-direct-labeling",
+    "href": "slides/06/slides06.html#without-direct-labeling",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Without direct labeling",
+    "text": "Without direct labeling\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with deuteranopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
+  },
+  {
+    "objectID": "slides/06/slides06.html#with-direct-labeling",
+    "href": "slides/06/slides06.html#with-direct-labeling",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "With direct labeling",
+    "text": "With direct labeling\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with deuteranopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
+  },
+  {
+    "objectID": "slides/06/slides06.html#use-whitespace-or-pattern-to-separate-elements",
+    "href": "slides/06/slides06.html#use-whitespace-or-pattern-to-separate-elements",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Use whitespace or pattern to separate elements",
+    "text": "Use whitespace or pattern to separate elements\n\nSeparate elements with whitespace or pattern\nAllows for distinguishing between data without entirely relying on contrast between colors"
+  },
+  {
+    "objectID": "slides/06/slides06.html#without-whitespace",
+    "href": "slides/06/slides06.html#without-whitespace",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Without whitespace",
+    "text": "Without whitespace\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with tritanopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
+  },
+  {
+    "objectID": "slides/06/slides06.html#with-whitespace",
+    "href": "slides/06/slides06.html#with-whitespace",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "With whitespace",
+    "text": "With whitespace\n\n\nDefault ggplot2 scale\n\n\n\n\n\n\n\n\n\n\nDefault ggplot2 scale with tritanopia\n\n\n\n\n\n\n\n\n\n\n\n\nSource: Mine Çetinkaya-Rundel, Sta313. Generated with {colorblindr}."
+  },
+  {
+    "objectID": "slides/06/slides06.html#alternative-text",
+    "href": "slides/06/slides06.html#alternative-text",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Alternative text",
+    "text": "Alternative text\n\nIt is read by screen readers in place of images allowing the content and function of the image to be accessible to those with visual or certain cognitive disabilities.\nIt is displayed in place of the image in browsers if the image file is not loaded or when the user has chosen not to view images.\nIt provides a semantic meaning and description to images which can be read by search engines or be used to later determine the content of the image from page context alone.\n\n\n\nSource: WebAIM"
+  },
+  {
+    "objectID": "slides/06/slides06.html#alt-and-surrounding-text",
+    "href": "slides/06/slides06.html#alt-and-surrounding-text",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Alt and surrounding text",
+    "text": "Alt and surrounding text\nCHART TYPE of TYPE OF DATA where REASON FOR INCLUDING CHART\n(plus link to data source somewhere in the text)\n\nCHART TYPE: It’s helpful for people with partial sight to know what chart type it is and gives context for understanding the rest of the visual.\nTYPE OF DATA: What data is included in the chart? The x and y axis labels may help you figure this out.\nREASON FOR INCLUDING CHART: Think about why you’re including this visual. What does it show that’s meaningful. There should be a point to every visual and you should tell people what to look for.\nLink to data source: Don’t include this in your alt text, but it should be included somewhere in the surrounding text.\n\n\n\nSource: Writing Alt Text for Data Visualization"
+  },
+  {
+    "objectID": "slides/06/slides06.html#alt-text-practice",
+    "href": "slides/06/slides06.html#alt-text-practice",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Alt Text Practice",
+    "text": "Alt Text Practice\nCHART TYPE of TYPE OF DATA where REASON FOR INCLUDING CHART\n\n\n\n\n\n\n\n\n\n\n\n\n\nA scatterplot\nof median hourly wage of RN’s by year in California, Minnesota, and New York. The x-axis starts at the year 1996 and ends at the year 2020.\nThe three states follow the same linear increasing trend until about 2007, when New York and Minnesota begin to flatten.\n\n\n\n\n\n−+\n01:30"
+  },
+  {
+    "objectID": "slides/06/slides06.html#section-5",
+    "href": "slides/06/slides06.html#section-5",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "",
+    "text": "Accessible Visualization via Natural Language Descriptions: A Four-Level Model of Semantic Content\nAlan Lundgard, MIT CSAIL\nArvind Satyanarayan, MIT CSAIL\nIEEE Transactions on Visualization & Computer Graphics (Proceedings of IEEE VIS), 2021\n\nTo demonstrate how our model can be applied to evaluate the effectiveness of visualization descriptions, we conduct a mixed-methods evaluation with 30 blind and 90 sighted readers, and find that these reader groups differ significantly on which semantic content they rank as most useful. Together, our model and findings suggest that access to meaningful information is strongly reader-specific, and that research in automatic visualization captioning should orient toward descriptions that more richly communicate overall trends and statistics, sensitive to reader preferences."
+  },
+  {
+    "objectID": "slides/06/slides06.html#lets-try-it",
+    "href": "slides/06/slides06.html#lets-try-it",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Let’s try it!",
+    "text": "Let’s try it!\nCHART TYPE of TYPE OF DATA where REASON FOR INCLUDING CHART\n\n\nTake one graph and two blank cards\nWrite an alt text description of your graph on one of your blank cards.\n\nPlease label with your plot number!\n\nIn two’s or three’s, trade alt text descriptions only\nOn your second blank card, try to draw the graph based on the alt text provided.\nNow, look at the original graph. How’d you do?\nTape the original graphs, alt text, and hand drawn graphs up on the board and have a look around\n\n\n\n\n\n−+\n04:00"
+  },
+  {
+    "objectID": "slides/06/slides06.html#recap",
+    "href": "slides/06/slides06.html#recap",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Recap",
+    "text": "Recap\n\nWhat was hard about writing alt text?\nLooking at the graphs, do you notice things that make it harder/easier to write alt text?\nWhat was hard about recreating from the alt text?"
+  },
+  {
+    "objectID": "slides/06/slides06.html#adding-alt-text-to-plots",
+    "href": "slides/06/slides06.html#adding-alt-text-to-plots",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Adding alt text to plots",
+    "text": "Adding alt text to plots\nShort:\n\n```{r}\n#| fig-alt: Alt text goes here.\n\n# code for plot goes here\n```\n\n\nLonger:\n\n```{r}\n#| fig-alt: |\n#|   Longer alt text goes here. Make sure to add line breaks ~roughly\n#|   80 characters.\n\n# code for plot goes here\n```"
+  },
+  {
+    "objectID": "slides/06/slides06.html#using-okabe-ito-palette",
+    "href": "slides/06/slides06.html#using-okabe-ito-palette",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Using Okabe Ito palette",
+    "text": "Using Okabe Ito palette\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = hourly_wage_median, color = state)) +\n  geom_point(size = 2) +\n  ggthemes::scale_color_colorblind() +\n  scale_y_continuous(labels = scales::label_dollar()) +\n  labs(\n    x = \"Year\", y = \"Median hourly wage\", color = \"State\",\n    title = \"Median hourly wage of Registered Nurses\"\n  ) +\n  theme(\n    legend.position = c(0.15, 0.75),\n    legend.background = element_rect(fill = \"white\", color = \"white\")\n  )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#double-encoding-1",
+    "href": "slides/06/slides06.html#double-encoding-1",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Double Encoding",
+    "text": "Double Encoding\nUse both color and shape aesthetics\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = hourly_wage_median, color = state, shape = state)) +\n  geom_point(size = 2) +\n  scale_y_continuous(labels = scales::label_dollar()) +\n  labs(\n    x = \"Year\", y = \"Median hourly wage\", color = \"State\", shape = \"State\",\n    title = \"Median hourly wage of Registered Nurses\"\n  ) +\n  theme(\n    legend.position = c(0.15, 0.75),\n    legend.background = element_rect(fill = \"white\", color = \"white\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#direct-labeling",
+    "href": "slides/06/slides06.html#direct-labeling",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Direct Labeling",
+    "text": "Direct Labeling\nCould do “by hand” with annotate(). Alternatively, use geom_text()\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), hjust = 0, nudge_x = 1,\n    show.legend = FALSE, size = 6\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#direct-labeling-1",
+    "href": "slides/06/slides06.html#direct-labeling-1",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Direct Labeling",
+    "text": "Direct Labeling\nFirst, filter the data to include the endpoints only. Use the label aesthetic to map to the label in your data (in this case, state). geom_label by default will use the x and y aesthetics defined in ggplot()\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state)\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#direct-labeling-2",
+    "href": "slides/06/slides06.html#direct-labeling-2",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Direct Labeling",
+    "text": "Direct Labeling\n(Here’s what it looks like if we don’t filter to the endpoints)\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    aes(label = state)\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#direct-labeling-3",
+    "href": "slides/06/slides06.html#direct-labeling-3",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Direct Labeling",
+    "text": "Direct Labeling\nhjust=0 means “left justified”, or make the label start at the x-y coordinate you gave it. size = 6 makes the label bigger\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), \n    hjust = 0, \n    size = 6\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#direct-labeling-4",
+    "href": "slides/06/slides06.html#direct-labeling-4",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Direct Labeling",
+    "text": "Direct Labeling\nnudge_x = 1 “nudges” each label one unit in the x-direction (so each label is a small distance away from what it’s labeling). show.legend=FALSE tells ggplot not to include the aesthetics for geom_text in the legend\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), \n    hjust = 0, \n    size = 6,\n    nudge_x = 1,\n    show.legend = FALSE,\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#direct-labeling-5",
+    "href": "slides/06/slides06.html#direct-labeling-5",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Direct Labeling",
+    "text": "Direct Labeling\nFinally, we have to tell ggplot not to trim the plot, and leave room in the right margin for the labels themselves\n\n\nnurses_subset |&gt;\n  ggplot(aes(x = year, y = annual_salary_median, color = state)) +\n  geom_line(show.legend = FALSE, linewidth = 2) +\n  geom_text(\n    data = nurses_subset |&gt; filter(year == max(year)),\n    aes(label = state), \n    hjust = 0, \n    size = 6,\n    nudge_x = 1,\n    show.legend = FALSE,\n  ) +\n  scale_y_continuous(labels = scales::label_dollar(scale = 1/1000, suffix = \"K\")) +\n  labs(\n    x = \"Year\", y = \"Annual median salary\", color = \"State\",\n    title = \"Annual median salary of Registered Nurses\"\n  ) +\n  coord_cartesian(clip = \"off\") +\n  theme(\n    plot.margin = margin(0.1, 0.9, 0.1, 0.1, \"in\")\n    )"
+  },
+  {
+    "objectID": "slides/06/slides06.html#add-whitespace",
+    "href": "slides/06/slides06.html#add-whitespace",
+    "title": "(Closer to) Accessible Data Viz",
+    "section": "Add whitespace",
+    "text": "Add whitespace\nSet the color aesthetic to white\n\n\nnurses_subset |&gt;\n  filter(year %in% c(2000, 2010, 2020)) |&gt;\n  ggplot(aes(x = factor(year), y = total_employed_rn, fill = state)) +\n  geom_col(position = \"fill\", color = \"white\", linewidth = 1) +\n  labs(\n    x = \"Year\", y = \"Proportion of Registered Nurses\", fill = \"State\",\n    title = \"Total employed Registered Nurses\"\n  )"
   },
   {
     "objectID": "slides/24/slides24.html#warm-up-on-your-own",
@@ -7132,14 +7174,14 @@
     "href": "activities/15-sentiment.html#afinn",
     "title": "15-sentiment",
     "section": "“afinn”",
-    "text": "“afinn”\n\nlibrary(textdata)\nget_sentiments(\"afinn\") %&gt;%\n  slice_sample(n = 20)\n\n# A tibble: 20 × 2\n   word       value\n   &lt;chr&gt;      &lt;dbl&gt;\n 1 abducted      -2\n 2 fuckhead      -4\n 3 bliss          3\n 4 hysteria      -3\n 5 mandatory     -1\n 6 violate       -2\n 7 slash         -2\n 8 frowning      -1\n 9 abhorred      -3\n10 threats       -2\n11 promoted       1\n12 agonizing     -3\n13 skeptic       -2\n14 darkest       -2\n15 cleaner        2\n16 obstacle      -2\n17 undecided     -1\n18 obstinate     -2\n19 nasty         -3\n20 conspiracy    -3"
+    "text": "“afinn”\n\nlibrary(textdata)\nget_sentiments(\"afinn\") %&gt;%\n  slice_sample(n = 20)\n\n# A tibble: 20 × 2\n   word        value\n   &lt;chr&gt;       &lt;dbl&gt;\n 1 lobby          -2\n 2 fervent         2\n 3 madly          -3\n 4 resolving       2\n 5 embittered     -2\n 6 steadfast       2\n 7 astonished      2\n 8 peaceful        2\n 9 selfishness    -3\n10 roflmao         4\n11 glum           -2\n12 libelous       -2\n13 expelling      -2\n14 rotflol         4\n15 blurry         -2\n16 advantage       2\n17 cries          -2\n18 moans          -2\n19 benefit         2\n20 alarmist       -2"
   },
   {
     "objectID": "activities/03-ggplot-intro.html",
     "href": "activities/03-ggplot-intro.html",
     "title": "Intro to ggplot2\n",
     "section": "",
-    "text": "Note: the setup chunk includes the line eval = FALSE. Make sure to delete this when you are ready to knit your file.\nThe data we’re using today contains information about all seasons of Survivor and comes from the survivoR R package. In the show, a group of people (called castaways) are placed in an isolated location, where they must provide food, fire, and shelter for themselves. The castaways compete in challenges testing the contestants’ physical abilities like running and swimming or their mental abilities like puzzles and endurance challenges for rewards and immunity from elimination. The castaways are progressively eliminated from the game as they are voted out by their fellow contestants until only two or three remain. At that point, the players who were eliminated (the “jury”) vote for the winner. The winner is given the title of “Sole Survivor” and is awarded the grand prize of $1,000,000\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\")\n#&gt; Rows: 47 Columns: 30\n#&gt; ── Column specification ────────────────────────────────────────────────────────\n#&gt; Delimiter: \",\"\n#&gt; chr  (13): version, version_season, season_name, location, country, tribe_se...\n#&gt; dbl  (13): season, n_cast, n_tribes, n_finalists, n_jury, viewers_reunion, v...\n#&gt; date  (4): premiered, ended, filming_started, filming_ended\n#&gt; \n#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.\n#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+    "text": "Note: the setup chunk includes the line eval = FALSE. Make sure to delete this when you are ready to knit your file.\nThe data we’re using today contains information about all seasons of Survivor and comes from the survivoR R package. In the show, a group of people (called castaways) are placed in an isolated location, where they must provide food, fire, and shelter for themselves. The castaways compete in challenges testing the contestants’ physical abilities like running and swimming or their mental abilities like puzzles and endurance challenges for rewards and immunity from elimination. The castaways are progressively eliminated from the game as they are voted out by their fellow contestants until only two or three remain. At that point, the players who were eliminated (the “jury”) vote for the winner. The winner is given the title of “Sole Survivor” and is awarded the grand prize of $1,000,000\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\")"
   },
   {
     "objectID": "activities/03-ggplot-intro.html#round-1-view-the-data-pipes",
@@ -7269,7 +7311,7 @@
     "href": "computing/git-stat220.html#getting-setup-with-git-and-github",
     "title": "GitHub Classroom Guide for Stat 220",
     "section": "Getting setup with Git and GitHub",
-    "text": "Getting setup with Git and GitHub\nIf you are not working on the maize RStudio server, then make sure that you have installed all of the software mentioned in Computing Access. In addition, you should install the usethis and gitcreds R packages.\nEveryone needs to connect Git and GitHub by doing the following:\n\nRegister for account on GitHub (https://github.com/). I recommend using a username that incorporates your name (e.g. aluby). Please use your Carleton email with this account (you can connect multiple emails to a single GitHub account)\n\nSetup options in Git by running the following code chunk in your console:\nlibrary(usethis)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.org\")\nchanging the first two lines to your own name and email (this should be the email associated with your GitHub account).\n\n\nIn order to commit and push to GitHub via R, you need to create a PAT (Personal Access Token). This is like a Password 2.0. When RStudio prompts you for your GitHub username and password, use your PAT instead.\n\nComplete the steps in Happy Git with R Ch 9.3 to get a personal access token. I recommend using the “classic” token, but either should work. You will need workflow, user, and repo scopes (permissions) for this class, and I recommend setting it for 90 days so you won’t need a new one through the end of the term. Make sure to save this somewhere safe!\n\n\nIt will be annoying to type your PAT in anytime you want to push to github. Instead, tell R to store your git credentials. First, save your name and email:\n\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.org\")\nThen, run the following command:\ngitcreds::gitcreds_set()\nWhen prompted for your password, use your PAT from Step 3.\n&gt; gitcreds::gitcreds_set()\n\n? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n-&gt; Adding new credentials...\n-&gt; Removing credentials from cache...\n-&gt; Done.\nTo see if things are set up correctly, run\nusethis::git_sitrep()\nand one of the results should be something like the following:\n── GitHub user \n• Default GitHub host: \"https://github.com\"\n• Personal access token for \"https://github.com\": &lt;discovered&gt;\n• GitHub user: \"aluby\"\n• Token scopes: \"admin:org\", \"repo\", \"user\", and \"workflow\"\n• Email(s): \"aluby@carleton.edu\"\nif instead of &lt;discovered&gt; you see &lt;unset&gt;, you may need to enter your PAT again. (I have no idea why it sometimes needs it twice)",
+    "text": "Getting setup with Git and GitHub\nIf you are not working on the maize RStudio server, then make sure that you have installed all of the software mentioned in Computing Access. In addition, you should install the usethis and gitcreds R packages.\nEveryone needs to connect Git and GitHub by doing the following:\n\nRegister for account on GitHub (https://github.com/). I recommend using a username that incorporates your name (e.g. aluby). Please use your Carleton email with this account (you can connect multiple emails to a single GitHub account)\n\nSetup options in Git by running the following code chunk in your console:\nlibrary(usethis)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.org\")\nchanging the first two lines to your own name and email (this should be the email associated with your GitHub account).\n\n\nIn order to commit and push to GitHub via R, you need to create a PAT (Personal Access Token). This is like a Password 2.0. When RStudio prompts you for your GitHub username and password, use your PAT instead.\n\nComplete the steps in Happy Git with R Ch 9.3 to get a personal access token. I recommend using the “classic” token, but either should work. You will need workflow, user, and repo scopes (permissions) for this class, and I recommend setting it for 90 days so you won’t need a new one through the end of the term. Make sure to save this somewhere safe!\n\n\nIt will be annoying to type your PAT in anytime you want to push to github. If you’re working on your own computer you can tell R to store your git credentials. First, save your name and email:\n\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.org\")\nThen, run the following command:\ngitcreds::gitcreds_set()\nWhen prompted for your password, use your PAT from Step 3.\n&gt; gitcreds::gitcreds_set()\n\n? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n-&gt; Adding new credentials...\n-&gt; Removing credentials from cache...\n-&gt; Done.\nTo see if things are set up correctly, run\nusethis::git_sitrep()\nand one of the results should be something like the following:\n── GitHub user \n• Default GitHub host: \"https://github.com\"\n• Personal access token for \"https://github.com\": &lt;discovered&gt;\n• GitHub user: \"aluby\"\n• Token scopes: \"admin:org\", \"repo\", \"user\", and \"workflow\"\n• Email(s): \"aluby@carleton.edu\"\nif instead of &lt;discovered&gt; you see &lt;unset&gt;, you may need to enter your PAT again.",
     "crumbs": [
       "Computing",
       "Git/Github in Stat 220"
@@ -7368,14 +7410,14 @@
     "href": "computing/r-basics-refresher.html",
     "title": "R Basics",
     "section": "",
-    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
+    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
   },
   {
     "objectID": "computing/r-basics-refresher.html#loading-r-packages",
     "href": "computing/r-basics-refresher.html#loading-r-packages",
     "title": "R Basics",
     "section": "",
-    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
+    "text": "In your previous statistics course at Carleton, you likely loaded at least one add-on R package. In this course, we’ll use a lot of tools found in the tidyverse of R packages. To load many of these packages at once, you can use the library(&lt;package_name&gt;) command. So to load the tidyverse we run:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\n\n\n\n\nNote\n\n\n\nAbove we see a lot of extra info printed when we load the tidyverse. These messages are just telling you what packages are now available to you and warning you that a few functions (e.g., filter) has been replaced by the tidyverse version. We’ll see how to suppress these messages later."
   },
   {
     "objectID": "computing/r-basics-refresher.html#creating-and-naming-objects",
