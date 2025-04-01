@@ -729,7 +729,7 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
   ..$ Running Time: chr [1:200] "-" "-" "-" "-" ...
   ..$ Gross       : chr [1:200] "$652,980,194" "$636,745,858" "$432,943,285" "$404,017,489" ...
   ..$ Theaters    : chr [1:200] "4,440" "4,330" "3,888" "4,200" ...
-  ..$ Total Gross : chr [1:200] "$652,980,194" "$636,745,858" "$473,231,120" "$460,389,317" ...
+  ..$ Total Gross : chr [1:200] "$652,980,194" "$636,745,858" "$473,231,120" "$460,391,418" ...
   ..$ Release Date: chr [1:200] "Jun 14" "Jul 26" "Nov 22" "Nov 27" ...
   ..$ Distributor : chr [1:200] "Walt Disney Studios Motion Pictures" "Walt Disney Studios Motion Pictures" "Universal Pictures" "Walt Disney Studios Motion Pictures" ...
   ..$ Estimated   : chr [1:200] "false" "false" "false" "false" ...</code></pre>
@@ -775,7 +775,7 @@ $ Budget         &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "
 $ `Running Time` &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
 $ Gross          &lt;dbl&gt; 652980194, 636745858, 432943285, 404017489, 361004205, …
 $ Theaters       &lt;dbl&gt; 4440, 4330, 3888, 4200, 4449, 4575, 4074, 4170, 3948, 4…
-$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 473231120, 460389317, 361004205, …
+$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 473231120, 460391418, 361004205, …
 $ Month          &lt;chr&gt; "Jun", "Jul", "Nov", "Nov", "Jul", "Sep", "Mar", "Jul",…
 $ Day            &lt;chr&gt; "14", "26", "22", "27", "3", "6", "1", "19", "29", "8",…
 $ Distributor    &lt;chr&gt; "Walt Disney Studios Motion Pictures", "Walt Disney Stu…
@@ -791,11 +791,11 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
 <p><img data-src="../img/eighty-twenty-ruiz.png"></p>
 <div class="fragment">
 <p><img data-src="../img/ninety-ten-drob.png"></p>
-<p>:::</p>
-<p>Source: <a href="https://www.tandfonline.com/doi/full/10.1080/10691898.2020.1799728#abstract">Playing the Whole Game</a>, Kim &amp; Hardin</p>
-<p>:::</p>
+
 </div>
-</section><section id="what-next" class="slide level2"><h2>What next?</h2>
+<aside><div>
+<p>Source: <a href="https://www.tandfonline.com/doi/full/10.1080/10691898.2020.1799728#abstract">Playing the Whole Game</a>, Kim &amp; Hardin</p>
+</div></aside></section><section id="what-next" class="slide level2"><h2>What next?</h2>
 <ul>
 <li class="fragment">
 <p>Data we want to access isn’t always stored in tables</p>
@@ -812,7 +812,7 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="https://stat220-w25.github.io">🔗 stat220-w25.github.io</a></p>
+<p><a href="https://stat220-s25.github.io">🔗 stat220-s25.github.io</a></p>
 </div>
 </div></div>
 
@@ -1008,6 +1008,41 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
           RevealZoom
         ]
       });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
