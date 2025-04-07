@@ -403,7 +403,7 @@
 Prof Amanda Luby 
 </div>
         <p class="quarto-title-affiliation">
-            Carleton College <br> Stat 220 - Winter 2025
+            Carleton College <br> Stat 220 - Spring 2025
           </p>
     </div>
 </div>
@@ -481,7 +481,7 @@ $ Budget         &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "
 $ `Running Time` &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
 $ Gross          &lt;dbl&gt; 652980194, 636745858, 432943285, 404017489, 361004205, …
 $ Theaters       &lt;dbl&gt; 4440, 4330, 3888, 4200, 4449, 4575, 4074, 4170, 3948, 4…
-$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 473231120, 460389317, 361004205, …
+$ `Total Gross`  &lt;dbl&gt; 652980194, 636745858, 473231120, 460394068, 361004205, …
 $ Month          &lt;chr&gt; "Jun", "Jul", "Nov", "Nov", "Jul", "Sep", "Mar", "Jul",…
 $ Day            &lt;chr&gt; "14", "26", "22", "27", "3", "6", "1", "19", "29", "8",…
 $ Distributor    &lt;chr&gt; "Walt Disney Studios Motion Pictures", "Walt Disney Stu…
@@ -505,7 +505,7 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_40a2a599" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_369f1e56" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -821,7 +821,7 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ee009a1a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_e9ff16e2" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -1486,6 +1486,41 @@ $ Estimated      &lt;chr&gt; "false", "false", "false", "false", "false", "false
           RevealZoom
         ]
       });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
