@@ -394,7 +394,7 @@
     "href": "activities/03-ggplot-intro.html#round-5-bar-and-column-charts-labeling",
     "title": "Intro to ggplot2\n",
     "section": "Round 5: Bar and column charts + Labeling",
-    "text": "Round 5: Bar and column charts + Labeling\nHow many seasons were filmed in each country? Let’s find out!\n20. Make a bar chart of the number of seasons filmed in each country2 using geom_bar()\n\n# Fill in the blanks\nggplot(___) +\n  geom_bar(aes(x = ___))\n\n21. country2 has a category called “other”. Make a bar chart of country (which includes all individual countries) instead.\n\n# Fill in the blanks\nggplot(___) +\n  geom_bar(aes(x = ___))\n\n22. When you have lots of categories, it’s sometimes hard to read the labels on the x-axis. One trick is to flip the axes. Change geom_bar() to use the y aesthetic from your code in question 21 instead.\n23. In ggplot2 you can add/change the title, subtitle, caption, and x- and y-axis labels by adding a labs() layer. Below is an example illustrating it’s use. Choose one graph from today and add all labels.\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy)) + \n  labs(\n    title = \"Put your informative title here\",\n    subtitle = \"and your subtitle here\",\n    x = \"New x label\",\n    y = \"New y label\",\n    caption = \"Put a caption here\"\n  )\n\nWhen you’re done: make sure to submit your .rmd at the in-class activity submission google form."
+    "text": "Round 5: Bar and column charts + Labeling\nHow many seasons were filmed in each country? Let’s find out!\n20. Make a bar chart of the number of seasons filmed in each country2 using geom_bar()\n\n# Fill in the blanks\nggplot(___) +\n  geom_bar(aes(x = ___))\n\n21. country2 has a category called “other”. Make a bar chart of country (which includes all individual countries) instead.\n\n# Fill in the blanks\nggplot(___) +\n  geom_bar(aes(x = ___))\n\n22. When you have lots of categories, it’s sometimes hard to read the labels on the x-axis. One trick is to flip the axes. Change geom_bar() to use the y aesthetic from your code in question 21 instead.\n23 . Sometimes, the variable we want to show up in the bar chart shows up explicitly in our data. Put n_tribes on the x-axis, and season_name on the y-axis. Use geom_col (column) as the geom. How is this different than a bar plot?\n\n# Fill in the blanks\nggplot(___) +\n  geom_col(aes(x = ___, y = ___))\n\n24. In ggplot2 you can add/change the title, subtitle, caption, and x- and y-axis labels by adding a labs() layer. Below is an example illustrating it’s use. Choose one graph from today and add all labels.\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy)) + \n  labs(\n    title = \"Put your informative title here\",\n    subtitle = \"and your subtitle here\",\n    x = \"New x label\",\n    y = \"New y label\",\n    caption = \"Put a caption here\"\n  )\n\nWhen you’re done: make sure to submit your .rmd at the in-class activity submission google form."
   },
   {
     "objectID": "activities/15-sentiment.html",
@@ -3289,6 +3289,34 @@
     "text": "A successful data science episode:\n\nCombine three sources of data (Cholera deaths, water pump locations, and street map)\nWhile a model might have come to the same conclusion, simply plotting the data is much simpler (and more convincing to lots of people)\nThe problem was resolved when the data-based evidence was combined with a plausible model that explained the physical phenomenon.\n\n\n\nSource: MDSR Ch17.1"
   },
   {
+    "objectID": "slides/05/slides05.html#common-types-of-maps",
+    "href": "slides/05/slides05.html#common-types-of-maps",
+    "title": "Intro to Maps  and Spatial Data",
+    "section": "Common Types of Maps",
+    "text": "Common Types of Maps\n\nChloropleth\nProportional Symbol\nCartograms/Geofacets"
+  },
+  {
+    "objectID": "slides/05/slides05.html#chloropleth",
+    "href": "slides/05/slides05.html#chloropleth",
+    "title": "Intro to Maps  and Spatial Data",
+    "section": "Chloropleth",
+    "text": "Chloropleth\nFill in regions with variable values\n\n\nNeed two data sources:\n\nmap data with lat, long, region\ndata with measurements for each region\n\nyou don’t need to join them!\n\n\n\n\n\nFundamentals of Data Visualization"
+  },
+  {
+    "objectID": "slides/05/slides05.html#proportional-symbol",
+    "href": "slides/05/slides05.html#proportional-symbol",
+    "title": "Intro to Maps  and Spatial Data",
+    "section": "Proportional Symbol",
+    "text": "Proportional Symbol\nOverlay symbols on an existing map, where the size of the shape is proportional to the variable\n\n\n\nMade with {ggmap} and {nycflights23}"
+  },
+  {
+    "objectID": "slides/05/slides05.html#cartogram",
+    "href": "slides/05/slides05.html#cartogram",
+    "title": "Intro to Maps  and Spatial Data",
+    "section": "Cartogram",
+    "text": "Cartogram\nUse approximate geographical position to encode information, but not lat/long directly\n\n\n\nFundamentals of Data Visualization"
+  },
+  {
     "objectID": "slides/05/slides05.html#what-is-a-map",
     "href": "slides/05/slides05.html#what-is-a-map",
     "title": "Intro to Maps  and Spatial Data",
@@ -3380,34 +3408,6 @@
     "text": "Mercator vs Sinusoidal projection (world map)\n\nworld &lt;- map_data(\"world\")\n\nggplot(world, aes(x=long, y=lat, group=group)) + \n  geom_polygon(color=\"gold2\", fill=\"navyblue\") + \n  coord_map(projection = \"mercator\", xlim = c(-180, 180)) + \n  theme_map()"
   },
   {
-    "objectID": "slides/05/slides05.html#common-types-of-maps",
-    "href": "slides/05/slides05.html#common-types-of-maps",
-    "title": "Intro to Maps  and Spatial Data",
-    "section": "Common Types of Maps",
-    "text": "Common Types of Maps\n\nChloropleth\nProportional Symbol\nCartograms/Geofacets"
-  },
-  {
-    "objectID": "slides/05/slides05.html#chloropleth",
-    "href": "slides/05/slides05.html#chloropleth",
-    "title": "Intro to Maps  and Spatial Data",
-    "section": "Chloropleth",
-    "text": "Chloropleth\nFill in regions with variable values\n\n\nNeed two data sources:\n\nmap data with lat, long, region\ndata with measurements for each region\n\nyou don’t need to join them!\n\n\n\n\n\nFundamentals of Data Visualization"
-  },
-  {
-    "objectID": "slides/05/slides05.html#proportional-symbol",
-    "href": "slides/05/slides05.html#proportional-symbol",
-    "title": "Intro to Maps  and Spatial Data",
-    "section": "Proportional Symbol",
-    "text": "Proportional Symbol\nOverlay symbols on an existing map, where the size of the shape is proportional to the variable\n\n\n\nMade with {ggmap} and {nycflights23}"
-  },
-  {
-    "objectID": "slides/05/slides05.html#cartogram",
-    "href": "slides/05/slides05.html#cartogram",
-    "title": "Intro to Maps  and Spatial Data",
-    "section": "Cartogram",
-    "text": "Cartogram\nUse approximate geographical position to encode information, but not lat/long directly\n\n\n\nFundamentals of Data Visualization"
-  },
-  {
     "objectID": "slides/05/slides05.html#your-task",
     "href": "slides/05/slides05.html#your-task",
     "title": "Intro to Maps  and Spatial Data",
@@ -3462,41 +3462,6 @@
     "title": "ggplot2",
     "section": "Examples",
     "text": "Examples\nggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, col = species)) + \n  geom_point()\nggplot(penguins, aes(x = body_mass_g)) + \n  geom_histogram()"
-  },
-  {
-    "objectID": "slides/03/slides03.html#facets",
-    "href": "slides/03/slides03.html#facets",
-    "title": "ggplot2",
-    "section": "Facets",
-    "text": "Facets\n\nggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, col = species)) + \n  geom_point() + \n  facet_wrap(vars(species)) +\n  theme(legend.position = \"none\")"
-  },
-  {
-    "objectID": "slides/03/slides03.html#statistical-transformations",
-    "href": "slides/03/slides03.html#statistical-transformations",
-    "title": "ggplot2",
-    "section": "Statistical Transformations",
-    "text": "Statistical Transformations"
-  },
-  {
-    "objectID": "slides/03/slides03.html#coordinates",
-    "href": "slides/03/slides03.html#coordinates",
-    "title": "ggplot2",
-    "section": "Coordinates",
-    "text": "Coordinates\n\n\nSource: Nathan Yau, Data Points"
-  },
-  {
-    "objectID": "slides/03/slides03.html#scalesguides",
-    "href": "slides/03/slides03.html#scalesguides",
-    "title": "ggplot2",
-    "section": "Scales/guides",
-    "text": "Scales/guides\n\n\nSource: Nathan Yau, Data Points"
-  },
-  {
-    "objectID": "slides/03/slides03.html#themes",
-    "href": "slides/03/slides03.html#themes",
-    "title": "ggplot2",
-    "section": "Themes",
-    "text": "Themes\nAll non-data ink (e.g. background color, appearance of grid lines)"
   },
   {
     "objectID": "slides/03/slides03.html#how-it-works",
@@ -3556,7 +3521,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\ntbd\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\ntbd\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\ntbd\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\ntbd\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 4 \n\nGroups and summarizing Code style\ntbd\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 5.1-5.4 \n\nTidy data\ntbd\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\ntbd\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\ntbd\n\nHW 4  [Portfolio 1]\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\ntbd\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\ntbd\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 4 \n\nGroups and summarizing Code style\ntbd\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 5.1-5.4 \n\nTidy data\ntbd\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\ntbd\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\ntbd\n\nHW 4  [Portfolio 1]\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -3749,14 +3714,7 @@
     "href": "slides/04/slides04.html#which-do-you-prefer",
     "title": "Plot design",
     "section": "Which do you prefer?",
-    "text": "Which do you prefer?\nPlot A:"
-  },
-  {
-    "objectID": "slides/04/slides04.html#which-do-you-prefer-1",
-    "href": "slides/04/slides04.html#which-do-you-prefer-1",
-    "title": "Plot design",
-    "section": "Which do you prefer?",
-    "text": "Which do you prefer?\nPlot B:"
+    "text": "Which do you prefer?\n\nPlot A:Plot B:"
   },
   {
     "objectID": "slides/04/slides04.html#general-guidelines",
@@ -7077,6 +7035,20 @@
     "text": "Edit the code so that each state is a different color\n\nstates &lt;- map_data(\"state\")\nggplot(states, aes(x=long, y=lat, group=group)) + \n    geom_polygon(color=\"gold2\", fill=\"navyblue\")"
   },
   {
+    "objectID": "activities/05-maps.html#load-data",
+    "href": "activities/05-maps.html#load-data",
+    "title": "Maps",
+    "section": "Load Data",
+    "text": "Load Data\n\nacs_state_data = read_csv(\"acs_state_data_2022_5y.csv\") \nacs_state_data$state = tolower(acs_state_data$NAME)\n\nVariable information:\n\n\nmed_age: median age\n\nmed_income: median age\n\nrace_X: estimated population of (self-reported) race\n\nborn_in_state: estimated population who were born in state\n\nX_age_married: average age at first marriage for self-reported male and female respondents\n\nhs_diploma, associate_degree, prof_degree, etc.: estimated number with a high school diploma, associate’s degree, professional degree, etc.\n\ninternet_X: estimated number of people who have internet services"
+  },
+  {
+    "objectID": "activities/05-maps.html#acs-data-starter-map",
+    "href": "activities/05-maps.html#acs-data-starter-map",
+    "title": "Maps",
+    "section": "ACS Data Starter Map",
+    "text": "ACS Data Starter Map\nImportant note: we’re using geom_map as a shortcut here to make a chloropleth map. This saves us the step of encoding the lat/long borders of states, and lets us directly fill the state colors using acs_state_data only. If you’re asked to make a chloropleth map with data that only includes, e.g., state name, use this starter code.\n\nggplot(data = acs_state_data) + \n  geom_map(\n    aes(map_id = state, fill = total_pop), \n    map = states\n  ) +\n  expand_limits(x = states$long, y = states$lat) +\n  coord_map() +\n  theme_map()"
+  },
+  {
     "objectID": "activities/21-scraping.html",
     "href": "activities/21-scraping.html",
     "title": "21-scraping",
@@ -7142,21 +7114,21 @@
   {
     "objectID": "activities/04-customizing-plots.html",
     "href": "activities/04-customizing-plots.html",
-    "title": "Customizing plots",
+    "title": "04: Customizing plots",
     "section": "",
     "text": "Note: This code reads the same dataset in that we used last time and then creates two new columns based on an old one. Make sure to run this chunk before trying to make your graph!\n\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\") |&gt;\n  separate(timeslot, into = c(\"day_of_week\", \"time\"))"
   },
   {
     "objectID": "activities/04-customizing-plots.html#load-data",
     "href": "activities/04-customizing-plots.html#load-data",
-    "title": "Customizing plots",
+    "title": "04: Customizing plots",
     "section": "",
     "text": "Note: This code reads the same dataset in that we used last time and then creates two new columns based on an old one. Make sure to run this chunk before trying to make your graph!\n\nseason_summary = readr::read_csv(\"https://math.carleton.edu/aluby/stat220/survivor_season_summary.csv\") |&gt;\n  separate(timeslot, into = c(\"day_of_week\", \"time\"))"
   },
   {
     "objectID": "activities/04-customizing-plots.html#make-histogram",
     "href": "activities/04-customizing-plots.html#make-histogram",
-    "title": "Customizing plots",
+    "title": "04: Customizing plots",
     "section": "Make histogram",
     "text": "Make histogram\n\n# Include your code here"
   },
