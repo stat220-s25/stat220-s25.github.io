@@ -409,7 +409,7 @@ Prof Amanda Luby
 </div>
 
 </section>
-<section id="dplyr" class="slide level2">
+<section id="dplyr" class="slide level2 center">
 <h2>{dplyr}</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -435,7 +435,7 @@ Prof Amanda Luby
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_0f7271fc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_a78fc721" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -513,7 +513,7 @@ Prof Amanda Luby
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4e331723" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_c0cf0a05" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -746,7 +746,7 @@ $ hurricane_force_diameter     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_72189f1e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_b662cd70" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -848,7 +848,7 @@ $ hurricane_force_diameter     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_53bfe969" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_d318253c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -975,7 +975,7 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_69404915" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_d7bbe16f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -1013,11 +1013,11 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 </div>
 </section>
 <section>
-<section id="section-6" class="title-slide slide level1 maize center">
-<h1>%&gt;%</h1>
+<section id="or" class="title-slide slide level1 maize center">
+<h1><code>%&gt;% or |&gt;</code></h1>
 
 </section>
-<section id="section-7" class="slide level2 center">
+<section id="section-6" class="slide level2 center">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -1034,15 +1034,15 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 </div>
 </div></div>
 </section>
-<section id="using" class="slide level2">
-<h2>Using <code>%&gt;%</code></h2>
+<section id="using-or" class="slide level2">
+<h2>Using <code>%&gt;%</code> or <code>|&gt;</code></h2>
 <ul>
-<li class="fragment"><p><code>%&gt;%</code> passes result on left into first argument of function on right</p></li>
+<li class="fragment"><p><code>%&gt;%</code> or <code>|&gt;</code> passes result on left into first argument of function on right</p></li>
 <li class="fragment"><p><em>Chaining</em> functions together lets you read Left-to-right, top-to-bottom</p></li>
 </ul>
 </section>
-<section id="using-1" class="slide level2">
-<h2>Using <code>%&gt;%</code></h2>
+<section id="using-or-1" class="slide level2">
+<h2>Using <code>%&gt;% or |&gt;</code></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="filter"><code>filter()</code>:</h3>
@@ -1054,26 +1054,28 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>storms <span class="sc">%&gt;%</span></span>
 <span id="cb35-2"><a></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"hurricane"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column fragment" style="width:50%;">
 <h3 id="arrange-1"><code>arrange()</code>:</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">arrange</span>(storms, wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>becomes</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>storms <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>storms <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a></a>  <span class="fu">arrange</span>(wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
-<section id="using-2" class="slide level2">
-<h2>Using <code>%&gt;%</code></h2>
+<section id="using-or-2" class="slide level2">
+<h2>Using <code>%&gt;%</code> or <code>|&gt;</code></h2>
 <p>We can also build up a series of pipes.</p>
 <p>We’re interested in the storms with the <em>lowest</em> wind speed <em>that were still classified as hurricanes</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>storms <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb38" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>storms <span class="sc">%&gt;%</span></span>
 <span id="cb38-2"><a></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"hurricane"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb38-3"><a></a>  <span class="fu">arrange</span>(wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,803 × 13
    name      year month   day  hour   lat  long status   category  wind pressure
@@ -1094,14 +1096,16 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 </div>
 </div>
 </section>
-<section id="using-3" class="slide level2">
-<h2>Using <code>%&gt;%</code></h2>
+<section id="using-or-3" class="slide level2">
+<h2>Using <code>%&gt;%</code> or <code>|&gt;</code></h2>
 <p>We’re interested in the storms with the <em>lowest</em> wind speed <em>that were still classified as hurricanes</em>, <em>that reached category 2</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>storms <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="1|2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>storms <span class="sc">%&gt;%</span></span>
 <span id="cb40-2"><a></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"hurricane"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb40-3"><a></a>  <span class="fu">filter</span>(category <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb40-4"><a></a>  <span class="fu">arrange</span>(wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,255 × 13
    name    year month   day  hour   lat  long status    category  wind pressure
@@ -1127,12 +1131,16 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 <p>Pipes become especially useful when we combine them with <code>ggplot()</code>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>storms <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"hurricane"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a></a>  <span class="fu">filter</span>(category <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb42" data-code-line-numbers="1-3|4|4-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>storms <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"hurricane"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-3"><a></a>  <span class="fu">filter</span>(category <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
 <span id="cb42-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wind, <span class="at">y =</span> hurricane_force_diameter)) <span class="sc">+</span> </span>
-<span id="cb42-5"><a></a>  <span class="fu">geom_jitter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+<span id="cb42-5"><a></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb42-6"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-7"><a></a>    <span class="at">title =</span> <span class="st">"Force diameter vs wind speed"</span>,</span>
+<span id="cb42-8"><a></a>    <span class="at">subtitle =</span> <span class="st">"Hurricanes only"</span></span>
+<span id="cb42-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1150,7 +1158,7 @@ $ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&g
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_bcb90760" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_cb627e4d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

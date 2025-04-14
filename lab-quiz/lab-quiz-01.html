@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Stat220 – W25">
 <title>Lab Quiz 01 Info – Stat 220</title>
 <style>
 code{white-space: pre-wrap;}
@@ -261,12 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Stat220 – W25 </p>
-          </div>
-  </div>
     
   
     
@@ -276,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><p>Our first lab quiz is scheduled for <strong>Friday of Week 3</strong>. The first half of class will cover new content, and the second half of class you will complete the in-person portion of the lab quiz.</p>
 <section id="guidelines" class="level1"><h1>Guidelines</h1>
-<p>This is a <em>closed note</em>, <em>closed internet resources</em>, <em>closed other people</em> lab quiz. I want to see what’s in your brain! You may use the help pages built-in to R (accessed by <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">?ggplot</a></code>), but otherwise you may not use any resources.</p>
+<p>This is a <em>closed note</em>, <em>closed internet resources</em>, <em>closed other people</em> lab quiz. I want to see what’s in your brain! You may use the help pages built-in to R (accessed by <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">?ggplot</a></code>), and the cheat sheets provided by me, but otherwise you may not use any resources.</p>
 <p>On the resubmission, you may use my slides and your own notes from class, but you shouldn’t use other internet resources or get help from anybody but me.</p>
 <p>The lab quizzes are not written to be tricky or hard. If you’ve been completing the in-class activities and the homework, and putting the time and effort in to understand them, you should do well on the lab quizzes.</p>
 </section><section id="skills" class="level1"><h1>Skills</h1>
@@ -320,46 +313,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Given a graphic, describe the strengths and weaknesses of it from a design perspective
 <ul>
 <li>Core principles:</li>
-<li>Accessibility considerations: color, alt text, ….</li>
+<li>Accessibility considerations: color, alt text, direct labeling, etc.</li>
 </ul>
 </li>
 </ul></section><section id="data-wrangling" class="level2"><h2 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h2>
 <ul>
-<li>Know how the following verbs act on a data set: <code>filter</code>, <code>distinct</code>, <code>slice</code>, <code>slice_min</code>, <code>slice_max</code>, <code>mutate</code>, <code>select</code>, <code>arrange</code>
+<li>Know how the following verbs act on a data set: <code>filter</code>, <code>slice</code>, <code>select</code>
 <ul>
 <li>Syntax for using</li>
 <li>Describe what the output would look like</li>
 </ul>
 </li>
 <li>Given a data set and goal, identify and utilize the appropriate verb to create the data set of interest</li>
+<li>Use {dplyr} verbs AND the logical vector approach to subset a data frame</li>
 </ul></section></section><section id="grading" class="level1"><h1>Grading</h1>
 <p>For the in-class portion, I will grade your .rmd’s and be looking directly at your code. You’ll earn points through the following:</p>
 <ul>
-<li>1 point per question (successful or not successful)</li>
-<li>2 points for knitting your file (to .pdf, .html, or github md)</li>
+<li>1 point per question (successful or not successful; 0.5’s possible)</li>
+<li>1 point if I can knit your file (to .pdf, .html, or github md)</li>
 <li>1 point for submitting via GitHub</li>
 </ul>
-<p>If you have trouble knitting or submitting via GitHub, submit your .rmd on gradescope. There will be a 5 minute grace period past the end of class to submit, but I will not accept submissions beyond that point.</p>
+<p>If you have trouble knitting or submitting via GitHub, submit your .rmd via email. There will be a 5 minute grace period past the end of class to submit, but I will not accept submissions beyond that point.</p>
 <section id="resubmission" class="level2"><h2 class="anchored" data-anchor-id="resubmission">Resubmission</h2>
-<p>You may resubmit the lab quiz by 11am on Sunday (48 hours). All questions and grading will remain the same, except I will look at your output file instead of your .rmd when grading.</p>
+<p>You may resubmit the lab quiz by <strong>11am on Sunday (48 hours)</strong>. Resubmissions will be submitted through Gradescope (just like you turn in homework). All questions and grading will remain the same. You do not have to resubmit if the in-class portion went well; there is no benefit to doing the resubmission if you earn 100% on the in-class portion.</p>
 </section></section><section id="practice-quiz" class="level1"><h1>Practice Quiz</h1>
 <section id="rules" class="level2"><h2 class="anchored" data-anchor-id="rules">Rules</h2>
 <ol type="1">
-<li><p>Your solutions must be written up in the R Markdown (Rmd) file called lab-quiz-01.Rmd. This file must include your code and write up for each task. Your “submission” will be whatever is in your exam repository at the deadline. Commit and push the Rmd and outputs of that file.</p></li>
-<li><p>This exam is closed notes, closed internet, closed other people.</p></li>
+<li><p>Your solutions must be written up in the R Markdown (Rmd) file called lab-quiz-01.Rmd. This file must include your code and write up for each task. Your “submission” for the in-class portion will be whatever is in your repository at the end of the quiz period. Commit and push the Rmd and outputs of that file.</p></li>
+<li><p>This exam is closed notes, closed internet, closed other people. You may <strong>only</strong> refer to the built-in help pages in R and the printed cheat sheets provided by me.</p></li>
 <li>
-<p>You have until 10:45am to complete this exam and turn it in via gradescope and your personal Github repo - late work will not be accepted. Technical difficulties are not an excuse for late work - do not wait until the last minute to knit / commit / push.</p>
+<p>You have until 10:45am to complete this exam and turn it in via your personal Github repo. Do not wait until the last minute to knit / commit / push!</p>
 <ul>
 <li>If you do have technical issues, you will be able to solve them for the resubmission, but if you do not turn in the in-class portion you will not receive any points
 <ul>
-<li>Example: I run into a knitting issue and don’t leave myself time to commit to github and submit to gradescope, so I’m not able to turn anything in for the in-class portion. I work hard over the weekend to make sure everything is correct for the resubmission. I earn 0/10 on the in-class and 10/10 on the resubmission, so my score for the lab quiz is 10/20.</li>
-<li>Example: I run into a knitting issue 2 minutes before the deadline, but make sure to commit my .rmd and submit to gradescope before trying to solve the issue. I fix the knitting issue over over the weekend, and also find an error in one of my problems I submitted. I earn 8/10 on the in-class (1 unsuccessful problem + no output file) and 10/10 on the resubmission, so my score for the lab quiz is 18/20.</li>
+<li>Example: I run into a knitting issue and don’t leave myself time to commit and push to github, so I’m not able to turn anything in for the in-class portion. I work hard over the weekend to make sure everything is correct for the resubmission. I earn 0/10 on the in-class and 10/10 on the resubmission, so my score for the lab quiz is 10/20.</li>
+<li>Example: I run into a knitting issue 2 minutes before the deadline, but make sure to commit my .rmd and push to github before trying to solve the issue. I fix the knitting issue over over the weekend, and also find an error in one of my problems I submitted. I earn 8/10 on the in-class (1 unsuccessful problem + no output file) and 10/10 on the resubmission, so my score for the lab quiz is 18/20.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Even if the answer seems obvious from the R output, make sure to state it in your narrative as well. For example, if the question is asking what is 2 + 2, and you have the code in your document, you should additionally have a sentence that states “2 + 2 is 4.”</p></li>
-<li><p>You may only use <code>tidyverse</code> and <code>nycflights13</code> (and its dependencies) for this assignment. Your solutions may not use any other R packages.</p></li>
+<li><p>You may only use <code>tidyverse</code> and <code>nycflights13</code> (and its dependencies) for this quiz Your solutions may not use any other R packages.</p></li>
 </ol></section><section id="data" class="level2"><h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>The <code>nycflights23</code> package contains information about all flights that departed from NYC (e.g.&nbsp;EWR, JFK and LGA) in 2023. The main data is in the <code>flights</code> data frame, but there are additional data sets which may help understand what causes delays, specifically:</p>
 <ul>
@@ -372,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <code>airlines</code>: translation between two letter carrier codes and names</li>
 </ul>
-<p>For this lab quiz, we’re going to work with a random sample of this data (called `flights_sampl)</p>
+<p>For this lab quiz, we’re going to work with a random sample of this data (called <code>flights_sampl</code>)</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/nycflights23/">nycflights23</a></span><span class="op">)</span></span>
@@ -380,11 +374,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="questions" class="level2"><h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <section id="question-1" class="level3"><h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
-<p>Write out two different ways to access the <code>dep_delay</code> variable in the <code>flights</code> dataset. Save each to an object called <code>dep_delay1</code> and <code>dep_delay2</code>.</p>
+<p>Write out two different ways to access the <code>dep_delay</code> variable in the <code>flights</code> dataset that do <em>not</em> use {dplyr} verbs. Save each to an object called <code>dep_delay1</code> and <code>dep_delay2</code>.</p>
 </section><section id="question-2" class="level3"><h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
-<p>The code below creates a new dataset called <code>delayed_flights</code>, which consists of all flights that had a departure delay of more than 5 minutes. Show me a second way to create this dataset. (One option is to create a logical vector, and then index the <code>flights</code> data using that vector)</p>
+<p>The code below creates a new dataset called <code>delayed_flights</code>, which consists of all flights that had a departure delay of more than 5 minutes. Show me a second way to create this dataset. (<em>Hint:</em> One option is to create a logical vector, and then index the <code>flights</code> data using that vector)</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delayed_flights</span> <span class="op">=</span> <span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delayed_flights</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="question-3" class="level3"><h3 class="anchored" data-anchor-id="question-3">Question 3</h3>
@@ -392,10 +386,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="question-4" class="level3"><h3 class="anchored" data-anchor-id="question-4">Question 4</h3>
 <p>Recreate the plot included below using the <code>flights</code> data. Once you have created the visualization, in no more than one paragraph, describe what you think the point of this visualization might be.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 12534 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="lab-quiz-01_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
