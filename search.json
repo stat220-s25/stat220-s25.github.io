@@ -679,35 +679,35 @@
   {
     "objectID": "activities/09-tidyr.html",
     "href": "activities/09-tidyr.html",
-    "title": "\ntidyr: Reshaping Data",
+    "title": "\ntidyr 2: Reshaping Data",
     "section": "",
     "text": "Click the “code” button above to copy and paste the source code, or pull a fresh version of the “activities” repo from GitHub."
   },
   {
     "objectID": "activities/09-tidyr.html#task-1",
     "href": "activities/09-tidyr.html#task-1",
-    "title": "\ntidyr: Reshaping Data",
+    "title": "\ntidyr 2: Reshaping Data",
     "section": "Task 1",
-    "text": "Task 1\n\nTidy this data set by\n\nSelecting the series and e*_7day columns\nPivoting the data to add a column for episode and a column for rating (we’ll clean up the episode column later)\n\n\n\n# include your code here"
+    "text": "Task 1\nTidy this data set by\n\nSelecting the series and e*_7day columns\nPivoting the data to add a column for episode and a column for rating (we’ll clean up the episode column later)\n\n\n# include your code here"
   },
   {
     "objectID": "activities/09-tidyr.html#task-2",
     "href": "activities/09-tidyr.html#task-2",
-    "title": "\ntidyr: Reshaping Data",
+    "title": "\ntidyr 2: Reshaping Data",
     "section": "Task 2",
     "text": "Task 2\n\n\nClean the episode and period column\nMake a line plot with episode on the x-axis, rating on the y-axis, colored by series. (You will also need to map the group aesthetic to series)"
   },
   {
     "objectID": "activities/09-tidyr.html#relig_income",
     "href": "activities/09-tidyr.html#relig_income",
-    "title": "\ntidyr: Reshaping Data",
+    "title": "\ntidyr 2: Reshaping Data",
     "section": "relig_income",
     "text": "relig_income\nThe relig_income dataset in the {tidyr} package stores counts based on a survey which (among other things) asked people about their religion and annual income:\n\nrelig_income\n\n# A tibble: 18 × 11\n   religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n 1 Agnostic      27        34        60        81        76       137        122\n 2 Atheist       12        27        37        52        35        70         73\n 3 Buddhist      27        21        30        34        33        58         62\n 4 Catholic     418       617       732       670       638      1116        949\n 5 Don’t k…      15        14        15        11        10        35         21\n 6 Evangel…     575       869      1064       982       881      1486        949\n 7 Hindu          1         9         7         9        11        34         47\n 8 Histori…     228       244       236       238       197       223        131\n 9 Jehovah…      20        27        24        24        21        30         15\n10 Jewish        19        19        25        25        30        95         69\n11 Mainlin…     289       495       619       655       651      1107        939\n12 Mormon        29        40        48        51        56       112         85\n13 Muslim         6         7         9        10         9        23         16\n14 Orthodox      13        17        23        32        32        47         38\n15 Other C…       9         7        11        13        13        14         18\n16 Other F…      20        33        40        46        49        63         46\n17 Other W…       5         2         3         4         2         7          3\n18 Unaffil…     217       299       374       365       341       528        407\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nUse pivot_longer() to tidy this dataset."
   },
   {
     "objectID": "activities/09-tidyr.html#anscombe",
     "href": "activities/09-tidyr.html#anscombe",
-    "title": "\ntidyr: Reshaping Data",
+    "title": "\ntidyr 2: Reshaping Data",
     "section": "anscombe",
     "text": "anscombe\nAnscombe’s quartet is a built-in dataset in R.\n\nanscombe\n\n   x1 x2 x3 x4    y1   y2    y3    y4\n1  10 10 10  8  8.04 9.14  7.46  6.58\n2   8  8  8  8  6.95 8.14  6.77  5.76\n3  13 13 13  8  7.58 8.74 12.74  7.71\n4   9  9  9  8  8.81 8.77  7.11  8.84\n5  11 11 11  8  8.33 9.26  7.81  8.47\n6  14 14 14  8  9.96 8.10  8.84  7.04\n7   6  6  6  8  7.24 6.13  6.08  5.25\n8   4  4  4 19  4.26 3.10  5.39 12.50\n9  12 12 12  8 10.84 9.13  8.15  5.56\n10  7  7  7  8  4.82 7.26  6.42  7.91\n11  5  5  5  8  5.68 4.74  5.73  6.89\n\n\nThis dataset contains four pairs of variables (x1 and y1, x2 and y2, etc) that underlie Anscombe’s quartet, a collection of four datasets that have the same summary statistics (mean, sd, correlation etc), but have quite different data. We want to produce a dataset with columns set, x and y:\n# A tibble: 44 × 3\n   set       x     y\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 1        10  8.04\n 2 2        10  9.14\n 3 3        10  7.46\nThere are (at least) two ways to do this. The first is a little more intuitive, but not as efficient:\n\nFirst, we’ll create a new “index” column, so we don’t lose track of which x values map to which y values.\n\n\nanscombe &lt;- anscombe %&gt;%\n  mutate(\n    index = 1:nrow(anscombe)\n  )\n\n\nNext, use pivot_longer() on all of the columns but index. Use the default for names_to and values_to. The first few rows of your result should look like this:\n\n# A tibble: 88 × 3\n   index name  value\n   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n 1     1 x1    10   \n 2     1 x2    10   \n 3     1 x3    10  \n\nNext, separate name into variable and set. This is a little tricky, since there’s no separator character (the values of name are x1 and x2 instead of x_1 or x_2). Instead, set sep = 1, which tells R to split the column after the first character. The first few rows of your result should look like this:\n\n# A tibble: 88 × 4\n   index variable set   value\n   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;\n 1     1 x        1     10   \n 2     1 x        2     10   \n 3     1 x        3     10   \n\nFinally, use pivot_wider() with names_from variable and values_from value. Call your tidy dataset anscombe_tidy.\n\nIf all went well, you should be able to run the following two chunks to generate the summary statistics and scatterplots for Anscombe’s quartet.\n\nanscombe_tidy %&gt;%\n  group_by(set) %&gt;%\n  summarize(\n    mean_x = mean(x),\n    mean_y = mean(y),\n    sd_x = sd(x),\n    sd_y = sd(y),\n    cor = cor(x,y)\n  )\n\n\nanscombe_tidy %&gt;%\n  ggplot(aes(x = x, y = y)) + \n  geom_point() + \n  facet_wrap(~set)\n\nThe second way to do this is directly within pivot_longer():\n\nanscombe %&gt;%\n  pivot_longer(\n    -index,\n    names_to = c(\".value\", \"set\"),\n    names_pattern = \"(.)(.)\"\n  )\n\n# A tibble: 44 × 4\n   index set       x     y\n   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1 1        10  8.04\n 2     1 2        10  9.14\n 3     1 3        10  7.46\n 4     1 4         8  6.58\n 5     2 1         8  6.95\n 6     2 2         8  8.14\n 7     2 3         8  6.77\n 8     2 4         8  5.76\n 9     3 1        13  7.58\n10     3 2        13  8.74\n# ℹ 34 more rows\n\n\npull up the help page for pivot_longer and try to explain the new arguments."
   },
@@ -3535,7 +3535,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\ntbd\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\ntbd\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\ntbd\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\ntbd\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\ntbd\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -5061,79 +5061,135 @@
     "text": "Follow-up study (and article correction)\nhttps://www.tandfonline.com/doi/abs/10.1080/10691898.2015.11889737"
   },
   {
-    "objectID": "slides/09/slides09.html#bakeoff-ratings",
-    "href": "slides/09/slides09.html#bakeoff-ratings",
-    "title": "Data Wrangling: Tidy Data Code Style",
-    "section": "Bakeoff ratings",
-    "text": "Bakeoff ratings\n\nRatings data for each episodes in series 1-8\n\n\n\n\n# A tibble: 8 × 11\n  series    e1    e2    e3    e4    e5    e6    e7    e8    e9   e10\n   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1      1  2.24  3     3     2.6   3.03  2.75 NA    NA    NA    NA   \n2      2  3.1   3.53  3.82  3.6   3.83  4.25  4.42  5.06 NA    NA   \n3      3  3.85  4.6   4.53  4.71  4.61  4.82  5.1   5.35  5.7   6.74\n4      4  6.6   6.65  7.17  6.82  6.95  7.32  7.76  7.41  7.41  9.45\n5      5  8.51  8.79  9.28 10.2   9.95 10.1  10.3   9.02 10.7  13.5 \n6      6 11.6  11.6  12.0  12.4  12.4  12    12.4  11.1  12.6  15.0 \n7      7 13.6  13.4  13.0  13.3  13.1  13.1  13.4  13.3  13.4  15.9 \n8      8  9.46  9.23  8.68  8.55  8.61  8.61  9.01  8.95  9.03 10.0 \n\n\n\n\n\nSource: bakeoff R package"
+    "objectID": "slides/09/slides09.html#last-time-bakeoff-ratings",
+    "href": "slides/09/slides09.html#last-time-bakeoff-ratings",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "Last time: Bakeoff ratings",
+    "text": "Last time: Bakeoff ratings\n\nRatings data for each episodes in series 1-8\n\n\n\n\n# A tibble: 8 × 11\n  series    e1    e2    e3    e4    e5    e6    e7    e8    e9   e10\n   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1      1  2.24  3     3     2.6   3.03  2.75 NA    NA    NA    NA   \n2      2  3.1   3.53  3.82  3.6   3.83  4.25  4.42  5.06 NA    NA   \n3      3  3.85  4.6   4.53  4.71  4.61  4.82  5.1   5.35  5.7   6.74\n4      4  6.6   6.65  7.17  6.82  6.95  7.32  7.76  7.41  7.41  9.45\n5      5  8.51  8.79  9.28 10.2   9.95 10.1  10.3   9.02 10.7  13.5 \n6      6 11.6  11.6  12.0  12.4  12.4  12    12.4  11.1  12.6  15.0 \n7      7 13.6  13.4  13.0  13.3  13.1  13.1  13.4  13.3  13.4  15.9 \n8      8  9.46  9.23  8.68  8.55  8.61  8.61  9.01  8.95  9.03 10.0 \n\n\n\n\n\nSource: bakeoff R package"
   },
   {
-    "objectID": "slides/09/slides09.html#warm-up",
-    "href": "slides/09/slides09.html#warm-up",
-    "title": "Data Wrangling: Tidy Data Code Style",
-    "section": "Warm up",
-    "text": "Warm up\n\nIs this dataset in tidy format? Why or why not?\nIf not, what would a tidy data set look like? Sketch out the first few rows of this data set in tidy format\n\n\n\n\n−+\n03:00"
+    "objectID": "slides/09/slides09.html#last-time-tidying-the-data",
+    "href": "slides/09/slides09.html#last-time-tidying-the-data",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "Last Time: tidying the data",
+    "text": "Last Time: tidying the data\n\nbakeoff_ratings %&gt;%\n  pivot_longer(cols = e1:e10, names_to = \"episode\", values_to = \"rating\") %&gt;%\n  mutate(\n    episode = parse_number(episode) \n  )\n\n\n\n# A tibble: 80 × 3\n   series episode rating\n    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;\n 1      1       1   2.24\n 2      1       2   3   \n 3      1       3   3   \n 4      1       4   2.6 \n 5      1       5   3.03\n 6      1       6   2.75\n 7      1       7  NA   \n 8      1       8  NA   \n 9      1       9  NA   \n10      1      10  NA   \n# ℹ 70 more rows"
+  },
+  {
+    "objectID": "slides/09/slides09.html#try-it-messyratings2",
+    "href": "slides/09/slides09.html#try-it-messyratings2",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "Try it: messyratings2",
+    "text": "Try it: messyratings2\n\nTidy this data set by\n\nSelecting the series and e*_7day columns\nPivoting the data to add a column for episode and a column for rating (we’ll clean up the episode column later)\n\n\n\nmessy_ratings2 &lt;- read_csv(\"https://stat220-s25.github.io/data/messy_ratings2.csv\")\nmessy_ratings2\n\n# A tibble: 8 × 21\n  series e1_7day e1_28day e2_7day e2_28day e3_7day e3_28day e4_7day e4_28day\n   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1      1    2.24    NA       3       NA       3       NA       2.6     NA   \n2      2    3.1     NA       3.53    NA       3.82    NA       3.6     NA   \n3      3    3.85    NA       4.6     NA       4.53    NA       4.71    NA   \n4      4    6.6     NA       6.65    NA       7.17    NA       6.82    NA   \n5      5    8.51    NA       8.79    NA       9.28    NA      10.2     NA   \n6      6   11.6     11.7    11.6     11.8    12.0     NA      12.4     12.7 \n7      7   13.6     13.9    13.4     13.7    13.0     13.4    13.3     13.9 \n8      8    9.46     9.72    9.23     9.53    8.68     9.06    8.55     8.87\n# ℹ 12 more variables: e5_7day &lt;dbl&gt;, e5_28day &lt;dbl&gt;, e6_7day &lt;dbl&gt;,\n#   e6_28day &lt;dbl&gt;, e7_7day &lt;dbl&gt;, e7_28day &lt;dbl&gt;, e8_7day &lt;dbl&gt;,\n#   e8_28day &lt;dbl&gt;, e9_7day &lt;dbl&gt;, e9_28day &lt;dbl&gt;, e10_7day &lt;dbl&gt;,\n#   e10_28day &lt;dbl&gt;\n\n\n\n\n\n−+\n08:00"
+  },
+  {
+    "objectID": "slides/09/slides09.html#cleaning-episode",
+    "href": "slides/09/slides09.html#cleaning-episode",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "Cleaning episode",
+    "text": "Cleaning episode\n\n\nratings2 &lt;- messy_ratings2 %&gt;%\n  select(series, contains(\"7day\")) %&gt;%\n  pivot_longer(contains(\"7day\"), \n               names_to = \"episode\", \n               values_to = \"rating\")\nratings2\n\n\n# A tibble: 80 × 3\n   series episode  rating\n    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;\n 1      1 e1_7day    2.24\n 2      1 e2_7day    3   \n 3      1 e3_7day    3   \n 4      1 e4_7day    2.6 \n 5      1 e5_7day    3.03\n 6      1 e6_7day    2.75\n 7      1 e7_7day   NA   \n 8      1 e8_7day   NA   \n 9      1 e9_7day   NA   \n10      1 e10_7day  NA   \n# ℹ 70 more rows"
+  },
+  {
+    "objectID": "slides/09/slides09.html#separate",
+    "href": "slides/09/slides09.html#separate",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "separate()",
+    "text": "separate()\n\n\n\ndata (as usual)\n\n\n\nseparate(\n  data, \n  col, \n  into = c(\"col1\", \"col2\"),\n  sep \n  )"
+  },
+  {
+    "objectID": "slides/09/slides09.html#separate-1",
+    "href": "slides/09/slides09.html#separate-1",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "separate()",
+    "text": "separate()\n\n\n\ndata (as usual)\ncol: column to separate\n\n\n\nseparate(\n  data, \n  col, \n  into = c(\"col1\", \"col2\"),\n  sep \n  )"
+  },
+  {
+    "objectID": "slides/09/slides09.html#separate-2",
+    "href": "slides/09/slides09.html#separate-2",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "separate()",
+    "text": "separate()\n\n\n\ndata (as usual)\ncol: column to separate\ninto: names of new columns to create\n\n\n\nseparate(\n  data, \n  col, \n  into = c(\"col1\", \"col2\"),\n  sep \n  )"
+  },
+  {
+    "objectID": "slides/09/slides09.html#separate-3",
+    "href": "slides/09/slides09.html#separate-3",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "separate()",
+    "text": "separate()\n\n\n\ndata (as usual)\ncol: column to separate\ninto: names of new columns to create\nsep: separator between columns\n\n\n\nseparate(\n  data, \n  col, \n  into = c(\"col1\", \"col2\"),\n  sep \n  )"
+  },
+  {
+    "objectID": "slides/09/slides09.html#cleaning-episode-1",
+    "href": "slides/09/slides09.html#cleaning-episode-1",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "Cleaning episode",
+    "text": "Cleaning episode\n\n\nratings2 %&gt;%\n  separate( \n    col = episode, \n    into = c(\"episode\", \"period\") \n  )\n\n\n# A tibble: 80 × 4\n   series episode period rating\n    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;\n 1      1 e1      7day     2.24\n 2      1 e2      7day     3   \n 3      1 e3      7day     3   \n 4      1 e4      7day     2.6 \n 5      1 e5      7day     3.03\n 6      1 e6      7day     2.75\n 7      1 e7      7day    NA   \n 8      1 e8      7day    NA   \n 9      1 e9      7day    NA   \n10      1 e10     7day    NA   \n# ℹ 70 more rows"
+  },
+  {
+    "objectID": "slides/09/slides09.html#wrap-it-up",
+    "href": "slides/09/slides09.html#wrap-it-up",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "Wrap it up",
+    "text": "Wrap it up\n\n\nClean the episode and period column using parse_number\nMake a line plot with episode on the x-axis, rating on the y-axis, colored by series. (You may also need to map the group aesthetic to series)"
   },
   {
     "objectID": "slides/09/slides09.html#which-is-easier-to-read",
     "href": "slides/09/slides09.html#which-is-easier-to-read",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "Which is easier to read?",
-    "text": "Which is easier to read?\n\nOption AOption B\n\n\n\ngroup_by(colleges, region) %&gt;% mutate(z_cost = (cost - mean(cost, na.rm = TRUE)) / sd(cost, na.rm = TRUE)) %&gt;% ungroup() \n\n# A tibble: 187 × 14\n   unitid school  type  city  state region admission_rate   act undergrads  cost\n    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;\n 1 228343 Southw… priv… Geor… TX    South…          0.490    26       1507 55886\n 2 177719 Barnes… priv… Sain… MO    Plains         NA        NA        569    NA\n 3 367884 Hodges… priv… Fort… FL    South…          0.612    NA        832 27425\n 4 149781 Wheato… priv… Whea… IL    Great…          0.848    29       2358 49214\n 5 135364 Luther… priv… Lith… GA    South…          0.5      NA        235    NA\n 6 212601 Gannon… priv… Erie  PA    Mid E…          0.755    23       2866 44896\n 7 133979 Florid… priv… Miam… FL    South…          0.400    NA       1049 27460\n 8 117140 Univer… priv… La V… CA    Far W…          0.548    22       4516 58014\n 9 152567 Trine … priv… Ango… IN    Great…          0.816    25       2120 46440\n10 237057 Whitma… priv… Wall… WA    Far W…          0.559    31       1545 68082\n# ℹ 177 more rows\n# ℹ 4 more variables: grad_rate &lt;dbl&gt;, fy_retention &lt;dbl&gt;, fedloan &lt;dbl&gt;,\n#   z_cost &lt;dbl&gt;\n\n\n\n\n\ncolleges %&gt;%\n  group_by(region) %&gt;%\n  mutate(z_cost = (cost - mean(cost, na.rm = TRUE)) / sd(cost, na.rm = TRUE)) %&gt;%\n  ungroup() #&lt;&lt;\n\n# A tibble: 187 × 14\n   unitid school  type  city  state region admission_rate   act undergrads  cost\n    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;\n 1 228343 Southw… priv… Geor… TX    South…          0.490    26       1507 55886\n 2 177719 Barnes… priv… Sain… MO    Plains         NA        NA        569    NA\n 3 367884 Hodges… priv… Fort… FL    South…          0.612    NA        832 27425\n 4 149781 Wheato… priv… Whea… IL    Great…          0.848    29       2358 49214\n 5 135364 Luther… priv… Lith… GA    South…          0.5      NA        235    NA\n 6 212601 Gannon… priv… Erie  PA    Mid E…          0.755    23       2866 44896\n 7 133979 Florid… priv… Miam… FL    South…          0.400    NA       1049 27460\n 8 117140 Univer… priv… La V… CA    Far W…          0.548    22       4516 58014\n 9 152567 Trine … priv… Ango… IN    Great…          0.816    25       2120 46440\n10 237057 Whitma… priv… Wall… WA    Far W…          0.559    31       1545 68082\n# ℹ 177 more rows\n# ℹ 4 more variables: grad_rate &lt;dbl&gt;, fy_retention &lt;dbl&gt;, fedloan &lt;dbl&gt;,\n#   z_cost &lt;dbl&gt;"
+    "text": "Which is easier to read?\n\nOption AOption B\n\n\n\ngroup_by(colleges,region) %&gt;% mutate(z_cost=(cost - mean(cost, na.rm=TRUE)) / sd(cost,na.rm = TRUE)) %&gt;% ungroup() \n\n# A tibble: 187 × 14\n   unitid school  type  city  state region admission_rate   act undergrads  cost\n    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;\n 1 228343 Southw… priv… Geor… TX    South…          0.490    26       1507 55886\n 2 177719 Barnes… priv… Sain… MO    Plains         NA        NA        569    NA\n 3 367884 Hodges… priv… Fort… FL    South…          0.612    NA        832 27425\n 4 149781 Wheato… priv… Whea… IL    Great…          0.848    29       2358 49214\n 5 135364 Luther… priv… Lith… GA    South…          0.5      NA        235    NA\n 6 212601 Gannon… priv… Erie  PA    Mid E…          0.755    23       2866 44896\n 7 133979 Florid… priv… Miam… FL    South…          0.400    NA       1049 27460\n 8 117140 Univer… priv… La V… CA    Far W…          0.548    22       4516 58014\n 9 152567 Trine … priv… Ango… IN    Great…          0.816    25       2120 46440\n10 237057 Whitma… priv… Wall… WA    Far W…          0.559    31       1545 68082\n# ℹ 177 more rows\n# ℹ 4 more variables: grad_rate &lt;dbl&gt;, fy_retention &lt;dbl&gt;, fedloan &lt;dbl&gt;,\n#   z_cost &lt;dbl&gt;\n\n\n\n\n\ncolleges %&gt;%\n  group_by(region) %&gt;%\n  mutate(z_cost = (cost - mean(cost, na.rm = TRUE)) / sd(cost, na.rm = TRUE)) %&gt;%\n  ungroup() \n\n# A tibble: 187 × 14\n   unitid school  type  city  state region admission_rate   act undergrads  cost\n    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;\n 1 228343 Southw… priv… Geor… TX    South…          0.490    26       1507 55886\n 2 177719 Barnes… priv… Sain… MO    Plains         NA        NA        569    NA\n 3 367884 Hodges… priv… Fort… FL    South…          0.612    NA        832 27425\n 4 149781 Wheato… priv… Whea… IL    Great…          0.848    29       2358 49214\n 5 135364 Luther… priv… Lith… GA    South…          0.5      NA        235    NA\n 6 212601 Gannon… priv… Erie  PA    Mid E…          0.755    23       2866 44896\n 7 133979 Florid… priv… Miam… FL    South…          0.400    NA       1049 27460\n 8 117140 Univer… priv… La V… CA    Far W…          0.548    22       4516 58014\n 9 152567 Trine … priv… Ango… IN    Great…          0.816    25       2120 46440\n10 237057 Whitma… priv… Wall… WA    Far W…          0.559    31       1545 68082\n# ℹ 177 more rows\n# ℹ 4 more variables: grad_rate &lt;dbl&gt;, fy_retention &lt;dbl&gt;, fedloan &lt;dbl&gt;,\n#   z_cost &lt;dbl&gt;"
   },
   {
     "objectID": "slides/09/slides09.html#which-is-easier-to-read-1",
     "href": "slides/09/slides09.html#which-is-easier-to-read-1",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "Which is easier to read?",
-    "text": "Which is easier to read?\n\nOption AOption B\n\n\n\npalmerpenguins::penguins |&gt;\n  filter(species == \"Adelie\") |&gt;\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point() + \n  scale_color_viridis_d(option = \"magma\",end = .75) + \n  theme_bw(base_family = \"Times\") + \n  theme(legend.position = \"none\",\n        panel.grid.minor = element_blank(),\n        panel.grid.major.x = element_blank(),\n        axis.title.x = element_text(color = \"darkred\"))\n\n\n\n\npalmerpenguins::penguins |&gt;\n  filter(species == \"Adelie\") |&gt;\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) + geom_point() + scale_color_viridis_d(option = \"magma\",end = .75) + \n  theme_bw(base_family = \"Times\") + \n  theme(legend.position = \"none\", panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),\n        axis.title.x = element_text(color = \"darkred\"))"
+    "text": "Which is easier to read?\n\nOption AOption B\n\n\n\npalmerpenguins::penguins |&gt;\n  filter(species == \"Adelie\") |&gt;\n  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point() + \n  scale_color_viridis_d(option = \"magma\",end = .75) + \n  theme_bw(base_family = \"Times\") + \n  theme(legend.position = \"none\",\n        panel.grid.minor = element_blank(),\n        panel.grid.major.x = element_blank(),\n        axis.title.x = element_text(color = \"darkred\"))\n\n\n\n\npalmerpenguins::penguins |&gt; filter(species==\"Adelie\") |&gt; ggplot(aes(x =bill_length_mm, y= bill_depth_mm)) + geom_point() + scale_color_viridis_d(option = \"magma\",end = .75) + \n  theme_bw(base_family = \"Times\") + \n  theme(legend.position = \"none\", panel.grid.minor=element_blank(), panel.grid.major.x = element_blank(),\n        axis.title.x = element_text(color=\"darkred\"))"
   },
   {
-    "objectID": "slides/09/slides09.html#style.tidyverse.org",
-    "href": "slides/09/slides09.html#style.tidyverse.org",
-    "title": "Data Wrangling: Tidy Data Code Style",
-    "section": "<style.tidyverse.org>",
-    "text": "&lt;style.tidyverse.org&gt;"
+    "objectID": "slides/09/slides09.html#httpsstyle.tidyverse.org",
+    "href": "slides/09/slides09.html#httpsstyle.tidyverse.org",
+    "title": "Data Wrangling: Tidy Data +Code Style",
+    "section": "https://style.tidyverse.org",
+    "text": "https://style.tidyverse.org"
   },
   {
     "objectID": "slides/09/slides09.html#example-pipes-and-whitespace",
     "href": "slides/09/slides09.html#example-pipes-and-whitespace",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "Example: Pipes and whitespace",
-    "text": "Example: Pipes and whitespace\n|&gt; should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces.\nGood:\n\niris |&gt;\n  summarize(across(where(is.numeric), mean), .by = Species) |&gt;\n  pivot_longer(!Species, names_to = \"measure\", values_to = \"value\") |&gt;\n  arrange(value)\n\nBad:\n\niris |&gt; summarize(across(where(is.numeric), mean), .by = Species) |&gt;\npivot_longer(!Species, names_to = \"measure\", values_to = \"value\") |&gt;\narrange(value)"
+    "text": "Example: Pipes and whitespace\n|&gt; should always have a space before it, and should usually be followed by a new line. After the first step, each line should be indented by two spaces.\nGood:\n\niris |&gt;\n  summarize(across(where(is.numeric), mean), .by = Species) |&gt;\n  pivot_longer(!Species, names_to = \"measure\", values_to = \"value\") |&gt;\n  arrange(value)\n\nBad:\n\niris|&gt; summarize(across(where(is.numeric), mean), .by = Species) |&gt;\npivot_longer(!Species, names_to = \"measure\", values_to = \"value\")|&gt;\narrange(value)"
   },
   {
     "objectID": "slides/09/slides09.html#example-long-lines",
     "href": "slides/09/slides09.html#example-long-lines",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "Example: long lines",
-    "text": "Example: long lines\nIf the arguments to a function don’t all fit on one line, put each argument on its own line and indent:\nGood:\n\niris |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    .by = Species\n  )\n\nBad:\n\niris |&gt;\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), .by = Species)"
+    "text": "Example: long lines\nIf the arguments to a function don’t all fit on one line, put each argument on its own line and indent:\nGood:\n\niris |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length, na.rm = TRUE),\n    Sepal.Width = mean(Sepal.Width, na.rm = TRUE),\n    .by = Species\n  )\n\nBad:\n\niris |&gt;\n  summarise(Sepal.Length = mean(Sepal.Length, na.rm = TRUE), Sepal.Width = mean(Sepal.Width, na.rm = TRUE), .by = Species)"
   },
   {
     "objectID": "slides/09/slides09.html#ggplot2-whitespace-and-indenting",
     "href": "slides/09/slides09.html#ggplot2-whitespace-and-indenting",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "ggplot2 whitespace and indenting",
     "text": "ggplot2 whitespace and indenting\n+ should always have a space before it, and should be followed by a new line. After the first step, each line should be indented by two spaces.\nIf you are creating a ggplot off of a dplyr pipeline, there should only be one level of indentation.\nGood:\n\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n  geom_point()\n\nBad:\n\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +\n    geom_point()\n\nBad:\n\niris |&gt;\n  filter(Species == \"setosa\") |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()"
   },
   {
     "objectID": "slides/09/slides09.html#ggplot2-long-lines",
     "href": "slides/09/slides09.html#ggplot2-long-lines",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "ggplot2 long lines",
     "text": "ggplot2 long lines\nIf the arguments to a ggplot2 layer don’t all fit on one line, put each argument on its own line and indent:\nGood:\n\niris |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(\n    x = \"Sepal width, in cm\",\n    y = \"Sepal length, in cm\",\n    title = \"Sepal length vs. width of irises\"\n  )\n\nBad:\n\niris |&gt;\n  ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point() +\n  labs(x = \"Sepal width, in cm\", y = \"Sepal length, in cm\", title = \"Sepal length vs. width of irises\")"
   },
   {
     "objectID": "slides/09/slides09.html#code-style-summary",
     "href": "slides/09/slides09.html#code-style-summary",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "Code style summary",
     "text": "Code style summary\n\nAll code style guides are opinionated and subjective\nUsing consistent style makes it easier for collaborators (including future you!) to read and understand your code\nTry to follow the tidyverse style guide in this class"
   },
   {
     "objectID": "slides/09/slides09.html#a-shortcut",
     "href": "slides/09/slides09.html#a-shortcut",
-    "title": "Data Wrangling: Tidy Data Code Style",
+    "title": "Data Wrangling: Tidy Data +Code Style",
     "section": "A shortcut",
     "text": "A shortcut\nIn RStudio,\n\nHighlight the code that you want to reformat\nGo to “code –&gt; reformat code”\nMarvel in wonder\n\n\nTry it\n\nReformat your code from the flights activity so far according to the tidyverse style guide"
   },
