@@ -303,7 +303,7 @@
     "href": "activities/11-import-solutions.html",
     "title": "Data import and dates/times – Solutions",
     "section": "",
-    "text": "Click the “code” button above to copy and paste the source code, or pull a fresh version of the “activities” repo from GitHub.\nWarm Up\nUse read_csv() to import the desserts data set from\nhttps://stat220-s25.github.io/data/desserts.csv\n\ndesserts &lt;- read_csv(here::here(here::here(), \"data/desserts.csv\"))\n\nYour turn\nUse the appropriate read_&lt;type&gt;() function to import the following data sets:\n\nhttps://stat220-s25.github.io/data/data-4.csv\nhttps:/stat220-s25.github.io/data/tricky-1.csv\nhttps://stat220-s25.github.io/data/tricky-2.csv\n\nIf you hit any errors/problems, be sure to explore them and identify the issue, even if you can’t “fix” it.\ndata-4.csv\nOpening the URL for data-4.csv you see that the delimiter is |, so you should use read_delim():\n\ndata4 &lt;- read_delim(here::here(here::here(),\"data/data-4.csv\"), delim = \"|\")\n\ntricky-1.csv\nAt first glance it isn’t obvious what is tricky about tricky-1.csv; however, if you try to use read_csv() you’ll hit the following problem:\n\ntricky1 &lt;- read_csv(\"https:/stat220-s25.github.io/data/tricky-1.csv\")\nproblems(tricky1)\n\nThe output of problems() here is that in rows 4 and 7 read_csv only finds 4 columns, but 5 are expected. Looking at the imported data set we see that the city is missing in rows three and 6 (the 4th and 7th rows of the original data file).\n\ntricky1\n\nWe can fix this with post processing:\n\ntricky1[3, ] &lt;- c(tricky1[3, 1:2], NA, tricky1[3, 3:4])\ntricky1[6, ] &lt;- c(tricky1[4, 1], NA, tricky1[4, 3:5])\n\ntricky-2.csv\nTo begin, we can attempt to read in the tricky-2.csv file:\n\ntricky2 &lt;- read_csv(here::here(here::here(),\"data/tricky-2.csv\"))\nproblems(tricky2)\n\nThis looks like a missing value problem again! Let’s look at the rows with missing values:\n\ntricky2 %&gt;% slice(8:21)\n\nWhy are there state abbreviations in the latitude column?!? (Because not all the rows put quotes around the “City, State” so it added an extra column!)\nOne solution is to parse the file in pieces. First, we can import the first 7 rows of the file:\n\ntricky2_part1 &lt;- read_csv(\n  \"https://aloy.rbind.io/data/tricky-2.csv\",\n  n_max = 7\n)\n\nNext, we parse the other rows, and manually specify the column names, since we are skipping the first row:\n\ntricky2_part2 &lt;- read_csv(\n  \"https://aloy.rbind.io/data/tricky-2.csv\",\n  skip = 8, \n  col_names = c(\"iata\", \"airport\", \"city\", \"state\",  \"latitude\", \"longitude\")\n)\n\nNow, we have to use some data wrangling skills to combine everything. First, we must create a state column in tricky2_part1\n\ntricky2_part1 &lt;- tricky2_part1 %&gt;%\n  separate(city, into = c(\"city\", \"state\"), sep = \",\")\n\nThen, we need to bind the two sets of rows together using bind_rows():\n\ntricky2 &lt;- bind_rows(tricky2_part1, tricky2_part2)\n\nTime – plot\nDays – make a list of class days\nStart by printing the dates only\nNext, print them in the format “Week 4 Wednesday: Jan 29 2025”"
+    "text": "Click the “code” button above to copy and paste the source code, or pull a fresh version of the “activities” repo from GitHub.\nWarm Up\nUse read_csv() to import the desserts data set from\n\nhttps://stat220-s25.github.io/data/desserts.csv\n\n\ndesserts &lt;- read_csv(\"https://stat220-s25.github.io/data/desserts.csv\")\n\nYour turn\nUse the appropriate read_&lt;type&gt;() function to import the following data sets:\n\nhttps://stat220-s25.github.io/data/data-4.csv\nhttps:/stat220-s25.github.io/data/tricky-1.csv\nhttps://stat220-s25.github.io/data/tricky-2.csv\n\nIf you hit any errors/problems, be sure to explore them and identify the issue, even if you can’t “fix” it.\ndata-4.csv\nOpening the URL for data-4.csv you see that the delimiter is |, so you should use read_delim():\n\ndata4 &lt;- read_delim(\"https://stat220-s25.github.io/data/data-4.csv\", delim = \"|\")\n\ntricky-1.csv\nAt first glance it isn’t obvious what is tricky about tricky-1.csv; however, if you try to use read_csv() you’ll hit the following problem:\n\ntricky1 &lt;- read_csv(\"https://stat220-s25.github.io/data/tricky-1.csv\")\nproblems(tricky1)\n\nThe output of problems() here is that in rows 4 and 7 read_csv only finds 4 columns, but 5 are expected. Looking at the imported data set we see that the city is missing in rows three and 6 (the 4th and 7th rows of the original data file).\n\ntricky1\n\nWe can fix this with post processing:\n\ntricky1[3, ] &lt;- c(tricky1[3, 1:2], NA, tricky1[3, 3:4])\ntricky1[6, ] &lt;- c(tricky1[4, 1], NA, tricky1[4, 3:5])\n\ntricky-2.csv\nTo begin, we can attempt to read in the tricky-2.csv file:\n\ntricky2 &lt;- read_csv(\"https://stat220-s25.github.io/data/tricky-2.csv\")\nproblems(tricky2)\n\nThis looks like a missing value problem again! Let’s look at the rows with missing values:\n\ntricky2 %&gt;% slice(8:21)\n\nWhy are there state abbreviations in the latitude column?!? (Because not all the rows put quotes around the “City, State” so it added an extra column!)\nOne solution is to parse the file in pieces. First, we can import the first 7 rows of the file:\n\ntricky2_part1 &lt;- read_csv(\n  \"https://stat220-s25.github.io/data/tricky-2.csv\",\n  n_max = 7\n)\n\nNext, we parse the other rows, and manually specify the column names, since we are skipping the first row:\n\ntricky2_part2 &lt;- read_csv(\n  \"https://stat220-s25.github.io/data/tricky-2.csv\",\n  skip = 8, \n  col_names = c(\"iata\", \"airport\", \"city\", \"state\",  \"latitude\", \"longitude\")\n)\n\nNow, we have to use some data wrangling skills to combine everything. First, we must create a state column in tricky2_part1\n\ntricky2_part1 &lt;- tricky2_part1 %&gt;%\n  separate(city, into = c(\"city\", \"state\"), sep = \",\")\n\nThen, we need to bind the two sets of rows together using bind_rows():\n\ntricky2 &lt;- bind_rows(tricky2_part1, tricky2_part2)\n\nlubridate practice\n\ndesserts2 &lt;- read_csv(\"https://stat220-s25.github.io/data/desserts.csv\")\n\ndesserts2 |&gt;\n  mutate(\n    uk_airdate = dmy(uk_airdate),\n    how_long_ago = today() - uk_airdate\n  )"
   },
   {
     "objectID": "activities/17-iteration.html",
@@ -772,7 +772,7 @@
     "href": "activities/11-import.html",
     "title": "Data import and dates/times",
     "section": "",
-    "text": "Click the “code” button above to copy and paste the source code, or pull a fresh version of the “activities” repo from GitHub."
+    "text": "Click the “code” button above to copy and paste the source code into RStudio"
   },
   {
     "objectID": "activities/11-import.html#data-4.csv",
@@ -789,25 +789,11 @@
     "text": "tricky-1.csv\n\n# your code here"
   },
   {
-    "objectID": "activities/11-import.html#tricky-2.csv",
-    "href": "activities/11-import.html#tricky-2.csv",
-    "title": "Data import and dates/times",
-    "section": "tricky-2.csv",
-    "text": "tricky-2.csv\n\n# your code here"
-  },
-  {
     "objectID": "activities/11-import.html#task-1",
     "href": "activities/11-import.html#task-1",
     "title": "Data import and dates/times",
     "section": "Task 1",
-    "text": "Task 1\nCreate a vector of dates that our class meets this term\n\n# your code here"
-  },
-  {
-    "objectID": "activities/11-import.html#task-2",
-    "href": "activities/11-import.html#task-2",
-    "title": "Data import and dates/times",
-    "section": "Task 2",
-    "text": "Task 2\nNext, print them in the format “Wednesday: Jan 29 2025”\nHint: see ?stamp or the lubridate cheatsheet\n\n# your code here"
+    "text": "Task 1\nCreate a new copy of the desserts dataset, but do not parse the uk_airdate within read_csv. Instead, leave it as a character vector and parse the date using {lubridate} functions. Which approach do you prefer?\nThen, create a new column called how_long_ago that measures the time between today and the UK airdate of the episode. Can you format this column:\n\nin years\nin months\nin weeks\nin days\n\nCan you change this column to measure durations?\n\n# your code here"
   },
   {
     "objectID": "portfolio/portfolio-3.html",
@@ -2803,7 +2789,14 @@
     "href": "slides/11/slides11.html#today",
     "title": "Data Import & Dates/Times",
     "section": "Today",
-    "text": "Today\n\nProject 1 grading/questions\nIntro to Project 2\nHW 4 due tonight\nHW 5 + check-in survey\nNew stuff!"
+    "text": "Today\n\nImporting data into R\nWorking with dates and times"
+  },
+  {
+    "objectID": "slides/11/slides11.html#desserts-data",
+    "href": "slides/11/slides11.html#desserts-data",
+    "title": "Data Import & Dates/Times",
+    "section": "desserts data",
+    "text": "desserts data\n\n\nContains results from series 1-8 of The Great British Bake Off\nCase defined by series, episode and baker\n\n\n\n\n# A tibble: 549 × 16\n   series episode baker     technical result uk_airdate     us_season us_airdate\n    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;date&gt;    \n 1      1       1 Annetha   2nd       IN     17 August 2010        NA NA        \n 2      1       1 David     3rd       IN     17 August 2010        NA NA        \n 3      1       1 Edd       1st       IN     17 August 2010        NA NA        \n 4      1       1 Jasminder N/A       IN     17 August 2010        NA NA        \n 5      1       1 Jonathan  9th       IN     17 August 2010        NA NA        \n 6      1       1 Louise    N/A       IN     17 August 2010        NA NA        \n 7      1       1 Miranda   8th       IN     17 August 2010        NA NA        \n 8      1       1 Ruth      N/A       IN     17 August 2010        NA NA        \n 9      1       1 Lea       10th      OUT    17 August 2010        NA NA        \n10      1       1 Mark      N/A       OUT    17 August 2010        NA NA        \n# ℹ 539 more rows\n# ℹ 8 more variables: showstopper_chocolate &lt;chr&gt;, showstopper_dessert &lt;chr&gt;,\n#   showstopper_fruit &lt;chr&gt;, showstopper_nut &lt;chr&gt;, signature_chocolate &lt;chr&gt;,\n#   signature_dessert &lt;chr&gt;, signature_fruit &lt;chr&gt;, signature_nut &lt;chr&gt;\n\n\n\n\nSource: Allison Hill and the bakeoff package; compiled by Adam Loy"
   },
   {
     "objectID": "slides/11/slides11.html#readr-functions",
@@ -2824,7 +2817,7 @@
     "href": "slides/11/slides11.html#whats-the-big-deal",
     "title": "Data Import & Dates/Times",
     "section": "What’s the big deal?",
-    "text": "What’s the big deal?\nCompared to read.table and its derivatives, readr functions are:\n\n~ 10 times faster\nReturn tibbles\nHave more intuitive defaults. No row names, no strings as factors."
+    "text": "What’s the big deal?\nCompared to read.csv (base R), readr functions are:\n\n~ 10 times faster\nReturn tibbles\nHave more intuitive defaults. No row names, no strings as factors."
   },
   {
     "objectID": "slides/11/slides11.html#tibbles-enhance-data-frames",
@@ -2848,32 +2841,32 @@
     "text": "Conversion\n\nas_tibble() - convert a data frame to a tibble\nas.data.frame() - convert a tibble to a data frame"
   },
   {
-    "objectID": "slides/11/slides11.html#desserts-data",
-    "href": "slides/11/slides11.html#desserts-data",
+    "objectID": "slides/11/slides11.html#desserts-data-1",
+    "href": "slides/11/slides11.html#desserts-data-1",
     "title": "Data Import & Dates/Times",
     "section": "desserts data",
-    "text": "desserts data\n\n\nContains results from series 1-8 of The Great British Bake Off\nCase defined by series, episode and baker\n\n\n\n\nSource: Allison Hill and the bakeoff package; compiled by Adam Loy"
+    "text": "desserts data\n\n\nContains results from series 1-8 of The Great British Bake Off\nCase defined by series, episode and baker\n\n\n\n\n# A tibble: 549 × 16\n   series episode baker     technical result uk_airdate     us_season us_airdate\n    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;date&gt;    \n 1      1       1 Annetha   2nd       IN     17 August 2010        NA NA        \n 2      1       1 David     3rd       IN     17 August 2010        NA NA        \n 3      1       1 Edd       1st       IN     17 August 2010        NA NA        \n 4      1       1 Jasminder N/A       IN     17 August 2010        NA NA        \n 5      1       1 Jonathan  9th       IN     17 August 2010        NA NA        \n 6      1       1 Louise    N/A       IN     17 August 2010        NA NA        \n 7      1       1 Miranda   8th       IN     17 August 2010        NA NA        \n 8      1       1 Ruth      N/A       IN     17 August 2010        NA NA        \n 9      1       1 Lea       10th      OUT    17 August 2010        NA NA        \n10      1       1 Mark      N/A       OUT    17 August 2010        NA NA        \n# ℹ 539 more rows\n# ℹ 8 more variables: showstopper_chocolate &lt;chr&gt;, showstopper_dessert &lt;chr&gt;,\n#   showstopper_fruit &lt;chr&gt;, showstopper_nut &lt;chr&gt;, signature_chocolate &lt;chr&gt;,\n#   signature_dessert &lt;chr&gt;, signature_fruit &lt;chr&gt;, signature_nut &lt;chr&gt;\n\n\n\n\nSource: Allison Hill and the bakeoff package; compiled by Adam Loy"
   },
   {
-    "objectID": "slides/11/slides11.html#warm-up",
-    "href": "slides/11/slides11.html#warm-up",
+    "objectID": "slides/11/slides11.html#warm-up-.smaller",
+    "href": "slides/11/slides11.html#warm-up-.smaller",
     "title": "Data Import & Dates/Times",
-    "section": "Warm up",
-    "text": "Warm up\n\nUse read_csv() to import the desserts data set from  https://stat220-s25.github.io/data/desserts.csv\nStore the data in the desserts object\n\n\n\n\n−+\n04:00"
+    "section": "Warm up {.smaller}",
+    "text": "Warm up {.smaller}\n\n\nUse read_csv() to import the desserts data set from  https://stat220-s25.github.io/data/desserts.csv\nStore the data in the desserts object\nOur goal is to make the following plot. Will this data allow us to do so?\n\n\n\n\n\n−+\n06:00"
   },
   {
     "objectID": "slides/11/slides11.html#did-it-work-as-expected",
     "href": "slides/11/slides11.html#did-it-work-as-expected",
     "title": "Data Import & Dates/Times",
     "section": "Did it work as expected?",
-    "text": "Did it work as expected?\n\ndesserts &lt;- read_csv(\"https://stat220-s25.github.io/data/desserts.csv\")\n\n\n\n\n\nRows: 549\nColumns: 16\n$ series                &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ episode               &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, …\n$ baker                 &lt;chr&gt; \"Annetha\", \"David\", \"Edd\", \"Jasminder\", \"Jonatha…\n$ technical             &lt;chr&gt; \"2nd\", \"3rd\", \"1st\", \"N/A\", \"9th\", \"N/A\", \"8th\",…\n$ result                &lt;chr&gt; \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", …\n$ uk_airdate            &lt;chr&gt; \"17 August 2010\", \"17 August 2010\", \"17 August 2…\n$ us_season             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ us_airdate            &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ showstopper_chocolate &lt;chr&gt; \"chocolate\", \"chocolate\", \"no chocolate\", \"no ch…\n$ showstopper_dessert   &lt;chr&gt; \"other\", \"other\", \"other\", \"other\", \"other\", \"ca…\n$ showstopper_fruit     &lt;chr&gt; \"no fruit\", \"no fruit\", \"no fruit\", \"no fruit\", …\n$ showstopper_nut       &lt;chr&gt; \"no nut\", \"no nut\", \"no nut\", \"no nut\", \"almond\"…\n$ signature_chocolate   &lt;chr&gt; \"no chocolate\", \"chocolate\", \"no chocolate\", \"no…\n$ signature_dessert     &lt;chr&gt; \"cake\", \"cake\", \"cake\", \"cake\", \"cake\", \"cake\", …\n$ signature_fruit       &lt;chr&gt; \"no fruit\", \"fruit\", \"fruit\", \"fruit\", \"fruit\", …\n$ signature_nut         &lt;chr&gt; \"no nut\", \"no nut\", \"no nut\", \"no nut\", \"no nut\"…\n\n\n\nA couple issues…\n\ntechnical is character, not numeric\nuk_airdate is character, not date"
+    "text": "Did it work as expected?\n\ndesserts &lt;- read_csv(\"https://stat220-s25.github.io/data/desserts.csv\")\nglimpse(desserts)\n\nRows: 549\nColumns: 16\n$ series                &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ episode               &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, …\n$ baker                 &lt;chr&gt; \"Annetha\", \"David\", \"Edd\", \"Jasminder\", \"Jonatha…\n$ technical             &lt;chr&gt; \"2nd\", \"3rd\", \"1st\", \"N/A\", \"9th\", \"N/A\", \"8th\",…\n$ result                &lt;chr&gt; \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", …\n$ uk_airdate            &lt;chr&gt; \"17 August 2010\", \"17 August 2010\", \"17 August 2…\n$ us_season             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ us_airdate            &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ showstopper_chocolate &lt;chr&gt; \"chocolate\", \"chocolate\", \"no chocolate\", \"no ch…\n$ showstopper_dessert   &lt;chr&gt; \"other\", \"other\", \"other\", \"other\", \"other\", \"ca…\n$ showstopper_fruit     &lt;chr&gt; \"no fruit\", \"no fruit\", \"no fruit\", \"no fruit\", …\n$ showstopper_nut       &lt;chr&gt; \"no nut\", \"no nut\", \"no nut\", \"no nut\", \"almond\"…\n$ signature_chocolate   &lt;chr&gt; \"no chocolate\", \"chocolate\", \"no chocolate\", \"no…\n$ signature_dessert     &lt;chr&gt; \"cake\", \"cake\", \"cake\", \"cake\", \"cake\", \"cake\", …\n$ signature_fruit       &lt;chr&gt; \"no fruit\", \"fruit\", \"fruit\", \"fruit\", \"fruit\", …\n$ signature_nut         &lt;chr&gt; \"no nut\", \"no nut\", \"no nut\", \"no nut\", \"no nut\"…\n\n\n\nA couple issues…\n\ntechnical is character, not numeric\nuk_airdate is character, not date"
   },
   {
     "objectID": "slides/11/slides11.html#the-col_types-argument",
     "href": "slides/11/slides11.html#the-col_types-argument",
     "title": "Data Import & Dates/Times",
     "section": "The col_types argument",
-    "text": "The col_types argument\nBy default, looks at first 1000 rows to guess variable data types (guess_max), but we can also tell R how to read column types\n\n\ndesserts &lt;- read_csv(\n  \"https://stat220-s25.github.io/data/desserts.csv\",\n  col_types = list( \n    technical = col_number(), \n    uk_airdate = col_date()   \n  ) \n)"
+    "text": "The col_types argument\nBy default, read_csv looks at first 1000 rows to guess variable data types (guess_max), but we can also tell R how to read column types\n\n\ndesserts &lt;- read_csv( \"https://stat220-s25.github.io/data/desserts.csv\",\n  col_types = list( \n    technical = col_number(), \n    uk_airdate = col_date()   \n  ) \n)\n\nglimpse(desserts)\n\n\n\nRows: 549\nColumns: 16\n$ series                &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ episode               &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, …\n$ baker                 &lt;chr&gt; \"Annetha\", \"David\", \"Edd\", \"Jasminder\", \"Jonatha…\n$ technical             &lt;dbl&gt; 2, 3, 1, NA, 9, NA, 8, NA, 10, NA, 8, 6, 2, 1, 3…\n$ result                &lt;chr&gt; \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", \"IN\", …\n$ uk_airdate            &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ us_season             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ us_airdate            &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ showstopper_chocolate &lt;chr&gt; \"chocolate\", \"chocolate\", \"no chocolate\", \"no ch…\n$ showstopper_dessert   &lt;chr&gt; \"other\", \"other\", \"other\", \"other\", \"other\", \"ca…\n$ showstopper_fruit     &lt;chr&gt; \"no fruit\", \"no fruit\", \"no fruit\", \"no fruit\", …\n$ showstopper_nut       &lt;chr&gt; \"no nut\", \"no nut\", \"no nut\", \"no nut\", \"almond\"…\n$ signature_chocolate   &lt;chr&gt; \"no chocolate\", \"chocolate\", \"no chocolate\", \"no…\n$ signature_dessert     &lt;chr&gt; \"cake\", \"cake\", \"cake\", \"cake\", \"cake\", \"cake\", …\n$ signature_fruit       &lt;chr&gt; \"no fruit\", \"fruit\", \"fruit\", \"fruit\", \"fruit\", …\n$ signature_nut         &lt;chr&gt; \"no nut\", \"no nut\", \"no nut\", \"no nut\", \"no nut\"…"
   },
   {
     "objectID": "slides/11/slides11.html#looking-for-problems",
@@ -2887,7 +2880,7 @@
     "href": "slides/11/slides11.html#date-formatting-woes",
     "title": "Data Import & Dates/Times",
     "section": "Date formatting woes",
-    "text": "Date formatting woes\n\nprint(problems(desserts), n=5)\n\n# A tibble: 556 × 5\n    row   col expected        actual         file \n  &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;\n1     2     6 date in ISO8601 17 August 2010 \"\"   \n2     3     6 date in ISO8601 17 August 2010 \"\"   \n3     4     6 date in ISO8601 17 August 2010 \"\"   \n4     5     4 a number        N/A            \"\"   \n5     5     6 date in ISO8601 17 August 2010 \"\"   \n# ℹ 551 more rows\n\n\nISO8601 format: 2010-08-17\nWhat we have: 17 August 2010"
+    "text": "Date formatting woes\n\n\n# A tibble: 556 × 5\n    row   col expected        actual         file \n  &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;\n1     2     6 date in ISO8601 17 August 2010 \"\"   \n2     3     6 date in ISO8601 17 August 2010 \"\"   \n3     4     6 date in ISO8601 17 August 2010 \"\"   \n4     5     4 a number        N/A            \"\"   \n5     5     6 date in ISO8601 17 August 2010 \"\"   \n# ℹ 551 more rows\n\n\nISO8601 format: 2010-08-17\nWhat we have: 17 August 2010"
   },
   {
     "objectID": "slides/11/slides11.html#section-1",
@@ -2915,7 +2908,7 @@
     "href": "slides/11/slides11.html#addressing-missing-values",
     "title": "Data Import & Dates/Times",
     "section": "Addressing missing values",
-    "text": "Addressing missing values\nBy default na = c(\"\", \"NA\") are the recognized missing values\n\ndesserts &lt;- read_csv(\n  \"https://stat220-s25.github.io/data/desserts.csv\",\n  col_types = list(\n    technical = col_number(), \n    uk_airdate = col_date(format = \"%d %B %Y\")\n  ),\n  na = c(\"\", \"NA\", \"N/A\") \n)"
+    "text": "Addressing missing values\nBy default na = c(\"\", \"NA\") are the recognized missing values\n\n\ndesserts &lt;- read_csv(\n  \"https://stat220-s25.github.io/data/desserts.csv\",\n  col_types = list(\n    technical = col_number(), \n    uk_airdate = col_date(format = \"%d %B %Y\")\n  ),\n  na = c(\"\", \"NA\", \"N/A\") \n)"
   },
   {
     "objectID": "slides/11/slides11.html#looking-for-problems-2",
@@ -2950,49 +2943,42 @@
     "href": "slides/11/slides11.html#your-turn",
     "title": "Data Import & Dates/Times",
     "section": "Your turn",
-    "text": "Your turn\n\nUse the appropriate read_&lt;type&gt;() function to import the following data sets:\n\ndata-4.csv\ntricky-1.csv\ntricky2.csv\n\nThe full URLs are in the 11-import.Rmd activity\nIf you hit any errors/problems, be sure to explore them and identify the issue, even if you can’t “fix” it."
+    "text": "Your turn\n\nUse the appropriate read_&lt;type&gt;() function to import the following data sets:\n\ndata-4.csv\ntricky-1.csv\n\nThe full URLs are in the 11-import.Rmd activity. (It might be helpful to look at the data file before trying to import it into R)\nIf you hit any errors/problems, be sure to explore them and identify the issue, even if you can’t “fix” it."
   },
   {
     "objectID": "slides/11/slides11.html#section-3",
     "href": "slides/11/slides11.html#section-3",
     "title": "Data Import & Dates/Times",
     "section": "",
-    "text": "Help!\n\nI already imported data and now I have dates/times as character strings or numeric vectors!"
+    "text": "Get data out of excel and into R\nSupport for both .xls and .xlsx files\nPart of the tidyverse\nNeed to load separately"
   },
   {
-    "objectID": "slides/11/slides11.html#nycflights13-revisited",
-    "href": "slides/11/slides11.html#nycflights13-revisited",
+    "objectID": "slides/11/slides11.html#read_excel-works-like-read_csv",
+    "href": "slides/11/slides11.html#read_excel-works-like-read_csv",
     "title": "Data Import & Dates/Times",
-    "section": "nycflights13 revisited",
-    "text": "nycflights13 revisited\nRecall that the departure and arrival times were in integer format\n\n\nflights %&gt;% select(contains(\"_time\"), hour, minute)\n\n\n# A tibble: 435,352 × 7\n   dep_time sched_dep_time arr_time sched_arr_time air_time  hour minute\n      &lt;int&gt;          &lt;int&gt;    &lt;int&gt;          &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1        1           2038      328              3      367    20     38\n 2       18           2300      228            135      108    23      0\n 3       31           2344      500            426      190    23     44\n 4       33           2140      238           2352      108    21     40\n 5       36           2048      223           2252       80    20     48\n 6      503            500      808            815      154     5      0\n 7      520            510      948            949      192     5     10\n 8      524            530      645            710      119     5     30\n 9      537            520      926            818      258     5     20\n10      547            545      845            852      157     5     45\n# ℹ 435,342 more rows"
+    "section": "read_excel works like read_csv",
+    "text": "read_excel works like read_csv\n\ndf &lt;- read_excel(file = \"path/to/file.xlsx\", ...)"
   },
   {
-    "objectID": "slides/11/slides11.html#section-4",
-    "href": "slides/11/slides11.html#section-4",
+    "objectID": "slides/11/slides11.html#sales-data",
+    "href": "slides/11/slides11.html#sales-data",
     "title": "Data Import & Dates/Times",
-    "section": "",
-    "text": "A class for representing clock times\nPart of the tidyverse\nNeed to load separately"
+    "section": "sales data",
+    "text": "sales data\nAre these data tidy? Why or why not?"
   },
   {
-    "objectID": "slides/11/slides11.html#creating-times-with-hms",
-    "href": "slides/11/slides11.html#creating-times-with-hms",
+    "objectID": "slides/11/slides11.html#sales-data-1",
+    "href": "slides/11/slides11.html#sales-data-1",
     "title": "Data Import & Dates/Times",
-    "section": "Creating times with hms()",
-    "text": "Creating times with hms()\nWe can use the hour and minute column to create a clock time\n\n\nlibrary(hms)\nsched_dep_times &lt;- flights %&gt;% \n  mutate(sched_dep_time_hms = hms(hours = hour, minutes = minute)) %&gt;% \n  pull()\nhead(sched_dep_times)\n\n\n20:38:00\n23:00:00\n23:44:00\n21:40:00\n20:48:00\n05:00:00"
+    "section": "Sales data",
+    "text": "Sales data\nWhat “data moves” do we need to go from the original, non-tidy data, to this tidy one?\n# A tibble: 7 × 3\n  brand   id    n    \n  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;\n1 Brand 1 1234  8    \n2 Brand 1 8721  2    \n3 Brand 1 1822  3    \n4 Brand 2 3333  1    \n5 Brand 2 2156  3    \n6 Brand 2 3987  6    \n7 Brand 2 3216  5"
   },
   {
-    "objectID": "slides/11/slides11.html#hms-creates-a-special-type-of-object",
-    "href": "slides/11/slides11.html#hms-creates-a-special-type-of-object",
+    "objectID": "slides/11/slides11.html#try-it",
+    "href": "slides/11/slides11.html#try-it",
     "title": "Data Import & Dates/Times",
-    "section": "hms() creates a special type of object",
-    "text": "hms() creates a special type of object\n\n\nclass(sched_dep_times)\n\n\n[1] \"hms\"      \"difftime\""
-  },
-  {
-    "objectID": "slides/11/slides11.html#creating-times-with-hms-1",
-    "href": "slides/11/slides11.html#creating-times-with-hms-1",
-    "title": "Data Import & Dates/Times",
-    "section": "Creating times with hms()",
-    "text": "Creating times with hms()\nIf we don’t already have hours, minutes, seconds separately, we’ll need to parse out that information\n\nInteger timeParse + hms()\n\n\n\n\ndep_time &lt;- flights %&gt;% pull(dep_time)\nhead(dep_time)\n\n\n[1]   1  18  31  33  36 503\n\n\n\n\n\n\ndep_time_hms &lt;- hms(hours = dep_time %/% 100, minutes = dep_time %% 100)\nhead(dep_time_hms)\n\n\n00:01:00\n00:18:00\n00:31:00\n00:33:00\n00:36:00\n05:03:00\n\n\n%/% divides first number by second number, returns the whole number (integer division)\n%% divides first number by second number, returns the remainder (modulo)"
+    "section": "Try it",
+    "text": "Try it\n\nRead in the excel file called sales.xlsx\n\n\n\nStep 1: read in the data so it looks like the following:\n# A tibble: 9 × 2\n  id      n    \n  &lt;chr&gt;   &lt;chr&gt;\n1 Brand 1 n    \n2 1234    8    \n3 8721    2    \n4 1822    3    \n5 Brand 2 n    \n6 3333    1    \n7 2156    3    \n8 3987    6    \n9 3216    5   \n\nStretch goal: Manipulate the data so it looks like the following:\n# A tibble: 7 × 3\n  brand   id    n    \n  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;\n1 Brand 1 1234  8    \n2 Brand 1 8721  2    \n3 Brand 1 1822  3    \n4 Brand 2 3333  1    \n5 Brand 2 2156  3    \n6 Brand 2 3987  6    \n7 Brand 2 3216  5  \n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/11/slides11.html#ultramarathon-results",
@@ -3002,8 +2988,8 @@
     "text": "Ultramarathon results\n\nUltra marathon = anything longer than 26.2 miles\nThe dates and times imported as character strings!\n\n\n\n## Rows: 392\n## Columns: 11\n## $ state            &lt;chr&gt; \"Minnesota\", \"Minnesota\", \"Minnesota\", \"Minnesota\", \"…\n## $ Event            &lt;chr&gt; \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zu…\n## $ City             &lt;chr&gt; \"Theilman\", \"Theilman\", \"Theilman\", \"Theilman\", \"Thei…\n## $ race_url         &lt;chr&gt; \"https://calendar.ultrarunning.com/event/zumbro\", \"ht…\n## $ date             &lt;chr&gt; \"04/08/21\", \"04/11/20\", \"04/13/19\", \"04/13/18\", \"04/0…\n## $ Finishers        &lt;chr&gt; \"121\", \"Race Cancelled\", \"Race Cancelled\", \"49\", \"149…\n## $ top_result_m     &lt;chr&gt; \"5:23:55\", \"Race Cancelled\", \"Race Cancelled\", \"9:13:…\n## $ top_result_f     &lt;chr&gt; \"6:30:42\", \"Race Cancelled\", \"Race Cancelled\", \"10:15…\n## $ distance         &lt;chr&gt; \"34 Miles\", \"50 Miles\", \"50 Miles\", \"50 Miles\", \"50 M…\n## $ elevation_rating &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…\n## $ surface_rating   &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…"
   },
   {
-    "objectID": "slides/11/slides11.html#section-5",
-    "href": "slides/11/slides11.html#section-5",
+    "objectID": "slides/11/slides11.html#section-4",
+    "href": "slides/11/slides11.html#section-4",
     "title": "Data Import & Dates/Times",
     "section": "",
     "text": "Functions for working with dates and time spans\nPart of the tidyverse\nNeed to load separately"
@@ -3013,14 +2999,14 @@
     "href": "slides/11/slides11.html#parsing-dates",
     "title": "Data Import & Dates/Times",
     "section": "Parsing dates",
-    "text": "Parsing dates\n{lubridate} functions are intuitively named\n\nlibrary(lubridate)\nmdy(\"01/29/25\")\n\n[1] \"2025-01-29\"\n\n\n\ndmy(\"29-01-2025\")\n\n[1] \"2025-01-29\"\n\n\n\nymd(\"2025-01-29\")\n\n[1] \"2025-01-29\"\n\n\n\nymd_hm(\"2025-01-29 09:55\")\n\n[1] \"2025-01-29 09:55:00 UTC\""
+    "text": "Parsing dates\n{lubridate} functions are intuitively named\n\nlibrary(lubridate)\nmdy(\"01/29/25\")\n\n[1] \"2025-01-29\"\n\n\n\n\ndmy(\"29-01-2025\")\n\n[1] \"2025-01-29\"\n\n\n\n\n\nymd(\"2025-01-29\")\n\n[1] \"2025-01-29\"\n\n\n\n\n\nymd_hm(\"2025-01-29 09:55\")\n\n[1] \"2025-01-29 09:55:00 UTC\""
   },
   {
     "objectID": "slides/11/slides11.html#ultramarathon-example",
     "href": "slides/11/slides11.html#ultramarathon-example",
     "title": "Data Import & Dates/Times",
     "section": "Ultramarathon example",
-    "text": "Ultramarathon example\nDates are in the form 04/08/21, so use mdy() to parse\n\nmn_ultras &lt;- mn_ultras %&gt;% mutate(date = mdy(date))\nglimpse(mn_ultras)\n\nRows: 392\nColumns: 11\n$ state            &lt;chr&gt; \"Minnesota\", \"Minnesota\", \"Minnesota\", \"Minnesota\", \"…\n$ Event            &lt;chr&gt; \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zu…\n$ City             &lt;chr&gt; \"Theilman\", \"Theilman\", \"Theilman\", \"Theilman\", \"Thei…\n$ race_url         &lt;chr&gt; \"https://calendar.ultrarunning.com/event/zumbro\", \"ht…\n$ date             &lt;date&gt; 2021-04-08, 2020-04-11, 2019-04-13, 2018-04-13, 2017…\n$ Finishers        &lt;chr&gt; \"121\", \"Race Cancelled\", \"Race Cancelled\", \"49\", \"149…\n$ top_result_m     &lt;chr&gt; \"5:23:55\", \"Race Cancelled\", \"Race Cancelled\", \"9:13:…\n$ top_result_f     &lt;chr&gt; \"6:30:42\", \"Race Cancelled\", \"Race Cancelled\", \"10:15…\n$ distance         &lt;chr&gt; \"34 Miles\", \"50 Miles\", \"50 Miles\", \"50 Miles\", \"50 M…\n$ elevation_rating &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…\n$ surface_rating   &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…"
+    "text": "Ultramarathon example\nDates are in the form 04/08/21, so use mdy() to parse\n\nmn_ultras &lt;- mn_ultras %&gt;% \n  mutate(date = mdy(date))\n\nglimpse(mn_ultras)\n\nRows: 392\nColumns: 11\n$ state            &lt;chr&gt; \"Minnesota\", \"Minnesota\", \"Minnesota\", \"Minnesota\", \"…\n$ Event            &lt;chr&gt; \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zu…\n$ City             &lt;chr&gt; \"Theilman\", \"Theilman\", \"Theilman\", \"Theilman\", \"Thei…\n$ race_url         &lt;chr&gt; \"https://calendar.ultrarunning.com/event/zumbro\", \"ht…\n$ date             &lt;date&gt; 2021-04-08, 2020-04-11, 2019-04-13, 2018-04-13, 2017…\n$ Finishers        &lt;chr&gt; \"121\", \"Race Cancelled\", \"Race Cancelled\", \"49\", \"149…\n$ top_result_m     &lt;chr&gt; \"5:23:55\", \"Race Cancelled\", \"Race Cancelled\", \"9:13:…\n$ top_result_f     &lt;chr&gt; \"6:30:42\", \"Race Cancelled\", \"Race Cancelled\", \"10:15…\n$ distance         &lt;chr&gt; \"34 Miles\", \"50 Miles\", \"50 Miles\", \"50 Miles\", \"50 M…\n$ elevation_rating &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…\n$ surface_rating   &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…"
   },
   {
     "objectID": "slides/11/slides11.html#extract-info-from-a-datetime",
@@ -3041,35 +3027,42 @@
     "href": "slides/11/slides11.html#measuring-time",
     "title": "Data Import & Dates/Times",
     "section": "Measuring time",
-    "text": "Measuring time\nHow long ago was the last race?\n\nrace &lt;- ymd(\"2022-01-31\")\ntoday() - race\n\nTime difference of 1158 days\n\n\n\nDifferences in date/time objects are difftime objects\ndifftimes use inconsistent units (sometimes weeks, days, hours, minutes, or seconds)"
+    "text": "Measuring time\nHow long ago was the last race?\n\nrace &lt;- ymd(\"2022-01-31\")\ntoday() - race\n\nTime difference of 1178 days\n\n\n\nDifferences in date/time objects are difftime objects\ndifftimes use inconsistent units (sometimes weeks, days, hours, minutes, or seconds)"
+  },
+  {
+    "objectID": "slides/11/slides11.html#math-with-date-times",
+    "href": "slides/11/slides11.html#math-with-date-times",
+    "title": "Data Import & Dates/Times",
+    "section": "Math with date-times",
+    "text": "Math with date-times\nMath with date-times relies on the timeline, which behaves inconsistently:"
   },
   {
     "objectID": "slides/11/slides11.html#measuring-time-durations",
     "href": "slides/11/slides11.html#measuring-time-durations",
     "title": "Data Import & Dates/Times",
     "section": "Measuring time: durations",
-    "text": "Measuring time: durations\nA time span that is always measured in seconds\n\nas.duration(today() - race)\n\n[1] \"100051200s (~3.17 years)\"\n\n\nPlus, a better display"
+    "text": "Measuring time: durations\nTrack the passage of physical time; always measured in seconds\n\n\n\n\nPlus, a better display\n\nas.duration(today() - race)\n\n[1] \"101779200s (~3.23 years)\""
   },
   {
     "objectID": "slides/11/slides11.html#measuring-time-periods",
     "href": "slides/11/slides11.html#measuring-time-periods",
     "title": "Data Import & Dates/Times",
     "section": "Measuring time: periods",
-    "text": "Measuring time: periods\nTo do math with dates add and subtract periods\n\nymd_hms(\"2025-01-29 09:55:00\", tz = \"America/Chicago\") + days(1)\n\n[1] \"2025-01-30 09:55:00 CST\"\n\n\n\nymd_hms(\"2023-02-28 09:55:00\", tz = \"America/Chicago\") + days(1)\n\n[1] \"2023-03-01 09:55:00 CST\"\n\n\nPeriods are measured in clock units"
+    "text": "Measuring time: periods\nperiods track changes in clock times, ignoring timeline irregularities\n\n\n\n\n\nymd_hms(\"2025-01-29 09:55:00\", \n        tz = \"America/Chicago\") + \n  days(1)\n\n[1] \"2025-01-30 09:55:00 CST\"\n\n\n\nymd_hms(\"2023-02-28 09:55:00\", \n        tz = \"America/Chicago\") + \n  days(1)\n\n[1] \"2023-03-01 09:55:00 CST\""
   },
   {
-    "objectID": "slides/11/slides11.html#try-it",
-    "href": "slides/11/slides11.html#try-it",
+    "objectID": "slides/11/slides11.html#try-it-1",
+    "href": "slides/11/slides11.html#try-it-1",
     "title": "Data Import & Dates/Times",
     "section": "Try it",
-    "text": "Try it\n\nYour task is create a 1-columnn tibble containing all dates that our class meets this term using lubridate functions. You should only specify the first day of class (1/6/2025)\n\n\n\n\n−+\n03:00"
+    "text": "Try it\n\nCreate a new copy of the desserts dataset, but do not parse the uk_airdate within read_csv. Instead, leave it as a character vector and parse the date using {lubridate} functions. Which approach do you prefer?\nThen, create a new column called how_long_ago that measures the time between today and the UK airdate of the episode. Can you format this column:\n\nin years\nin months\nin weeks\nin days\n\nCan you change this column to measure durations?\n\n\n\n\n−+\n05:00"
   },
   {
-    "objectID": "slides/11/slides11.html#try-it-2",
-    "href": "slides/11/slides11.html#try-it-2",
+    "objectID": "slides/11/slides11.html#if-time",
+    "href": "slides/11/slides11.html#if-time",
     "title": "Data Import & Dates/Times",
-    "section": "Try it 2",
-    "text": "Try it 2\n\nNow, create a second column where the dates have been formatted. (Hint: see ?stamp)\nYour dates should have the form “Wednesday: Jan 29 2025”\n\n\n\n\n−+\n05:00"
+    "section": "If time",
+    "text": "If time\nGet as far as you can in replicating this plot of series 8 data:"
   },
   {
     "objectID": "slides/27/slides27.html#end-of-term-reminders",
@@ -3535,7 +3528,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\ntbd\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
     "crumbs": [
       "Course information",
       "Schedule"
