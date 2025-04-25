@@ -97,7 +97,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-3fbdf5335c1ee34ace0cfc252b951b28.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-9be35e48ac5ff9906ccc019449422c46.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -313,6 +313,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -406,7 +407,7 @@
 Prof Amanda Luby 
 </div>
         <p class="quarto-title-affiliation">
-            Carleton College <br> Stat 220 - Winter 2025
+            Carleton College <br> Stat 220 - Spring 2025
           </p>
     </div>
 </div>
@@ -560,7 +561,7 @@ Prof Amanda Luby
 <aside><div>
 <p>Source: <a href="https://mdsr-book.github.io/mdsr3e/17-geospatialI.html">MDSR Ch17.1</a></p>
 </div></aside></section>
-<section id="a-successful-data-science-episode" class="slide level2">
+<section id="a-successful-data-science-episode" class="slide level2 scrollable">
 <h2>A successful data science episode:</h2>
 <ol type="1">
 <li class="fragment">Combine three sources of data (Cholera deaths, water pump locations, and street map)</li>
@@ -571,6 +572,53 @@ Prof Amanda Luby
 <aside><div>
 <p>Source: <a href="https://mdsr-book.github.io/mdsr3e/17-geospatialI.html">MDSR Ch17.1</a></p>
 </div></aside></section>
+<section id="common-types-of-maps" class="slide level2 scrollable">
+<h2>Common Types of Maps</h2>
+<ol type="1">
+<li class="fragment">Chloropleth</li>
+<li class="fragment">Proportional Symbol</li>
+<li class="fragment">Cartograms/Geofacets</li>
+</ol>
+</section>
+<section id="chloropleth" class="slide level2 scrollable">
+<h2>Chloropleth</h2>
+<p>Fill in regions with variable values</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Need two data sources:</p>
+<ol type="1">
+<li>map data with lat, long, region</li>
+<li>data with measurements for each region</li>
+</ol>
+<p>you don’t need to join them!</p>
+</div><div class="column" style="width:60%;">
+<p><img data-src="../img/wilke-chloropleth.png"></p>
+</div></div>
+
+<aside><div>
+<p><a href="https://clauswilke.com/dataviz/geospatial-data.html"><em>Fundamentals of Data Visualization</em></a></p>
+</div></aside></section>
+<section id="proportional-symbol" class="slide level2">
+<h2>Proportional Symbol</h2>
+<p>Overlay symbols on an existing map, where the size of the shape is proportional to the variable</p>
+<img data-src="../img/airport-ggmap.png" class="r-stretch">
+
+<aside><div>
+<p>Made with {ggmap} and {nycflights23}</p>
+</div></aside></section>
+<section id="cartogram" class="slide level2">
+<h2>Cartogram</h2>
+<p>Use approximate geographical position to encode information, but not lat/long directly</p>
+<img data-src="../img/wilke-cartogram.png" class="r-stretch">
+
+<aside><div>
+<p><a href="https://clauswilke.com/dataviz/geospatial-data.html"><em>Fundamentals of Data Visualization</em></a></p>
+</div></aside></section></section>
+<section>
+<section id="deep-dive-maps" class="title-slide slide level1 maize center">
+<h1>Deep dive: maps</h1>
+
+</section>
 <section id="what-is-a-map" class="slide level2">
 <h2>What is a map?</h2>
 <p>A bunch of latitude longitude points…</p>
@@ -578,7 +626,7 @@ Prof Amanda Luby
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -591,7 +639,7 @@ Prof Amanda Luby
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -634,7 +682,7 @@ $ subregion &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -652,7 +700,7 @@ $ subregion &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -674,7 +722,7 @@ $ subregion &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e6070d83" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_740a14ca" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -715,7 +763,7 @@ $ subregion &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -734,7 +782,7 @@ $ subregion &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -753,59 +801,17 @@ $ subregion &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div>
 
 </div>
-<div class="cell quarto-layout-panel" data-layout-nrow="1" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-14-2.png" width="960"></p>
+<p><img data-src="slides05_files/figure-revealjs/unnamed-chunk-15-2.png" width="960"></p>
 </div>
 </div>
 </div>
 </section>
-<section id="common-types-of-maps" class="slide level2">
-<h2>Common Types of Maps</h2>
-<ol type="1">
-<li class="fragment">Chloropleth</li>
-<li class="fragment">Proportional Symbol</li>
-<li class="fragment">Cartograms/Geofacets</li>
-</ol>
-</section>
-<section id="chloropleth" class="slide level2">
-<h2>Chloropleth</h2>
-<p>Fill in regions with variable values</p>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p>Need two data sources:</p>
-<ol type="1">
-<li>map data with lat, long, region</li>
-<li>data with measurements for each region</li>
-</ol>
-<p>you don’t need to join them!</p>
-</div><div class="column" style="width:60%;">
-<p><img data-src="../img/wilke-chloropleth.png"></p>
-</div></div>
-
-<aside><div>
-<p><a href="https://clauswilke.com/dataviz/geospatial-data.html"><em>Fundamentals of Data Visualization</em></a></p>
-</div></aside></section>
-<section id="proportional-symbol" class="slide level2">
-<h2>Proportional Symbol</h2>
-<p>Overlay symbols on an existing map, where the size of the shape is proportional to the variable</p>
-<img data-src="../img/airport-ggmap.png" class="r-stretch">
-
-<aside><div>
-<p>Made with {ggmap} and {nycflights23}</p>
-</div></aside></section>
-<section id="cartogram" class="slide level2">
-<h2>Cartogram</h2>
-<p>Use approximate geographical position to encode information, but not lat/long directly</p>
-<img data-src="../img/wilke-cartogram.png" class="r-stretch">
-
-<aside><div>
-<p><a href="https://clauswilke.com/dataviz/geospatial-data.html"><em>Fundamentals of Data Visualization</em></a></p>
-</div></aside></section>
 <section id="your-task" class="slide level2">
 <h2>Your task</h2>
 <p>Your task is to use the American Community Survey data to make a chloropleth map of the US</p>
