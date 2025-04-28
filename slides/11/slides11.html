@@ -449,6 +449,13 @@ Prof Amanda Luby
 <aside><div>
 <p>Source: Allison Hill and the <a href="https://bakeoff.netlify.app">bakeoff</a> package; compiled by Adam Loy</p>
 </div></aside></section>
+<section id="basic-syntax" class="slide level2">
+<h2>Basic syntax</h2>
+<p>All <code>readr</code> functions share a common syntax</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"path/to/file.csv"</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="readr-functions" class="slide level2">
 <h2><code>readr</code> functions</h2>
 <table class="caption-top">
@@ -489,48 +496,6 @@ Prof Amanda Luby
 </tr>
 </tbody>
 </table>
-</section>
-<section id="basic-syntax" class="slide level2">
-<h2>Basic syntax</h2>
-<p>All <code>readr</code> functions share a common syntax</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"path/to/file.csv"</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="whats-the-big-deal" class="slide level2">
-<h2>What’s the big deal?</h2>
-<p>Compared to <code>read.csv</code> (base R), <code>readr</code> functions are:</p>
-<ol type="1">
-<li class="fragment"><p>~ 10 times faster</p></li>
-<li class="fragment"><p>Return tibbles</p></li>
-<li class="fragment"><p>Have more intuitive defaults. No row names, no strings as factors.</p></li>
-</ol>
-</section>
-<section id="tibbles-enhance-data-frames" class="slide level2">
-<h2>tibbles enhance data frames</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="https://tibble.tidyverse.org/logo.svg"></p>
-</div><div class="column" style="width:50%;">
-<p><strong>Subsetting</strong> - <code>[</code> always returns a new tibble, <code>[[</code> and <code>$</code> always return a new vector</p>
-<p><strong>No partial matching</strong> - You must use full column names when subsetting</p>
-<p><strong>Display</strong> - When you print a tibble, R provides a concise view of the data that fits on one screen</p>
-</div></div>
-</section>
-<section id="concise-printing" class="slide level2">
-<h2>Concise printing</h2>
-<img data-src="../img/10-tibble-df-compare.png" class="r-stretch">
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-<img data-src="../img/10-tibble-print.png" class="r-stretch">
-</section>
-<section id="conversion" class="slide level2">
-<h2>Conversion</h2>
-<ul>
-<li class="fragment"><p><code>as_tibble()</code> - convert a data frame to a tibble</p></li>
-<li class="fragment"><p><code>as.data.frame()</code> - convert a tibble to a data frame</p></li>
-</ul>
 </section>
 <section id="desserts-data-1" class="slide level2">
 <h2><code>desserts</code> data</h2>
@@ -576,7 +541,7 @@ Prof Amanda Luby
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ef8f7e5c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_96c5d1e4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -705,7 +670,7 @@ $ signature_nut         &lt;chr&gt; "no nut", "no nut", "no nut", "no nut", "no 
 <p>ISO8601 format: <code>2010-08-17</code></p>
 <p>What we have: <code>17 August 2010</code></p>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
 <p><img data-src="../img/randy_au-dates.png"></p>
 
@@ -774,7 +739,7 @@ $ signature_nut         &lt;chr&gt; "no nut", "no nut", "no nut", "no nut", "no 
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>desserts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -873,7 +838,7 @@ $ signature_nut         &lt;chr&gt; "no nut", "no nut", "no nut", "no nut", "no 
 <h1>read_excel</h1>
 
 </section>
-<section id="section-3" class="slide level2 center">
+<section id="section-2" class="slide level2 center">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -951,7 +916,7 @@ $ signature_nut         &lt;chr&gt; "no nut", "no nut", "no nut", "no nut", "no 
 </div></div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_bcb250e5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_cf6eb832" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -987,7 +952,7 @@ $ signature_nut         &lt;chr&gt; "no nut", "no nut", "no nut", "no nut", "no 
 </div>
 </div>
 </section>
-<section id="section-4" class="slide level2 center">
+<section id="section-3" class="slide level2 center">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -1213,7 +1178,7 @@ Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6943468f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_5e11b694" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

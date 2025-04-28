@@ -506,32 +506,32 @@
     "href": "activities/13-strings-regex.html",
     "title": "13: Intro to Strings/Regex",
     "section": "",
-    "text": "No code needed, just think about what it returns\n\nFill in the blanks of the .Rmd file to…\n\nIsolate the last letter of every name\nand create a logical variable that displays whether the last letter is one of “a”, “e”, “i”, “o”, “u”, or “y”.\nUse a weighted mean to calculate the proportion of children whose name ends in a vowel, by year (see ?weighted.mean).\nand then display the results as a line plot.\n\n\nbabynames %&gt;%\n  mutate(last = ___, \n         vowel = ___) %&gt;%\n  group_by(___) %&gt;%\n  ___(p_vowel = weighted.mean(vowel, n)) %&gt;%\n  ___ +\n  ___\n\n\nThe below code chunk imports a data set of the 6-credit courses offered at Carleton in Winter 2021. All three columns are character vectors.\n\ncourses &lt;- read_csv(\"https://stat220-s25.github.io/data/winter2023_course_tbl.csv\", col_types = list(course = col_character()))\n\n\nHow many of the course numbers end in .00? Use str_detect() or str_count() to help you answer this question.\nNote that . is a special character in strings, so use \\\\. to get the literal period.\n\nThe section number appears after the decimal point. Use mutate() and str_sub() to create a section column containing this number.\n\nHow many courses contain the word Introduction? Does case matter here?\n\nWhat is the longest course name (in terms of characters)? What is the shortest course name? Use str_length() to help you answer this question.\n\nUse str_subset() to return the course names that contain exclamation points (!)."
+    "text": "Replicate the “Amanda” plot with your own name using the starter code below. If your name doesn’t have enough data, try a friend or professor’s name\n\nbabynames %&gt;%\n  ___(name == ___ ) %&gt;%\n  ggplot(aes(x = ___, y = ___, col = ___)) +\n  geom____()"
   },
   {
-    "objectID": "activities/13-strings-regex.html#your-turn-1",
-    "href": "activities/13-strings-regex.html#your-turn-1",
+    "objectID": "activities/13-strings-regex.html#your-turn",
+    "href": "activities/13-strings-regex.html#your-turn",
     "title": "13: Intro to Strings/Regex",
-    "section": "",
-    "text": "No code needed, just think about what it returns"
+    "section": "Your turn",
+    "text": "Your turn\nNo code needed, just think about what it returns"
   },
   {
     "objectID": "activities/13-strings-regex.html#your-turn-2",
     "href": "activities/13-strings-regex.html#your-turn-2",
     "title": "13: Intro to Strings/Regex",
-    "section": "",
-    "text": "Fill in the blanks of the .Rmd file to…\n\nIsolate the last letter of every name\nand create a logical variable that displays whether the last letter is one of “a”, “e”, “i”, “o”, “u”, or “y”.\nUse a weighted mean to calculate the proportion of children whose name ends in a vowel, by year (see ?weighted.mean).\nand then display the results as a line plot.\n\n\nbabynames %&gt;%\n  mutate(last = ___, \n         vowel = ___) %&gt;%\n  group_by(___) %&gt;%\n  ___(p_vowel = weighted.mean(vowel, n)) %&gt;%\n  ___ +\n  ___"
+    "section": "Your turn 2",
+    "text": "Your turn 2\nFill in the blanks of the .Rmd file to…\n\nIsolate the last letter of every name\nand create a logical variable that displays whether the last letter is one of “a”, “e”, “i”, “o”, “u”, or “y”.\nUse a weighted mean to calculate the proportion of children whose name ends in a vowel, by year (see ?weighted.mean).\nand then display the results as a line plot.\n\n\nbabynames %&gt;%\n  mutate(last = ___, \n         vowel = ___) %&gt;%\n  group_by(___) %&gt;%\n  ___(p_vowel = weighted.mean(vowel, n)) %&gt;%\n  ___ +\n  ___"
   },
   {
     "objectID": "activities/13-strings-regex.html#example-carleton-courses",
     "href": "activities/13-strings-regex.html#example-carleton-courses",
     "title": "13: Intro to Strings/Regex",
-    "section": "",
-    "text": "The below code chunk imports a data set of the 6-credit courses offered at Carleton in Winter 2021. All three columns are character vectors.\n\ncourses &lt;- read_csv(\"https://stat220-s25.github.io/data/winter2023_course_tbl.csv\", col_types = list(course = col_character()))\n\n\nHow many of the course numbers end in .00? Use str_detect() or str_count() to help you answer this question.\nNote that . is a special character in strings, so use \\\\. to get the literal period.\n\nThe section number appears after the decimal point. Use mutate() and str_sub() to create a section column containing this number.\n\nHow many courses contain the word Introduction? Does case matter here?\n\nWhat is the longest course name (in terms of characters)? What is the shortest course name? Use str_length() to help you answer this question.\n\nUse str_subset() to return the course names that contain exclamation points (!)."
+    "section": "Example: Carleton courses",
+    "text": "Example: Carleton courses\nThe below code chunk imports a data set of the 6-credit courses offered at Carleton in Winter 2023. All three columns are character vectors.\n\ncourses &lt;- read_csv(\"https://stat220-s25.github.io/data/winter2023_course_tbl.csv\", col_types = list(course = col_character()))\n\n(a)\nHow many of the course numbers end in .00? Use str_detect() or str_count() to help you answer this question.\nNote that . is a special character in strings, so use \\\\. to get the literal period.\n(b)\nThe section number appears after the decimal point. Use mutate() and str_sub() to create a section column containing this number.\n(c)\nHow many courses contain the word Introduction? Does case matter here?\n(d)\nWhat is the longest course name (in terms of characters)? What is the shortest course name? Use str_length() to help you answer this question.\n(e)\nUse str_subset() to return the course names that contain exclamation points (!)."
   },
   {
-    "objectID": "activities/13-strings-regex.html#your-turn-1-1",
-    "href": "activities/13-strings-regex.html#your-turn-1-1",
+    "objectID": "activities/13-strings-regex.html#your-turn-1",
+    "href": "activities/13-strings-regex.html#your-turn-1",
     "title": "13: Intro to Strings/Regex",
     "section": "Your turn 1",
     "text": "Your turn 1\nDetect either “.” or “-” in the info vector.\n\na1 &lt;- \"Home: 507-645-5489\"\na2 &lt;- \"Cell: 219.917.9871\"\na3 &lt;- \"My work phone is 507-202-2332\"\na4 &lt;- \"I don't have a phone\"\ninfo &lt;- c(a1, a2, a3, a4)"
@@ -1305,21 +1305,7 @@
     "href": "slides/13/slides13.html#today",
     "title": "Working with Strings",
     "section": "Today",
-    "text": "Today\n\nIt’s FEBRUARY!\nLab Quiz 2 Info\nLocal versions of R/RStudio/GitHub\nNew stuff"
-  },
-  {
-    "objectID": "slides/13/slides13.html#january",
-    "href": "slides/13/slides13.html#january",
-    "title": "Working with Strings",
-    "section": "January:",
-    "text": "January:"
-  },
-  {
-    "objectID": "slides/13/slides13.html#february",
-    "href": "slides/13/slides13.html#february",
-    "title": "Working with Strings",
-    "section": "February:",
-    "text": "February:"
+    "text": "Today\n\nLab Quiz 2 Info\nLocal versions of R/RStudio/GitHub\nIntro to strings"
   },
   {
     "objectID": "slides/13/slides13.html#strings-in-r",
@@ -1329,11 +1315,18 @@
     "text": "Strings in R\nAnything surrounded by quotes(\") or single quotes(').\n\n\"Carleton College\"\n\"2025\"\n'\"Hello World\"'"
   },
   {
+    "objectID": "slides/13/slides13.html#str_view",
+    "href": "slides/13/slides13.html#str_view",
+    "title": "Working with Strings",
+    "section": "str_view",
+    "text": "str_view\nstr_view is a handy function that prints the underlying representation of a string and can also be used to check pattern matching (which we’ll see in a bit!)\n\nstr_view(\"Carleton College\")\n\n[1] │ Carleton College\n\nstr_view(\"2025\")\n\n[1] │ 2025\n\nstr_view('\"Hello World\"')\n\n[1] │ \"Hello World\""
+  },
+  {
     "objectID": "slides/13/slides13.html#section",
     "href": "slides/13/slides13.html#section",
     "title": "Working with Strings",
     "section": "",
-    "text": "The “escape” backslash  is used to escape the special use of certain characters\n\nstr_view(\"\\\"\")\n\n[1] │ \"\n\nstr_view(\"\\\\\")\n\n[1] │ \\\n\nstr_view(\"Math\\\\Stats\")\n\n[1] │ Math\\Stats"
+    "text": "The “escape” backslash  is used to escape the special use of certain characters\n\nstr_view(\"Math\\Stats\")\n\nError: '\\S' is an unrecognized escape in character string (&lt;input&gt;:1:16)\n\n\nstr_view(\"\\\"\")\n\n[1] │ \"\n\nstr_view(\"\\\\\")\n\n[1] │ \\\n\nstr_view(\"Math\\\\Stats\")\n\n[1] │ Math\\Stats"
   },
   {
     "objectID": "slides/13/slides13.html#section-1",
@@ -1354,7 +1347,7 @@
     "href": "slides/13/slides13.html#combine-strings",
     "title": "Working with Strings",
     "section": "Combine strings",
-    "text": "Combine strings\nstr_c() allows us to easily create strings from variables/vectors.\n\nbuilding &lt;- \"CMC\"\nroom &lt;- \"102\"\nbegin_time &lt;- \"9:50 a.m.\"\nend_time &lt;- \"11:000 a.m.\"\ndays &lt;- \"MWF\"\nclass &lt;- \"STAT 220\"\nstr_c(class, \"meets from\", begin_time, \"to\", end_time, \n      days, \"in\", building, room, sep=\" \")\n\n\n\n[1] \"STAT 220 meets from 9:50 a.m. to 11:000 a.m. MWF in CMC 102\""
+    "text": "Combine strings\nstr_c() allows us to easily create strings from variables/vectors.\n\nbuilding &lt;- \"CMC\"\nroom &lt;- \"102\"\nbegin_time &lt;- \"9:50 a.m.\"\nend_time &lt;- \"11:00 a.m.\"\ndays &lt;- \"MWF\"\nclass &lt;- \"STAT 220\"\nstr_c(class, \"meets from\", begin_time, \"to\", end_time, \n      days, \"in\", building, room, sep=\" \")\n\n\n\n[1] \"STAT 220 meets from 9:50 a.m. to 11:00 a.m. MWF in CMC 102\""
   },
   {
     "objectID": "slides/13/slides13.html#concatenate-strings",
@@ -1375,7 +1368,21 @@
     "href": "slides/13/slides13.html#babynames",
     "title": "Working with Strings",
     "section": "Babynames",
-    "text": "Babynames\n\n\n\nlibrary(babynames)\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows\n\n\n\nExample questions:\n\nHow many names end in a vowel?\nHow many names contain the pattern “stat”\nHow many names contain 3 A’s?"
+    "text": "Babynames\n\nlibrary(babynames)\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows"
+  },
+  {
+    "objectID": "slides/13/slides13.html#popularity-of-amanda-over-time",
+    "href": "slides/13/slides13.html#popularity-of-amanda-over-time",
+    "title": "Working with Strings",
+    "section": "Popularity of “Amanda” over time",
+    "text": "Popularity of “Amanda” over time\n\n\n\n\n\n\n\n\n\nReplicate this plot with your own name. If your name doesn’t have enough data, try a friend or professor’s name"
+  },
+  {
+    "objectID": "slides/13/slides13.html#babynames-1",
+    "href": "slides/13/slides13.html#babynames-1",
+    "title": "Working with Strings",
+    "section": "Babynames",
+    "text": "Babynames\n\n\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# ℹ 1,924,655 more rows\n\n\n\nExample questions:\n\nHow many names end in a vowel?\nHow many names contain the pattern “stat”\nHow many names contain 3 A’s?"
   },
   {
     "objectID": "slides/13/slides13.html#extract-substrings",
@@ -2799,13 +2806,6 @@
     "text": "desserts data\n\n\nContains results from series 1-8 of The Great British Bake Off\nCase defined by series, episode and baker\n\n\n\n\n# A tibble: 549 × 16\n   series episode baker     technical result uk_airdate     us_season us_airdate\n    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;date&gt;    \n 1      1       1 Annetha   2nd       IN     17 August 2010        NA NA        \n 2      1       1 David     3rd       IN     17 August 2010        NA NA        \n 3      1       1 Edd       1st       IN     17 August 2010        NA NA        \n 4      1       1 Jasminder N/A       IN     17 August 2010        NA NA        \n 5      1       1 Jonathan  9th       IN     17 August 2010        NA NA        \n 6      1       1 Louise    N/A       IN     17 August 2010        NA NA        \n 7      1       1 Miranda   8th       IN     17 August 2010        NA NA        \n 8      1       1 Ruth      N/A       IN     17 August 2010        NA NA        \n 9      1       1 Lea       10th      OUT    17 August 2010        NA NA        \n10      1       1 Mark      N/A       OUT    17 August 2010        NA NA        \n# ℹ 539 more rows\n# ℹ 8 more variables: showstopper_chocolate &lt;chr&gt;, showstopper_dessert &lt;chr&gt;,\n#   showstopper_fruit &lt;chr&gt;, showstopper_nut &lt;chr&gt;, signature_chocolate &lt;chr&gt;,\n#   signature_dessert &lt;chr&gt;, signature_fruit &lt;chr&gt;, signature_nut &lt;chr&gt;\n\n\n\n\nSource: Allison Hill and the bakeoff package; compiled by Adam Loy"
   },
   {
-    "objectID": "slides/11/slides11.html#readr-functions",
-    "href": "slides/11/slides11.html#readr-functions",
-    "title": "Data Import & Dates/Times",
-    "section": "readr functions",
-    "text": "readr functions\n\n\n\nfunction\nreads\n\n\n\n\nread_csv()\nComma separated values\n\n\nread_csv2()\nSemi-colon separated values\n\n\nread_delim()\nGeneral delimited files\n\n\nread_fwf()\nFixed width files\n\n\nread_log()\nApache log files\n\n\nread_table()\nSpace separated\n\n\nread_tsv()\nTab delimited values"
-  },
-  {
     "objectID": "slides/11/slides11.html#basic-syntax",
     "href": "slides/11/slides11.html#basic-syntax",
     "title": "Data Import & Dates/Times",
@@ -2813,32 +2813,11 @@
     "text": "Basic syntax\nAll readr functions share a common syntax\n\ndf &lt;- read_csv(file = \"path/to/file.csv\", ...)"
   },
   {
-    "objectID": "slides/11/slides11.html#whats-the-big-deal",
-    "href": "slides/11/slides11.html#whats-the-big-deal",
+    "objectID": "slides/11/slides11.html#readr-functions",
+    "href": "slides/11/slides11.html#readr-functions",
     "title": "Data Import & Dates/Times",
-    "section": "What’s the big deal?",
-    "text": "What’s the big deal?\nCompared to read.csv (base R), readr functions are:\n\n~ 10 times faster\nReturn tibbles\nHave more intuitive defaults. No row names, no strings as factors."
-  },
-  {
-    "objectID": "slides/11/slides11.html#tibbles-enhance-data-frames",
-    "href": "slides/11/slides11.html#tibbles-enhance-data-frames",
-    "title": "Data Import & Dates/Times",
-    "section": "tibbles enhance data frames",
-    "text": "tibbles enhance data frames\n\n\n\n\nSubsetting - [ always returns a new tibble, [[ and $ always return a new vector\nNo partial matching - You must use full column names when subsetting\nDisplay - When you print a tibble, R provides a concise view of the data that fits on one screen"
-  },
-  {
-    "objectID": "slides/11/slides11.html#concise-printing",
-    "href": "slides/11/slides11.html#concise-printing",
-    "title": "Data Import & Dates/Times",
-    "section": "Concise printing",
-    "text": "Concise printing"
-  },
-  {
-    "objectID": "slides/11/slides11.html#conversion",
-    "href": "slides/11/slides11.html#conversion",
-    "title": "Data Import & Dates/Times",
-    "section": "Conversion",
-    "text": "Conversion\n\nas_tibble() - convert a data frame to a tibble\nas.data.frame() - convert a tibble to a data frame"
+    "section": "readr functions",
+    "text": "readr functions\n\n\n\nfunction\nreads\n\n\n\n\nread_csv()\nComma separated values\n\n\nread_csv2()\nSemi-colon separated values\n\n\nread_delim()\nGeneral delimited files\n\n\nread_fwf()\nFixed width files\n\n\nread_log()\nApache log files\n\n\nread_table()\nSpace separated\n\n\nread_tsv()\nTab delimited values"
   },
   {
     "objectID": "slides/11/slides11.html#desserts-data-1",
@@ -2883,8 +2862,8 @@
     "text": "Date formatting woes\n\n\n# A tibble: 556 × 5\n    row   col expected        actual         file \n  &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;\n1     2     6 date in ISO8601 17 August 2010 \"\"   \n2     3     6 date in ISO8601 17 August 2010 \"\"   \n3     4     6 date in ISO8601 17 August 2010 \"\"   \n4     5     4 a number        N/A            \"\"   \n5     5     6 date in ISO8601 17 August 2010 \"\"   \n# ℹ 551 more rows\n\n\nISO8601 format: 2010-08-17\nWhat we have: 17 August 2010"
   },
   {
-    "objectID": "slides/11/slides11.html#section-1",
-    "href": "slides/11/slides11.html#section-1",
+    "objectID": "slides/11/slides11.html#section",
+    "href": "slides/11/slides11.html#section",
     "title": "Data Import & Dates/Times",
     "section": "",
     "text": "Counting Stuff blog by Randy Au"
@@ -2918,8 +2897,8 @@
     "text": "Looking for problems\nList of potential problems parsing the file\n\n\n# A tibble: 0 × 5\n# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;, actual &lt;chr&gt;, file &lt;chr&gt;"
   },
   {
-    "objectID": "slides/11/slides11.html#section-2",
-    "href": "slides/11/slides11.html#section-2",
+    "objectID": "slides/11/slides11.html#section-1",
+    "href": "slides/11/slides11.html#section-1",
     "title": "Data Import & Dates/Times",
     "section": "",
     "text": "desserts\n\n# A tibble: 549 × 16\n   series episode baker     technical result uk_airdate us_season us_airdate\n    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;         &lt;dbl&gt; &lt;date&gt;    \n 1      1       1 Annetha           2 IN     2010-08-17        NA NA        \n 2      1       1 David             3 IN     2010-08-17        NA NA        \n 3      1       1 Edd               1 IN     2010-08-17        NA NA        \n 4      1       1 Jasminder        NA IN     2010-08-17        NA NA        \n 5      1       1 Jonathan          9 IN     2010-08-17        NA NA        \n 6      1       1 Louise           NA IN     2010-08-17        NA NA        \n 7      1       1 Miranda           8 IN     2010-08-17        NA NA        \n 8      1       1 Ruth             NA IN     2010-08-17        NA NA        \n 9      1       1 Lea              10 OUT    2010-08-17        NA NA        \n10      1       1 Mark             NA OUT    2010-08-17        NA NA        \n# ℹ 539 more rows\n# ℹ 8 more variables: showstopper_chocolate &lt;chr&gt;, showstopper_dessert &lt;chr&gt;,\n#   showstopper_fruit &lt;chr&gt;, showstopper_nut &lt;chr&gt;, signature_chocolate &lt;chr&gt;,\n#   signature_dessert &lt;chr&gt;, signature_fruit &lt;chr&gt;, signature_nut &lt;chr&gt;"
@@ -2946,8 +2925,8 @@
     "text": "Your turn\n\nUse the appropriate read_&lt;type&gt;() function to import the following data sets:\n\ndata-4.csv\ntricky-1.csv\n\nThe full URLs are in the 11-import.Rmd activity. (It might be helpful to look at the data file before trying to import it into R)\nIf you hit any errors/problems, be sure to explore them and identify the issue, even if you can’t “fix” it."
   },
   {
-    "objectID": "slides/11/slides11.html#section-3",
-    "href": "slides/11/slides11.html#section-3",
+    "objectID": "slides/11/slides11.html#section-2",
+    "href": "slides/11/slides11.html#section-2",
     "title": "Data Import & Dates/Times",
     "section": "",
     "text": "Get data out of excel and into R\nSupport for both .xls and .xlsx files\nPart of the tidyverse\nNeed to load separately"
@@ -2988,8 +2967,8 @@
     "text": "Ultramarathon results\n\nUltra marathon = anything longer than 26.2 miles\nThe dates and times imported as character strings!\n\n\n\n## Rows: 392\n## Columns: 11\n## $ state            &lt;chr&gt; \"Minnesota\", \"Minnesota\", \"Minnesota\", \"Minnesota\", \"…\n## $ Event            &lt;chr&gt; \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zumbro\", \"Zu…\n## $ City             &lt;chr&gt; \"Theilman\", \"Theilman\", \"Theilman\", \"Theilman\", \"Thei…\n## $ race_url         &lt;chr&gt; \"https://calendar.ultrarunning.com/event/zumbro\", \"ht…\n## $ date             &lt;chr&gt; \"04/08/21\", \"04/11/20\", \"04/13/19\", \"04/13/18\", \"04/0…\n## $ Finishers        &lt;chr&gt; \"121\", \"Race Cancelled\", \"Race Cancelled\", \"49\", \"149…\n## $ top_result_m     &lt;chr&gt; \"5:23:55\", \"Race Cancelled\", \"Race Cancelled\", \"9:13:…\n## $ top_result_f     &lt;chr&gt; \"6:30:42\", \"Race Cancelled\", \"Race Cancelled\", \"10:15…\n## $ distance         &lt;chr&gt; \"34 Miles\", \"50 Miles\", \"50 Miles\", \"50 Miles\", \"50 M…\n## $ elevation_rating &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…\n## $ surface_rating   &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,…"
   },
   {
-    "objectID": "slides/11/slides11.html#section-4",
-    "href": "slides/11/slides11.html#section-4",
+    "objectID": "slides/11/slides11.html#section-3",
+    "href": "slides/11/slides11.html#section-3",
     "title": "Data Import & Dates/Times",
     "section": "",
     "text": "Functions for working with dates and time spans\nPart of the tidyverse\nNeed to load separately"
@@ -3528,7 +3507,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\ntbd\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\ntbd\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\nHW9",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nSUBMIT ACTIVITY\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\n✅\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n✅\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\n✅\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n✅\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\n✅\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n✅\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n✅\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\n\nslides12 12-factors\n\n✅\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\n\nslides13 13-strings-regex\n\n✅\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\ntbd\n✅\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\ntbd\n\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\ntbd\n\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\ntbd\n✅\n[Portfolio 2]\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\n✅\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n✅\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n✅\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\n\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\n✅\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n✅\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n✅\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\n✅\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\n✅\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\n\nHW9",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -5845,13 +5824,6 @@
     "text": "Final details\n\nShiny apps need to be “connected” to RStudio or a remote RStudio server\n\nYou can deploy shiny apps online\n\nusing Posit’s cloud server (free/fee) - https://www.shinyapps.io/\ncreating a shiny server"
   },
   {
-    "objectID": "slides/12/slides12.html#today",
-    "href": "slides/12/slides12.html#today",
-    "title": "Working with Factors",
-    "section": "Today",
-    "text": "Today\n\nsetup chunk and alt-text\nHW5 and Portfolio 2 grace period\nNew stuff!"
-  },
-  {
     "objectID": "slides/12/slides12.html#survivor-castaways-data",
     "href": "slides/12/slides12.html#survivor-castaways-data",
     "title": "Working with Factors",
@@ -6213,11 +6185,18 @@
     "href": "slides/12/slides12.html#your-turn",
     "title": "Working with Factors",
     "section": "Your turn",
-    "text": "Your turn\n\nCollapse the marital variable to have levels Married, not_married, and No answer\nInclude \"Never married\", \"Divorced\", and “Widowed\" in not_married\n\n\n\n\n\n−&plus;\n\n02:00"
+    "text": "Your turn\n\nCollapse the marital variable to have levels Married, Not married, and No answer\nInclude \"Never married\", \"Divorced\", and “Widowed\" in Not married\n\n\n\n\n\n−&plus;\n\n02:00"
   },
   {
     "objectID": "slides/12/slides12.html#there-are-relatively-few-points-in-each-of-these-groups",
     "href": "slides/12/slides12.html#there-are-relatively-few-points-in-each-of-these-groups",
+    "title": "Working with Factors",
+    "section": "There are relatively few points in each of these groups",
+    "text": "There are relatively few points in each of these groups"
+  },
+  {
+    "objectID": "slides/12/slides12.html#there-are-relatively-few-points-in-each-of-these-groups-1",
+    "href": "slides/12/slides12.html#there-are-relatively-few-points-in-each-of-these-groups-1",
     "title": "Working with Factors",
     "section": "There are relatively few points in each of these groups",
     "text": "There are relatively few points in each of these groups"
@@ -6249,6 +6228,13 @@
     "title": "Working with Factors",
     "section": "Lumping parytid",
     "text": "Lumping parytid\n\n\n\ngss_cat %&gt;%\n  mutate(partyid = fct_lump(partyid, n = 3)) %&gt;%\n  ggplot(aes(partyid)) +\n  geom_bar() +\n  labs(x = \"partyid\")"
+  },
+  {
+    "objectID": "slides/12/slides12.html#your-turn-hotel-bookings",
+    "href": "slides/12/slides12.html#your-turn-hotel-bookings",
+    "title": "Working with Factors",
+    "section": "Your turn: hotel bookings",
+    "text": "Your turn: hotel bookings\n\nThe remainder of the activity file has you fixing up some plots using hotel bookings data from Tidy Tuesday"
   },
   {
     "objectID": "slides/14/slides14.html#today",
@@ -7029,7 +7015,7 @@
     "href": "activities/12-factors.html",
     "title": "12-factors",
     "section": "",
-    "text": "gss_cat gets loaded with the forcats package in the tidyverse use gss_cat to answer the following questions (I’d use a graph, but do whatever you’d like!)\n\ngss_cat\n\n# A tibble: 21,483 × 9\n    year marital         age race  rincome        partyid    relig denom tvhours\n   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n 1  2000 Never married    26 White $8000 to 9999  Ind,near … Prot… Sout…      12\n 2  2000 Divorced         48 White $8000 to 9999  Not str r… Prot… Bapt…      NA\n 3  2000 Widowed          67 White Not applicable Independe… Prot… No d…       2\n 4  2000 Never married    39 White Not applicable Ind,near … Orth… Not …       4\n 5  2000 Divorced         25 White Not applicable Not str d… None  Not …       1\n 6  2000 Married          25 White $20000 - 24999 Strong de… Prot… Sout…      NA\n 7  2000 Never married    36 White $25000 or more Not str r… Chri… Not …       3\n 8  2000 Divorced         44 White $7000 to 7999  Ind,near … Prot… Luth…      NA\n 9  2000 Married          44 White $25000 or more Not str d… Prot… Other       0\n10  2000 Married          47 White $25000 or more Strong re… Prot… Sout…       3\n# ℹ 21,473 more rows\n\n\n\nWhich religions watch the least TV?\nDo married people watch more or less TV than single people?"
+    "text": "gss_cat gets loaded with the forcats package in the tidyverse. Use gss_cat to answer the following questions (I’d use a graph, but do whatever you’d like!)\n\ngss_cat\n\n# A tibble: 21,483 × 9\n    year marital         age race  rincome        partyid    relig denom tvhours\n   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;\n 1  2000 Never married    26 White $8000 to 9999  Ind,near … Prot… Sout…      12\n 2  2000 Divorced         48 White $8000 to 9999  Not str r… Prot… Bapt…      NA\n 3  2000 Widowed          67 White Not applicable Independe… Prot… No d…       2\n 4  2000 Never married    39 White Not applicable Ind,near … Orth… Not …       4\n 5  2000 Divorced         25 White Not applicable Not str d… None  Not …       1\n 6  2000 Married          25 White $20000 - 24999 Strong de… Prot… Sout…      NA\n 7  2000 Never married    36 White $25000 or more Not str r… Chri… Not …       3\n 8  2000 Divorced         44 White $7000 to 7999  Ind,near … Prot… Luth…      NA\n 9  2000 Married          44 White $25000 or more Not str d… Prot… Other       0\n10  2000 Married          47 White $25000 or more Strong re… Prot… Sout…       3\n# ℹ 21,473 more rows\n\n\n\nWhich religions watch the least TV?\nDo married people watch more or less TV than single people?"
   },
   {
     "objectID": "activities/12-factors.html#hotel-bookings-by-month",
