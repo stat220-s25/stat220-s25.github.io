@@ -334,27 +334,6 @@
     "text": "Your turn: across\nUse summarize and across to find the range of any quantitative variables, and the number of levels of any factor variables in the penguins dataset."
   },
   {
-    "objectID": "activities/17-iteration.html#your-turn-map",
-    "href": "activities/17-iteration.html#your-turn-map",
-    "title": "17: Iteration",
-    "section": "Your turn: map",
-    "text": "Your turn: map\nUsing the penguins data, use map to calculate the summary() of a numeric variable and the table() of a factor variable. (It may be helpful to first write a custom function)\nYour result should be a list (it will have length 8)."
-  },
-  {
-    "objectID": "activities/17-iteration.html#survivor-data",
-    "href": "activities/17-iteration.html#survivor-data",
-    "title": "17: Iteration",
-    "section": "Survivor data",
-    "text": "Survivor data\n\nWrite a function called finalists that takes the input of a survivor season (as a numeric) and outputs a vector of the finalists’ names for that season.\nUse map to return a list of finalists for seasons 31-40.\nNow, return a character vector instead of a list (you may need to edit your function). For each season, the finalists’ names should be separated with a comma.\n\n\nload(url(\"https://stat220-s25.github.io/data/combining-data-examples.Rda\"))\nus_castaway_results\n\n# A tibble: 870 × 7\n   castaway_id castaway season_name      season place jury  finalist\n   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;   \n 1 US0001      Sonja    Survivor: Borneo      1    16 FALSE FALSE   \n 2 US0002      B.B.     Survivor: Borneo      1    15 FALSE FALSE   \n 3 US0003      Stacey   Survivor: Borneo      1    14 FALSE FALSE   \n 4 US0004      Ramona   Survivor: Borneo      1    13 FALSE FALSE   \n 5 US0005      Dirk     Survivor: Borneo      1    12 FALSE FALSE   \n 6 US0006      Joel     Survivor: Borneo      1    11 FALSE FALSE   \n 7 US0007      Gretchen Survivor: Borneo      1    10 FALSE FALSE   \n 8 US0008      Greg     Survivor: Borneo      1     9 TRUE  FALSE   \n 9 US0009      Jenna    Survivor: Borneo      1     8 TRUE  FALSE   \n10 US0010      Gervase  Survivor: Borneo      1     7 TRUE  FALSE   \n# ℹ 860 more rows"
-  },
-  {
-    "objectID": "activities/17-iteration.html#explain-a-function",
-    "href": "activities/17-iteration.html#explain-a-function",
-    "title": "17: Iteration",
-    "section": "Explain a function",
-    "text": "Explain a function\nExplain what each step of the pipeline in this function does.\n\nshow_missing &lt;- function(df, group_vars, summary_vars = everything()) {\n  df |&gt; \n    group_by(pick({{ group_vars }})) |&gt; \n    summarize(\n      across({{ summary_vars }}, \\(x) sum(is.na(x))),\n      .groups = \"drop\"\n    ) |&gt;\n    select(where(\\(x) any(x &gt; 0)))\n}\n\nnycflights23::flights |&gt; show_missing(c(year, month, day))\n\n# A tibble: 365 × 9\n    year month   day dep_time dep_delay arr_time arr_delay tailnum air_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;int&gt;    &lt;int&gt;     &lt;int&gt;   &lt;int&gt;    &lt;int&gt;\n 1  2023     1     1        5         5        6         9       2        9\n 2  2023     1     2       28        28       30        37       8       37\n 3  2023     1     3       16        16       16        19       1       19\n 4  2023     1     4       16        16       18        21       2       21\n 5  2023     1     5       10        10       10        13       0       13\n 6  2023     1     6        1         1        1         3       0        3\n 7  2023     1     7        1         1        1         3       0        3\n 8  2023     1     8        0         0        0         1       0        1\n 9  2023     1     9       15        15       15        16       1       16\n10  2023     1    10        4         4        4         4       1        4\n# ℹ 355 more rows"
-  },
-  {
     "objectID": "activities/03-ggplot-intro.html",
     "href": "activities/03-ggplot-intro.html",
     "title": "Intro to ggplot2\n",
@@ -2558,7 +2537,7 @@
     "href": "slides/17/slides17.html#cancer-data",
     "title": "Iteration",
     "section": "Cancer data",
-    "text": "Cancer data\n\nSet of digitized breast cancer image features\nRow = an image of a tumor sample\nVariables include the diagnosis (benign or malignant) and measurements\n\n\n\nRows: 569\nColumns: 12\n$ ID                &lt;dbl&gt; 842302, 842517, 84300903, 84348301, 84358402, 843786…\n$ Class             &lt;chr&gt; \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M…\n$ Radius            &lt;dbl&gt; 17.990, 20.570, 19.690, 11.420, 20.290, 12.450, 18.2…\n$ Texture           &lt;dbl&gt; 10.38, 17.77, 21.25, 20.38, 14.34, 15.70, 19.98, 20.…\n$ Perimeter         &lt;dbl&gt; 122.80, 132.90, 130.00, 77.58, 135.10, 82.57, 119.60…\n$ Area              &lt;dbl&gt; 1001.0, 1326.0, 1203.0, 386.1, 1297.0, 477.1, 1040.0…\n$ Smoothness        &lt;dbl&gt; 0.11840, 0.08474, 0.10960, 0.14250, 0.10030, 0.12780…\n$ Compactness       &lt;dbl&gt; 0.27760, 0.07864, 0.15990, 0.28390, 0.13280, 0.17000…\n$ Concavity         &lt;dbl&gt; 0.30010, 0.08690, 0.19740, 0.24140, 0.19800, 0.15780…\n$ Concave_Points    &lt;dbl&gt; 0.14710, 0.07017, 0.12790, 0.10520, 0.10430, 0.08089…\n$ Symmetry          &lt;dbl&gt; 0.2419, 0.1812, 0.2069, 0.2597, 0.1809, 0.2087, 0.17…\n$ Fractal_Dimension &lt;dbl&gt; 0.07871, 0.05667, 0.05999, 0.09744, 0.05883, 0.07613…"
+    "text": "Cancer data\n\n\nSet of digitized breast cancer image features\nRow = an image of a tumor sample\nVariables include the diagnosis (benign or malignant) and measurements\n\n\n\n\nRows: 569\nColumns: 12\n$ ID                &lt;dbl&gt; 842302, 842517, 84300903, 84348301, 84358402, 843786…\n$ Class             &lt;chr&gt; \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M…\n$ Radius            &lt;dbl&gt; 17.990, 20.570, 19.690, 11.420, 20.290, 12.450, 18.2…\n$ Texture           &lt;dbl&gt; 10.38, 17.77, 21.25, 20.38, 14.34, 15.70, 19.98, 20.…\n$ Perimeter         &lt;dbl&gt; 122.80, 132.90, 130.00, 77.58, 135.10, 82.57, 119.60…\n$ Area              &lt;dbl&gt; 1001.0, 1326.0, 1203.0, 386.1, 1297.0, 477.1, 1040.0…\n$ Smoothness        &lt;dbl&gt; 0.11840, 0.08474, 0.10960, 0.14250, 0.10030, 0.12780…\n$ Compactness       &lt;dbl&gt; 0.27760, 0.07864, 0.15990, 0.28390, 0.13280, 0.17000…\n$ Concavity         &lt;dbl&gt; 0.30010, 0.08690, 0.19740, 0.24140, 0.19800, 0.15780…\n$ Concave_Points    &lt;dbl&gt; 0.14710, 0.07017, 0.12790, 0.10520, 0.10430, 0.08089…\n$ Symmetry          &lt;dbl&gt; 0.2419, 0.1812, 0.2069, 0.2597, 0.1809, 0.2087, 0.17…\n$ Fractal_Dimension &lt;dbl&gt; 0.07871, 0.05667, 0.05999, 0.09744, 0.05883, 0.07613…"
   },
   {
     "objectID": "slides/17/slides17.html#standardizing-cancer-data",
@@ -2649,7 +2628,7 @@
     "href": "slides/17/slides17.html#preallocate-storage-to-increase-speed",
     "title": "Iteration",
     "section": "Preallocate storage to increase speed",
-    "text": "Preallocate storage to increase speed\n\n\n\nadd_to_vector &lt;- function(n) {\n  output &lt;- NULL \n  for (i in 1:n) {\n    output &lt;- c(output, i)\n  }\n  output\n}\n\nadd_to_vector(10000)\n\n\n\n0.118 sec elapsed\n\n\n\n\nadd_to_vector2 &lt;- function(n) {\n  output &lt;- vector(\"integer\", n)  \n  for (i in 1:n) {\n   output[i] &lt;- i\n  }\n  output\n}\n\nadd_to_vector2(10000)\n\n\n\n0.034 sec elapsed"
+    "text": "Preallocate storage to increase speed\n\n\n\nadd_to_vector &lt;- function(n) {\n  output &lt;- NULL \n  for (i in 1:n) {\n    output &lt;- c(output, i)\n  }\n  output\n}\n\nadd_to_vector(10000)\n\n\n\n0.12 sec elapsed\n\n\n\n\nadd_to_vector2 &lt;- function(n) {\n  output &lt;- vector(\"integer\", n)  \n  for (i in 1:n) {\n   output[i] &lt;- i\n  }\n  output\n}\n\nadd_to_vector2(10000)\n\n\n\n0.049 sec elapsed"
   },
   {
     "objectID": "slides/17/slides17.html#the-difference-is-noticable-for-larger-n",
@@ -2733,63 +2712,7 @@
     "href": "slides/17/slides17.html#section-1",
     "title": "Iteration",
     "section": "",
-    "text": "The good news: we can use across to do lots of for-loop-type tasks in our {dplyr} pipelines.\n\nThe bad news: across() only works with {dplyr} functions like mutate or summarize\n\n\nThe good news: there’s a more general-purpose solution in the {tidyverse}"
-  },
-  {
-    "objectID": "slides/17/slides17.html#section-2",
-    "href": "slides/17/slides17.html#section-2",
-    "title": "Iteration",
-    "section": "",
-    "text": "Enhances the functional programming toolkit of R\nMain function is map, which allows you to replace many for loops\nLoaded with library(tidyverse)"
-  },
-  {
-    "objectID": "slides/17/slides17.html#map",
-    "href": "slides/17/slides17.html#map",
-    "title": "Iteration",
-    "section": "map()",
-    "text": "map()\n\n\n\n\n.x what to iterate over\n\n.f function to apply\n\n\n\nmap(.x, \n    .f,\n    ...)"
-  },
-  {
-    "objectID": "slides/17/slides17.html#how-does-mapping-work",
-    "href": "slides/17/slides17.html#how-does-mapping-work",
-    "title": "Iteration",
-    "section": "How does mapping work?",
-    "text": "How does mapping work?\nSuppose we have quiz 1 and quiz 2 scores of 4 students stored in a list…\n\nquiz_scores &lt;- list(\n  quiz1 &lt;- c(80, 90, 70, 50),\n  quiz2 &lt;- c(85, 83, 45, 60)\n)\n\n\n…and we find the mean score in each quiz\n\nmap(quiz_scores, mean)\n\n[[1]]\n[1] 72.5\n\n[[2]]\n[1] 68.25"
-  },
-  {
-    "objectID": "slides/17/slides17.html#section-3",
-    "href": "slides/17/slides17.html#section-3",
-    "title": "Iteration",
-    "section": "",
-    "text": "…and suppose we want the results as a numeric (double) vector\n\nmap_dbl(quiz_scores, mean)\n\n[1] 72.50 68.25\n\n\n\n…or as a character string\n\nmap_chr(quiz_scores, mean)\n\n[1] \"72.500000\" \"68.250000\""
-  },
-  {
-    "objectID": "slides/17/slides17.html#map_something",
-    "href": "slides/17/slides17.html#map_something",
-    "title": "Iteration",
-    "section": "map_something",
-    "text": "map_something\nFunctions for looping over an object and returning a value (of a specific type):\n\n\n\nmap() - returns a list\n\nmap_lgl() - returns a logical vector\n\nmap_int() - returns a integer vector\n\nmap_dbl() - returns a double vector\n\nmap_chr() - returns a character vector\n\nmap_df() / map_dfr() - returns a data frame by row binding\n\nmap_dfc() - returns a data frame by column binding\n…"
-  },
-  {
-    "objectID": "slides/17/slides17.html#your-turn-3",
-    "href": "slides/17/slides17.html#your-turn-3",
-    "title": "Iteration",
-    "section": "Your turn:",
-    "text": "Your turn:\n\nUsing the penguins data, use map to calculate the summary() of a numeric variable and the table() of a factor variable. (It may be helpful to first write a custom function for this output)\nYour result should be a list (it will have length 8).\n\n\n\n\n\n−&plus;\n\n04:00"
-  },
-  {
-    "objectID": "slides/17/slides17.html#more-practice-survivor-data",
-    "href": "slides/17/slides17.html#more-practice-survivor-data",
-    "title": "Iteration",
-    "section": "More practice: survivor data",
-    "text": "More practice: survivor data\n\n\nWrite a function called finalists that takes the input of a survivor season (as a numeric) and outputs a vector of the finalists’ names for that season.\nUse map to return a list of finalists for seasons 31-40.\nNow, return a character vector instead of a list (you may need to edit your function). For each season, the finalists’ names should be separated with a comma.\n\n\n\nload(url(\"https://stat220-s25.github.io/data/combining-data-examples.Rda\"))\nus_castaway_results\n\n# A tibble: 870 × 7\n   castaway_id castaway season_name      season place jury  finalist\n   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;   \n 1 US0001      Sonja    Survivor: Borneo      1    16 FALSE FALSE   \n 2 US0002      B.B.     Survivor: Borneo      1    15 FALSE FALSE   \n 3 US0003      Stacey   Survivor: Borneo      1    14 FALSE FALSE   \n 4 US0004      Ramona   Survivor: Borneo      1    13 FALSE FALSE   \n 5 US0005      Dirk     Survivor: Borneo      1    12 FALSE FALSE   \n 6 US0006      Joel     Survivor: Borneo      1    11 FALSE FALSE   \n 7 US0007      Gretchen Survivor: Borneo      1    10 FALSE FALSE   \n 8 US0008      Greg     Survivor: Borneo      1     9 TRUE  FALSE   \n 9 US0009      Jenna    Survivor: Borneo      1     8 TRUE  FALSE   \n10 US0010      Gervase  Survivor: Borneo      1     7 TRUE  FALSE   \n# ℹ 860 more rows"
-  },
-  {
-    "objectID": "slides/17/slides17.html#more-practice",
-    "href": "slides/17/slides17.html#more-practice",
-    "title": "Iteration",
-    "section": "More practice",
-    "text": "More practice\n\nExplain what each step of the pipeline in this function does. (Try things out to confirm!)\n\n\nshow_missing &lt;- function(df, group_vars, summary_vars = everything()) {\n  df |&gt; \n    group_by(pick({{ group_vars }})) |&gt; \n    summarize(\n      across({{ summary_vars }}, \\(x) sum(is.na(x))),\n      .groups = \"drop\"\n    ) |&gt;\n    select(where(\\(x) any(x &gt; 0)))\n}\n\nnycflights23::flights |&gt; show_missing(c(year, month, day))\n\n# A tibble: 365 × 9\n    year month   day dep_time dep_delay arr_time arr_delay tailnum air_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;int&gt;    &lt;int&gt;     &lt;int&gt;   &lt;int&gt;    &lt;int&gt;\n 1  2023     1     1        5         5        6         9       2        9\n 2  2023     1     2       28        28       30        37       8       37\n 3  2023     1     3       16        16       16        19       1       19\n 4  2023     1     4       16        16       18        21       2       21\n 5  2023     1     5       10        10       10        13       0       13\n 6  2023     1     6        1         1        1         3       0        3\n 7  2023     1     7        1         1        1         3       0        3\n 8  2023     1     8        0         0        0         1       0        1\n 9  2023     1     9       15        15       15        16       1       16\n10  2023     1    10        4         4        4         4       1        4\n# ℹ 355 more rows"
+    "text": "The good news: we can use across to do lots of for-loop-type tasks in our {dplyr} pipelines.\n\nThe bad news: across() only works with {dplyr} functions like mutate or summarize\n\n\nThe good news: there’s a more general-purpose solution in the {tidyverse} (which we’ll see next time!)"
   },
   {
     "objectID": "slides/11/slides11.html#today",
@@ -3507,7 +3430,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nSUBMIT ACTIVITY\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\n✅\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n✅\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\n✅\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n✅\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\n✅\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n✅\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n✅\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\n\nslides12 12-factors\n\n✅\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\n\nslides13 13-strings-regex\n\n✅\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\n\nslides14 14-text-case-study\n\n✅\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\n\nslides15 15-sentiment\n\n\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\n\n\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\n\nslides16 16-functions\n\n✅\n\nPortfolio 2\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\ntbd\n✅\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n✅\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n✅\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\n\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\n✅\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n✅\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n✅\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\n✅\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\n✅\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\n\nHW9",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nSUBMIT ACTIVITY\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\n✅\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n✅\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\n✅\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n✅\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\n✅\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n✅\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n✅\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\n\nslides12 12-factors\n\n✅\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\n\nslides13 13-strings-regex\n\n✅\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\n\nslides14 14-text-case-study\n\n✅\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\n\nslides15 15-sentiment\n\n\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\n\n\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\n\nslides16 16-functions\n\n✅\n\nPortfolio 2\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\n\nslides17 17-iteration\n\n✅\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\ntbd\n✅\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\ntbd\n✅\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\ntbd\n\nLab Quiz 3, Final Project Idea Form\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\ntbd\n✅\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\ntbd\n\n\nHW8  [Portfolio 3]\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\ntbd\n✅\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\ntbd\n✅\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\n✅\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\n✅\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\n\nHW9",
     "crumbs": [
       "Course information",
       "Schedule"
