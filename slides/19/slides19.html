@@ -408,11 +408,7 @@ Prof Amanda Luby
     </div>
 </div>
 
-</section><section id="todo" class="slide level2"><h2>TODO:</h2>
-<ul>
-<li class="fragment">Add lookup table link: https://data.census.gov/table</li>
-<li class="fragment">Explain census better</li>
-</ul></section><section id="what-is-an-api" class="slide level2"><h2>What is an API?</h2>
+</section><section id="what-is-an-api" class="slide level2"><h2>What is an API?</h2>
 <p>“API stands for <strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface. It is a set of rules and protocols that lets different software applications communicate with each other.</p>
 <p>In this class, we’ll use APIs to allow R to communicate with websites. These APIs focus on transmitting raw data, rather than images, fonts, etc. that humans interact with when they visit the page.</p>
 </section><section id="how-do-we-use-them" class="slide level2 scrollable"><h2>How do we use them?</h2>
@@ -929,7 +925,7 @@ Prof Amanda Luby
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>acs_mn_2020 <span class="ot">&lt;-</span> tidycensus<span class="sc">::</span><span class="fu">get_acs</span>(</span>
 <span id="cb13-2"><a></a>    <span class="at">year =</span> <span class="dv">2020</span>,</span>
 <span id="cb13-3"><a></a>    <span class="at">state =</span> <span class="st">"MN"</span>,</span>
-<span id="cb13-4"><a></a>    <span class="at">geography =</span> <span class="st">"tract"</span>,</span>
+<span id="cb13-4"><a></a>    <span class="at">geography =</span> <span class="st">"county"</span>,</span>
 <span id="cb13-5"><a></a>    <span class="at">variables =</span> <span class="fu">c</span>(<span class="st">"B01003_001"</span>, <span class="st">"B19013_001"</span>),</span>
 <span id="cb13-6"><a></a>    <span class="at">output =</span> <span class="st">"wide"</span>,</span>
 <span id="cb13-7"><a></a>    <span class="at">geometry =</span> <span class="cn">TRUE</span></span>
@@ -943,12 +939,53 @@ Prof Amanda Luby
 <code>variables = c("B01003_001", "B19013_001")</code>: Which survey questions should we get responses to?</li>
 </ul>
 </div></div>
+</section><section id="example" class="slide level2"><h2>Example</h2>
+<pre><code>Simple feature collection with 87 features and 6 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -97.23921 ymin: 43.49937 xmax: -89.49398 ymax: 49.38436
+Geodetic CRS:  NAD83
+First 10 features:
+   GEOID                        NAME B01003_001E B01003_001M B19013_001E B19013_001M                       geometry
+1  27167    Wilkin County, Minnesota        6264          NA       56829        5145 MULTIPOLYGON (((-96.79109 4...
+2  27133      Rock County, Minnesota        9386          NA       65744        4462 MULTIPOLYGON (((-96.45341 4...
+3  27119      Polk County, Minnesota       31384          NA       58682        4958 MULTIPOLYGON (((-97.14638 4...
+4  27069   Kittson County, Minnesota        4272          NA       55410        2948 MULTIPOLYGON (((-97.23921 4...
+5  27125  Red Lake County, Minnesota        4005          NA       59698        9122 MULTIPOLYGON (((-96.48255 4...
+6  27023  Chippewa County, Minnesota       11876          NA       57301        4675 MULTIPOLYGON (((-96.0367 45...
+7  27075      Lake County, Minnesota       10571          NA       65201        3145 MULTIPOLYGON (((-91.55375 4...
+8  27137 St. Louis County, Minnesota      199499          NA       57480        1156 MULTIPOLYGON (((-93.09802 4...
+9  27061    Itasca County, Minnesota       45180          NA       55744        1908 MULTIPOLYGON (((-94.41896 4...
+10 27145   Stearns County, Minnesota      159788          NA       65244        1675 MULTIPOLYGON (((-95.13964 4...</code></pre>
+</section><section id="example-1" class="slide level2"><h2>Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>acs_mn_2020 <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-3"><a></a>    <span class="at">name =</span> <span class="fu">str_remove</span>(NAME, <span class="st">", Minnesota"</span>),</span>
+<span id="cb15-4"><a></a>    <span class="at">name =</span> <span class="fu">str_remove</span>(name, <span class="st">" County"</span>)</span>
+<span id="cb15-5"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb15-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> B19013_001E, </span>
+<span id="cb15-7"><a></a>                          <span class="at">xmin =</span> B19013_001E <span class="sc">-</span> B19013_001M, </span>
+<span id="cb15-8"><a></a>                          <span class="at">xmax =</span> B19013_001E <span class="sc">+</span> B19013_001M, </span>
+<span id="cb15-9"><a></a>                          <span class="at">y =</span> <span class="fu">fct_reorder</span>(name, B19013_001E))) <span class="sc">+</span> </span>
+<span id="cb15-10"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-11"><a></a>  <span class="fu">geom_errorbarh</span>() <span class="sc">+</span> </span>
+<span id="cb15-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-13"><a></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb15-14"><a></a>    <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb15-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="section-1" class="slide level2"><h2></h2>
+<p><img data-src="../img/acs-mn-county.png"></p>
+</section><section id="more-info-about-how-censusacs-data-is-reported" class="slide level2"><h2>More info about how census/ACS data is reported</h2>
+<p><a href="https://data.census.gov/" class="uri">https://data.census.gov/</a></p>
+<p><a href="https://www.census.gov/acs/www/data/data-tables-and-tools/subject-tables/" class="uri">https://www.census.gov/acs/www/data/data-tables-and-tools/subject-tables/</a></p>
 </section><section id="searching-for-variables" class="slide level2"><h2>Searching for variables</h2>
 <p>Getting variables from the Census or ACS requires knowing the variable ID - and there are thousands of these IDs across the different Census files.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2020</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb14-2"><a></a>acs_vars </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2020</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb16-2"><a></a>acs_vars </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 27,850 × 4
    name        label                                    concept        geography
@@ -969,8 +1006,8 @@ Prof Amanda Luby
 </div>
 </section><section id="the-two-we-used-were" class="slide level2"><h2>The two we used were:</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>acs_vars <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"B01003_001"</span>, <span class="st">"B19013_001"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>acs_vars <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"B01003_001"</span>, <span class="st">"B19013_001"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   name       label                                             concept geography
@@ -982,8 +1019,8 @@ Prof Amanda Luby
 </section><section id="but-we-could-search-for-other-variables-using-label" class="slide level2"><h2>But we could search for other variables using <code>label</code>
 </h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>acs_vars <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(label, <span class="st">"degree"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>acs_vars <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(label, <span class="st">"degree"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 345 × 4
    name         label                                          concept geography
@@ -1003,7 +1040,7 @@ Prof Amanda Luby
 </div>
 </section><section id="your-turn" class="slide level2"><h2>Your turn</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2020</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>acs_vars <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2020</span>, <span class="st">"acs5"</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="task">
 <ul>
@@ -1012,9 +1049,9 @@ Prof Amanda Luby
 </ul>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">countdown</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">countdown</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="countdown" id="timer_b4ca490c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_9af40f39" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -1022,6 +1059,554 @@ Prof Amanda Luby
 </div>
 </div>
 </div>
+</section><section id="what-is-get_acs-doing-underneath-the-hood" class="slide level2"><h2>What is <code>get_acs</code> doing underneath the hood?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>get_acs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (geography, variables = NULL, table = NULL, cache_table = FALSE, 
+    year = 2023, output = "tidy", state = NULL, county = NULL, 
+    zcta = NULL, geometry = FALSE, keep_geo_vars = FALSE, shift_geo = FALSE, 
+    summary_var = NULL, key = NULL, moe_level = 90, survey = "acs5", 
+    show_call = FALSE, ...) 
+{
+    if (survey == "acs1") {
+        message(sprintf("Getting data from the %s 1-year ACS", 
+            year))
+    }
+    else if (survey == "acs3") {
+        startyear &lt;- year - 2
+        message(sprintf("Getting data from the %s-%s 3-year ACS", 
+            startyear, year))
+    }
+    else if (survey == "acs5") {
+        startyear &lt;- year - 4
+        message(sprintf("Getting data from the %s-%s 5-year ACS", 
+            startyear, year))
+    }
+    if (year == 2020 &amp;&amp; survey == "acs1") {
+        msg_acs &lt;- c(crayon::red(stringr::str_wrap("The regular 1-year ACS for 2020 was not released and is not available in tidycensus.")), 
+            i = crayon::cyan(stringr::str_wrap("Due to low response rates, the Census Bureau instead released a set of experimental estimates for the 2020 1-year ACS.")), 
+            i = crayon::cyan(stringr::str_wrap("These estimates can be downloaded at https://www.census.gov/programs-surveys/acs/data/experimental-data/1-year.html.")), 
+            i = crayon::green(stringr::str_wrap("1-year ACS data can still be accessed for other years by supplying an appropriate year to the `year` parameter.")))
+        rlang::abort(msg_acs)
+    }
+    if (shift_geo) {
+        warning("The `shift_geo` argument is deprecated and will be removed in a future release. We recommend using `tigris::shift_geometry()` instead.", 
+            call. = FALSE)
+    }
+    if (survey == "acs5" &amp;&amp; year &lt; 2009) {
+        stop("5-year ACS support in tidycensus begins with the 2005-2009 5-year ACS. Consider using decennial Census data instead.", 
+            call. = FALSE)
+    }
+    if (survey == "acs1") {
+        if (year &lt; 2005) {
+            stop("1-year ACS support in tidycensus begins with the 2005 1-year ACS. Consider using decennial Census data instead.", 
+                call. = FALSE)
+        }
+        message("The 1-year ACS provides data for geographies with populations of 65,000 and greater.")
+    }
+    if (survey == "acs3") {
+        if (year &lt; 2007 || year &gt; 2013) {
+            stop("3-year ACS support in tidycensus begins with the 2005-2007 3-year ACS and ends with the 2011-2013 3-year ACS. For newer data, use the 1-year or 5-year ACS.", 
+                call. = FALSE)
+        }
+        else {
+            message("The 3-year ACS provides data for geographies with populations of 20,000 and greater.")
+        }
+    }
+    if (length(table) &gt; 1) {
+        stop("Only one table may be requested per call.", call. = FALSE)
+    }
+    if (!is.null(variables)) {
+        if (any(grepl("^K[0-9].", variables))) {
+            message("Getting data from the ACS 1-year Supplemental Estimates.  Data are available for geographies with populations of 20,000 and greater.")
+            survey &lt;- "acsse"
+        }
+    }
+    if (!is.null(table)) {
+        if (grepl("^K[0-9].", table)) {
+            message("Getting data from the ACS 1-year Supplemental Estimates.  Data are available for geographies with populations of 20,000 and greater.")
+            survey &lt;- "acsse"
+        }
+    }
+    key &lt;- get_census_api_key(key)
+    if (geography == "block") {
+        stop("Block data are not available in the ACS. Use `get_decennial()` to access block data from the 2010 Census.", 
+            call. = FALSE)
+    }
+    cache &lt;- getOption("tigris_use_cache", FALSE)
+    if (geometry) {
+        if (shift_geo) {
+            message("Using feature geometry obtained from the albersusa package")
+        }
+        else if (!shift_geo &amp;&amp; !cache) {
+            message("Downloading feature geometry from the Census website.  To cache shapefiles for use in future sessions, set `options(tigris_use_cache = TRUE)`.")
+        }
+    }
+    if (shift_geo &amp;&amp; !geometry) {
+        stop("`shift_geo` is only available when requesting feature geometry with `geometry = TRUE`", 
+            call. = FALSE)
+    }
+    if (is.null(variables) &amp;&amp; is.null(table)) {
+        stop("Either a vector of variables or an ACS table must be specified.", 
+            call. = FALSE)
+    }
+    if (!is.null(variables) &amp;&amp; !is.null(table)) {
+        stop("Specify variables or a table to retrieve; they cannot be combined.", 
+            call. = FALSE)
+    }
+    if (geography == "cbsa") {
+        geography &lt;- "metropolitan statistical area/micropolitan statistical area"
+    }
+    if (geography == "cbg") 
+        geography &lt;- "block group"
+    if (geography == "zcta") 
+        geography &lt;- "zip code tabulation area"
+    if (geography == "puma") 
+        geography &lt;- "public use microdata area"
+    if (grepl("_", geography) &amp; !grepl(" ", geography)) 
+        geography &lt;- gsub("_", " ", geography)
+    if (any(grepl("^S[0-9]|^DP", variables)) &amp;&amp; geography == 
+        "block group") {
+        stop("Block groups are not an available geography in the Data Profile and Subject Tables datasets.", 
+            call. = FALSE)
+    }
+    if (!is.null(zcta) &amp;&amp; geography != "zip code tabulation area") {
+        stop("ZCTAs can only be specified when requesting data at the zip code tabulation area-level.", 
+            call. = FALSE)
+    }
+    if (geography == "zip code tabulation area" &amp;&amp; length(state) &gt; 
+        1 &amp;&amp; !is.null(zcta)) {
+        zips_to_get &lt;- zcta
+        zcta &lt;- NULL
+    }
+    else {
+        zips_to_get &lt;- NULL
+    }
+    insist_get_acs &lt;- purrr::insistently(get_acs)
+    if (year &lt; 2013) {
+        if (geography == "block group") {
+            stop("Block groups are not currently available for the 2008-2012 ACS and earlier.\nIf access to these datasets is restored, tidycensus will again support them.", 
+                call. = FALSE)
+        }
+        if ((geography == "block group" &amp;&amp; length(state) == 1 &amp;&amp; 
+            is.null(county))) {
+            st &lt;- suppressMessages(validate_state(state))
+            if (year &lt; 2013) {
+                tigris_yr &lt;- 2010
+            }
+            else {
+                tigris_yr &lt;- year
+            }
+            cty_year &lt;- suppressMessages(counties(state = st, 
+                cb = TRUE, resolution = "20m", year = tigris_yr, 
+                class = "sf"))
+            county &lt;- cty_year$COUNTYFP
+        }
+        if (geography == "block group" &amp;&amp; length(state) &gt; 1) {
+            if (!is.null(county)) {
+                stop("Don't know which counties belong to which states. County must be null when requesting multiple states.", 
+                  call. = FALSE)
+            }
+            else {
+                message("Fetching block group data by state and county and combining the result.")
+                if (geometry) {
+                  result &lt;- map(state, function(s, ...) {
+                    suppressMessages(insist_get_acs(geography = geography, 
+                      variables = variables, table = table, cache_table = cache_table, 
+                      year = year, output = output, state = s, 
+                      county = county, zcta = zcta, summary_var = summary_var, 
+                      geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                      shift_geo = FALSE, key = key, moe_level = moe_level, 
+                      survey = survey, show_call = show_call, 
+                      ...))
+                  }, ...) %&gt;% reduce(rbind)
+                  geoms &lt;- unique(st_geometry_type(result))
+                  if (length(geoms) &gt; 1) {
+                    result &lt;- st_cast(result, "MULTIPOLYGON")
+                  }
+                  result &lt;- result %&gt;% as_tibble() %&gt;% st_as_sf()
+                }
+                else {
+                  result &lt;- map_df(state, ~{
+                    suppressMessages(insist_get_acs(geography = geography, 
+                      variables = variables, table = table, cache_table = cache_table, 
+                      year = year, output = output, state = .x, 
+                      county = county, zcta = zcta, summary_var = summary_var, 
+                      geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                      shift_geo = FALSE, key = key, moe_level = moe_level, 
+                      survey = survey, show_call = show_call))
+                  })
+                }
+                return(result)
+            }
+        }
+    }
+    if (length(unique(substr(variables, 1, 1))) &gt; 1 &amp;&amp; !all(unique(substr(variables, 
+        1, 1)) %in% c("B", "C"))) {
+        if (any(grepl("^K[0-9].", variables))) {
+            stop("At the moment, supplemental estimates variables cannot be combined with variables from other datasets.", 
+                call. = FALSE)
+        }
+        if (any(grepl("^CP[0-9].", variables))) {
+            stop("Comparison profiles variables cannot be mixed with variables from other datasets in tidycensus; please request CP data separately.", 
+                call. = FALSE)
+        }
+        message("Fetching data by table type (\"B/C\", \"S\", \"DP\") and combining the result.")
+        vars_by_type &lt;- map(c("^B|^C", "^S", "^D"), ~variables[str_detect(variables, 
+            .x)]) %&gt;% purrr::compact()
+        if (geometry) {
+            if (output == "wide") {
+                vars_first &lt;- vars_by_type[[1]]
+                vars_rest &lt;- vars_by_type[-1]
+                result_geo &lt;- suppressMessages(insist_get_acs(geography = geography, 
+                  variables = vars_first, table = table, cache_table = cache_table, 
+                  year = year, output = output, state = state, 
+                  county = county, zcta = zcta, summary_var = summary_var, 
+                  geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                  shift_geo = FALSE, key = key, moe_level = moe_level, 
+                  survey = survey, show_call = show_call, ...))
+                result_no_geo &lt;- map(vars_rest, ~suppressMessages(insist_get_acs(geography = geography, 
+                  variables = .x, table = table, cache_table = cache_table, 
+                  year = year, output = output, state = state, 
+                  county = county, zcta = zcta, summary_var = summary_var, 
+                  geometry = FALSE, keep_geo_vars = keep_geo_vars, 
+                  shift_geo = FALSE, key = key, moe_level = moe_level, 
+                  survey = survey, show_call = show_call)))
+                if (year == 2010) {
+                  result_no_geo &lt;- result_no_geo %&gt;% reduce(left_join, 
+                    by = "GEOID")
+                }
+                else {
+                  result_no_geo &lt;- result_no_geo %&gt;% reduce(left_join, 
+                    by = c("GEOID", "NAME"))
+                }
+                if (keep_geo_vars) {
+                  join_cols &lt;- c("GEOID", NAME.y = "NAME")
+                }
+                else {
+                  join_cols &lt;- c("GEOID", "NAME")
+                }
+                result &lt;- result_geo %&gt;% left_join(result_no_geo, 
+                  by = join_cols) %&gt;% select(-geometry, geometry)
+            }
+            else {
+                result &lt;- map(vars_by_type, function(v, ...) {
+                  suppressMessages(insist_get_acs(geography = geography, 
+                    variables = v, table = table, cache_table = cache_table, 
+                    year = year, output = output, state = state, 
+                    county = county, zcta = zcta, summary_var = summary_var, 
+                    geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                    shift_geo = FALSE, key = key, moe_level = moe_level, 
+                    survey = survey, show_call = show_call, ...))
+                }, ...) %&gt;% reduce(rbind)
+            }
+            geoms &lt;- unique(st_geometry_type(result))
+            if (length(geoms) &gt; 1) {
+                result &lt;- st_cast(result, "MULTIPOLYGON")
+            }
+            result &lt;- result %&gt;% as_tibble() %&gt;% st_as_sf()
+        }
+        else {
+            if (output == "wide") {
+                result &lt;- map(vars_by_type, ~suppressMessages(insist_get_acs(geography = geography, 
+                  variables = .x, table = table, cache_table = cache_table, 
+                  year = year, output = output, state = state, 
+                  county = county, zcta = zcta, summary_var = summary_var, 
+                  geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                  shift_geo = FALSE, key = key, moe_level = moe_level, 
+                  survey = survey, show_call = show_call)))
+                if (year == 2010) {
+                  result &lt;- result %&gt;% reduce(left_join, by = "GEOID")
+                }
+                else {
+                  result &lt;- result %&gt;% reduce(left_join, by = c("GEOID", 
+                    "NAME"))
+                }
+            }
+            else {
+                result &lt;- map_df(vars_by_type, ~suppressMessages(insist_get_acs(geography = geography, 
+                  variables = .x, table = table, cache_table = cache_table, 
+                  year = year, output = output, state = state, 
+                  county = county, zcta = zcta, summary_var = summary_var, 
+                  geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                  shift_geo = FALSE, key = key, moe_level = moe_level, 
+                  survey = survey, show_call = show_call)))
+            }
+        }
+        return(arrange(result, GEOID))
+    }
+    if ((geography == "tract" || geography == "block group") &amp;&amp; 
+        length(state) &gt; 1) {
+        message(sprintf("Fetching %s data by state and combining the result.", 
+            geography))
+        if (geometry) {
+            result &lt;- map(state, function(s, ...) {
+                suppressMessages(insist_get_acs(geography = geography, 
+                  variables = variables, table = table, cache_table = cache_table, 
+                  year = year, output = output, state = s, county = county, 
+                  zcta = zcta, summary_var = summary_var, geometry = geometry, 
+                  keep_geo_vars = keep_geo_vars, shift_geo = FALSE, 
+                  key = key, moe_level = moe_level, survey = survey, 
+                  show_call = show_call, ...)) %&gt;% st_cast("MULTIPOLYGON")
+            }, ...) %&gt;% reduce(rbind)
+            geoms &lt;- unique(st_geometry_type(result))
+            if (length(geoms) &gt; 1) {
+                result &lt;- st_cast(result, "MULTIPOLYGON")
+            }
+            result &lt;- result %&gt;% as_tibble() %&gt;% st_as_sf()
+        }
+        else {
+            result &lt;- map_df(state, ~{
+                suppressMessages(insist_get_acs(geography = geography, 
+                  variables = variables, table = table, cache_table = cache_table, 
+                  year = year, output = output, state = .x, county = county, 
+                  zcta = zcta, summary_var = summary_var, geometry = geometry, 
+                  keep_geo_vars = keep_geo_vars, shift_geo = FALSE, 
+                  key = key, moe_level = moe_level, survey = survey, 
+                  show_call = show_call))
+            })
+        }
+        return(result)
+    }
+    if (year &lt; 2013) {
+        if ((geography == "block group" &amp;&amp; length(county) &gt; 1)) {
+            if (geometry) {
+                message("Fetching block group data by county and combining the result.")
+                result &lt;- map(county, function(co, ...) {
+                  suppressMessages(insist_get_acs(geography = geography, 
+                    variables = variables, table = table, cache_table = cache_table, 
+                    year = year, output = output, state = state, 
+                    county = co, zcta = zcta, summary_var = summary_var, 
+                    geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                    shift_geo = FALSE, key = key, moe_level = moe_level, 
+                    survey = survey, show_call = show_call, ...)) %&gt;% 
+                    st_cast("MULTIPOLYGON")
+                }, ...) %&gt;% reduce(rbind)
+                geoms &lt;- unique(st_geometry_type(result))
+                if (length(geoms) &gt; 1) {
+                  result &lt;- st_cast(result, "MULTIPOLYGON")
+                }
+                result &lt;- result %&gt;% as_tibble() %&gt;% st_as_sf()
+            }
+            else {
+                message("Fetching block group data by county and combining the result.")
+                result &lt;- map_df(county, ~{
+                  suppressMessages(insist_get_acs(geography = geography, 
+                    variables = variables, table = table, cache_table = cache_table, 
+                    year = year, output = output, state = state, 
+                    county = .x, zcta = zcta, summary_var = summary_var, 
+                    geometry = geometry, keep_geo_vars = keep_geo_vars, 
+                    shift_geo = FALSE, key = key, moe_level = moe_level, 
+                    survey = survey, show_call = show_call))
+                })
+            }
+            return(result)
+        }
+    }
+    if (moe_level == 90) {
+        moe_factor &lt;- 1
+    }
+    else if (moe_level == 95) {
+        moe_factor &lt;- (1.96/1.645)
+    }
+    else if (moe_level == 99) {
+        moe_factor &lt;- (2.576/1.645)
+    }
+    else {
+        stop("`moe_level` must be one of 90, 95, or 99.", call. = FALSE)
+    }
+    if (!is.null(table)) {
+        if (grepl("^S[0-9].", table)) {
+            survey2 &lt;- paste0(survey, "/subject")
+        }
+        else if (grepl("^DP[0-9].", table)) {
+            survey2 &lt;- paste0(survey, "/profile")
+        }
+        else if (grepl("^K[0-9].", table)) {
+            survey2 &lt;- "acsse"
+        }
+        else if (grepl("^CP[0-9].", table)) {
+            survey2 &lt;- paste0(survey, "/cprofile")
+        }
+        else {
+            survey2 &lt;- survey
+        }
+        variables &lt;- variables_from_table_acs(table, year, survey2, 
+            cache_table)
+    }
+    if (length(variables) &gt; 24) {
+        l &lt;- split(variables, ceiling(seq_along(variables)/24))
+        dat &lt;- map(l, function(x) {
+            vars &lt;- format_variables_acs(x)
+            suppressWarnings(load_data_acs(geography, vars, key, 
+                year, state, county, zcta, survey, show_call = show_call))
+        }) %&gt;% Reduce(function(x, y) full_join(x, y, by = "GEOID", 
+            suffix = c("", ".y")), .)
+    }
+    else {
+        vars &lt;- format_variables_acs(variables)
+        dat &lt;- suppressWarnings(load_data_acs(geography, vars, 
+            key, year, state, county, zcta, survey, show_call = show_call))
+    }
+    vars2 &lt;- format_variables_acs(variables)
+    var_vector &lt;- unlist(strsplit(vars2, split = ","))
+    if (output == "tidy") {
+        sub &lt;- dat[c("GEOID", "NAME", var_vector)]
+        if (packageVersion("tidyr") &gt; "0.7.2") {
+            dat2 &lt;- sub %&gt;% gather(key = variable, value = value, 
+                -GEOID, -NAME) %&gt;% separate(variable, into = c("variable", 
+                "type"), sep = -1) %&gt;% mutate(type = ifelse(type == 
+                "E", "estimate", "moe")) %&gt;% spread(type, value)
+        }
+        else {
+            dat2 &lt;- sub %&gt;% gather(key = variable, value = value, 
+                -GEOID, -NAME) %&gt;% separate(variable, into = c("variable", 
+                "type"), sep = -2) %&gt;% mutate(type = ifelse(type == 
+                "E", "estimate", "moe")) %&gt;% spread(type, value)
+        }
+        dat2[dat2 == -111111111] &lt;- NA
+        dat2[dat2 == -222222222] &lt;- NA
+        dat2[dat2 == -333333333] &lt;- NA
+        dat2[dat2 == -444444444] &lt;- NA
+        dat2[dat2 == -555555555] &lt;- NA
+        dat2[dat2 == -666666666] &lt;- NA
+        dat2[dat2 == -777777777] &lt;- NA
+        dat2[dat2 == -888888888] &lt;- NA
+        dat2[dat2 == -999999999] &lt;- NA
+        if ("moe" %in% names(dat2)) {
+            dat2 &lt;- mutate(dat2, moe = moe * moe_factor)
+        }
+        if (!is.null(names(variables))) {
+            for (i in 1:length(variables)) {
+                dat2[dat2 == variables[i]] &lt;- names(variables)[i]
+            }
+        }
+    }
+    else if (output == "wide") {
+        dat &lt;- dat[!duplicated(names(dat), fromLast = TRUE)]
+        dat &lt;- dat[c("GEOID", "NAME", var_vector)]
+        dat[dat == -111111111] &lt;- NA
+        dat[dat == -222222222] &lt;- NA
+        dat[dat == -333333333] &lt;- NA
+        dat[dat == -444444444] &lt;- NA
+        dat[dat == -555555555] &lt;- NA
+        dat[dat == -666666666] &lt;- NA
+        dat[dat == -777777777] &lt;- NA
+        dat[dat == -888888888] &lt;- NA
+        dat[dat == -999999999] &lt;- NA
+        dat2 &lt;- dat %&gt;% mutate_if(grepl("*M$", names(.)), list(~(. * 
+            moe_factor)))
+        if (!is.null(names(variables))) {
+            for (i in 1:length(variables)) {
+                names(dat2) &lt;- str_replace(names(dat2), variables[i], 
+                  names(variables)[i])
+            }
+        }
+        dat2 &lt;- dat2 %&gt;% select(GEOID, NAME, everything())
+    }
+    if (geography == "zip code tabulation area" &amp;&amp; year &gt; 2012 &amp;&amp; 
+        unique(nchar(dat2$GEOID)) == 7) {
+        dat2 &lt;- dat2 %&gt;% dplyr::mutate(GEOID = stringr::str_sub(GEOID, 
+            start = 3L))
+    }
+    if (!is.null(summary_var)) {
+        if (length(summary_var) &gt; 1) {
+            stop(paste0("Only one summary variable may be used per pull. ", 
+                "Alternatively, place all variables in `variables` and ", 
+                "use `output='wide'`"))
+        }
+        sumvar &lt;- format_variables_acs(summary_var)
+        sumdat &lt;- suppressMessages(load_data_acs(geography, sumvar, 
+            key, year, state, county, zcta, survey))
+        sumest &lt;- paste0(summary_var, "E")
+        summoe &lt;- paste0(summary_var, "M")
+        if (geography == "zip code tabulation area" &amp;&amp; year &gt; 
+            2012 &amp;&amp; unique(nchar(sumdat$GEOID)) == 7) {
+            sumdat &lt;- sumdat %&gt;% dplyr::mutate(GEOID = stringr::str_sub(GEOID, 
+                start = 3L))
+        }
+        dat2 &lt;- dat2 %&gt;% inner_join(sumdat, by = "GEOID") %&gt;% 
+            rename(summary_est = !!sumest, summary_moe = !!summoe, 
+                NAME = "NAME.x") %&gt;% select(-NAME.y) %&gt;% mutate(summary_moe = round(summary_moe * 
+            moe_factor, 0))
+        dat2[dat2 == -111111111] &lt;- NA
+        dat2[dat2 == -222222222] &lt;- NA
+        dat2[dat2 == -333333333] &lt;- NA
+        dat2[dat2 == -444444444] &lt;- NA
+        dat2[dat2 == -555555555] &lt;- NA
+        dat2[dat2 == -666666666] &lt;- NA
+        dat2[dat2 == -777777777] &lt;- NA
+        dat2[dat2 == -888888888] &lt;- NA
+        dat2[dat2 == -999999999] &lt;- NA
+    }
+    if (!is.null(zips_to_get)) {
+        dat2 &lt;- dat2 %&gt;% dplyr::filter(GEOID %in% zips_to_get)
+    }
+    if (geometry) {
+        if (shift_geo) {
+            if (!is.null(state)) {
+                stop("`shift_geo` is only available when requesting geometry for the entire US", 
+                  call. = FALSE)
+            }
+            message("Please note: Alaska and Hawaii are being shifted and are not to scale.")
+            if (geography == "state") {
+                geom &lt;- tidycensus::state_laea
+            }
+            else if (geography == "county") {
+                geom &lt;- tidycensus::county_laea
+                if (year &gt; 2014) {
+                  geom$GEOID[geom$GEOID == "46113"] &lt;- "46102"
+                  geom$GEOID[geom$GEOID == "02270"] &lt;- "02158"
+                }
+            }
+            else {
+                stop("`shift_geo` is only available for states and counties", 
+                  call. = FALSE)
+            }
+        }
+        else {
+            if (geography == "zip code tabulation area") {
+                geom &lt;- try(suppressMessages(use_tigris(geography = geography, 
+                  year = year, state = NULL, county = NULL, ...)))
+            }
+            else {
+                geom &lt;- try(suppressMessages(use_tigris(geography = geography, 
+                  year = year, state = state, county = county, 
+                  ...)))
+            }
+            if ("try-error" %in% class(geom)) {
+                stop("Your geometry data download failed. Please try again later or check the status of the Census Bureau website at https://www2.census.gov/geo/tiger/", 
+                  call. = FALSE)
+            }
+        }
+        if (!keep_geo_vars) {
+            geom &lt;- select(geom, GEOID, geometry)
+        }
+        args &lt;- list(...)
+        if (shift_geo || geography == "zip code tabulation area" || 
+            "filter_by" %in% names(args)) {
+            out &lt;- inner_join(geom, dat2, by = "GEOID") %&gt;% st_as_sf()
+        }
+        else {
+            out &lt;- right_join(geom, dat2, by = "GEOID") %&gt;% st_as_sf()
+        }
+        return(out)
+    }
+    else {
+        return(dat2)
+    }
+}
+&lt;bytecode: 0x1105a2cd0&gt;
+&lt;environment: namespace:tidycensus&gt;</code></pre>
+</div>
+</div>
+</section><section id="section-2" class="slide level2"><h2></h2>
+<p>If we add <code>show_call = TRUE</code>, we obtain the following output:</p>
+<pre><code>Getting data from the 2016-2020 5-year ACS
+Downloading feature geometry from the Census website.  To cache shapefiles for use in future sessions, set `options(tigris_use_cache = TRUE)`.
+Using FIPS code '27' for state 'MN'
+Census API call: https://api.census.gov/data/2020/acs/acs5?get=B01003_001E%2CB01003_001M%2CB19013_001E%2CB19013_001M%2CNAME&amp;for=tract%3A%2A&amp;in=state%3A27</code></pre>
 </section><section id="whats-going-on-behind-the-scenes-with-get_acs" class="slide level2"><h2>What’s going on behind the scenes with <code>get_acs</code>?</h2>
 <p>Let’s take a peek at the <a href="https://www.census.gov/data/developers/guidance/api-user-guide.html">census API user guide</a>. There’s a menu option for “Example API Queries”. We’ll talk through the ACS Example.</p>
 <ul>
@@ -1052,7 +1637,7 @@ Prof Amanda Luby
 </li>
 </ol></section><section><section id="how-do-we-talk-to-the-api" class="title-slide slide level1 center"><h1>How do we talk to the API?</h1>
 
-</section><section id="section-1" class="slide level2 center"><h2></h2>
+</section><section id="section-3" class="slide level2 center"><h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="https://httr2.r-lib.org/logo.png"></p>
@@ -1062,38 +1647,38 @@ Prof Amanda Luby
 <li>allows us to send “queries” to any API via R</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span>
-<span id="cb22-2"><a></a><span class="fu">library</span>(httr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span>
+<span id="cb27-2"><a></a><span class="fu">library</span>(httr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section><section id="sending-our-census-query" class="slide level2"><h2>Sending our census query</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>hmong_state_request <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.census.gov/data"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"2019"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs1"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-5"><a></a>    <span class="fu">req_url_query</span>(<span class="at">get =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>, <span class="st">"B02015_009E"</span>, <span class="st">"B02015_009M"</span>), <span class="st">`</span><span class="at">for</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">I</span>(<span class="st">"state:*"</span>), <span class="at">key =</span> census_api_key, <span class="at">.multi =</span> <span class="st">"comma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>hmong_state_request <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.census.gov/data"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs1"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a></a>    <span class="fu">req_url_query</span>(<span class="at">get =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>, <span class="st">"B02015_009E"</span>, <span class="st">"B02015_009M"</span>), <span class="st">`</span><span class="at">for</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">I</span>(<span class="st">"state:*"</span>), <span class="at">key =</span> census_api_key, <span class="at">.multi =</span> <span class="st">"comma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>request</code> sets the host name</p>
 </section><section id="sending-our-census-query-1" class="slide level2"><h2>Sending our census query</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>hmong_state_request <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.census.gov/data"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"2019"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-4"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs1"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-5"><a></a>    <span class="fu">req_url_query</span>(<span class="at">get =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>, <span class="st">"B02015_009E"</span>, <span class="st">"B02015_009M"</span>), <span class="st">`</span><span class="at">for</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">I</span>(<span class="st">"state:*"</span>), <span class="at">key =</span> census_api_key, <span class="at">.multi =</span> <span class="st">"comma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29" data-code-line-numbers="2-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>hmong_state_request <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.census.gov/data"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs1"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a></a>    <span class="fu">req_url_query</span>(<span class="at">get =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>, <span class="st">"B02015_009E"</span>, <span class="st">"B02015_009M"</span>), <span class="st">`</span><span class="at">for</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">I</span>(<span class="st">"state:*"</span>), <span class="at">key =</span> census_api_key, <span class="at">.multi =</span> <span class="st">"comma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>req_url_path_append</code> adds the year and dataset that we are trying to access</p>
 </section><section id="sending-our-census-query-2" class="slide level2"><h2>Sending our census query</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>hmong_state_request <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.census.gov/data"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"2019"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-4"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs1"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-5"><a></a>    <span class="fu">req_url_query</span>(<span class="at">get =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>, <span class="st">"B02015_009E"</span>, <span class="st">"B02015_009M"</span>), </span>
-<span id="cb25-6"><a></a>                  <span class="st">`</span><span class="at">for</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">I</span>(<span class="st">"state:*"</span>), </span>
-<span id="cb25-7"><a></a>                  <span class="at">key =</span> census_api_key, </span>
-<span id="cb25-8"><a></a>                  <span class="at">.multi =</span> <span class="st">"comma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>hmong_state_request <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.census.gov/data"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a></a>    <span class="fu">req_url_path_append</span>(<span class="st">"acs1"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a></a>    <span class="fu">req_url_query</span>(<span class="at">get =</span> <span class="fu">c</span>(<span class="st">"NAME"</span>, <span class="st">"B02015_009E"</span>, <span class="st">"B02015_009M"</span>), </span>
+<span id="cb30-6"><a></a>                  <span class="st">`</span><span class="at">for</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">I</span>(<span class="st">"state:*"</span>), </span>
+<span id="cb30-7"><a></a>                  <span class="at">key =</span> census_api_key, </span>
+<span id="cb30-8"><a></a>                  <span class="at">.multi =</span> <span class="st">"comma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>req_url_query</code> is where we specify what to return:</p>
 <ul>
@@ -1104,7 +1689,7 @@ Prof Amanda Luby
 </ul></section><section id="results-in-a-httr2_request" class="slide level2"><h2>Results in a <code>&lt;httr2_request&gt;</code>
 </h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>hmong_state_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>hmong_state_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>&lt;httr2_request&gt;
 GET
@@ -1117,8 +1702,8 @@ Body: empty</code></pre>
 <li class="fragment">To iterate over multiple years, or multiple geometries, or ….</li>
 </ul></section><section id="actually-getting-the-data" class="slide level2"><h2>Actually getting the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>hmong_state_response <span class="ot">&lt;-</span> <span class="fu">req_perform</span>(hmong_state_request)</span>
-<span id="cb28-2"><a></a>hmong_state_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>hmong_state_response <span class="ot">&lt;-</span> <span class="fu">req_perform</span>(hmong_state_request)</span>
+<span id="cb33-2"><a></a>hmong_state_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>&lt;httr2_response&gt;
 GET
@@ -1128,12 +1713,12 @@ Content-Type: application/json
 Body: In memory (1691 bytes)</code></pre>
 </section><section id="actually-getting-the-data-in-the-form-we-can-work-with" class="slide level2"><h2>Actually getting the data in the form we can work with</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>hmong_state_tbl <span class="ot">&lt;-</span> hmong_state_response <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a></a>  <span class="fu">resp_body_json</span>(<span class="at">simplifyVector =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-4"><a></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb30-5"><a></a></span>
-<span id="cb30-6"><a></a>hmong_state_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>hmong_state_tbl <span class="ot">&lt;-</span> hmong_state_response <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a></a>  <span class="fu">resp_body_json</span>(<span class="at">simplifyVector =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb35-5"><a></a></span>
+<span id="cb35-6"><a></a>hmong_state_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 4
    NAME      B02015_009E B02015_009M state

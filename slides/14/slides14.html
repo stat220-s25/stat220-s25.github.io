@@ -411,7 +411,7 @@ Prof Amanda Luby
 </section><section id="today" class="slide level2 scrollable"><h2>Today</h2>
 <ol type="1">
 <li class="fragment">Midterm check-in</li>
-<li class="fragment">Questions about lab quiz, project, etc.</li>
+<li class="fragment">Portfolio 2</li>
 <li class="fragment">Regex</li>
 <li class="fragment">Intro to Text Analysis</li>
 </ol></section><section id="midterm-check-in" class="slide level2 scrollable"><h2>Midterm check-in</h2>
@@ -430,33 +430,14 @@ Prof Amanda Luby
 <p>[graphs from google]</p>
 </section><section id="suggested-changes" class="slide level2"><h2>Suggested changes:</h2>
 <ul>
-<li class="fragment">Cheat sheets on quizzes ✅</li>
-<li class="fragment">Post solutions to in-class exercises ✅</li>
+<li class="fragment">Grades for in-class activities ✅</li>
 <li class="fragment">More time for in-class lab quizzes ﹖</li>
-</ul>
-<h3 id="my-takeaways">My takeaways</h3>
-<ul>
-<li class="fragment">More direction on portfolio projects with clear rubrics</li>
-<li class="fragment">Limit “tricky” homework problems each assignment</li>
-<li class="fragment">Do more live coding/demos in class</li>
-</ul></section><section id="suggested-changes-1" class="slide level2"><h2>Suggested changes:</h2>
-<ul>
-<li class="fragment">Lectures aren’t helpful and we should dedicate more time to in-class coding practice</li>
-<li class="fragment">Please spend more time explaining commands and doing demos before we do in-class coding practice</li>
-<li class="fragment">We should have more time doing “your turn” activities so we have time to talk through them in groups</li>
-<li class="fragment">We should condense the time spent on “your turn” activities so we can get through everything on the slides and have more demos</li>
-<li class="fragment">The homeworks stress me out because they’re too long; fewer problems would help</li>
-<li class="fragment">The homeworks stress me out because they sometimes contain less than 10 problems. Maybe they should be longer?</li>
+<li class="fragment">Lab quiz revisions after grading ❌</li>
 </ul></section><section id="concerns-about-grading-scheme" class="slide level2"><h2>Concerns about grading scheme:</h2>
 <ul>
-<li class="fragment">Lots of frustration about lack of partial credit on homework</li>
-<li class="fragment">Still getting comfy with revisions on projects
-<ul>
-<li class="fragment">“I worked really hard and made a couple small mistakes and had to do a revision”</li>
-</ul>
-</li>
-<li class="fragment">“Bar” for homework/portfolio projects feels high</li>
 <li class="fragment">Time pressures on lab quizzes</li>
+<li class="fragment">Still getting comfy with the “buckets” grading scheme</li>
+<li class="fragment">Unclear mistakes on homework</li>
 </ul></section><section id="goals-of-the-grading-scheme" class="slide level2 smaller"><h2>Goals of the grading scheme:</h2>
 <div class="columns">
 <div class="column fragment" style="width:33%;">
@@ -484,9 +465,9 @@ Prof Amanda Luby
 <div class="fragment">
 <h3 id="revision-is-a-key-part-of-this-course-design">Revision is a key part of this course design!</h3>
 </div>
-</section><section id="questions-about-lab-quiz-projects" class="title-slide slide level1 maize center"><h1>Questions about lab quiz, projects?</h1>
+</section><section id="portfolio-project-2" class="title-slide slide level1 maize center"><h1>Portfolio Project 2</h1>
 
-</section><section><section id="regex" class="title-slide slide level1 maize center"><h1>Regex</h1>
+</section><section><section id="regular-expressions-regex" class="title-slide slide level1 maize center"><h1>Regular Expressions (regex)</h1>
 
 </section><section id="example" class="slide level2"><h2>Example</h2>
 <p>Suppose we wish to anonymize phone numbers in survey results</p>
@@ -551,7 +532,7 @@ Prof Amanda Luby
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7309e1c6" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_5173b185" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -663,22 +644,23 @@ Prof Amanda Luby
 </div>
 </section><section id="your-turn-1" class="slide level2"><h2>Your turn</h2>
 <div class="task">
-<p>Fill in the code to determine how many baby names in 2015 ended with a vowel.</p>
-<p>Use a regular expression to specify the pattern.</p>
-</div>
+<p>A vector called <code>words</code> is loaded with <code>stringr</code> and contains a corpus of 980 words used in text analysis. Use <code>stringr</code> functions and regular expressions to find the words that satisfy the following descriptions.</p>
+<h4 id="find-all-words-that-start-with-y.">1. Find all words that start with <code>y</code>.</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>babynames <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a></a>  <span class="fu">___</span>(___ <span class="sc">==</span> ___) <span class="sc">%&gt;%</span>                       <span class="co"># extract year 2015</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">___</span>(<span class="at">ends_with_vowel =</span> <span class="fu">___</span>(___, ___)) <span class="sc">%&gt;%</span>  <span class="co"># create logical column</span></span>
-<span id="cb28-4"><a></a>  <span class="fu">count</span>(ends_with_vowel)                    <span class="co"># create a frequency table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>pattern <span class="ot">&lt;-</span> <span class="st">"type your pattern here"</span></span>
+<span id="cb28-2"><a></a><span class="fu">str_subset</span>(words, pattern)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h4 id="find-all-words-that-end-with-x.">2. Find all words that end with <code>x</code>.</h4>
+<h4 id="find-all-words-that-start-with-a-vowel.">3. Find all words that start with a vowel.</h4>
+<h4 id="find-all-words-that-start-with-consonants.">4. Find all words that start with consonants.</h4>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9d2f5ef5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f84f814f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -741,21 +723,19 @@ Prof Amanda Luby
 </div>
 </div></div>
 </section><section id="your-turn-2" class="slide level2"><h2>Your turn:</h2>
-<p>Fill in the code to determine how many baby names in 2015 started or ended with a vowel.</p>
-<p>Use a regular expression to specify the pattern.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>babynames <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a></a>  <span class="fu">___</span>(___ <span class="sc">==</span> ___) <span class="sc">%&gt;%</span>           </span>
-<span id="cb37-3"><a></a>  <span class="fu">___</span>(<span class="at">bookend.vowel =</span> <span class="fu">___</span>(___, ___)) <span class="sc">%&gt;%</span>  </span>
-<span id="cb37-4"><a></a>  <span class="fu">count</span>(bookend.vowel)             </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="task">
+<h4 id="find-all-words-that-are-exactly-three-letters-long.">Find all words that are exactly three letters long.</h4>
+<h4 id="find-all-words-that-end-with-ing-or-ise.">Find all words that end with <code>ing</code> or <code>ise</code>.</h4>
+<h4 id="find-all-words-that-have-seven-letters-or-more.">Find all words that have seven letters or more.</h4>
+<h4 id="find-all-words-that-start-with-three-consonants.">Find all words that start with three consonants.</h4>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7f361183" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_8c0231bf" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 </div>
 </div>
@@ -763,26 +743,11 @@ Prof Amanda Luby
 <p>Use escaped numbers (<code>\\1</code>, <code>\\2</code>, etc) to repeat a group based on position</p>
 <p>Which numbers have the same 1st and 3rd digits?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>phone_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"515 111 2244"</span>, <span class="st">"310 549 6892"</span>, <span class="st">"474 234 7548"</span>)</span>
-<span id="cb38-2"><a></a><span class="fu">str_view</span>(phone_numbers, <span class="st">"(</span><span class="sc">\\</span><span class="st">d)</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>phone_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"515 111 2244"</span>, <span class="st">"310 549 6892"</span>, <span class="st">"474 234 7548"</span>)</span>
+<span id="cb37-2"><a></a><span class="fu">str_view</span>(phone_numbers, <span class="st">"(</span><span class="sc">\\</span><span class="st">d)</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;515&gt; &lt;111&gt; 2244
 [3] │ &lt;474&gt; 234 7548</code></pre>
-</div>
-</div>
-</section><section id="your-turn-if-time" class="slide level2"><h2>Your turn (if time)</h2>
-<div class="task">
-<p>Try the regular expressions from <code>13-strings-regex.rmd</code></p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>countdown<span class="sc">::</span><span class="fu">countdown</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="countdown" id="timer_7983091e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls">
-<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
-</div>
-<code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
 </div>
 </div>
 </section></section><section><section id="intro-to-text-analysis" class="title-slide slide level1 maize center"><h1>Intro to Text Analysis</h1>
@@ -799,43 +764,47 @@ Prof Amanda Luby
 <div class="fragment">
 <p>which are all relatively short and structured. We can extract meaning from them using relatively simple functions.</p>
 </div>
+</section><section id="section" class="slide level2" data-background-image="../img/coursera-data-sci.png"><h2></h2>
 </section><section id="sometimes-text-data-is-more-unstructured" class="slide level2"><h2>Sometimes, text data is more unstructured</h2>
+<p>Random (?) sample of 26,882 reviews of coursera courses</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">library</span>(mdsr)</span>
-<span id="cb41-2"><a></a>DataSciencePapers <span class="ot">&lt;-</span> DataSciencePapers <span class="sc">|&gt;</span></span>
-<span id="cb41-3"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb41-4"><a></a>    <span class="at">submitted =</span> lubridate<span class="sc">::</span><span class="fu">ymd_hms</span>(submitted), </span>
-<span id="cb41-5"><a></a>    <span class="at">updated =</span> lubridate<span class="sc">::</span><span class="fu">ymd_hms</span>(updated)</span>
-<span id="cb41-6"><a></a>  )</span>
-<span id="cb41-7"><a></a><span class="fu">glimpse</span>(DataSciencePapers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>en_coursera_reviews <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://stat220-s25.github.io/data/en_coursera_sample.csv"</span>)</span>
+<span id="cb39-2"><a></a>en_coursera_reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,089
-Columns: 15
-$ id               &lt;chr&gt; "astro-ph/0701361v1", "0901.2805v1", "0901.3118v2", "…
-$ submitted        &lt;dttm&gt; 2007-01-12 03:28:11, 2009-01-19 10:38:33, 2009-01-20…
-$ updated          &lt;dttm&gt; 2007-01-12 03:28:11, 2009-01-19 10:38:33, 2009-01-24…
-$ title            &lt;chr&gt; "How to Make the Dream Come True: The Astronomers' Da…
-$ abstract         &lt;chr&gt; "  Astronomy is one of the most data-intensive of the…
-$ authors          &lt;chr&gt; "Ray P Norris", "Heinz Andernach", "O. V. Verkhodanov…
-$ affiliations     &lt;chr&gt; "", "", "Special Astrophysical Observatory, Nizhnij A…
-$ link_abstract    &lt;chr&gt; "http://arxiv.org/abs/astro-ph/0701361v1", "http://ar…
-$ link_pdf         &lt;chr&gt; "http://arxiv.org/pdf/astro-ph/0701361v1", "http://ar…
-$ link_doi         &lt;chr&gt; "", "http://dx.doi.org/10.2481/dsj.8.41", "http://dx.…
-$ comment          &lt;chr&gt; "Submitted to Data Science Journal Presented at CODAT…
-$ journal_ref      &lt;chr&gt; "", "", "", "", "EPJ Data Science, 1:9, 2012", "", "E…
-$ doi              &lt;chr&gt; "", "10.2481/dsj.8.41", "10.2481/dsj.8.34", "", "10.1…
-$ primary_category &lt;chr&gt; "astro-ph", "astro-ph.IM", "astro-ph.IM", "astro-ph.I…
-$ categories       &lt;chr&gt; "astro-ph", "astro-ph.IM|astro-ph.CO", "astro-ph.IM|a…</code></pre>
+<pre><code># A tibble: 26,882 × 5
+   CourseId                    Review                      Label cld2  review_id
+   &lt;chr&gt;                       &lt;chr&gt;                       &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1 nurture-market-strategies   It would be better if the …     1 en            1
+ 2 nand2tetris2                Superb course. Great prese…     5 en            2
+ 3 schedule-projects           Excellent course!               5 en            3
+ 4 teaching-english-capstone-2 I'd recommend this course …     5 en            4
+ 5 machine-learning            This course was so effecti…     5 en            5
+ 6 python-network-data         Words cannot describe how …     5 en            6
+ 7 clinical-trials             Great course!                   5 en            7
+ 8 python-genomics             I didn't know anything abo…     3 en            8
+ 9 strategic-management        Loved everything about thi…     5 en            9
+10 script-writing              No significant instruction…     1 en           10
+# ℹ 26,872 more rows</code></pre>
 </div>
 </div>
-<p><em>Note:</em> may need to install <code>mdsr</code>, <code>tidytext</code> and <code>stopwords</code> packages</p>
-</section><section id="section" class="slide level2"><h2></h2>
+
+<p><em>Note:</em> may need to install <code>tidytext</code> and <code>stopwords</code> packages</p>
+<aside><div>
+<p>Source: <a href="https://www.kaggle.com/datasets/septa97/100k-courseras-course-reviews-dataset/data">Kaggle</a></p>
+</div></aside></section><section id="sometimes-text-data-is-more-unstructured-1" class="slide level2"><h2>Sometimes, text data is more unstructured</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>DataSciencePapers <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(abstract, <span class="st">"grammar of graphics"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a></a>  <span class="fu">pull</span>(abstract)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>en_coursera_reviews <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Review, <span class="st">"ggplot"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a></a>  <span class="fu">pull</span>(Review)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "  The R programming language is built on an ecosystem of packages, some that\nallow analysts to accomplish the same tasks. For example, there are at least\ntwo clear workflows for creating data visualizations in R: using the base\ngraphics package (referred to as \"base R\") and the ggplot2 add-on package based\non the grammar of graphics. Here we perform an empirical study of the quality\nof scientific graphics produced by beginning R users. In our experiment,\nlearners taking a data science course on the Coursera platform were randomized\nto complete identical plotting exercises in either the base R or the ggplot2\nsystem. Learners were then asked to evaluate their peers in terms of visual\ncharacteristics key to scientific cognition. We observed that graphics created\nwith the two systems rated similarly on many characteristics. However, ggplot2\ngraphics were generally judged to be more visually pleasing and, in the case of\nfaceted scientific plots, easier to understand. Our results suggest that while\nboth graphic systems are useful in the hands of beginning users, ggplot2's\nnatural faceting system may be easier to use by beginning users for displaying\nmore complex relationships.\n"</code></pre>
+<pre><code>[1] "So first of all, the material for this course in the bookdown document are very good - well structured, with good sources. My concern is that the Coursera course does not go a lot beyond, basically just referring to the document and adding quizzes + graded assignment in the last week. The assignment, however, is nice and challenging and requires people to understand the materials.Also, the course covers other great packages than ggplot2, e.g. plotly and leaflet and methods for handling spatial data. I think it would be very nice if the students were challenged in these topics as well and evaluate them in a better way than just a quiz (programming assignment for instance).I liked the course though and I believe it can be prepared even better."                                           
+[2] "Good course on plotting libraries and useful plots in R. Wished there was more coverage of ggplot and less on lattice, but overall a useful course."                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+[3] "Good Intro to R.Basics of ggplot2 should have been covered along with base graphs or as a separate unit"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+[4] "Interesting, information-dense and well presented lectures by someone who obviously has a deep understanding of the topics and who is passionate about teaching the subject. Added to that: a great course textbook and useful R tutorials with a focus on commonly used libraries such as dplyr and ggplot. Beginner and intermediate statistics students, as well as teachers interested in the presentation of statistics theory and practice, can't go wrong with this course."                                                                                                                                                                                                                                                                                                                                        
+[5] "ggplot2 module was extremely helpful"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+[6] "This course provides a great overiew to introductory R programming. Since taking the course, I have successfully used the precepts learned here for a number of analysis projects. Coupled with ggplot2 graphics, the results became self-evident."                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+[7] "Lecture videos were fantastic! Instructor was amazing. I have a big problem with the final project in Week 5. The entire courses was focused on statistics, yet the final project was focused on R. I wish I had prior R knowledge before starting this course, yet on the front page it says it's a beginner specialization. I would recommend learning R and ggplot before this course. It will make the course a lot less frustrating!"                                                                                                                                                                                                                                                                                                                                                                                 
+[8] "Overall, I would recommend this class. I found that the preparation towards the final project could use some improvement, especially plotting using the 'ggplot2' package. Why not work on this during Week 4 through an assignment that works on this? This would have made it easier to focus on the research questions of the project and less on the graph making mechanics. Also, I found that the project was a little bit too open-ended and could have used some more input from the instructors' side. The material during the four weeks of the course was really good and thorough but perhaps a little too difficult to follow for people who have absolutely no background in probability theory. Maybe one should audit the course first and then decide whether it would be a good idea to formally enroll."</code></pre>
 </div>
 </div>
 </section><section id="section-1" class="slide level2 center"><h2></h2>
@@ -848,7 +817,7 @@ $ categories       &lt;chr&gt; "astro-ph", "astro-ph.IM|astro-ph.CO", "astro-ph.
 <li><p><em>Not</em> part of the <code>tidyverse</code>, but plays well with other packages</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">library</span>(tidytext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">library</span>(tidytext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section><section id="some-notation" class="slide level2"><h2>Some notation</h2>
@@ -880,8 +849,6 @@ $ categories       &lt;chr&gt; "astro-ph", "astro-ph.IM|astro-ph.CO", "astro-ph.
 <li class="fragment">How common is a token <em>relative to other documents</em>
 </li>
 <li class="fragment">How common are “good words” or “bad words”</li>
-<li class="fragment">How common are <em>pairs of words</em>
-</li>
 </ul>
 </li>
 </ol></section><section id="unnest_tokens" class="slide level2"><h2><code>unnest_tokens()</code></h2>
@@ -895,138 +862,447 @@ $ categories       &lt;chr&gt; "astro-ph", "astro-ph.IM|astro-ph.CO", "astro-ph.
 <li class="fragment">
 <code>input</code>: what column do we tokenize?</li>
 <li class="fragment">
-<code>token</code>: default is “word” but can also be “ngrams”, “sentences”, “lines”, “pargraphs”, etc.</li>
+<code>token</code>: default is “word” but can also be “ngrams”, “sentences”, “lines”, “paragraphs”, etc.</li>
 <li class="fragment">
 <code>to_lower</code>: should tokens be converted to lowercase</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">unnest_tokens</span>(</span>
-<span id="cb46-2"><a></a>  tbl,</span>
-<span id="cb46-3"><a></a>  output,</span>
-<span id="cb46-4"><a></a>  input,</span>
-<span id="cb46-5"><a></a>  <span class="at">token =</span> <span class="st">"words"</span>,</span>
-<span id="cb46-6"><a></a>  <span class="at">to_lower =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb46-7"><a></a>  <span class="at">drop =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb46-8"><a></a>  ...</span>
-<span id="cb46-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">unnest_tokens</span>(</span>
+<span id="cb44-2"><a></a>  tbl,</span>
+<span id="cb44-3"><a></a>  output,</span>
+<span id="cb44-4"><a></a>  input,</span>
+<span id="cb44-5"><a></a>  <span class="at">token =</span> <span class="st">"words"</span>,</span>
+<span id="cb44-6"><a></a>  <span class="at">to_lower =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb44-7"><a></a>  <span class="at">drop =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb44-8"><a></a>  ...</span>
+<span id="cb44-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section><section id="tokenize" class="slide level2"><h2>Tokenize</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb47-2"><a></a>DataSciencePapers <span class="sc">|&gt;</span></span>
-<span id="cb47-3"><a></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> abstract) <span class="sc">|&gt;</span></span>
-<span id="cb47-4"><a></a>  <span class="fu">select</span>(id, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb45-2"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> Review) <span class="sc">|&gt;</span></span>
+<span id="cb45-4"><a></a>  <span class="fu">select</span>(CourseId, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 194,983 × 2
-   id                 word     
-   &lt;chr&gt;              &lt;chr&gt;    
- 1 astro-ph/0701361v1 astronomy
- 2 astro-ph/0701361v1 is       
- 3 astro-ph/0701361v1 one      
- 4 astro-ph/0701361v1 of       
- 5 astro-ph/0701361v1 the      
- 6 astro-ph/0701361v1 most     
- 7 astro-ph/0701361v1 data     
- 8 astro-ph/0701361v1 intensive
- 9 astro-ph/0701361v1 of       
-10 astro-ph/0701361v1 the      
-# ℹ 194,973 more rows</code></pre>
+<pre><code># A tibble: 666,493 × 2
+   CourseId                  word       
+   &lt;chr&gt;                     &lt;chr&gt;      
+ 1 nurture-market-strategies it         
+ 2 nurture-market-strategies would      
+ 3 nurture-market-strategies be         
+ 4 nurture-market-strategies better     
+ 5 nurture-market-strategies if         
+ 6 nurture-market-strategies the        
+ 7 nurture-market-strategies instructors
+ 8 nurture-market-strategies cared      
+ 9 nurture-market-strategies to         
+10 nurture-market-strategies respond    
+# ℹ 666,483 more rows</code></pre>
 </div>
 </div>
+</section><section id="stopwords" class="slide level2"><h2>Stopwords</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1] "'ll"             "'tis"            "'twas"           "'ve"            
+   [5] "10"              "39"              "a"               "a's"            
+   [9] "able"            "ableabout"       "about"           "above"          
+  [13] "abroad"          "abst"            "accordance"      "according"      
+  [17] "accordingly"     "across"          "act"             "actually"       
+  [21] "ad"              "added"           "adj"             "adopted"        
+  [25] "ae"              "af"              "affected"        "affecting"      
+  [29] "affects"         "after"           "afterwards"      "ag"             
+  [33] "again"           "against"         "ago"             "ah"             
+  [37] "ahead"           "ai"              "ain't"           "aint"           
+  [41] "al"              "all"             "allow"           "allows"         
+  [45] "almost"          "alone"           "along"           "alongside"      
+  [49] "already"         "also"            "although"        "always"         
+  [53] "am"              "amid"            "amidst"          "among"          
+  [57] "amongst"         "amoungst"        "amount"          "an"             
+  [61] "and"             "announce"        "another"         "any"            
+  [65] "anybody"         "anyhow"          "anymore"         "anyone"         
+  [69] "anything"        "anyway"          "anyways"         "anywhere"       
+  [73] "ao"              "apart"           "apparently"      "appear"         
+  [77] "appreciate"      "appropriate"     "approximately"   "aq"             
+  [81] "ar"              "are"             "area"            "areas"          
+  [85] "aren"            "aren't"          "arent"           "arise"          
+  [89] "around"          "arpa"            "as"              "aside"          
+  [93] "ask"             "asked"           "asking"          "asks"           
+  [97] "associated"      "at"              "au"              "auth"           
+ [101] "available"       "aw"              "away"            "awfully"        
+ [105] "az"              "b"               "ba"              "back"           
+ [109] "backed"          "backing"         "backs"           "backward"       
+ [113] "backwards"       "bb"              "bd"              "be"             
+ [117] "became"          "because"         "become"          "becomes"        
+ [121] "becoming"        "been"            "before"          "beforehand"     
+ [125] "began"           "begin"           "beginning"       "beginnings"     
+ [129] "begins"          "behind"          "being"           "beings"         
+ [133] "believe"         "below"           "beside"          "besides"        
+ [137] "best"            "better"          "between"         "beyond"         
+ [141] "bf"              "bg"              "bh"              "bi"             
+ [145] "big"             "bill"            "billion"         "biol"           
+ [149] "bj"              "bm"              "bn"              "bo"             
+ [153] "both"            "bottom"          "br"              "brief"          
+ [157] "briefly"         "bs"              "bt"              "but"            
+ [161] "buy"             "bv"              "bw"              "by"             
+ [165] "bz"              "c"               "c'mon"           "c's"            
+ [169] "ca"              "call"            "came"            "can"            
+ [173] "can't"           "cannot"          "cant"            "caption"        
+ [177] "case"            "cases"           "cause"           "causes"         
+ [181] "cc"              "cd"              "certain"         "certainly"      
+ [185] "cf"              "cg"              "ch"              "changes"        
+ [189] "ci"              "ck"              "cl"              "clear"          
+ [193] "clearly"         "click"           "cm"              "cmon"           
+ [197] "cn"              "co"              "co."             "com"            
+ [201] "come"            "comes"           "computer"        "con"            
+ [205] "concerning"      "consequently"    "consider"        "considering"    
+ [209] "contain"         "containing"      "contains"        "copy"           
+ [213] "corresponding"   "could"           "could've"        "couldn"         
+ [217] "couldn't"        "couldnt"         "course"          "cr"             
+ [221] "cry"             "cs"              "cu"              "currently"      
+ [225] "cv"              "cx"              "cy"              "cz"             
+ [229] "d"               "dare"            "daren't"         "darent"         
+ [233] "date"            "de"              "dear"            "definitely"     
+ [237] "describe"        "described"       "despite"         "detail"         
+ [241] "did"             "didn"            "didn't"          "didnt"          
+ [245] "differ"          "different"       "differently"     "directly"       
+ [249] "dj"              "dk"              "dm"              "do"             
+ [253] "does"            "doesn"           "doesn't"         "doesnt"         
+ [257] "doing"           "don"             "don't"           "done"           
+ [261] "dont"            "doubtful"        "down"            "downed"         
+ [265] "downing"         "downs"           "downwards"       "due"            
+ [269] "during"          "dz"              "e"               "each"           
+ [273] "early"           "ec"              "ed"              "edu"            
+ [277] "ee"              "effect"          "eg"              "eh"             
+ [281] "eight"           "eighty"          "either"          "eleven"         
+ [285] "else"            "elsewhere"       "empty"           "end"            
+ [289] "ended"           "ending"          "ends"            "enough"         
+ [293] "entirely"        "er"              "es"              "especially"     
+ [297] "et"              "et-al"           "etc"             "even"           
+ [301] "evenly"          "ever"            "evermore"        "every"          
+ [305] "everybody"       "everyone"        "everything"      "everywhere"     
+ [309] "ex"              "exactly"         "example"         "except"         
+ [313] "f"               "face"            "faces"           "fact"           
+ [317] "facts"           "fairly"          "far"             "farther"        
+ [321] "felt"            "few"             "fewer"           "ff"             
+ [325] "fi"              "fifteen"         "fifth"           "fifty"          
+ [329] "fify"            "fill"            "find"            "finds"          
+ [333] "fire"            "first"           "five"            "fix"            
+ [337] "fj"              "fk"              "fm"              "fo"             
+ [341] "followed"        "following"       "follows"         "for"            
+ [345] "forever"         "former"          "formerly"        "forth"          
+ [349] "forty"           "forward"         "found"           "four"           
+ [353] "fr"              "free"            "from"            "front"          
+ [357] "full"            "fully"           "further"         "furthered"      
+ [361] "furthering"      "furthermore"     "furthers"        "fx"             
+ [365] "g"               "ga"              "gave"            "gb"             
+ [369] "gd"              "ge"              "general"         "generally"      
+ [373] "get"             "gets"            "getting"         "gf"             
+ [377] "gg"              "gh"              "gi"              "give"           
+ [381] "given"           "gives"           "giving"          "gl"             
+ [385] "gm"              "gmt"             "gn"              "go"             
+ [389] "goes"            "going"           "gone"            "good"           
+ [393] "goods"           "got"             "gotten"          "gov"            
+ [397] "gp"              "gq"              "gr"              "great"          
+ [401] "greater"         "greatest"        "greetings"       "group"          
+ [405] "grouped"         "grouping"        "groups"          "gs"             
+ [409] "gt"              "gu"              "gw"              "gy"             
+ [413] "h"               "had"             "hadn't"          "hadnt"          
+ [417] "half"            "happens"         "hardly"          "has"            
+ [421] "hasn"            "hasn't"          "hasnt"           "have"           
+ [425] "haven"           "haven't"         "havent"          "having"         
+ [429] "he"              "he'd"            "he'll"           "he's"           
+ [433] "hed"             "hell"            "hello"           "help"           
+ [437] "hence"           "her"             "here"            "here's"         
+ [441] "hereafter"       "hereby"          "herein"          "heres"          
+ [445] "hereupon"        "hers"            "herself"         "herse”"         
+ [449] "hes"             "hi"              "hid"             "high"           
+ [453] "higher"          "highest"         "him"             "himself"        
+ [457] "himse”"          "his"             "hither"          "hk"             
+ [461] "hm"              "hn"              "home"            "homepage"       
+ [465] "hopefully"       "how"             "how'd"           "how'll"         
+ [469] "how's"           "howbeit"         "however"         "hr"             
+ [473] "ht"              "htm"             "html"            "http"           
+ [477] "hu"              "hundred"         "i"               "i'd"            
+ [481] "i'll"            "i'm"             "i've"            "i.e."           
+ [485] "id"              "ie"              "if"              "ignored"        
+ [489] "ii"              "il"              "ill"             "im"             
+ [493] "immediate"       "immediately"     "importance"      "important"      
+ [497] "in"              "inasmuch"        "inc"             "inc."           
+ [501] "indeed"          "index"           "indicate"        "indicated"      
+ [505] "indicates"       "information"     "inner"           "inside"         
+ [509] "insofar"         "instead"         "int"             "interest"       
+ [513] "interested"      "interesting"     "interests"       "into"           
+ [517] "invention"       "inward"          "io"              "iq"             
+ [521] "ir"              "is"              "isn"             "isn't"          
+ [525] "isnt"            "it"              "it'd"            "it'll"          
+ [529] "it's"            "itd"             "itll"            "its"            
+ [533] "itself"          "itse”"           "ive"             "j"              
+ [537] "je"              "jm"              "jo"              "join"           
+ [541] "jp"              "just"            "k"               "ke"             
+ [545] "keep"            "keeps"           "kept"            "keys"           
+ [549] "kg"              "kh"              "ki"              "kind"           
+ [553] "km"              "kn"              "knew"            "know"           
+ [557] "known"           "knows"           "kp"              "kr"             
+ [561] "kw"              "ky"              "kz"              "l"              
+ [565] "la"              "large"           "largely"         "last"           
+ [569] "lately"          "later"           "latest"          "latter"         
+ [573] "latterly"        "lb"              "lc"              "least"          
+ [577] "length"          "less"            "lest"            "let"            
+ [581] "let's"           "lets"            "li"              "like"           
+ [585] "liked"           "likely"          "likewise"        "line"           
+ [589] "little"          "lk"              "ll"              "long"           
+ [593] "longer"          "longest"         "look"            "looking"        
+ [597] "looks"           "low"             "lower"           "lr"             
+ [601] "ls"              "lt"              "ltd"             "lu"             
+ [605] "lv"              "ly"              "m"               "ma"             
+ [609] "made"            "mainly"          "make"            "makes"          
+ [613] "making"          "man"             "many"            "may"            
+ [617] "maybe"           "mayn't"          "maynt"           "mc"             
+ [621] "md"              "me"              "mean"            "means"          
+ [625] "meantime"        "meanwhile"       "member"          "members"        
+ [629] "men"             "merely"          "mg"              "mh"             
+ [633] "microsoft"       "might"           "might've"        "mightn't"       
+ [637] "mightnt"         "mil"             "mill"            "million"        
+ [641] "mine"            "minus"           "miss"            "mk"             
+ [645] "ml"              "mm"              "mn"              "mo"             
+ [649] "more"            "moreover"        "most"            "mostly"         
+ [653] "move"            "mp"              "mq"              "mr"             
+ [657] "mrs"             "ms"              "msie"            "mt"             
+ [661] "mu"              "much"            "mug"             "must"           
+ [665] "must've"         "mustn't"         "mustnt"          "mv"             
+ [669] "mw"              "mx"              "my"              "myself"         
+ [673] "myse”"           "mz"              "n"               "na"             
+ [677] "name"            "namely"          "nay"             "nc"             
+ [681] "nd"              "ne"              "near"            "nearly"         
+ [685] "necessarily"     "necessary"       "need"            "needed"         
+ [689] "needing"         "needn't"         "neednt"          "needs"          
+ [693] "neither"         "net"             "netscape"        "never"          
+ [697] "neverf"          "neverless"       "nevertheless"    "new"            
+ [701] "newer"           "newest"          "next"            "nf"             
+ [705] "ng"              "ni"              "nine"            "ninety"         
+ [709] "nl"              "no"              "no-one"          "nobody"         
+ [713] "non"             "none"            "nonetheless"     "noone"          
+ [717] "nor"             "normally"        "nos"             "not"            
+ [721] "noted"           "nothing"         "notwithstanding" "novel"          
+ [725] "now"             "nowhere"         "np"              "nr"             
+ [729] "nu"              "null"            "number"          "numbers"        
+ [733] "nz"              "o"               "obtain"          "obtained"       
+ [737] "obviously"       "of"              "off"             "often"          
+ [741] "oh"              "ok"              "okay"            "old"            
+ [745] "older"           "oldest"          "om"              "omitted"        
+ [749] "on"              "once"            "one"             "one's"          
+ [753] "ones"            "only"            "onto"            "open"           
+ [757] "opened"          "opening"         "opens"           "opposite"       
+ [761] "or"              "ord"             "order"           "ordered"        
+ [765] "ordering"        "orders"          "org"             "other"          
+ [769] "others"          "otherwise"       "ought"           "oughtn't"       
+ [773] "oughtnt"         "our"             "ours"            "ourselves"      
+ [777] "out"             "outside"         "over"            "overall"        
+ [781] "owing"           "own"             "p"               "pa"             
+ [785] "page"            "pages"           "part"            "parted"         
+ [789] "particular"      "particularly"    "parting"         "parts"          
+ [793] "past"            "pe"              "per"             "perhaps"        
+ [797] "pf"              "pg"              "ph"              "pk"             
+ [801] "pl"              "place"           "placed"          "places"         
+ [805] "please"          "plus"            "pm"              "pmid"           
+ [809] "pn"              "point"           "pointed"         "pointing"       
+ [813] "points"          "poorly"          "possible"        "possibly"       
+ [817] "potentially"     "pp"              "pr"              "predominantly"  
+ [821] "present"         "presented"       "presenting"      "presents"       
+ [825] "presumably"      "previously"      "primarily"       "probably"       
+ [829] "problem"         "problems"        "promptly"        "proud"          
+ [833] "provided"        "provides"        "pt"              "put"            
+ [837] "puts"            "pw"              "py"              "q"              
+ [841] "qa"              "que"             "quickly"         "quite"          
+ [845] "qv"              "r"               "ran"             "rather"         
+ [849] "rd"              "re"              "readily"         "really"         
+ [853] "reasonably"      "recent"          "recently"        "ref"            
+ [857] "refs"            "regarding"       "regardless"      "regards"        
+ [861] "related"         "relatively"      "research"        "reserved"       
+ [865] "respectively"    "resulted"        "resulting"       "results"        
+ [869] "right"           "ring"            "ro"              "room"           
+ [873] "rooms"           "round"           "ru"              "run"            
+ [877] "rw"              "s"               "sa"              "said"           
+ [881] "same"            "saw"             "say"             "saying"         
+ [885] "says"            "sb"              "sc"              "sd"             
+ [889] "se"              "sec"             "second"          "secondly"       
+ [893] "seconds"         "section"         "see"             "seeing"         
+ [897] "seem"            "seemed"          "seeming"         "seems"          
+ [901] "seen"            "sees"            "self"            "selves"         
+ [905] "sensible"        "sent"            "serious"         "seriously"      
+ [909] "seven"           "seventy"         "several"         "sg"             
+ [913] "sh"              "shall"           "shan't"          "shant"          
+ [917] "she"             "she'd"           "she'll"          "she's"          
+ [921] "shed"            "shell"           "shes"            "should"         
+ [925] "should've"       "shouldn"         "shouldn't"       "shouldnt"       
+ [929] "show"            "showed"          "showing"         "shown"          
+ [933] "showns"          "shows"           "si"              "side"           
+ [937] "sides"           "significant"     "significantly"   "similar"        
+ [941] "similarly"       "since"           "sincere"         "site"           
+ [945] "six"             "sixty"           "sj"              "sk"             
+ [949] "sl"              "slightly"        "sm"              "small"          
+ [953] "smaller"         "smallest"        "sn"              "so"             
+ [957] "some"            "somebody"        "someday"         "somehow"        
+ [961] "someone"         "somethan"        "something"       "sometime"       
+ [965] "sometimes"       "somewhat"        "somewhere"       "soon"           
+ [969] "sorry"           "specifically"    "specified"       "specify"        
+ [973] "specifying"      "sr"              "st"              "state"          
+ [977] "states"          "still"           "stop"            "strongly"       
+ [981] "su"              "sub"             "substantially"   "successfully"   
+ [985] "such"            "sufficiently"    "suggest"         "sup"            
+ [989] "sure"            "sv"              "sy"              "system"         
+ [993] "sz"              "t"               "t's"             "take"           
+ [997] "taken"           "taking"          "tc"              "td"             
+[1001] "tell"            "ten"             "tends"           "test"           
+[1005] "text"            "tf"              "tg"              "th"             
+[1009] "than"            "thank"           "thanks"          "thanx"          
+[1013] "that"            "that'll"         "that's"          "that've"        
+[1017] "thatll"          "thats"           "thatve"          "the"            
+[1021] "their"           "theirs"          "them"            "themselves"     
+[1025] "then"            "thence"          "there"           "there'd"        
+[1029] "there'll"        "there're"        "there's"         "there've"       
+[1033] "thereafter"      "thereby"         "thered"          "therefore"      
+[1037] "therein"         "therell"         "thereof"         "therere"        
+[1041] "theres"          "thereto"         "thereupon"       "thereve"        
+[1045] "these"           "they"            "they'd"          "they'll"        
+[1049] "they're"         "they've"         "theyd"           "theyll"         
+[1053] "theyre"          "theyve"          "thick"           "thin"           
+[1057] "thing"           "things"          "think"           "thinks"         
+[1061] "third"           "thirty"          "this"            "thorough"       
+[1065] "thoroughly"      "those"           "thou"            "though"         
+[1069] "thoughh"         "thought"         "thoughts"        "thousand"       
+[1073] "three"           "throug"          "through"         "throughout"     
+[1077] "thru"            "thus"            "til"             "till"           
+[1081] "tip"             "tis"             "tj"              "tk"             
+[1085] "tm"              "tn"              "to"              "today"          
+[1089] "together"        "too"             "took"            "top"            
+[1093] "toward"          "towards"         "tp"              "tr"             
+[1097] "tried"           "tries"           "trillion"        "truly"          
+[1101] "try"             "trying"          "ts"              "tt"             
+[1105] "turn"            "turned"          "turning"         "turns"          
+[1109] "tv"              "tw"              "twas"            "twelve"         
+[1113] "twenty"          "twice"           "two"             "tz"             
+[1117] "u"               "ua"              "ug"              "uk"             
+[1121] "um"              "un"              "under"           "underneath"     
+[1125] "undoing"         "unfortunately"   "unless"          "unlike"         
+[1129] "unlikely"        "until"           "unto"            "up"             
+[1133] "upon"            "ups"             "upwards"         "us"             
+[1137] "use"             "used"            "useful"          "usefully"       
+[1141] "usefulness"      "uses"            "using"           "usually"        
+[1145] "uucp"            "uy"              "uz"              "v"              
+[1149] "va"              "value"           "various"         "vc"             
+[1153] "ve"              "versus"          "very"            "vg"             
+[1157] "vi"              "via"             "viz"             "vn"             
+[1161] "vol"             "vols"            "vs"              "vu"             
+[1165] "w"               "want"            "wanted"          "wanting"        
+[1169] "wants"           "was"             "wasn"            "wasn't"         
+[1173] "wasnt"           "way"             "ways"            "we"             
+[1177] "we'd"            "we'll"           "we're"           "we've"          
+[1181] "web"             "webpage"         "website"         "wed"            
+[1185] "welcome"         "well"            "wells"           "went"           
+[1189] "were"            "weren"           "weren't"         "werent"         
+[1193] "weve"            "wf"              "what"            "what'd"         
+[1197] "what'll"         "what's"          "what've"         "whatever"       
+[1201] "whatll"          "whats"           "whatve"          "when"           
+[1205] "when'd"          "when'll"         "when's"          "whence"         
+[1209] "whenever"        "where"           "where'd"         "where'll"       
+[1213] "where's"         "whereafter"      "whereas"         "whereby"        
+[1217] "wherein"         "wheres"          "whereupon"       "wherever"       
+[1221] "whether"         "which"           "whichever"       "while"          
+[1225] "whilst"          "whim"            "whither"         "who"            
+[1229] "who'd"           "who'll"          "who's"           "whod"           
+[1233] "whoever"         "whole"           "wholl"           "whom"           
+[1237] "whomever"        "whos"            "whose"           "why"            
+[1241] "why'd"           "why'll"          "why's"           "widely"         
+[1245] "width"           "will"            "willing"         "wish"           
+[1249] "with"            "within"          "without"         "won"            
+[1253] "won't"           "wonder"          "wont"            "words"          
+[1257] "work"            "worked"          "working"         "works"          
+[1261] "world"           "would"           "would've"        "wouldn"         
+[1265] "wouldn't"        "wouldnt"         "ws"              "www"            
+[1269] "x"               "y"               "ye"              "year"           
+[1273] "years"           "yes"             "yet"             "you"            
+[1277] "you'd"           "you'll"          "you're"          "you've"         
+[1281] "youd"            "youll"           "young"           "younger"        
+[1285] "youngest"        "your"            "youre"           "yours"          
+[1289] "yourself"        "yourselves"      "youve"           "yt"             
+[1293] "yu"              "z"               "za"              "zero"           
+[1297] "zm"              "zr"             </code></pre>
+</div>
+</div>
+</section><section id="anti_join" class="slide level2"><h2><code>anti_join</code></h2>
+<p><img data-src="../img/anti-join.gif"></p>
 </section><section id="remove-stopwords" class="slide level2"><h2>Remove stopwords</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>DataSciencePapers <span class="sc">|&gt;</span></span>
-<span id="cb49-2"><a></a>  <span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb49" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> Review) <span class="sc">|&gt;</span></span>
 <span id="cb49-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb49-4"><a></a>  <span class="fu">select</span>(id, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-4"><a></a>  <span class="fu">select</span>(CourseId, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 98,780 × 2
-   id                 word         
-   &lt;chr&gt;              &lt;chr&gt;        
- 1 astro-ph/0701361v1 astronomy    
- 2 astro-ph/0701361v1 data         
- 3 astro-ph/0701361v1 intensive    
- 4 astro-ph/0701361v1 sciences     
- 5 astro-ph/0701361v1 data         
- 6 astro-ph/0701361v1 technology   
- 7 astro-ph/0701361v1 accelerating 
- 8 astro-ph/0701361v1 quality      
- 9 astro-ph/0701361v1 effectiveness
-10 astro-ph/0701361v1 rate         
-# ℹ 98,770 more rows</code></pre>
+<pre><code># A tibble: 222,597 × 2
+   CourseId                  word        
+   &lt;chr&gt;                     &lt;chr&gt;       
+ 1 nurture-market-strategies instructors 
+ 2 nurture-market-strategies cared       
+ 3 nurture-market-strategies respond     
+ 4 nurture-market-strategies queries     
+ 5 nand2tetris2              superb      
+ 6 nand2tetris2              presentation
+ 7 nand2tetris2              material    
+ 8 nand2tetris2              projects    
+ 9 nand2tetris2              challenging 
+10 nand2tetris2              fun         
+# ℹ 222,587 more rows</code></pre>
 </div>
 </div>
-</section><section id="aside-clean-the-categories" class="slide level2"><h2>Aside: clean the categories</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>DataSciencePapers <span class="sc">|&gt;</span></span>
-<span id="cb51-2"><a></a>  <span class="fu">select</span>(primary_category) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+</section><section id="filter-to-include-only-data-science-courses" class="slide level2"><h2>Filter to include only data science courses</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> Review) <span class="sc">|&gt;</span></span>
+<span id="cb51-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb51-4"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(CourseId, <span class="st">"data-science"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb51-5"><a></a>  <span class="fu">select</span>(CourseId, word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,089 × 1
-   primary_category
-   &lt;chr&gt;           
- 1 astro-ph        
- 2 astro-ph.IM     
- 3 astro-ph.IM     
- 4 astro-ph.IM     
- 5 cs.SI           
- 6 astro-ph.IM     
- 7 cs.CL           
- 8 physics.soc-ph  
- 9 physics.geo-ph  
-10 physics.soc-ph  
-# ℹ 1,079 more rows</code></pre>
+<pre><code># A tibble: 1,419 × 2
+   CourseId                        word        
+   &lt;chr&gt;                           &lt;chr&gt;       
+ 1 data-science-course             helpful     
+ 2 data-science-course             paced       
+ 3 executive-data-science-capstone quality     
+ 4 executive-data-science-capstone fun         
+ 5 data-science-course             level       
+ 6 data-science-course             overview    
+ 7 data-science-course             technical   
+ 8 data-science-course             introduction
+ 9 data-science-course             essential   
+10 data-science-course             key         
+# ℹ 1,409 more rows</code></pre>
 </div>
-</div></div>
-</section><section id="aside-clean-the-categories-1" class="slide level2"><h2>Aside: clean the categories</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>DataSciencePapers <span class="sc">|&gt;</span></span>
-<span id="cb53-2"><a></a>  <span class="fu">separate</span>(primary_category, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"broad"</span>, <span class="st">"specific"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>) <span class="sc">|&gt;</span></span>
-<span id="cb53-3"><a></a>  <span class="fu">select</span>(broad, specific) <span class="sc">|&gt;</span></span>
-<span id="cb53-4"><a></a>  <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 99 × 2
-   broad    specific
-   &lt;chr&gt;    &lt;chr&gt;   
- 1 astro-ph &lt;NA&gt;    
- 2 astro-ph IM      
- 3 cs       SI      
- 4 cs       CL      
- 5 physics  soc-ph  
- 6 physics  geo-ph  
- 7 q-bio    PE      
- 8 stat     AP      
- 9 cs       SE      
-10 physics  ed-ph   
-# ℹ 89 more rows</code></pre>
 </div>
-</div></div>
 </section><section id="count-the-tokens" class="slide level2"><h2>Count the tokens</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55" data-code-line-numbers="4-5|6|7|8-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>DataSciencePapers <span class="sc">|&gt;</span></span>
-<span id="cb55-2"><a></a>  <span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span></span>
-<span id="cb55-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a></a>  <span class="fu">group_by</span>(broad) <span class="sc">%&gt;%</span></span>
-<span id="cb55-5"><a></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
-<span id="cb55-6"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-7"><a></a>  <span class="fu">filter</span>(broad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"physics"</span>, <span class="st">"cs"</span>, <span class="st">"stat"</span>, <span class="st">"math"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb55-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(word, n))) <span class="sc">+</span> </span>
-<span id="cb55-9"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb55-10"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>broad, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> </span>
-<span id="cb55-11"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb55-12"><a></a>    <span class="at">y =</span> <span class="st">"Word"</span></span>
-<span id="cb55-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53" data-code-line-numbers="5-6|7|8-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb53-2"><a></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> Review) <span class="sc">|&gt;</span></span>
+<span id="cb53-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb53-4"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(CourseId, <span class="st">"data-science"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb53-5"><a></a>  <span class="fu">group_by</span>(CourseId) <span class="sc">%&gt;%</span></span>
+<span id="cb53-6"><a></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb53-7"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(word, n))) <span class="sc">+</span> </span>
+<span id="cb53-9"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb53-10"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CourseId, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb53-11"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb53-12"><a></a>    <span class="at">y =</span> <span class="st">"Word"</span></span>
+<span id="cb53-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section><section id="count-the-tokens-output" class="slide level2 output-location-slide"><h2>Count the tokens</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1040,62 +1316,112 @@ $ categories       &lt;chr&gt; "astro-ph", "astro-ph.IM|astro-ph.CO", "astro-ph.
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">unnest_tokens</span>(</span>
-<span id="cb56-2"><a></a>  tbl,</span>
-<span id="cb56-3"><a></a>  output,</span>
-<span id="cb56-4"><a></a>  input,</span>
-<span id="cb56-5"><a></a>  <span class="at">token =</span> <span class="st">"words"</span>,</span>
-<span id="cb56-6"><a></a>  <span class="at">to_lower =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb56-7"><a></a>  <span class="at">drop =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb56-8"><a></a>  ...</span>
-<span id="cb56-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">unnest_tokens</span>(</span>
+<span id="cb54-2"><a></a>  tbl,</span>
+<span id="cb54-3"><a></a>  output,</span>
+<span id="cb54-4"><a></a>  input,</span>
+<span id="cb54-5"><a></a>  <span class="at">token =</span> <span class="st">"words"</span>,</span>
+<span id="cb54-6"><a></a>  <span class="at">to_lower =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb54-7"><a></a>  <span class="at">drop =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb54-8"><a></a>  ...</span>
+<span id="cb54-9"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section><section id="make-it-fancy-n-grams-1" class="slide level2"><h2>Make it ~ fancy ~: n-grams</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57" data-code-line-numbers="2,4,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>arxiv_papers <span class="sc">|&gt;</span></span>
-<span id="cb57-2"><a></a>  <span class="fu">unnest_tokens</span>(bigram, abstract_clean, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb57-3"><a></a>  <span class="fu">group_by</span>(broad) <span class="sc">%&gt;%</span></span>
-<span id="cb57-4"><a></a>  <span class="fu">count</span>(bigram) <span class="sc">%&gt;%</span></span>
-<span id="cb57-5"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb57-6"><a></a>  <span class="fu">filter</span>(broad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"physics"</span>, <span class="st">"cs"</span>, <span class="st">"stat"</span>, <span class="st">"math"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb57-7"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(bigram, n))) <span class="sc">+</span> </span>
-<span id="cb57-8"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb57-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>broad, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> </span>
-<span id="cb57-10"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb57-11"><a></a>    <span class="at">y =</span> <span class="st">"2-gram"</span></span>
-<span id="cb57-12"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55" data-code-line-numbers="2,4,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb55-2"><a></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> Review, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n=</span><span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb55-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb55-4"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(CourseId, <span class="st">"data-science"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb55-5"><a></a>  <span class="fu">group_by</span>(CourseId) <span class="sc">%&gt;%</span></span>
+<span id="cb55-6"><a></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb55-7"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(word, n))) <span class="sc">+</span> </span>
+<span id="cb55-9"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb55-10"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CourseId, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb55-11"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb55-12"><a></a>    <span class="at">y =</span> <span class="st">"Word"</span></span>
+<span id="cb55-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section><section id="make-it-fancy-n-grams-1-output" class="slide level2 output-location-slide"><h2>Make it ~ fancy ~: n-grams</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="what-if-we-remove-bigrams-that-include-data" class="slide level2"><h2>What if we remove bigrams that include “data”?</h2>
+</div></section><section id="removing-stopwords-from-reviews-first" class="slide level2"><h2>Removing stopwords from reviews <em>first</em>
+</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>arxiv_papers <span class="sc">|&gt;</span></span>
-<span id="cb58-2"><a></a>  <span class="fu">unnest_tokens</span>(bigram, abstract_clean, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb58-3"><a></a>  <span class="fu">group_by</span>(broad) <span class="sc">%&gt;%</span></span>
-<span id="cb58-4"><a></a>  <span class="fu">count</span>(bigram) <span class="sc">%&gt;%</span></span>
-<span id="cb58-5"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(bigram, <span class="st">"data"</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb58-6"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb58-7"><a></a>  <span class="fu">filter</span>( n <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb58-8"><a></a>  <span class="fu">filter</span>(broad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"physics"</span>, <span class="st">"cs"</span>, <span class="st">"stat"</span>, <span class="st">"math"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb58-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(bigram, n))) <span class="sc">+</span> </span>
-<span id="cb58-10"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb58-11"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>broad, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> </span>
-<span id="cb58-12"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb58-13"><a></a>    <span class="at">y =</span> <span class="st">"2-gram"</span></span>
-<span id="cb58-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56" data-code-line-numbers="2|3|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>coursera_reviews <span class="ot">&lt;-</span> en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a></a>  <span class="fu">unnest_tokens</span>(word, Review) <span class="sc">|&gt;</span></span>
+<span id="cb56-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"stopwords-iso"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb56-4"><a></a>  <span class="fu">group_by</span>(CourseId, review_id) <span class="sc">|&gt;</span></span>
+<span id="cb56-5"><a></a>  <span class="fu">summarize</span>(<span class="at">review_clean =</span> <span class="fu">paste</span>(word, <span class="at">collapse =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Original Review:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span> <span class="fu">filter</span>(review_id <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(Review)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Words cannot describe how useful this courses have been for me, 10 stars if possible!"</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>“Clean” Review</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>coursera_reviews <span class="sc">|&gt;</span> <span class="fu">filter</span>(review_id <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(review_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "courses stars"</code></pre>
+</div>
+</div>
+</div>
+</section><section id="what-if-we-use-a-different-stopwords-dictionary" class="slide level2"><h2>What if we use a different stopwords dictionary?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>coursera_reviews2 <span class="ot">&lt;-</span> en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb61-2"><a></a>  <span class="fu">unnest_tokens</span>(word, Review) <span class="sc">|&gt;</span></span>
+<span id="cb61-3"><a></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>(<span class="at">source =</span> <span class="st">"snowball"</span>), <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb61-4"><a></a>  <span class="fu">group_by</span>(CourseId, review_id) <span class="sc">|&gt;</span></span>
+<span id="cb61-5"><a></a>  <span class="fu">summarize</span>(<span class="at">review_clean =</span> <span class="fu">paste</span>(word, <span class="at">collapse =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Original Review:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span> <span class="fu">filter</span>(review_id <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(Review)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Words cannot describe how useful this courses have been for me, 10 stars if possible!"</code></pre>
+</div>
+</div>
+<p>Clean Review:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>coursera_reviews2 <span class="sc">|&gt;</span> <span class="fu">filter</span>(review_id <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(review_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "words describe useful courses 10 stars possible"</code></pre>
+</div>
+</div>
+</section><section id="tokens-on-clean-reviews" class="slide level2"><h2>tokens on clean reviews</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66" data-code-line-numbers="3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb66-2"><a></a>  <span class="fu">left_join</span>(coursera_reviews, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"CourseId"</span>, <span class="st">"review_id"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb66-3"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(CourseId, <span class="st">"data-science"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb66-4"><a></a>  <span class="fu">unnest_tokens</span>(word, review_clean, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb66-5"><a></a>  <span class="fu">group_by</span>(CourseId) <span class="sc">%&gt;%</span></span>
+<span id="cb66-6"><a></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb66-7"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb66-8"><a></a>  <span class="fu">filter</span>( n <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb66-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(word, n))) <span class="sc">+</span> </span>
+<span id="cb66-10"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb66-11"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CourseId, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb66-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb66-13"><a></a>    <span class="at">y =</span> <span class="st">"2-gram"</span></span>
+<span id="cb66-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-</section><section id="what-if-we-remove-bigrams-that-include-data-output" class="slide level2 output-location-slide"><h2>What if we remove bigrams that include “data”?</h2><div class="cell output-location-slide">
+</section><section id="tokens-on-clean-reviews-output" class="slide level2 output-location-slide"><h2>tokens on clean reviews</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1111,66 +1437,90 @@ $ categories       &lt;chr&gt; "astro-ph", "astro-ph.IM|astro-ph.CO", "astro-ph.
 <div class="fragment">
 <p><span class="math display">\[\text{tf-df(t, d)} = \frac{\text{tf(t, d)}}{\text{idf(t)}}\]</span></p>
 </div>
-</section><section id="highest-tf-idfs-are-used-a-lot-within-an-abstract-and-rarely-in-other-abstracts" class="slide level2"><h2>highest tf-idf’s are used a lot within an abstract, and rarely in other abstracts</h2>
+</section><section id="highest-tf-idfs-are-used-a-lot-within-a-review-and-rarely-in-other-reviews" class="slide level2"><h2>highest tf-idf’s are used a lot within a review, and rarely in other reviews</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>arxiv_papers <span class="sc">%&gt;%</span></span>
-<span id="cb59-2"><a></a>  <span class="fu">unnest_tokens</span>(word, abstract_clean) <span class="sc">|&gt;</span></span>
-<span id="cb59-3"><a></a>  <span class="fu">count</span>(id, word) <span class="sc">|&gt;</span></span>
-<span id="cb59-4"><a></a>  <span class="fu">bind_tf_idf</span>(word, id, n) <span class="sc">|&gt;</span></span>
-<span id="cb59-5"><a></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
-<span id="cb59-6"><a></a>  <span class="fu">mutate</span>(<span class="at">total_n =</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb59-7"><a></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb59-8"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb67-2"><a></a>  <span class="fu">left_join</span>(coursera_reviews, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"review_id"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb67-3"><a></a>  <span class="fu">unnest_tokens</span>(word, review_clean) <span class="sc">|&gt;</span></span>
+<span id="cb67-4"><a></a>  <span class="fu">count</span>(review_id, word) <span class="sc">|&gt;</span></span>
+<span id="cb67-5"><a></a>  <span class="fu">bind_tf_idf</span>(word, review_id, n) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 74,165 × 7
-   id           word            n    tf   idf tf_idf total_n
-   &lt;chr&gt;        &lt;chr&gt;       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;int&gt;
- 1 2007.12681v1 fintech         8 0.154  6.99  1.08        8
- 2 1707.07029v1 reflections     1 0.167  6.30  1.05        2
- 3 1507.00333v3 mf             14 0.14   6.99  0.979      14
- 4 1906.04572v1 utv             8 0.116  6.99  0.811       8
- 5 2006.00371v1 ridge           3 0.125  6.30  0.787       4
- 6 1907.09387v1 4.0             5 0.102  6.99  0.714       5
- 7 1906.04572v1 cor             7 0.101  6.99  0.709       7
- 8 2001.06937v1 gans           10 0.122  5.61  0.684      13
- 9 1606.06769v1 traffic        17 0.17   4.00  0.680      63
-10 1810.10989v3 speech          7 0.130  5.20  0.674      15
-# ℹ 74,155 more rows</code></pre>
+<pre><code># A tibble: 211,280 × 6
+   review_id word            n     tf   idf tf_idf
+       &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1         1 cared           1 0.25    8.81  2.20 
+ 2         1 instructors     1 0.25    4.43  1.11 
+ 3         1 queries         1 0.25    7.80  1.95 
+ 4         1 respond         1 0.25    8.00  2.00 
+ 5         2 challenging     1 0.0833  4.02  0.335
+ 6         2 developers      1 0.0833  6.98  0.582
+ 7         2 fun             1 0.0833  3.73  0.311
+ 8         2 highly          1 0.0833  3.56  0.297
+ 9         2 levels          1 0.0833  6.67  0.556
+10         2 material        1 0.0833  3.09  0.257
+# ℹ 211,270 more rows</code></pre>
+</div>
+</div>
+</section><section id="highest-tf-idfs-are-used-a-lot-within-a-review-and-rarely-in-other-reviews-1" class="slide level2"><h2>highest tf-idf’s are used a lot within a review, and rarely in other reviews</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb69-2"><a></a>  <span class="fu">unnest_tokens</span>(word, Review) <span class="sc">|&gt;</span></span>
+<span id="cb69-3"><a></a>  <span class="fu">count</span>(review_id, word) <span class="sc">|&gt;</span></span>
+<span id="cb69-4"><a></a>  <span class="fu">bind_tf_idf</span>(word, review_id, n) <span class="sc">|&gt;</span></span>
+<span id="cb69-5"><a></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb69-6"><a></a>  <span class="fu">mutate</span>(<span class="at">total_n =</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb69-7"><a></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb69-8"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 547,524 × 7
+   review_id word             n    tf   idf tf_idf total_n
+       &lt;dbl&gt; &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;int&gt;
+ 1      3970 excellen         1     1 10.2   10.2        1
+ 2      5501 estupendo        1     1 10.2   10.2        1
+ 3     25198 excellant        1     1  9.51   9.51       2
+ 4     10057 impeccable       1     1  9.10   9.10       3
+ 5     13780 satisfactory     1     1  8.59   8.59       5
+ 6     26553 magnificent      1     1  8.12   8.12       8
+ 7      7751 excellence       1     1  7.90   7.90      10
+ 8     10971 excellence       1     1  7.90   7.90      10
+ 9     12755 recomendable     1     1  7.90   7.90      10
+10     13077 excellence       1     1  7.90   7.90      10
+# ℹ 547,514 more rows</code></pre>
 </div>
 </div>
 </section><section id="section-2" class="slide level2"><h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61" data-code-line-numbers="4|5-6|7,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>arxiv_papers <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a></a>  <span class="fu">unnest_tokens</span>(word, abstract_clean) <span class="sc">|&gt;</span></span>
-<span id="cb61-3"><a></a>  <span class="fu">count</span>(id, word) <span class="sc">|&gt;</span></span>
-<span id="cb61-4"><a></a>  <span class="fu">bind_tf_idf</span>(word, id, n) <span class="sc">|&gt;</span></span>
-<span id="cb61-5"><a></a>  <span class="fu">left_join</span>(arxiv_papers <span class="sc">|&gt;</span></span>
-<span id="cb61-6"><a></a>              <span class="fu">select</span>(id, broad)) <span class="sc">|&gt;</span></span>
-<span id="cb61-7"><a></a>  <span class="fu">group_by</span>(broad) <span class="sc">%&gt;%</span></span>
-<span id="cb61-8"><a></a>  <span class="fu">slice_max</span>(tf_idf, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb61-9"><a></a>  <span class="fu">filter</span>(broad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"physics"</span>, <span class="st">"cs"</span>, <span class="st">"stat"</span>, <span class="st">"math"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb61-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(word, n))) <span class="sc">+</span> </span>
-<span id="cb61-11"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb61-12"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>broad, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> </span>
-<span id="cb61-13"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb61-14"><a></a>    <span class="at">y =</span> <span class="st">"word"</span></span>
-<span id="cb61-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71" data-code-line-numbers="4|5-6|7,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>en_coursera_reviews <span class="sc">|&gt;</span></span>
+<span id="cb71-2"><a></a>  <span class="fu">unnest_tokens</span>(word, Review) <span class="sc">|&gt;</span></span>
+<span id="cb71-3"><a></a>  <span class="fu">count</span>(CourseId, review_id, word) <span class="sc">|&gt;</span></span>
+<span id="cb71-4"><a></a>  <span class="fu">bind_tf_idf</span>(word, review_id, n)  <span class="sc">|&gt;</span></span>
+<span id="cb71-5"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(CourseId, <span class="st">"data-science"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb71-6"><a></a>  <span class="fu">group_by</span>(CourseId) <span class="sc">%&gt;%</span></span>
+<span id="cb71-7"><a></a>  <span class="fu">slice_max</span>(tf_idf, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb71-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">fct_reorder</span>(word, n))) <span class="sc">+</span> </span>
+<span id="cb71-9"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb71-10"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>CourseId, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb71-11"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb71-12"><a></a>    <span class="at">y =</span> <span class="st">"word"</span></span>
+<span id="cb71-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section><section id="section-2-output" class="slide level2 output-location-slide"><h2></h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></p>
+<figure><p><img data-src="slides14_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
 </figure>
 </div>
 </div>
-</div></section><section id="your-turn-3" class="slide level2"><h2>Your turn:</h2>
+</div></section><section id="your-turn-3" class="slide level2"><h2>Your turn</h2>
 <div class="task">
-<p>Try to learn something new from the arXiv data, using <code>stringr</code> or <code>tidytext</code> tools</p>
+<p>Explore the <code>en_coursera_reviews</code> dataset with the folks around you. Can you replicate my analyses, and try a few of your own? Here are some ideas:</p>
 <ul>
-<li>Try a <em>trigram</em> analysis</li>
-<li>In the bigram analysis, we treated “data” as a stopword. Try customizing your own stopwords.</li>
-<li>Try a text analysis of the arXiv <em>titles</em> rather than the abstracts.</li>
+<li class="fragment">Explore another subject (besides <code>data-science</code>)</li>
+<li class="fragment">
+<code>Label</code> contains the numeric rating for the course. How does the review text differ between highly rated and low-rated courses?</li>
+<li class="fragment">
+<code><a href="https://rdrr.io/pkg/stopwords/man/stopwords_getsources.html">stopwords::stopwords_getsources()</a></code> gives the available stopword dictionaries. How do these differ, and how do they change your results?</li>
 </ul>
 </div>
 
