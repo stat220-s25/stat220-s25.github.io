@@ -278,18 +278,11 @@
     ]
   },
   {
-    "objectID": "activities/25-databases.html",
-    "href": "activities/25-databases.html",
-    "title": "25-databases",
+    "objectID": "activities/14-text-case-study.html",
+    "href": "activities/14-text-case-study.html",
+    "title": "14-text-case-study",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(mdsr)"
-  },
-  {
-    "objectID": "activities/25-databases.html#part-2-explaintest-the-following-and-translate-to-dplyr-code",
-    "href": "activities/25-databases.html#part-2-explaintest-the-following-and-translate-to-dplyr-code",
-    "title": "25-databases",
-    "section": "Part 2: Explain/test the following and translate to {dplyr} code",
-    "text": "Part 2: Explain/test the following and translate to {dplyr} code\nRemember to wrap them in a dbGetQuery(db, \"&lt;SQL COMMAND HERE&gt;\")\n\n\n\n\nSELECT \n  year, month, day, origin, dest,\n  flight, carrier\nFROM flights\nWHERE year = 2013 AND month = 6 AND day = 26\nAND origin = 'BDL'\nLIMIT 0, 6;\n\n\n\n\n\nSELECT \n  name AS airport_name, \n  CONCAT('(', lat, ', ', lon, ')') AS coords\nFROM airports\nLIMIT 0, 6;\n\n\n\n\n\nSELECT\n  DISTINCT STR_TO_DATE(CONCAT(year, '-', month, '-', day), '%Y-%m-%d') \n    AS theDate\nFROM flights\nWHERE year = 2013 AND month = 6 AND day BETWEEN 26 and 30\n  AND origin = 'BDL'\nLIMIT 0, 6;"
+    "text": "library(tidyverse)\nlibrary(tidytext) # functions for doing text analysis\n\nLoad the Data\n\nen_coursera_reviews &lt;- read_csv(\"https://stat220-s25.github.io/data/en_coursera_sample.csv\")\nglimpse(en_coursera_reviews)\n\nRows: 26,882\nColumns: 5\n$ CourseId  &lt;chr&gt; \"nurture-market-strategies\", \"nand2tetris2\", \"schedule-proje…\n$ Review    &lt;chr&gt; \"It would be better if the instructors cared to respond to q…\n$ Label     &lt;dbl&gt; 1, 5, 5, 5, 5, 5, 5, 3, 5, 1, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, …\n$ cld2      &lt;chr&gt; \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", …\n$ review_id &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n\n\nTokenize\n\nlibrary(tidytext)\nen_coursera_reviews |&gt;\n  unnest_tokens(output = word, input = Review) |&gt;\n  select(CourseId, word)\n\n# A tibble: 666,493 × 2\n   CourseId                  word       \n   &lt;chr&gt;                     &lt;chr&gt;      \n 1 nurture-market-strategies it         \n 2 nurture-market-strategies would      \n 3 nurture-market-strategies be         \n 4 nurture-market-strategies better     \n 5 nurture-market-strategies if         \n 6 nurture-market-strategies the        \n 7 nurture-market-strategies instructors\n 8 nurture-market-strategies cared      \n 9 nurture-market-strategies to         \n10 nurture-market-strategies respond    \n# ℹ 666,483 more rows\n\n\nCount the tokens\n\nen_coursera_reviews |&gt;\n  unnest_tokens(output = word, input = Review) |&gt;\n  anti_join(get_stopwords(source = \"stopwords-iso\"), by = \"word\") |&gt;\n  filter(str_detect(CourseId, \"data-science\")) |&gt; \n  group_by(CourseId) %&gt;%\n  count(word) %&gt;%\n  slice_max(n, n = 10) %&gt;%\n  ggplot(aes(x = n, y = fct_reorder(word, n))) + \n  geom_col() + \n  facet_wrap(~CourseId, scales = \"free_y\", nrow = 2) + \n  labs(\n    y = \"Word\"\n  )\n\n\n\n\n\n\n\nCreate “clean” reviews\n\ncoursera_reviews &lt;- en_coursera_reviews |&gt;\n  unnest_tokens(word, Review) |&gt;\n  anti_join(get_stopwords(source = \"stopwords-iso\"), by = \"word\") |&gt;\n  group_by(CourseId, review_id) |&gt;\n  summarize(review_clean = paste(word, collapse = \" \"))\n\nYour turn\nExplore the en_coursera_reviews dataset with the folks around you. Can you replicate my analyses, and try a few of your own? Here are some ideas:\n\nExplore another subject (besides data-science)\n\nLabel contains the numeric rating for the course. How does the review text differ between highly rated and low-rated courses?\n\nstopwords::stopwords_getsources() gives the available stopword dictionaries. How do these differ, and how do they change your results?"
   },
   {
     "objectID": "activities/22-interactivity.html",
@@ -2173,6 +2166,174 @@
     "href": "slides/26/slides26.html#warm-up-on-your-own",
     "title": "RelationalDatabases",
     "section": "Warm Up: on your own",
+    "text": "Warm Up: on your own\n\nUsing nycflights23::flights, answer the following using {dplyr} code\n\nHow many flights flew to MSP from JFK in 2023?\nWhat was the average flight delay for MSP flights in Sept 2023?\nWhat percentage of MSP flights in 2023 were delayed by 15 minutes or more?\n\n\n\n\n\n\n−&plus;\n\n03:00"
+  },
+  {
+    "objectID": "slides/26/slides26.html#nycflights23flights-is-a-subset-of-all-flights-data",
+    "href": "slides/26/slides26.html#nycflights23flights-is-a-subset-of-all-flights-data",
+    "title": "RelationalDatabases",
+    "section": "\nnycflights23::flights is a subset of all flights data",
+    "text": "nycflights23::flights is a subset of all flights data\n\nnycflights23::flights %&gt;%\n  select(year) %&gt;%\n  distinct()\n\n# A tibble: 1 × 1\n   year\n  &lt;int&gt;\n1  2023\n\n\n\n\nnycflights23::flights %&gt;% \n  summarize(n = n())\n\n# A tibble: 1 × 1\n       n\n   &lt;int&gt;\n1 435352\n\n\n\n\n\nnycflights23::flights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\n# A tibble: 3 × 1\n  origin\n  &lt;chr&gt; \n1 EWR   \n2 JFK   \n3 LGA"
+  },
+  {
+    "objectID": "slides/26/slides26.html#we-can-also-connect-to-a-database-containing-more-flights-data",
+    "href": "slides/26/slides26.html#we-can-also-connect-to-a-database-containing-more-flights-data",
+    "title": "RelationalDatabases",
+    "section": "We can also connect to a database containing more flights data:",
+    "text": "We can also connect to a database containing more flights data:\n\nlibrary(mdsr)\nlibrary(DBI)\ndb &lt;- dbConnect_scidb(\"airlines\")\n\n\nflights &lt;- tbl(db, \"flights\")\ncarriers &lt;- tbl(db, \"carriers\")\nairports &lt;- tbl(db, \"airports\")\n\nclass(flights)\n\n[1] \"tbl_MariaDBConnection\" \"tbl_dbi\"               \"tbl_sql\"              \n[4] \"tbl_lazy\"              \"tbl\""
+  },
+  {
+    "objectID": "slides/26/slides26.html#we-can-access-information-about-flights-with-dplyr-commands",
+    "href": "slides/26/slides26.html#we-can-access-information-about-flights-with-dplyr-commands",
+    "title": "RelationalDatabases",
+    "section": "We can access information about flights with {dplyr} commands:",
+    "text": "We can access information about flights with {dplyr} commands:\n\nflights %&gt;%\n  select(year) %&gt;%\n  distinct()\n\n# Source:   SQL [?? x 1]\n# Database: mysql  [mdsr_public@mdsr.crcbo51tmesf.us-east-2.rds.amazonaws.com:3306/airlines]\n   year\n  &lt;int&gt;\n1  2013\n2  2014\n3  2015\n\n\nflights %&gt;% summarize(n = n())\n\n# Source:   SQL [?? x 1]\n# Database: mysql  [mdsr_public@mdsr.crcbo51tmesf.us-east-2.rds.amazonaws.com:3306/airlines]\n         n\n   &lt;int64&gt;\n1 18008372\n\n\n\nWarning: slow!"
+  },
+  {
+    "objectID": "slides/26/slides26.html#we-can-access-information-about-flights-with-dplyr-commands-1",
+    "href": "slides/26/slides26.html#we-can-access-information-about-flights-with-dplyr-commands-1",
+    "title": "RelationalDatabases",
+    "section": "We can access information about flights with {dplyr} commands:",
+    "text": "We can access information about flights with {dplyr} commands:\n\nflights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\n# Source:   SQL [?? x 1]\n# Database: mysql  [mdsr_public@mdsr.crcbo51tmesf.us-east-2.rds.amazonaws.com:3306/airlines]\n   origin\n   &lt;chr&gt; \n 1 ABE   \n 2 ABI   \n 3 ABQ   \n 4 ABR   \n 5 ABY   \n 6 ACK   \n 7 ACT   \n 8 ACV   \n 9 ACY   \n10 ADK   \n# ℹ more rows\n# ℹ Use `print(n = ...)` to see more rows\n\n\nWarning: slow!"
+  },
+  {
+    "objectID": "slides/26/slides26.html#what-is-happening",
+    "href": "slides/26/slides26.html#what-is-happening",
+    "title": "RelationalDatabases",
+    "section": "What is happening?",
+    "text": "What is happening?"
+  },
+  {
+    "objectID": "slides/26/slides26.html#what-is-happening-1",
+    "href": "slides/26/slides26.html#what-is-happening-1",
+    "title": "RelationalDatabases",
+    "section": "What is happening?",
+    "text": "What is happening?"
+  },
+  {
+    "objectID": "slides/26/slides26.html#what-is-happening-2",
+    "href": "slides/26/slides26.html#what-is-happening-2",
+    "title": "RelationalDatabases",
+    "section": "What is happening?",
+    "text": "What is happening?"
+  },
+  {
+    "objectID": "slides/26/slides26.html#if-we-want-to-load-results-into-rs-memory-use-collect",
+    "href": "slides/26/slides26.html#if-we-want-to-load-results-into-rs-memory-use-collect",
+    "title": "RelationalDatabases",
+    "section": "If we want to load results into R’s memory, use collect()\n",
+    "text": "If we want to load results into R’s memory, use collect()\n\n\norigins &lt;- flights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\nclass(origins)\n\n[1] \"tbl_MariaDBConnection\" \"tbl_dbi\"               \"tbl_sql\"              \n[4] \"tbl_lazy\"              \"tbl\"   \n\norigins_tbl &lt;- collect(origins)\nclass(origins_tbl)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\""
+  },
+  {
+    "objectID": "slides/26/slides26.html#under-the-hood",
+    "href": "slides/26/slides26.html#under-the-hood",
+    "title": "RelationalDatabases",
+    "section": "Under the hood:",
+    "text": "Under the hood:\n\nflights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\nis generating the following SQL code:\n\n&lt;SQL&gt;\nSELECT DISTINCT `origin`\nFROM `flights`"
+  },
+  {
+    "objectID": "slides/26/slides26.html#sql",
+    "href": "slides/26/slides26.html#sql",
+    "title": "RelationalDatabases",
+    "section": "SQL",
+    "text": "SQL\nSQL stands for Structured Query Language and is a language for database management systems developed in the 1970’s\n\nUp to this point, we’ve been working with small data\n\nCan be saved on our personal computers\nCan be loaded directly into R’s memory\n\n\nMoving into medium data:\n\nCan be saved on our personal computers\n\nCan’t be loaded or worked with in R’s memory"
+  },
+  {
+    "objectID": "slides/26/slides26.html#sql-1",
+    "href": "slides/26/slides26.html#sql-1",
+    "title": "RelationalDatabases",
+    "section": "SQL",
+    "text": "SQL\nThere are many “dialects” of SQL, but they’re all very similar\n\nOracle/MySQL\nMicrosoft SQL Server\nSQLite\nMariaDB is a community version of MySQL\n\n\nThe “dialect” we’ll use is MySQL/MariaDB"
+  },
+  {
+    "objectID": "slides/26/slides26.html#sql-2",
+    "href": "slides/26/slides26.html#sql-2",
+    "title": "RelationalDatabases",
+    "section": "SQL",
+    "text": "SQL\n\nPoint of the next few days is to show you the basics and build a little bit of familiarity with the commands\nThe good news: “thinking” in SQL is similar to “thinking” in {dplyr} (even though the syntax is different)"
+  },
+  {
+    "objectID": "slides/26/slides26.html#sql-in-r",
+    "href": "slides/26/slides26.html#sql-in-r",
+    "title": "RelationalDatabases",
+    "section": "SQL in R",
+    "text": "SQL in R\nTo run SQL in R, use\n\ndbGetQuery(db, \"&lt;INSERT SQL QUERY HERE&gt;\")\n\n\n\ndbGetQuery(db, \n\"SELECT DISTINCT `origin`\nFROM `flights`\")\n\n    origin\n1      ABE\n2      ABI\n3      ABQ\n4      ABR\n5      ABY\n6      ACK\n7      ACT\n8      ACV\n9      ACY\n10     ADK\n11     ADQ\n12     AEX\n13     AGS\n14     AKN\n15     ALB\n16     ALO\n17     AMA\n18     ANC\n19     APN\n20     ART\n21     ASE\n22     ATL\n23     ATW\n24     AUS\n25     AVL\n26     AVP\n27     AZA\n28     AZO\n29     BDL\n30     BET\n31     BFL\n32     BGM\n33     BGR\n34     BHM\n35     BIL\n36     BIS\n37     BJI\n38     BKG\n39     BLI\n40     BMI\n41     BNA\n42     BOI\n43     BOS\n44     BPT\n45     BQK\n46     BQN\n47     BRD\n48     BRO\n49     BRW\n50     BTM\n51     BTR\n52     BTV\n53     BUF\n54     BUR\n55     BWI\n56     BZN\n57     CAE\n58     CAK\n59     CDC\n60     CDV\n61     CEC\n62     CHA\n63     CHO\n64     CHS\n65     CIC\n66     CID\n67     CIU\n68     CLD\n69     CLE\n70     CLL\n71     CLT\n72     CMH\n73     CMI\n74     CMX\n75     CNY\n76     COD\n77     COS\n78     COU\n79     CPR\n80     CRP\n81     CRW\n82     CSG\n83     CVG\n84     CWA\n85     CYS\n86     DAB\n87     DAL\n88     DAY\n89     DBQ\n90     DCA\n91     DEN\n92     DFW\n93     DHN\n94     DIK\n95     DLG\n96     DLH\n97     DRO\n98     DRT\n99     DSM\n100    DTW\n101    DVL\n102    EAU\n103    ECP\n104    EGE\n105    EKO\n106    ELM\n107    ELP\n108    ERI\n109    ESC\n110    EUG\n111    EVV\n112    EWN\n113    EWR\n114    EYW\n115    FAI\n116    FAR\n117    FAT\n118    FAY\n119    FCA\n120    FLG\n121    FLL\n122    FNT\n123    FOE\n124    FSD\n125    FSM\n126    FWA\n127    GCC\n128    GCK\n129    GEG\n130    GFK\n131    GGG\n132    GJT\n133    GNV\n134    GPT\n135    GRB\n136    GRI\n137    GRK\n138    GRR\n139    GSO\n140    GSP\n141    GST\n142    GTF\n143    GTR\n144    GUC\n145    GUM\n146    HDN\n147    HIB\n148    HLN\n149    HNL\n150    HOB\n151    HOU\n152    HPN\n153    HRL\n154    HSV\n155    HYA\n156    HYS\n157    IAD\n158    IAG\n159    IAH\n160    ICT\n161    IDA\n162    ILG\n163    ILM\n164    IMT\n165    IND\n166    INL\n167    IPL\n168    ISN\n169    ISP\n170    ITH\n171    ITO\n172    IYK\n173    JAC\n174    JAN\n175    JAX\n176    JFK\n177    JLN\n178    JMS\n179    JNU\n180    KOA\n181    KTN\n182    LAN\n183    LAR\n184    LAS\n185    LAW\n186    LAX\n187    LBB\n188    LBE\n189    LCH\n190    LEX\n191    LFT\n192    LGA\n193    LGB\n194    LIH\n195    LIT\n196    LMT\n197    LNK\n198    LRD\n199    LSE\n200    LWS\n201    MAF\n202    MBS\n203    MCI\n204    MCN\n205    MCO\n206    MDT\n207    MDW\n208    MEI\n209    MEM\n210    MFE\n211    MFR\n212    MGM\n213    MHK\n214    MHT\n215    MIA\n216    MKE\n217    MKG\n218    MLB\n219    MLI\n220    MLU\n221    MMH\n222    MOB\n223    MOD\n224    MOT\n225    MQT\n226    MRY\n227    MSN\n228    MSO\n229    MSP\n230    MSY\n231    MTJ\n232    MVY\n233    MYR\n234    OAJ\n235    OAK\n236    OGG\n237    OKC\n238    OMA\n239    OME\n240    ONT\n241    ORD\n242    ORF\n243    ORH\n244    OTH\n245    OTZ\n246    PAH\n247    PBG\n248    PBI\n249    PDX\n250    PHF\n251    PHL\n252    PHX\n253    PIA\n254    PIB\n255    PIH\n256    PIT\n257    PLN\n258    PNS\n259    PPG\n260    PSC\n261    PSE\n262    PSG\n263    PSP\n264    PUB\n265    PVD\n266    PWM\n267    RAP\n268    RDD\n269    RDM\n270    RDU\n271    RFD\n272    RHI\n273    RIC\n274    RKS\n275    RNO\n276    ROA\n277    ROC\n278    ROW\n279    RST\n280    RSW\n281    SAF\n282    SAN\n283    SAT\n284    SAV\n285    SBA\n286    SBN\n287    SBP\n288    SCC\n289    SCE\n290    SDF\n291    SEA\n292    SFO\n293    SGF\n294    SGU\n295    SHD\n296    SHV\n297    SIT\n298    SJC\n299    SJT\n300    SJU\n301    SLC\n302    SMF\n303    SMX\n304    SNA\n305    SPI\n306    SPN\n307    SPS\n308    SRQ\n309    STC\n310    STL\n311    STT\n312    STX\n313    SUN\n314    SUX\n315    SWF\n316    SYR\n317    TLH\n318    TOL\n319    TPA\n320    TRI\n321    TTN\n322    TUL\n323    TUS\n324    TVC\n325    TWF\n326    TXK\n327    TYR\n328    TYS\n329    UST\n330    VEL\n331    VLD\n332    VPS\n333    WRG\n334    WYS\n335    XNA\n336    YAK\n337    YUM"
+  },
+  {
+    "objectID": "slides/26/slides26.html#select-and-from",
+    "href": "slides/26/slides26.html#select-and-from",
+    "title": "RelationalDatabases",
+    "section": "\nSELECT and FROM\n",
+    "text": "SELECT and FROM\n\nare required for every query. The simplest query we can write is:\n\nSELECT * FROM flights;\n\n\nwhich means “select everything from the flights dataset”.\nDO NOT EXECUTE THIS QUERY! This will cause all 169 million records to be dumped! This will not only crash your machine, but also tie up the server for everyone else.\nA safe version is:\n\nSELECT * FROM flights LIMIT 0,10;"
+  },
+  {
+    "objectID": "slides/26/slides26.html#limit",
+    "href": "slides/26/slides26.html#limit",
+    "title": "RelationalDatabases",
+    "section": "LIMIT",
+    "text": "LIMIT\nis similar to head() or slice()\n\ndbGetQuery(db, \n\"SELECT DISTINCT `origin`\nFROM `flights`\nLIMIT 0,5\")\n\n  origin\n1    ABE\n2    ABI\n3    ABQ\n4    ABR\n5    ABY"
+  },
+  {
+    "objectID": "slides/26/slides26.html#create-new-variables-with-select-and-as",
+    "href": "slides/26/slides26.html#create-new-variables-with-select-and-as",
+    "title": "RelationalDatabases",
+    "section": "Create new variables with SELECT and AS\n",
+    "text": "Create new variables with SELECT and AS\n\n\nSELECT SUM(1) AS numFlights\nFROM flights\n\n  numFlights\n1   18008372"
+  },
+  {
+    "objectID": "slides/26/slides26.html#grouped-operations-with-group-by",
+    "href": "slides/26/slides26.html#grouped-operations-with-group-by",
+    "title": "RelationalDatabases",
+    "section": "Grouped operations with GROUP BY\n",
+    "text": "Grouped operations with GROUP BY\n\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nGROUP BY origin\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    ABE       7251        5.5627\n2    ABI       8116        6.3329\n3    ABQ      74195        5.8051\n4    ABR       2239        1.3198\n5    ABY       3002        5.2652\n6    ACK       1295        7.6131"
+  },
+  {
+    "objectID": "slides/26/slides26.html#order-output-with-order-by",
+    "href": "slides/26/slides26.html#order-output-with-order-by",
+    "title": "RelationalDatabases",
+    "section": "Order output with ORDER BY\n",
+    "text": "Order output with ORDER BY\n\nSimilar to arrange() in {dplyr}\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nGROUP BY origin\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    PPG        334       33.6946\n2    STC        550       22.8691\n3    OTH       1262       20.5713\n4    FOE        449       19.7127\n5    CEC       2143       18.4951\n6    ILG       1155       16.5394"
+  },
+  {
+    "objectID": "slides/26/slides26.html#filter-output-with-where",
+    "href": "slides/26/slides26.html#filter-output-with-where",
+    "title": "RelationalDatabases",
+    "section": "Filter output with WHERE\n",
+    "text": "Filter output with WHERE\n\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nWHERE dest = 'MSP'\n  AND numFlights &gt; 365 * 2\nGROUP BY origin\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    ASE         43       28.0930\n2    HRL        131       27.0687\n3    ORF        483       17.8240\n4    EGE         31       17.4516\n5    TTN        290       17.1552\n6    ORD      18382       12.7469"
+  },
+  {
+    "objectID": "slides/26/slides26.html#filter-output-on-multiple-conditions",
+    "href": "slides/26/slides26.html#filter-output-on-multiple-conditions",
+    "title": "RelationalDatabases",
+    "section": "Filter output on multiple conditions",
+    "text": "Filter output on multiple conditions\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nWHERE dest = 'MSP'\n  AND numFlights &gt; 365 * 2\nGROUP BY origin\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\nError: Unknown column 'numFlights' in 'WHERE' [1054]\nDoesn’t work, since numFlights is a column we created in SELECT"
+  },
+  {
+    "objectID": "slides/26/slides26.html#filter-output-with-having",
+    "href": "slides/26/slides26.html#filter-output-with-having",
+    "title": "RelationalDatabases",
+    "section": "Filter output with HAVING\n",
+    "text": "Filter output with HAVING\n\nIf we want to filter based on a column we created, put it in the HAVING clause instead\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nWHERE dest = 'MSP'\nGROUP BY origin\nHAVING numFlights &gt; 365 * 2\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    ORD      18382       12.7469\n2    MDW       9510        9.6110\n3    DEN      17054        9.0643\n4    CID       2106        8.2042\n5    RIC       1009        7.8840\n6    DFW       8404        7.2574"
+  },
+  {
+    "objectID": "slides/26/slides26.html#sql-commands-must-be-written-in-a-specific-order",
+    "href": "slides/26/slides26.html#sql-commands-must-be-written-in-a-specific-order",
+    "title": "RelationalDatabases",
+    "section": "SQL commands must be written in a specific order:",
+    "text": "SQL commands must be written in a specific order:\n\nSELECT\nFROM\n\nJOIN (next class)\nWHERE\nGROUP BY\nHAVING\nORDER BY\nLIMIT"
+  },
+  {
+    "objectID": "slides/26/slides26.html#your-turn",
+    "href": "slides/26/slides26.html#your-turn",
+    "title": "RelationalDatabases",
+    "section": "Your turn",
+    "text": "Your turn\nTry the exercises in the 25-databases activity. We’ll start Friday off by talking about them"
+  },
+  {
+    "objectID": "slides/26/slides26.html#warm-up-on-your-own-1",
+    "href": "slides/26/slides26.html#warm-up-on-your-own-1",
+    "title": "RelationalDatabases",
+    "section": "Warm Up: on your own",
     "text": "Warm Up: on your own\n\nReview your responses to SQL exercises. Which do you feel confident about? Are there any you’d like to discuss?\n\n\n\n\n\n−&plus;\n\n02:00"
   },
   {
@@ -2239,8 +2400,8 @@
     "text": "List columns in a given table\n\ndbListFields(con, \"title\")\n\n [1] \"id\"              \"title\"           \"imdb_index\"      \"kind_id\"        \n [5] \"production_year\" \"imdb_id\"         \"phonetic_code\"   \"episode_of_id\"  \n [9] \"season_nr\"       \"episode_nr\"      \"series_years\"    \"md5sum\"         \n\ndbListFields(con, table_names[1])\n\n [1] \"id\"              \"title\"           \"imdb_index\"      \"kind_id\"        \n [5] \"production_year\" \"imdb_id\"         \"phonetic_code\"   \"episode_of_id\"  \n [9] \"season_nr\"       \"episode_nr\"      \"series_years\"    \"md5sum\""
   },
   {
-    "objectID": "slides/26/slides26.html#your-turn",
-    "href": "slides/26/slides26.html#your-turn",
+    "objectID": "slides/26/slides26.html#your-turn-1",
+    "href": "slides/26/slides26.html#your-turn-1",
     "title": "RelationalDatabases",
     "section": "Your turn",
     "text": "Your turn\n\nList the fields in the name, cast_info, and role_type tables\n\n\n\n\n\n−&plus;\n\n02:00"
@@ -2253,8 +2414,8 @@
     "text": "Print first few rows of a table\n\ndbGetQuery(con, \"SELECT * FROM title LIMIT 0,10\")\n\n      id                                           title imdb_index kind_id\n1  78460 Adults Recat to the Simpsons (30th Anniversary)       &lt;NA&gt;       7\n2  70273                                    (2016-05-18)       &lt;NA&gt;       7\n3  60105                                    (2014-04-11)       &lt;NA&gt;       7\n4  32120                                    (2008-05-01)       &lt;NA&gt;       7\n5  97554                               Schm繹lders Traum       &lt;NA&gt;       7\n6  57966                                          (#1.1)       &lt;NA&gt;       7\n7  76391                                     Anniversary       &lt;NA&gt;       7\n8  11952              Angus Black/Lester Barrie/DC Curry       &lt;NA&gt;       7\n9   1554                                     New Orleans       &lt;NA&gt;       7\n10 58442                                    Kiss Me Kate       &lt;NA&gt;       7\n   production_year imdb_id phonetic_code episode_of_id season_nr episode_nr\n1             2017      NA         A3432         78406        NA         NA\n2             2016      NA          &lt;NA&gt;         68058        NA         NA\n3             2014      NA          &lt;NA&gt;         59138        NA         NA\n4             2008      NA          &lt;NA&gt;         32060        NA         NA\n5             2001      NA         S2543         97302        10          1\n6             2013      NA          &lt;NA&gt;         57965         1          1\n7             1971      NA         A5162         76385         4          9\n8             2009      NA         A5214         11937         4          7\n9             2003      NA         N6452          1508         2         11\n10            2011      NA         K2523         58436         1         10\n   series_years                           md5sum\n1          &lt;NA&gt; 2ae09eed7d576cc2c24774fed5b18168\n2          &lt;NA&gt; 511dfc14cfff7589d29a95abb30cd66a\n3          &lt;NA&gt; c6cdce7e667e07713e431805c407feed\n4          &lt;NA&gt; 100df65742caf5afd092b2e0ead67d8e\n5          &lt;NA&gt; 46862a2f96f9fb2d59e8c9a11ecfdd28\n6          &lt;NA&gt; 409c37703766c4b24f8a86162fd9cf85\n7          &lt;NA&gt; 5e12ce73fac1d1dcf94136b6e9acd8f8\n8          &lt;NA&gt; 9c38b9e5601dc154444b73b518034aa1\n9          &lt;NA&gt; 621bea735740a547e862e4a3226f35d2\n10         &lt;NA&gt; 293e8c75c7f35a4035abf617962be5a9"
   },
   {
-    "objectID": "slides/26/slides26.html#your-turn-1",
-    "href": "slides/26/slides26.html#your-turn-1",
+    "objectID": "slides/26/slides26.html#your-turn-2",
+    "href": "slides/26/slides26.html#your-turn-2",
     "title": "RelationalDatabases",
     "section": "Your turn",
     "text": "Your turn\n\nList the first few rows in the name, cast_info, and role_type tables. What did you learn?\n\n\n\n\n\n−&plus;\n\n02:00"
@@ -2281,8 +2442,8 @@
     "text": "Practice with joins\n\nSELECT * \nFROM title\nLEFT JOIN kind_type ON title.kind_id=kind_type.id\nWHERE kind='tv series'\nLIMIT 0,10\n\n\nDisplaying records 1 - 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\ntitle\nimdb_index\nkind_id\nproduction_year\nimdb_id\nphonetic_code\nepisode_of_id\nseason_nr\nepisode_nr\nseries_years\nmd5sum\nid\nkind\n\n\n\n49932\nA Pr籀xima V穩tima\nNA\n2\n1995\nNA\nP6251\nNA\nNA\nNA\n1995-????\nc7a119d8fd4064cff333a9fb5f4d11f5\n2\ntv series\n\n\n11173\n1974 National League Championship Series\nNA\n2\n1974\nNA\nN3542\nNA\nNA\nNA\n1974-????\nb1f23a00126dbeecd725fdf3c2914415\n2\ntv series\n\n\n78678\nAdventure Inc.\nNA\n2\n2002\nNA\nA3153\nNA\nNA\nNA\n2002-2003\na57c9dfca57a983e73ab1bf1099ce23a\n2\ntv series\n\n\n6328\n101 East\nNA\n2\n2006\nNA\nE23\nNA\nNA\nNA\n2006-????\n399cdcab9cf94208effa4fde946e2604\n2\ntv series\n\n\n5803\n100% Senorita\nI\n2\n2003\nNA\nS563\nNA\nNA\nNA\n2003-2004\nc18f662bf2e4aea6886409df429a7cae\n2\ntv series\n\n\n98954\nAldrig Backa\nNA\n2\n2017\nNA\nA4362\nNA\nNA\nNA\n2017-????\n5f9ff20a37b55240474599c12b0da995\n2\ntv series\n\n\n57257\nA-strana\nNA\n2\n2017\nNA\nA2365\nNA\nNA\nNA\n2017-????\n4048d4f9b4126b85877d6d4acb6d7776\n2\ntv series\n\n\n12255\n2 Become\nNA\n2\n2016\nNA\nB25\nNA\nNA\nNA\n2016-????\nf007958be527d3ee65c11e6d24dd6068\n2\ntv series\n\n\n19082\n3 Dads and a House\nNA\n2\n2015\nNA\nD3253\nNA\nNA\nNA\n2015-????\n0f4a848b4205cc56c47ffeb458ce6bd4\n2\ntv series\n\n\n47519\nA Little Rees Specht Cultivates Kindness\nNA\n2\nNA\nNA\nL3462\nNA\nNA\nNA\n????\nca9e1f5a62fbc3194bf9574dcd2372c4\n2\ntv series"
   },
   {
-    "objectID": "slides/26/slides26.html#your-turn-2",
-    "href": "slides/26/slides26.html#your-turn-2",
+    "objectID": "slides/26/slides26.html#your-turn-3",
+    "href": "slides/26/slides26.html#your-turn-3",
     "title": "RelationalDatabases",
     "section": "Your turn",
     "text": "Your turn\n\nJoin the name, cast_info, and role_type tables\n\n\n\n\n\n−&plus;\n\n03:00"
@@ -3465,7 +3626,7 @@
     "href": "index.html",
     "title": "Stat 220: Intro to Data Science",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nSUBMIT ACTIVITY\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\n✅\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n✅\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\n✅\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n✅\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\n✅\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n✅\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n✅\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\n\nslides12 12-factors\n\n✅\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\n\nslides13 13-strings-regex\n\n✅\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\n\nslides14 14-text-case-study\n\n✅\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\n\nslides15 15-sentiment\n\n\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\n\n\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\n\nslides16 16-functions\n\n✅\n\nPortfolio 2\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\n\nslides17 17-iteration\n\n✅\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\n\nslides18 18-iteration-2\n\n✅\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\n\nslides19 19-apis\n\n✅\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\n\n\n\nLab Quiz 3 , Final Project Idea Form\n\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\n\nslides21 21-scraping\n\n✅\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\n\nslides22 22-interactivity\n\n\n\nHW8 Portfolio 3\n\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\n\nslides23 23-shiny\n\n✅\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\n\nslides24 24-shiny2\n\n✅\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\ntbd\n✅\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\n✅\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\n\nHW9\n\n\n\nM\nMon, Jun 9\n\nFinal Project Due @ noon\ntbd\n\nFinal Project",
+    "text": "This page contains an outline of the topics, content, and assignments for the term. Note that this schedule will be updated as the term progresses and the timeline of topics and assignments might be updated. Any major changes to due dates will be announced in class and indicated in bold here.\n\n\n\n\n\n\nWEEK\nDOW\nDATE\nPREPARE\nTOPIC\nMATERIALS\nSUBMIT ACTIVITY\nDUE\n\n\n\n1\nM\nMon, Mar 31\n📝complete welcome survey\n\nWelcome + data, R review\n\nslides01 01-example-unvotes\n\n\n\n\n\n1\nW\nWed, Apr 2\n📚 R basics  📚 R4DS 1e 27.1-27.4  📺 git and GitHub for poets  📝 Read syllabus and pass syllabus quiz to activate tokens\nGithub + reproducible reports\n\nslides02 02-reproducible-reports 02-lego-report\n\n\n\n\n\n1\nF\nFri, Apr 4\n📝 10 minute activity on markdown  📚 R4DS Ch1  📺 intro to ggplot\n\nggplot\n\nslides03 03-ggplot-intro\n\n✅\nHW 1\n\n\n2\nM\nMon, Apr 7\n📚 DataViz 17-21 \n\nTheming + Design\n\nslides04 04-customizing-plots\n\n✅\n\n\n\n2\nW\nWed, Apr 9\n📚 DataViz 15 \n\nMaps/spatial data\n\nslides05 05-maps\n\n✅\nHW 2\n\n\n2\nF\nFri, Apr 11\n📺 first 15 minutes of Accessible Data Science Beyond Visual Models  📚 Skim Writing Alt Text to Communicate the Meaning in Data Visualizations\n\nAccesibility for data viz\nslides06\n\n\n\n\n3\nM\nMon, Apr 14\n📚 R4DS 3.1-3.4 \n\nVerbs\n\nslides07 07-verbs\n\n✅\n\n\n\n3\nW\nWed, Apr 16\n📚 R4DS 3.5  📚 R4DS 5.1-5.4 \n\nGroups and summarizing Tidy data\n\nslides08 08-dplyr2\n\n✅\nHW 3\n\n\n3\nF\nFri, Apr 18\n📚 R4DS 4 \n\nCode style\n\nslides09 09-tidyr\n\n\n\nLab Quiz 1 \n\n\n\n4\nM\nMon, Apr 21\n📚 R4DS 19.1-19.3\n\nCombining datasets\n\nslides10 10-combining\n\n✅\n\n\n\n4\nW\nWed, Apr 23\n📚 R4DS 7.1-7.4  📚 R4DS 17.1-17.3 \n\nImport data and dates/times\n\nslides11 11-import\n\n✅\n\nHW 4 Portfolio 1\n\n\n\n4\nF\nFri, Apr 25\n📚 R4DS 16 \n\nWorking with factors\n\nslides12 12-factors\n\n✅\n\n\n\n5\nM\nMon, Apr 28\n📚 R4DS 14  📚 R4DS 15.1-15.5\n\nWorking with strings and Regex\n\nslides13 13-strings-regex\n\n✅\n\n\n\n5\nW\nWed, Apr 30\n📚 MDSR 19.2  🌎 Google ngram viewer\n\nIntro to Text Analysis\n\nslides14 14-text-case-study\n\n✅\nHW 5\n\n\n5\nF\nFri, May 2\n📚 The Trouble with Sentiment Analysis\n\nSentiment Analysis\n\nslides15 15-sentiment\n\n\nLab Quiz 2\n\n\n6\nM\nMon, May 5\n\n❌ Midterm Break; no class\n\n\n\n\n\n6\nW\nWed, May 7\n📚 R4DS 25\n\nFunctions\n\nslides16 16-functions\n\n✅\n\nPortfolio 2\n\n\n\n6\nF\nFri, May 9\n📚 MDSR 7.1-7.3\n\nIteration\n\nslides17 17-iteration\n\n✅\nHW6\n\n\n7\nM\nMon, May 12\n\nIteration II\n\nslides18 18-iteration-2\n\n✅\n\n\n\n7\nW\nWed, May 14\n📚What is an API? 📚R4DS 23 (skip case studies) 📝 sign up for a census API key\n\nAPIs\n\nslides19 19-apis\n\n✅\n\nHW7 \n\n\n\n7\nF\nFri, May 16\n\nScraping I\n\n\n\nLab Quiz 3 , Final Project Idea Form\n\n\n\n8\nM\nMon, May 19\n📚 R4DS 24.2;24.5  📝 install and test selectorGadget\n\nScraping II\n\nslides21 21-scraping\n\n✅\nFinal Project Ranking Form\n\n\n8\nW\nWed, May 21\n🌎 Explore htmlWidgets gallery + source code  🌎 Explore NZ Earthquakes and source code\n\nIntro to Interactivity\n\nslides22 22-interactivity\n\n\n\nHW8 Portfolio 3\n\n\n\n8\nF\nFri, May 23\nPick one:  📺 Shiny basics playlist  📚Ch 1-2 of Mastering Shiny\n\nShiny 1\n\nslides23 23-shiny\n\n✅\n\n\n\n9\nM\nMon, May 26\nPick one:  📺 Reactivity in shiny playlist  📚Ch 3 of Mastering Shiny\n\nShiny 2\n\nslides24 24-shiny2\n\n✅\n\n\n\n9\nW\nWed, May 28\n\nShiny 3\n\nslides25 25-shiny-design\n\n✅\nFinal Project sketch\n\n\n9\nF\nFri, May 30\n📚MDSR 15.1-15.4\n\nSQL\ntbd\n✅\nPortfolio 4\n\n\n10\nM\nMon, Jun 2\n\nProject Demos\ntbd\n\n\n\n\n10\nW\nWed, Jun 4\n\nProject Demos\ntbd\n\nHW9\n\n\n\nM\nMon, Jun 9\n\nFinal Project Due @ noon\ntbd\n\nFinal Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -6615,172 +6776,116 @@
     "text": "Your turn\n\nExplore the en_coursera_reviews dataset with the folks around you. Can you replicate my analyses, and try a few of your own? Here are some ideas:\n\nExplore another subject (besides data-science)\n\nLabel contains the numeric rating for the course. How does the review text differ between highly rated and low-rated courses?\n\nstopwords::stopwords_getsources() gives the available stopword dictionaries. How do these differ, and how do they change your results?"
   },
   {
-    "objectID": "slides/25/slides25.html#warm-up-on-your-own",
-    "href": "slides/25/slides25.html#warm-up-on-your-own",
-    "title": "Intro to Databases",
-    "section": "Warm Up: on your own",
-    "text": "Warm Up: on your own\n\nUsing nycflights23::flights, answer the following using {dplyr} code\n\nHow many flights flew to MSP from JFK in 2023?\nWhat was the average flight delay for MSP flights in Sept 2023?\nWhat percentage of MSP flights in 2023 were delayed by 15 minutes or more?\n\n\n\n\n\n\n−&plus;\n\n03:00"
-  },
-  {
-    "objectID": "slides/25/slides25.html#nycflights23flights-is-a-subset-of-all-flights-data",
-    "href": "slides/25/slides25.html#nycflights23flights-is-a-subset-of-all-flights-data",
-    "title": "Intro to Databases",
-    "section": "\nnycflights23::flights is a subset of all flights data",
-    "text": "nycflights23::flights is a subset of all flights data\n\nnycflights23::flights %&gt;%\n  select(year) %&gt;%\n  distinct()\n\n# A tibble: 1 × 1\n   year\n  &lt;int&gt;\n1  2023\n\n\n\n\nnycflights23::flights %&gt;% \n  summarize(n = n())\n\n# A tibble: 1 × 1\n       n\n   &lt;int&gt;\n1 435352\n\n\n\n\n\nnycflights23::flights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\n# A tibble: 3 × 1\n  origin\n  &lt;chr&gt; \n1 EWR   \n2 JFK   \n3 LGA"
-  },
-  {
-    "objectID": "slides/25/slides25.html#we-can-also-connect-to-a-database-containing-more-flights-data",
-    "href": "slides/25/slides25.html#we-can-also-connect-to-a-database-containing-more-flights-data",
-    "title": "Intro to Databases",
-    "section": "We can also connect to a database containing more flights data:",
-    "text": "We can also connect to a database containing more flights data:\n\nlibrary(mdsr)\nlibrary(DBI)\ndb &lt;- dbConnect_scidb(\"airlines\")\n\n\nflights &lt;- tbl(db, \"flights\")\ncarriers &lt;- tbl(db, \"carriers\")\nairports &lt;- tbl(db, \"airports\")\n\nclass(flights)\n\n[1] \"tbl_MariaDBConnection\" \"tbl_dbi\"               \"tbl_sql\"              \n[4] \"tbl_lazy\"              \"tbl\""
-  },
-  {
-    "objectID": "slides/25/slides25.html#we-can-access-information-about-flights-with-dplyr-commands",
-    "href": "slides/25/slides25.html#we-can-access-information-about-flights-with-dplyr-commands",
-    "title": "Intro to Databases",
-    "section": "We can access information about flights with {dplyr} commands:",
-    "text": "We can access information about flights with {dplyr} commands:\n\nflights %&gt;%\n  select(year) %&gt;%\n  distinct()\n\n# Source:   SQL [?? x 1]\n# Database: mysql  [mdsr_public@mdsr.crcbo51tmesf.us-east-2.rds.amazonaws.com:3306/airlines]\n   year\n  &lt;int&gt;\n1  2013\n2  2014\n3  2015\n\n\nflights %&gt;% summarize(n = n())\n\n# Source:   SQL [?? x 1]\n# Database: mysql  [mdsr_public@mdsr.crcbo51tmesf.us-east-2.rds.amazonaws.com:3306/airlines]\n         n\n   &lt;int64&gt;\n1 18008372\n\n\n\nWarning: slow!"
-  },
-  {
-    "objectID": "slides/25/slides25.html#we-can-access-information-about-flights-with-dplyr-commands-1",
-    "href": "slides/25/slides25.html#we-can-access-information-about-flights-with-dplyr-commands-1",
-    "title": "Intro to Databases",
-    "section": "We can access information about flights with {dplyr} commands:",
-    "text": "We can access information about flights with {dplyr} commands:\n\nflights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\n# Source:   SQL [?? x 1]\n# Database: mysql  [mdsr_public@mdsr.crcbo51tmesf.us-east-2.rds.amazonaws.com:3306/airlines]\n   origin\n   &lt;chr&gt; \n 1 ABE   \n 2 ABI   \n 3 ABQ   \n 4 ABR   \n 5 ABY   \n 6 ACK   \n 7 ACT   \n 8 ACV   \n 9 ACY   \n10 ADK   \n# ℹ more rows\n# ℹ Use `print(n = ...)` to see more rows\n\n\nWarning: slow!"
-  },
-  {
-    "objectID": "slides/25/slides25.html#what-is-happening",
-    "href": "slides/25/slides25.html#what-is-happening",
-    "title": "Intro to Databases",
-    "section": "What is happening?",
-    "text": "What is happening?"
-  },
-  {
-    "objectID": "slides/25/slides25.html#what-is-happening-1",
-    "href": "slides/25/slides25.html#what-is-happening-1",
-    "title": "Intro to Databases",
-    "section": "What is happening?",
-    "text": "What is happening?"
-  },
-  {
-    "objectID": "slides/25/slides25.html#what-is-happening-2",
-    "href": "slides/25/slides25.html#what-is-happening-2",
-    "title": "Intro to Databases",
-    "section": "What is happening?",
-    "text": "What is happening?"
-  },
-  {
-    "objectID": "slides/25/slides25.html#if-we-want-to-load-results-into-rs-memory-use-collect",
-    "href": "slides/25/slides25.html#if-we-want-to-load-results-into-rs-memory-use-collect",
-    "title": "Intro to Databases",
-    "section": "If we want to load results into R’s memory, use collect()\n",
-    "text": "If we want to load results into R’s memory, use collect()\n\n\norigins &lt;- flights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\nclass(origins)\n\n[1] \"tbl_MariaDBConnection\" \"tbl_dbi\"               \"tbl_sql\"              \n[4] \"tbl_lazy\"              \"tbl\"   \n\norigins_tbl &lt;- collect(origins)\nclass(origins_tbl)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\""
-  },
-  {
-    "objectID": "slides/25/slides25.html#under-the-hood",
-    "href": "slides/25/slides25.html#under-the-hood",
-    "title": "Intro to Databases",
-    "section": "Under the hood:",
-    "text": "Under the hood:\n\nflights %&gt;%\n  select(origin) %&gt;%\n  distinct()\n\nis generating the following SQL code:\n\n&lt;SQL&gt;\nSELECT DISTINCT `origin`\nFROM `flights`"
-  },
-  {
-    "objectID": "slides/25/slides25.html#sql",
-    "href": "slides/25/slides25.html#sql",
-    "title": "Intro to Databases",
-    "section": "SQL",
-    "text": "SQL\nSQL stands for Structured Query Language and is a language for database management systems developed in the 1970’s\n\nUp to this point, we’ve been working with small data\n\nCan be saved on our personal computers\nCan be loaded directly into R’s memory\n\n\nMoving into medium data:\n\nCan be saved on our personal computers\n\nCan’t be loaded or worked with in R’s memory"
-  },
-  {
-    "objectID": "slides/25/slides25.html#sql-1",
-    "href": "slides/25/slides25.html#sql-1",
-    "title": "Intro to Databases",
-    "section": "SQL",
-    "text": "SQL\nThere are many “dialects” of SQL, but they’re all very similar\n\nOracle/MySQL\nMicrosoft SQL Server\nSQLite\nMariaDB is a community version of MySQL\n\n\nThe “dialect” we’ll use is MySQL/MariaDB"
-  },
-  {
-    "objectID": "slides/25/slides25.html#sql-2",
-    "href": "slides/25/slides25.html#sql-2",
-    "title": "Intro to Databases",
-    "section": "SQL",
-    "text": "SQL\n\nPoint of the next few days is to show you the basics and build a little bit of familiarity with the commands\nThe good news: “thinking” in SQL is similar to “thinking” in {dplyr} (even though the syntax is different)"
-  },
-  {
-    "objectID": "slides/25/slides25.html#sql-in-r",
-    "href": "slides/25/slides25.html#sql-in-r",
-    "title": "Intro to Databases",
-    "section": "SQL in R",
-    "text": "SQL in R\nTo run SQL in R, use\n\ndbGetQuery(db, \"&lt;INSERT SQL QUERY HERE&gt;\")\n\n\n\ndbGetQuery(db, \n\"SELECT DISTINCT `origin`\nFROM `flights`\")\n\n    origin\n1      ABE\n2      ABI\n3      ABQ\n4      ABR\n5      ABY\n6      ACK\n7      ACT\n8      ACV\n9      ACY\n10     ADK\n11     ADQ\n12     AEX\n13     AGS\n14     AKN\n15     ALB\n16     ALO\n17     AMA\n18     ANC\n19     APN\n20     ART\n21     ASE\n22     ATL\n23     ATW\n24     AUS\n25     AVL\n26     AVP\n27     AZA\n28     AZO\n29     BDL\n30     BET\n31     BFL\n32     BGM\n33     BGR\n34     BHM\n35     BIL\n36     BIS\n37     BJI\n38     BKG\n39     BLI\n40     BMI\n41     BNA\n42     BOI\n43     BOS\n44     BPT\n45     BQK\n46     BQN\n47     BRD\n48     BRO\n49     BRW\n50     BTM\n51     BTR\n52     BTV\n53     BUF\n54     BUR\n55     BWI\n56     BZN\n57     CAE\n58     CAK\n59     CDC\n60     CDV\n61     CEC\n62     CHA\n63     CHO\n64     CHS\n65     CIC\n66     CID\n67     CIU\n68     CLD\n69     CLE\n70     CLL\n71     CLT\n72     CMH\n73     CMI\n74     CMX\n75     CNY\n76     COD\n77     COS\n78     COU\n79     CPR\n80     CRP\n81     CRW\n82     CSG\n83     CVG\n84     CWA\n85     CYS\n86     DAB\n87     DAL\n88     DAY\n89     DBQ\n90     DCA\n91     DEN\n92     DFW\n93     DHN\n94     DIK\n95     DLG\n96     DLH\n97     DRO\n98     DRT\n99     DSM\n100    DTW\n101    DVL\n102    EAU\n103    ECP\n104    EGE\n105    EKO\n106    ELM\n107    ELP\n108    ERI\n109    ESC\n110    EUG\n111    EVV\n112    EWN\n113    EWR\n114    EYW\n115    FAI\n116    FAR\n117    FAT\n118    FAY\n119    FCA\n120    FLG\n121    FLL\n122    FNT\n123    FOE\n124    FSD\n125    FSM\n126    FWA\n127    GCC\n128    GCK\n129    GEG\n130    GFK\n131    GGG\n132    GJT\n133    GNV\n134    GPT\n135    GRB\n136    GRI\n137    GRK\n138    GRR\n139    GSO\n140    GSP\n141    GST\n142    GTF\n143    GTR\n144    GUC\n145    GUM\n146    HDN\n147    HIB\n148    HLN\n149    HNL\n150    HOB\n151    HOU\n152    HPN\n153    HRL\n154    HSV\n155    HYA\n156    HYS\n157    IAD\n158    IAG\n159    IAH\n160    ICT\n161    IDA\n162    ILG\n163    ILM\n164    IMT\n165    IND\n166    INL\n167    IPL\n168    ISN\n169    ISP\n170    ITH\n171    ITO\n172    IYK\n173    JAC\n174    JAN\n175    JAX\n176    JFK\n177    JLN\n178    JMS\n179    JNU\n180    KOA\n181    KTN\n182    LAN\n183    LAR\n184    LAS\n185    LAW\n186    LAX\n187    LBB\n188    LBE\n189    LCH\n190    LEX\n191    LFT\n192    LGA\n193    LGB\n194    LIH\n195    LIT\n196    LMT\n197    LNK\n198    LRD\n199    LSE\n200    LWS\n201    MAF\n202    MBS\n203    MCI\n204    MCN\n205    MCO\n206    MDT\n207    MDW\n208    MEI\n209    MEM\n210    MFE\n211    MFR\n212    MGM\n213    MHK\n214    MHT\n215    MIA\n216    MKE\n217    MKG\n218    MLB\n219    MLI\n220    MLU\n221    MMH\n222    MOB\n223    MOD\n224    MOT\n225    MQT\n226    MRY\n227    MSN\n228    MSO\n229    MSP\n230    MSY\n231    MTJ\n232    MVY\n233    MYR\n234    OAJ\n235    OAK\n236    OGG\n237    OKC\n238    OMA\n239    OME\n240    ONT\n241    ORD\n242    ORF\n243    ORH\n244    OTH\n245    OTZ\n246    PAH\n247    PBG\n248    PBI\n249    PDX\n250    PHF\n251    PHL\n252    PHX\n253    PIA\n254    PIB\n255    PIH\n256    PIT\n257    PLN\n258    PNS\n259    PPG\n260    PSC\n261    PSE\n262    PSG\n263    PSP\n264    PUB\n265    PVD\n266    PWM\n267    RAP\n268    RDD\n269    RDM\n270    RDU\n271    RFD\n272    RHI\n273    RIC\n274    RKS\n275    RNO\n276    ROA\n277    ROC\n278    ROW\n279    RST\n280    RSW\n281    SAF\n282    SAN\n283    SAT\n284    SAV\n285    SBA\n286    SBN\n287    SBP\n288    SCC\n289    SCE\n290    SDF\n291    SEA\n292    SFO\n293    SGF\n294    SGU\n295    SHD\n296    SHV\n297    SIT\n298    SJC\n299    SJT\n300    SJU\n301    SLC\n302    SMF\n303    SMX\n304    SNA\n305    SPI\n306    SPN\n307    SPS\n308    SRQ\n309    STC\n310    STL\n311    STT\n312    STX\n313    SUN\n314    SUX\n315    SWF\n316    SYR\n317    TLH\n318    TOL\n319    TPA\n320    TRI\n321    TTN\n322    TUL\n323    TUS\n324    TVC\n325    TWF\n326    TXK\n327    TYR\n328    TYS\n329    UST\n330    VEL\n331    VLD\n332    VPS\n333    WRG\n334    WYS\n335    XNA\n336    YAK\n337    YUM"
-  },
-  {
-    "objectID": "slides/25/slides25.html#select-and-from",
-    "href": "slides/25/slides25.html#select-and-from",
-    "title": "Intro to Databases",
-    "section": "\nSELECT and FROM\n",
-    "text": "SELECT and FROM\n\nare required for every query. The simplest query we can write is:\n\nSELECT * FROM flights;\n\n\nwhich means “select everything from the flights dataset”.\nDO NOT EXECUTE THIS QUERY! This will cause all 169 million records to be dumped! This will not only crash your machine, but also tie up the server for everyone else.\nA safe version is:\n\nSELECT * FROM flights LIMIT 0,10;"
-  },
-  {
-    "objectID": "slides/25/slides25.html#limit",
-    "href": "slides/25/slides25.html#limit",
-    "title": "Intro to Databases",
-    "section": "LIMIT",
-    "text": "LIMIT\nis similar to head() or slice()\n\ndbGetQuery(db, \n\"SELECT DISTINCT `origin`\nFROM `flights`\nLIMIT 0,5\")\n\n  origin\n1    ABE\n2    ABI\n3    ABQ\n4    ABR\n5    ABY"
-  },
-  {
-    "objectID": "slides/25/slides25.html#create-new-variables-with-select-and-as",
-    "href": "slides/25/slides25.html#create-new-variables-with-select-and-as",
-    "title": "Intro to Databases",
-    "section": "Create new variables with SELECT and AS\n",
-    "text": "Create new variables with SELECT and AS\n\n\nSELECT SUM(1) AS numFlights\nFROM flights\n\n  numFlights\n1   18008372"
-  },
-  {
-    "objectID": "slides/25/slides25.html#grouped-operations-with-group-by",
-    "href": "slides/25/slides25.html#grouped-operations-with-group-by",
-    "title": "Intro to Databases",
-    "section": "Grouped operations with GROUP BY\n",
-    "text": "Grouped operations with GROUP BY\n\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nGROUP BY origin\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    ABE       7251        5.5627\n2    ABI       8116        6.3329\n3    ABQ      74195        5.8051\n4    ABR       2239        1.3198\n5    ABY       3002        5.2652\n6    ACK       1295        7.6131"
-  },
-  {
-    "objectID": "slides/25/slides25.html#order-output-with-order-by",
-    "href": "slides/25/slides25.html#order-output-with-order-by",
-    "title": "Intro to Databases",
-    "section": "Order output with ORDER BY\n",
-    "text": "Order output with ORDER BY\n\nSimilar to arrange() in {dplyr}\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nGROUP BY origin\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    PPG        334       33.6946\n2    STC        550       22.8691\n3    OTH       1262       20.5713\n4    FOE        449       19.7127\n5    CEC       2143       18.4951\n6    ILG       1155       16.5394"
-  },
-  {
-    "objectID": "slides/25/slides25.html#filter-output-with-where",
-    "href": "slides/25/slides25.html#filter-output-with-where",
-    "title": "Intro to Databases",
-    "section": "Filter output with WHERE\n",
-    "text": "Filter output with WHERE\n\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nWHERE dest = 'MSP'\n  AND numFlights &gt; 365 * 2\nGROUP BY origin\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    ASE         43       28.0930\n2    HRL        131       27.0687\n3    ORF        483       17.8240\n4    EGE         31       17.4516\n5    TTN        290       17.1552\n6    ORD      18382       12.7469"
-  },
-  {
-    "objectID": "slides/25/slides25.html#filter-output-on-multiple-conditions",
-    "href": "slides/25/slides25.html#filter-output-on-multiple-conditions",
-    "title": "Intro to Databases",
-    "section": "Filter output on multiple conditions",
-    "text": "Filter output on multiple conditions\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nWHERE dest = 'MSP'\n  AND numFlights &gt; 365 * 2\nGROUP BY origin\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\nError: Unknown column 'numFlights' in 'WHERE' [1054]\nDoesn’t work, since numFlights is a column we created in SELECT"
-  },
-  {
-    "objectID": "slides/25/slides25.html#filter-output-with-having",
-    "href": "slides/25/slides25.html#filter-output-with-having",
-    "title": "Intro to Databases",
-    "section": "Filter output with HAVING\n",
-    "text": "Filter output with HAVING\n\nIf we want to filter based on a column we created, put it in the HAVING clause instead\n\nSELECT \n  origin, SUM(1) AS numFlights,\n  AVG(arr_delay) AS avg_arr_delay\nFROM flights\nWHERE dest = 'MSP'\nGROUP BY origin\nHAVING numFlights &gt; 365 * 2\nORDER BY avg_arr_delay DESC\nLIMIT 0, 6;\n\n  origin numFlights avg_arr_delay\n1    ORD      18382       12.7469\n2    MDW       9510        9.6110\n3    DEN      17054        9.0643\n4    CID       2106        8.2042\n5    RIC       1009        7.8840\n6    DFW       8404        7.2574"
-  },
-  {
-    "objectID": "slides/25/slides25.html#sql-commands-must-be-written-in-a-specific-order",
-    "href": "slides/25/slides25.html#sql-commands-must-be-written-in-a-specific-order",
-    "title": "Intro to Databases",
-    "section": "SQL commands must be written in a specific order:",
-    "text": "SQL commands must be written in a specific order:\n\nSELECT\nFROM\n\nJOIN (next class)\nWHERE\nGROUP BY\nHAVING\nORDER BY\nLIMIT"
+    "objectID": "slides/25/slides25.html#warm-up",
+    "href": "slides/25/slides25.html#warm-up",
+    "title": "Shiny Design",
+    "section": "Warm up",
+    "text": "Warm up\n\nOpen the following shinyapps and explore a little bit.\n\nData Wrangling\nBiodiversity in NPS\nHex Memory Game\nLake Profile Dashboard\nClassification Trees\n\nWith the folks around you, discuss:\n\nDid any apps stand out as enjoyable or useful?\nWhat features or design choices make an app stand out?\nAre there any small tweaks you could make to make them more usable?\n\n\n\n\n\n\n−&plus;\n\n06:00"
   },
   {
     "objectID": "slides/25/slides25.html#your-turn",
     "href": "slides/25/slides25.html#your-turn",
-    "title": "Intro to Databases",
+    "title": "Shiny Design",
     "section": "Your turn",
-    "text": "Your turn\nTry the exercises in the 25-databases activity. We’ll start Friday off by talking about them"
+    "text": "Your turn\nI’ve posted a new version of the app at https://stat220-s25.github.io/files/25-starter-app.R\n\n\nMove the initial data preparation code to an R script called data-prep.R\n\nWrite the cleaned dataset to a CSV or .Rds file\n\nwrite_rds(manager_survey, \"manager-survey/data/manager-survey.rds\")\n\n\nIn the app.R file, load the data with read_csv\n\nmanager_survey &lt;- read_rds(\"data/manager-survey.rds\")\n\n\n\n\n\n\n\n\n−&plus;\n\n03:00"
+  },
+  {
+    "objectID": "slides/25/slides25.html#shiny-inputs",
+    "href": "slides/25/slides25.html#shiny-inputs",
+    "title": "Shiny Design",
+    "section": "Shiny inputs",
+    "text": "Shiny inputs\n\n\n\nxxxxInput(\"id\", \n          \"Label\", \n          value,\n          choices)\n\n\n\n\n\"id\" is how you refer to the input in the server function (input$id)\n\n\"Label\" is how the input is labeled in the app\n\nvalue refers to the default value (not all inputs have this option)\n\nchoices refers to the possible options that are listed (not all inputs have this option)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#shiny-inputs-1",
+    "href": "slides/25/slides25.html#shiny-inputs-1",
+    "title": "Shiny Design",
+    "section": "Shiny inputs",
+    "text": "Shiny inputs\n\n\n\nui &lt;- fluidPage(\n  numericInput(\"num\", \"Number one\", value = 0, min = 0, max = 100),\n  sliderInput(\"num2\", \"Number two\", value = 50, min = 0, max = 100),\n  selectInput(\"state\", \"What's your favourite state?\", state.name)\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#your-turn-1",
+    "href": "slides/25/slides25.html#your-turn-1",
+    "title": "Shiny Design",
+    "section": "Your turn",
+    "text": "Your turn\n\n\nAdd a sliderInput to the appropriate tab panel\n\n\nsliderInput(\n  inputId = \"ylim\",\n  label = _______ ,\n  min = 0,\n  value = c(0, 1000000),\n  max = __________,\n  width = \"100%\"\n)\n\n\nEdit your ggplot code for the individual salary plot to display only the data points that are within these slider values\n\n\n\n\n\n\n−&plus;\n\n04:00"
+  },
+  {
+    "objectID": "slides/25/slides25.html#page-with-sidebar",
+    "href": "slides/25/slides25.html#page-with-sidebar",
+    "title": "Shiny Design",
+    "section": "Page with sidebar",
+    "text": "Page with sidebar\n\n\n\nfluidPage(\n  titlePanel(\n    # app title/description\n  ),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs\n    ),\n    mainPanel(\n      # outputs\n    )\n  )\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#multi-row",
+    "href": "slides/25/slides25.html#multi-row",
+    "title": "Shiny Design",
+    "section": "Multi-row",
+    "text": "Multi-row\n\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      ...\n    ),\n    column(8, \n      ...\n    )\n  ),\n  fluidRow(\n    column(6, \n      ...\n    ),\n    column(6, \n      ...\n    )\n  )\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#multi-page-tabsets",
+    "href": "slides/25/slides25.html#multi-page-tabsets",
+    "title": "Shiny Design",
+    "section": "Multi-page: Tabsets",
+    "text": "Multi-page: Tabsets\n\n\n\nui &lt;- fluidPage(\n  sidebarLayout(\n    sidebarPanel(\n      textOutput(\"panel\")\n    ),\n    mainPanel(\n      tabsetPanel(\n        id = \"tabset\",\n        tabPanel(\"panel 1\", \"one\"),\n        tabPanel(\"panel 2\", \"two\"),\n        tabPanel(\"panel 3\", \"three\")\n      )\n    )\n  )\n)\nserver &lt;- function(input, output, session) {\n  output$panel &lt;- renderText({\n    paste(\"Current panel: \", input$tabset)\n  })\n}"
+  },
+  {
+    "objectID": "slides/25/slides25.html#multi-page-nav-list",
+    "href": "slides/25/slides25.html#multi-page-nav-list",
+    "title": "Shiny Design",
+    "section": "Multi-page: nav list",
+    "text": "Multi-page: nav list\n\n\n\nui &lt;- fluidPage(\n  navlistPanel(\n    id = \"tabset\",\n    \"Heading 1\",\n    tabPanel(\"panel 1\", \"Panel one contents\"),\n    \"Heading 2\",\n    tabPanel(\"panel 2\", \"Panel two contents\"),\n    tabPanel(\"panel 3\", \"Panel three contents\")\n  )\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#multi-page-nav-bar",
+    "href": "slides/25/slides25.html#multi-page-nav-bar",
+    "title": "Shiny Design",
+    "section": "Multi-page: nav bar",
+    "text": "Multi-page: nav bar\n\n\n\nui &lt;- navbarPage(\n  \"Page title\",   \n  tabPanel(\"panel 1\", \"one\"),\n  tabPanel(\"panel 2\", \"two\"),\n  tabPanel(\"panel 3\", \"three\"),\n  navbarMenu(\"subpanels\", \n    tabPanel(\"panel 4a\", \"four-a\"),\n    tabPanel(\"panel 4b\", \"four-b\"),\n    tabPanel(\"panel 4c\", \"four-c\")\n  )\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#theming-built-in-themes",
+    "href": "slides/25/slides25.html#theming-built-in-themes",
+    "title": "Shiny Design",
+    "section": "Theming: built-in themes",
+    "text": "Theming: built-in themes\n\nfluidPage(\n  theme = bslib::bs_theme(...)\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#theming-customize",
+    "href": "slides/25/slides25.html#theming-customize",
+    "title": "Shiny Design",
+    "section": "Theming: customize",
+    "text": "Theming: customize\n\nfluidPage(\n  theme = bslib::bs_theme(\n    bg = \"#003069\", \n    fg = \"#ffd24f\", \n    base_font = \"Montserrat\",\n    heading_font = \"Playfair Display SemiBold\"\n)"
+  },
+  {
+    "objectID": "slides/25/slides25.html#plot-theming",
+    "href": "slides/25/slides25.html#plot-theming",
+    "title": "Shiny Design",
+    "section": "Plot theming",
+    "text": "Plot theming\n\nserver &lt;- function(input, output, session) {\n  thematic::thematic_shiny()\n  \n  output$distPlot &lt;- renderPlot({\n    ggplot(...)\n  })\n}"
+  },
+  {
+    "objectID": "slides/25/slides25.html#section",
+    "href": "slides/25/slides25.html#section",
+    "title": "Shiny Design",
+    "section": "",
+    "text": "Add theme = bslib::bs_theme() to your ui() function, and bslib::bs_themer() to your server function to try out different options interactively"
+  },
+  {
+    "objectID": "slides/25/slides25.html#your-turn-2",
+    "href": "slides/25/slides25.html#your-turn-2",
+    "title": "Shiny Design",
+    "section": "Your turn",
+    "text": "Your turn\n\n\nAdd a custom theme to the AskAManager app\nUpdate the ggplot themes to match\n\n\n\n\n\n\n−&plus;\n\n04:00"
+  },
+  {
+    "objectID": "slides/25/slides25.html#deploying-an-app",
+    "href": "slides/25/slides25.html#deploying-an-app",
+    "title": "Shiny Design",
+    "section": "Deploying an app",
+    "text": "Deploying an app\n\n\nShiny apps need to be “connected” to RStudio or a remote RStudio server\n\nYou can deploy shiny apps online\n\nusing Posit’s cloud server (free/fee) - https://www.shinyapps.io/\n\n\n“Getting started” guide will walk you through connecting RStudio to your shinyapps.io account\nnote: there is also now an option to deploy via Connect Cloud from your github. Feel free to try it!\n\n\ncreating a shiny server\n\n\nYour app and files should be in their own folder and the entire folder is what you “deploy”. You do not want multiple app.R or .Rmd files in that folder!"
   },
   {
     "objectID": "slides/25/slides25-home.html#warm-up-on-your-own",
@@ -7015,7 +7120,14 @@
     "href": "activities/26-sql.html",
     "title": "26-sql",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(mdsr) # for connecting to database\nlibrary(DBI) # database tools"
+    "text": "library(tidyverse)\nlibrary(mdsr) # for connecting to database\nlibrary(DBI) # database tools\nlibrary(tidyverse)\nlibrary(mdsr)"
+  },
+  {
+    "objectID": "activities/26-sql.html#part-2-explaintest-the-following-and-translate-to-dplyr-code",
+    "href": "activities/26-sql.html#part-2-explaintest-the-following-and-translate-to-dplyr-code",
+    "title": "26-sql",
+    "section": "Part 2: Explain/test the following and translate to {dplyr} code",
+    "text": "Part 2: Explain/test the following and translate to {dplyr} code\nRemember to wrap them in a dbGetQuery(db, \"&lt;SQL COMMAND HERE&gt;\")\n\n\n\n\nSELECT \n  year, month, day, origin, dest,\n  flight, carrier\nFROM flights\nWHERE year = 2013 AND month = 6 AND day = 26\nAND origin = 'BDL'\nLIMIT 0, 6;\n\n\n\n\n\nSELECT \n  name AS airport_name, \n  CONCAT('(', lat, ', ', lon, ')') AS coords\nFROM airports\nLIMIT 0, 6;\n\n\n\n\n\nSELECT\n  DISTINCT STR_TO_DATE(CONCAT(year, '-', month, '-', day), '%Y-%m-%d') \n    AS theDate\nFROM flights\nWHERE year = 2013 AND month = 6 AND day BETWEEN 26 and 30\n  AND origin = 'BDL'\nLIMIT 0, 6;"
   },
   {
     "objectID": "activities/26-sql.html#your-turn",
@@ -7361,11 +7473,39 @@
     "text": "Create a list of reactive values/expressions that should be created outside the render* statements. Recall that reactive values are the inputs/objects that observers watch for updates.\nFor each reactive expression you identify in step #6, identify which output (the histogram or the confidence interval) should observe that expression and update when it is changed?\nUse your answers to steps #6-7 to reorganize the server-side code for this Shiny app. (You don’t need to change the inputs!) To do this, first create any reactive expressions. Next, adapt the renderPlot() and renderPrint() chunks to use your reactive expressions. Remember to run your app regularly to help pinpoint bugs.\nCompare and contrast the performance and readability of the revised app’s code to the original “non-modularized” version.\n\n\n\n\n\n\n\nStop here\n\n\n\nStop here and let Amanda know that you’ve finished."
   },
   {
-    "objectID": "activities/14-text-case-study.html",
-    "href": "activities/14-text-case-study.html",
-    "title": "14-text-case-study",
+    "objectID": "activities/25-shiny-design.html",
+    "href": "activities/25-shiny-design.html",
+    "title": "25-shiny-design",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(tidytext) # functions for doing text analysis\n\nLoad the Data\n\nen_coursera_reviews &lt;- read_csv(\"https://stat220-s25.github.io/data/en_coursera_sample.csv\")\nglimpse(en_coursera_reviews)\n\nRows: 26,882\nColumns: 5\n$ CourseId  &lt;chr&gt; \"nurture-market-strategies\", \"nand2tetris2\", \"schedule-proje…\n$ Review    &lt;chr&gt; \"It would be better if the instructors cared to respond to q…\n$ Label     &lt;dbl&gt; 1, 5, 5, 5, 5, 5, 5, 3, 5, 1, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, …\n$ cld2      &lt;chr&gt; \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", \"en\", …\n$ review_id &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…\n\n\nTokenize\n\nlibrary(tidytext)\nen_coursera_reviews |&gt;\n  unnest_tokens(output = word, input = Review) |&gt;\n  select(CourseId, word)\n\n# A tibble: 666,493 × 2\n   CourseId                  word       \n   &lt;chr&gt;                     &lt;chr&gt;      \n 1 nurture-market-strategies it         \n 2 nurture-market-strategies would      \n 3 nurture-market-strategies be         \n 4 nurture-market-strategies better     \n 5 nurture-market-strategies if         \n 6 nurture-market-strategies the        \n 7 nurture-market-strategies instructors\n 8 nurture-market-strategies cared      \n 9 nurture-market-strategies to         \n10 nurture-market-strategies respond    \n# ℹ 666,483 more rows\n\n\nCount the tokens\n\nen_coursera_reviews |&gt;\n  unnest_tokens(output = word, input = Review) |&gt;\n  anti_join(get_stopwords(source = \"stopwords-iso\"), by = \"word\") |&gt;\n  filter(str_detect(CourseId, \"data-science\")) |&gt; \n  group_by(CourseId) %&gt;%\n  count(word) %&gt;%\n  slice_max(n, n = 10) %&gt;%\n  ggplot(aes(x = n, y = fct_reorder(word, n))) + \n  geom_col() + \n  facet_wrap(~CourseId, scales = \"free_y\", nrow = 2) + \n  labs(\n    y = \"Word\"\n  )\n\n\n\n\n\n\n\nCreate “clean” reviews\n\ncoursera_reviews &lt;- en_coursera_reviews |&gt;\n  unnest_tokens(word, Review) |&gt;\n  anti_join(get_stopwords(source = \"stopwords-iso\"), by = \"word\") |&gt;\n  group_by(CourseId, review_id) |&gt;\n  summarize(review_clean = paste(word, collapse = \" \"))\n\nYour turn\nExplore the en_coursera_reviews dataset with the folks around you. Can you replicate my analyses, and try a few of your own? Here are some ideas:\n\nExplore another subject (besides data-science)\n\nLabel contains the numeric rating for the course. How does the review text differ between highly rated and low-rated courses?\n\nstopwords::stopwords_getsources() gives the available stopword dictionaries. How do these differ, and how do they change your results?"
+    "text": "library(tidyverse)"
+  },
+  {
+    "objectID": "activities/25-shiny-design.html#part-1",
+    "href": "activities/25-shiny-design.html#part-1",
+    "title": "25-shiny-design",
+    "section": "Part 1",
+    "text": "Part 1\n\nMove the initial data preparation code to an R script called data-prep.R\n\nWrite the cleaned dataset to a CSV or .Rds file\n\nwrite_rds(manager_survey, \"manager-survey/data/manager-survey.rds\")\n\n\nIn the app.R file, load the data with read_csv\n\nmanager_survey &lt;- read_rds(\"data/manager-survey.rds\")"
+  },
+  {
+    "objectID": "activities/25-shiny-design.html#part-2",
+    "href": "activities/25-shiny-design.html#part-2",
+    "title": "25-shiny-design",
+    "section": "Part 2",
+    "text": "Part 2\n\nAdd a sliderInput to the appropriate tab panel\n\n\nsliderInput(\n  inputId = \"ylim\",\n  label = _______ ,\n  min = 0,\n  value = c(0, 1000000),\n  max = __________,\n  width = \"100%\"\n)\n\n\nEdit your ggplot code for the individual salary plot to display only the data points that are within these slider values"
+  },
+  {
+    "objectID": "activities/25-shiny-design.html#part-3",
+    "href": "activities/25-shiny-design.html#part-3",
+    "title": "25-shiny-design",
+    "section": "Part 3",
+    "text": "Part 3\n\nAdd a custom theme to the AskAManager app\nUpdate the ggplot themes to match"
+  },
+  {
+    "objectID": "activities/25-shiny-design.html#if-time",
+    "href": "activities/25-shiny-design.html#if-time",
+    "title": "25-shiny-design",
+    "section": "(If Time)",
+    "text": "(If Time)\nSet up shinyapps.io account and deploy either (a) Portfolio 4 or (b) the AskAManager app\n\nYou can deploy shiny apps online\n\nusing Posit’s cloud server (free/fee) - https://www.shinyapps.io/\n\n\n“Getting started” guide will walk you through connecting RStudio to your shinyapps.io account\nnote: there is also now an option to deploy via Connect Cloud from your github. Feel free to try it!\n\n\ncreating a shiny server\n\n\nYour app and files should be in their own folder and the entire folder is what you “deploy”. You do not want multiple app.R or .Rmd files in that folder!\n\n\n\n\n\n\n\nCredit: Mine Çetinkaya-Rundel’s Ask a Manager application exercise"
   },
   {
     "objectID": "computing/rstudio-stat220.html",
