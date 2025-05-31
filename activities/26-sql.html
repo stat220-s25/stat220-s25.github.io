@@ -230,27 +230,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#set-up-database-connection" id="toc-set-up-database-connection" class="nav-link active" data-scroll-target="#set-up-database-connection">Set up database connection</a>
-  <ul class="collapse">
-<li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn:</a></li>
-  </ul>
-</li>
-  <li><a href="#print-first-few-rows-of-a-table" id="toc-print-first-few-rows-of-a-table" class="nav-link" data-scroll-target="#print-first-few-rows-of-a-table">Print first few rows of a table</a></li>
+<li><a href="#warm-up" id="toc-warm-up" class="nav-link active" data-scroll-target="#warm-up">Warm Up</a></li>
   <li>
-<a href="#using-sql-chunks" id="toc-using-sql-chunks" class="nav-link" data-scroll-target="#using-sql-chunks">Using SQL chunks</a>
+<a href="#intro-to-sql" id="toc-intro-to-sql" class="nav-link" data-scroll-target="#intro-to-sql">Intro to SQL</a>
   <ul class="collapse">
-<li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your turn</a></li>
+<li><a href="#your-turn-set-up-database-connection" id="toc-your-turn-set-up-database-connection" class="nav-link" data-scroll-target="#your-turn-set-up-database-connection">Your turn: Set up database connection</a></li>
+  <li><a href="#your-turn-simple-queries" id="toc-your-turn-simple-queries" class="nav-link" data-scroll-target="#your-turn-simple-queries">Your turn: simple queries</a></li>
+  <li><a href="#your-turn-finding-data-info" id="toc-your-turn-finding-data-info" class="nav-link" data-scroll-target="#your-turn-finding-data-info">Your turn: finding data info</a></li>
+  <li><a href="#your-turn-joining-viola-davis" id="toc-your-turn-joining-viola-davis" class="nav-link" data-scroll-target="#your-turn-joining-viola-davis">Your turn: <code>JOIN</code>ing Viola Davis</a></li>
+  <li><a href="#your-turn-full-filmography" id="toc-your-turn-full-filmography" class="nav-link" data-scroll-target="#your-turn-full-filmography">Your turn: full filmography</a></li>
   </ul>
 </li>
-  <li>
-<a href="#practice-with-joins" id="toc-practice-with-joins" class="nav-link" data-scroll-target="#practice-with-joins">Practice with joins</a>
-  <ul class="collapse">
-<li><a href="#your-turn-2" id="toc-your-turn-2" class="nav-link" data-scroll-target="#your-turn-2">Your turn</a></li>
-  </ul>
-</li>
-  <li><a href="#your-turn-sketch-out-a-schema" id="toc-your-turn-sketch-out-a-schema" class="nav-link" data-scroll-target="#your-turn-sketch-out-a-schema">Your turn: Sketch out a schema</a></li>
-  <li><a href="#close-database-connection" id="toc-close-database-connection" class="nav-link" data-scroll-target="#close-database-connection">Close database connection</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -287,103 +277,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mdsr-book/mdsr">mdsr</a></span><span class="op">)</span> <span class="co"># for connecting to database</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span> <span class="co"># database tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="set-up-database-connection" class="level1"><h1>Set up database connection</h1>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">mdsr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mdsr/man/src_scidb.html">dbConnect_scidb</a></span><span class="op">(</span>dbname <span class="op">=</span> <span class="st">"imdb"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span><span class="va">table_names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "title"           "link_type"       "person_info"     "movie_info"     
- [5] "movie_companies" "complete_cast"   "movie_keyword"   "company_type"   
- [9] "keyword"         "role_type"       "movie_link"      "cast_info"      
-[13] "company_name"    "kind_type"       "aka_title"       "char_name"      
-[17] "name"            "info_type"       "comp_cast_type"  "aka_name"       
-[21] "movie_info_idx" </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"title"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "id"              "title"           "imdb_index"      "kind_id"        
- [5] "production_year" "imdb_id"         "phonetic_code"   "episode_of_id"  
- [9] "season_nr"       "episode_nr"      "series_years"    "md5sum"         </code></pre>
-</div>
-</div>
-<section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your turn:</h2>
-<p>List the fields in the <code>name</code>, <code>cast_info</code>, and <code>role_type</code> tables. Do they have fields in common? How do you think these tables fit together?</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section><section id="print-first-few-rows-of-a-table" class="level1"><h1>Print first few rows of a table</h1>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM title LIMIT 0,10"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      id                                           title imdb_index kind_id
-1  78460 Adults Recat to the Simpsons (30th Anniversary)       &lt;NA&gt;       7
-2  70273                                    (2016-05-18)       &lt;NA&gt;       7
-3  60105                                    (2014-04-11)       &lt;NA&gt;       7
-4  32120                                    (2008-05-01)       &lt;NA&gt;       7
-5  97554                               Schm繹lders Traum       &lt;NA&gt;       7
-6  57966                                          (#1.1)       &lt;NA&gt;       7
-7  76391                                     Anniversary       &lt;NA&gt;       7
-8  11952              Angus Black/Lester Barrie/DC Curry       &lt;NA&gt;       7
-9   1554                                     New Orleans       &lt;NA&gt;       7
-10 58442                                    Kiss Me Kate       &lt;NA&gt;       7
-   production_year imdb_id phonetic_code episode_of_id season_nr episode_nr
-1             2017      NA         A3432         78406        NA         NA
-2             2016      NA          &lt;NA&gt;         68058        NA         NA
-3             2014      NA          &lt;NA&gt;         59138        NA         NA
-4             2008      NA          &lt;NA&gt;         32060        NA         NA
-5             2001      NA         S2543         97302        10          1
-6             2013      NA          &lt;NA&gt;         57965         1          1
-7             1971      NA         A5162         76385         4          9
-8             2009      NA         A5214         11937         4          7
-9             2003      NA         N6452          1508         2         11
-10            2011      NA         K2523         58436         1         10
-   series_years                           md5sum
-1          &lt;NA&gt; 2ae09eed7d576cc2c24774fed5b18168
-2          &lt;NA&gt; 511dfc14cfff7589d29a95abb30cd66a
-3          &lt;NA&gt; c6cdce7e667e07713e431805c407feed
-4          &lt;NA&gt; 100df65742caf5afd092b2e0ead67d8e
-5          &lt;NA&gt; 46862a2f96f9fb2d59e8c9a11ecfdd28
-6          &lt;NA&gt; 409c37703766c4b24f8a86162fd9cf85
-7          &lt;NA&gt; 5e12ce73fac1d1dcf94136b6e9acd8f8
-8          &lt;NA&gt; 9c38b9e5601dc154444b73b518034aa1
-9          &lt;NA&gt; 621bea735740a547e862e4a3226f35d2
-10         &lt;NA&gt; 293e8c75c7f35a4035abf617962be5a9</code></pre>
-</div>
-</div>
-</section><section id="using-sql-chunks" class="level1"><h1>Using SQL chunks</h1>
-<p>(fill in code chunks here)</p>
-<section id="your-turn-1" class="level2"><h2 class="anchored" data-anchor-id="your-turn-1">Your turn</h2>
-<p>List the first few rows in the<code>name</code>, <code>cast_info</code>, and <code>role_type</code> tables. What did you learn?</p>
-</section></section><section id="practice-with-joins" class="level1"><h1>Practice with joins</h1>
-<p>(fill in code chunk from slides here)</p>
-<section id="your-turn-2" class="level2"><h2 class="anchored" data-anchor-id="your-turn-2">Your turn</h2>
-<p>Join the <code>name</code>, <code>cast_info</code>, and <code>role_type</code> tables</p>
-</section></section><section id="your-turn-sketch-out-a-schema" class="level1"><h1>Your turn: Sketch out a schema</h1>
-<p>Sketch out a schema for the following tables:</p>
+<section id="warm-up" class="level1"><h1>Warm Up</h1>
+<p>Using <code><a href="https://moderndive.github.io/nycflights23/reference/flights.html">nycflights23::flights</a></code>, answer the following using {dplyr} code:</p>
 <ul>
-<li><code>title</code></li>
-<li><code>person_info</code></li>
-<li><code>cast_info</code></li>
-<li><code>info_type</code></li>
-<li><code>movie_info</code></li>
-<li>`role_type``</li>
-<li><code>name</code></li>
+<li>How many flights are in this dataset?</li>
+<li>How many flights flew to MSP from JFK in 2023?</li>
+<li>What was the average flight delay for MSP flights in Sept 2023?</li>
 </ul>
-<p>You can do this “by hand”, or if you’re feeling fancy you can use a diagram tool: https://databasediagram.com/app</p>
-</section><section id="close-database-connection" class="level1"><h1>Close database connection</h1>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">nycflights23</span><span class="fu">::</span><span class="va"><a href="https://moderndive.github.io/nycflights23/reference/flights.html">flights</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 435,352 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+ 1  2023     1     1        1           2038       203      328              3
+ 2  2023     1     1       18           2300        78      228            135
+ 3  2023     1     1       31           2344        47      500            426
+ 4  2023     1     1       33           2140       173      238           2352
+ 5  2023     1     1       36           2048       228      223           2252
+ 6  2023     1     1      503            500         3      808            815
+ 7  2023     1     1      520            510        10      948            949
+ 8  2023     1     1      524            530        -6      645            710
+ 9  2023     1     1      537            520        17      926            818
+10  2023     1     1      547            545         2      845            852
+# ℹ 435,342 more rows
+# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
+#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
+#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
+</div>
+</section><section id="intro-to-sql" class="level1"><h1>Intro to SQL</h1>
+<section id="your-turn-set-up-database-connection" class="level2"><h2 class="anchored" data-anchor-id="your-turn-set-up-database-connection">Your turn: Set up database connection</h2>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/mdsr/man/src_scidb.html">dbConnect_scidb</a></span><span class="op">(</span>dbname <span class="op">=</span> <span class="st">"imdb"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">db</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="st">"SELECT * FROM kind_type</span></span>
+<span><span class="st">             LIMIT 0,10;"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What <code>kind_type</code> corresponds to movies?</p>
+</section><section id="your-turn-simple-queries" class="level2"><h2 class="anchored" data-anchor-id="your-turn-simple-queries">Your turn: simple queries</h2>
+<ol type="1">
+<li>Find your favorite movie in the <code>title</code> table</li>
+<li>Find <a href="https://www.imdb.com/name/nm0205626/?ref_=nv_sr_1">Viola Davis</a> in the <code>name</code> table</li>
+<li>Make note of Viola Davis’s <code>person_id</code>
+</li>
+</ol></section><section id="your-turn-finding-data-info" class="level2"><h2 class="anchored" data-anchor-id="your-turn-finding-data-info">Your turn: finding data info</h2>
+<p>List the fields in the <code>name</code>, <code>cast_info</code>, and <code>char_name</code> tables. Do they have fields in common? How do you think these tables fit together?</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">db</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"title"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="your-turn-joining-viola-davis" class="level2"><h2 class="anchored" data-anchor-id="your-turn-joining-viola-davis">Your turn: <code>JOIN</code>ing Viola Davis</h2>
+<ol type="1">
+<li><p>Find all the rows in <code>cast_info</code> that correspond to Viola Davis as an actress</p></li>
+<li><p>Add the names of the characters she played by <code>JOIN</code>ing the <code>char_name</code> table</p></li>
+</ol></section><section id="your-turn-full-filmography" class="level2"><h2 class="anchored" data-anchor-id="your-turn-full-filmography">Your turn: full filmography</h2>
+<p>Find Viola Davis’s full filmography, in chronological order. Include each movie’s <code>title</code>, <code>production_year</code>, and the <code>name</code> of the character that she played.</p>
 
 
 <!-- -->
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -998,81 +954,72 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "26-sql"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mdsr) <span class="co"># for connecting to database</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI) <span class="co"># database tools</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Set up database connection</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> mdsr<span class="sc">::</span><span class="fu">dbConnect_scidb</span>(<span class="at">dbname =</span> <span class="st">"imdb"</span>)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>table_names <span class="ot">&lt;-</span> <span class="fu">dbListTables</span>(con)</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>table_names</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListFields</span>(con, <span class="st">"title"</span>)</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn: </span></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>List the fields in the <span class="in">`name`</span>, <span class="in">`cast_info`</span>, and <span class="in">`role_type`</span> tables. Do they have fields in common? How do you think these tables fit together?</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="fu"># Print first few rows of a table</span></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">"SELECT * FROM title LIMIT 0,10"</span>)</span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># Using SQL chunks</span></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>(fill in code chunks here)</span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn</span></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>List the first few rows in the<span class="in">`name`</span>, <span class="in">`cast_info`</span>, and <span class="in">`role_type`</span> tables. What did you learn?</span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="fu"># Practice with joins</span></span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>(fill in code chunk from slides here)</span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn</span></span>
-<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>Join the <span class="in">`name`</span>, <span class="in">`cast_info`</span>, and <span class="in">`role_type`</span> tables</span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># Your turn: Sketch out a schema</span></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>Sketch out a schema for the following tables: </span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`title`</span></span>
-<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`person_info`</span></span>
-<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`cast_info`</span></span>
-<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`info_type`</span></span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`movie_info`</span></span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>`role_type``</span>
-<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`name`</span></span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>You can do this "by hand", or if you're feeling fancy you can use a diagram tool: https://databasediagram.com/app</span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="fu"># Close database connection</span></span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "26-sql"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mdsr) <span class="co"># for connecting to database</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI) <span class="co"># database tools</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Warm Up </span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`nycflights23::flights`</span>, answer the following using {dplyr} code: </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How many flights are in this dataset? </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How many flights flew to MSP from JFK in 2023?</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What was the average flight delay for MSP flights in Sept 2023?</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>nycflights23<span class="sc">::</span>flights</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Intro to SQL</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn: Set up database connection</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">dbConnect_scidb</span>(<span class="at">dbname =</span> <span class="st">"imdb"</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>db <span class="sc">%&gt;%</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbGetQuery</span>(<span class="st">"SELECT * FROM kind_type</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="st">             LIMIT 0,10;"</span>)</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>What <span class="in">`kind_type`</span> corresponds to movies?</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn: simple queries</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Find your favorite movie in the <span class="in">`title`</span> table</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Find <span class="co">[</span><span class="ot">Viola Davis</span><span class="co">](https://www.imdb.com/name/nm0205626/?ref_=nv_sr_1)</span> in the <span class="in">`name`</span> table </span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Make note of Viola Davis's <span class="in">`person_id`</span> </span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn: finding data info</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>List the fields in the <span class="in">`name`</span>, <span class="in">`cast_info`</span>, and <span class="in">`char_name`</span> tables. Do they have fields in common? How do you think these tables fit together?</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(db)</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListFields</span>(db, <span class="st">"title"</span>)</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn: `JOIN`ing Viola Davis</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Find all the rows in <span class="in">`cast_info`</span> that correspond to Viola Davis as an actress</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Add the names of the characters she played by <span class="in">`JOIN`</span>ing the <span class="in">`char_name`</span> table</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your turn: full filmography</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>Find Viola Davis’s full filmography, in chronological order. Include each movie’s <span class="in">`title`</span>, <span class="in">`production_year`</span>, and the <span class="in">`name`</span> of the character that she played.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
